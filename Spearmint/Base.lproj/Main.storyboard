@@ -359,13 +359,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BpP-Mv-zuI">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="116" width="414" height="697"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ych-wy-2jV">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="SdG-49-imA">
+                                    <navigationItem title="Transactions" id="SdG-49-imA">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lRL-hz-TJX">
                                             <connections>
                                                 <segue destination="KY1-d4-omc" kind="presentation" id="qM6-3g-hvL"/>
@@ -374,16 +374,26 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="utx-RV-yJF">
+                                <rect key="frame" x="0.0" y="88" width="414" height="28"/>
+                                <segments>
+                                    <segment title="Current Month"/>
+                                    <segment title="All"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="BpP-Mv-zuI" firstAttribute="width" secondItem="ksh-ws-LTY" secondAttribute="width" id="3oJ-4A-iej"/>
+                            <constraint firstItem="utx-RV-yJF" firstAttribute="width" secondItem="ksh-ws-LTY" secondAttribute="width" id="9Nd-yk-zqc"/>
                             <constraint firstItem="ych-wy-2jV" firstAttribute="width" secondItem="ksh-ws-LTY" secondAttribute="width" id="LEt-kN-mNJ"/>
                             <constraint firstItem="ych-wy-2jV" firstAttribute="centerX" secondItem="Wey-25-Rik" secondAttribute="centerX" id="LVL-K2-60i"/>
                             <constraint firstItem="Wey-25-Rik" firstAttribute="bottom" secondItem="BpP-Mv-zuI" secondAttribute="bottom" id="NpS-Zh-xUc"/>
+                            <constraint firstItem="BpP-Mv-zuI" firstAttribute="top" secondItem="utx-RV-yJF" secondAttribute="bottom" id="UBk-Ll-MRT"/>
                             <constraint firstItem="BpP-Mv-zuI" firstAttribute="centerX" secondItem="Wey-25-Rik" secondAttribute="centerX" id="Uko-8B-4oy"/>
                             <constraint firstItem="ych-wy-2jV" firstAttribute="top" secondItem="Wey-25-Rik" secondAttribute="top" id="Zey-lP-6VN"/>
-                            <constraint firstItem="BpP-Mv-zuI" firstAttribute="top" secondItem="ych-wy-2jV" secondAttribute="bottom" id="cYC-IZ-EUM"/>
+                            <constraint firstItem="utx-RV-yJF" firstAttribute="centerX" secondItem="Wey-25-Rik" secondAttribute="centerX" id="cfw-eO-ge1"/>
+                            <constraint firstItem="utx-RV-yJF" firstAttribute="top" secondItem="ych-wy-2jV" secondAttribute="bottom" id="xf5-df-BCR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wey-25-Rik"/>
                     </view>
@@ -394,7 +404,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Dd-U0-pQV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-455" y="-856"/>
+            <point key="canvasLocation" x="-455.07246376811599" y="-856.47321428571422"/>
         </scene>
         <!--Add Transaction View Controller-->
         <scene sceneID="lQV-68-3Yo">
@@ -407,7 +417,19 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IMa-rl-S5p">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="JAH-gi-geH"/>
+                                    <navigationItem id="JAH-gi-geH">
+                                        <nil key="title"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="CZq-jy-KZ7"/>
+                                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="CV9-KN-iCz">
+                                            <rect key="frame" x="124.5" y="7.5" width="165" height="29"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="First"/>
+                                                <segment title="Second"/>
+                                            </segments>
+                                        </segmentedControl>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="2UL-LW-oT8"/>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sag-sz-cE1">
