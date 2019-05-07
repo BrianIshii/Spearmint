@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="156" id="9LT-wx-g2B" userLabel="TransactionTableViewCell" customClass="TransactionTableViewCell" customModule="Spearmint" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="394" height="156"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9LT-wx-g2B" id="UjN-EJ-YJX">
+                <rect key="frame" x="0.0" y="0.0" width="394" height="155.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FdU-hU-gHz">
+                        <rect key="frame" x="0.0" y="0.0" width="238.5" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Transaction Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R3d-ZR-w9Y">
+                        <rect key="frame" x="20" y="64" width="139" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvV-ee-pyo">
+                        <rect key="frame" x="238.5" y="0.0" width="155.5" height="155.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="kvV-ee-pyo" secondAttribute="height" multiplier="1:1" id="rx7-yc-4N8"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kvV-ee-pyo" firstAttribute="top" secondItem="UjN-EJ-YJX" secondAttribute="top" id="HWl-w7-omF"/>
+                    <constraint firstItem="kvV-ee-pyo" firstAttribute="leading" secondItem="FdU-hU-gHz" secondAttribute="trailing" id="RIc-Yd-SXx"/>
+                    <constraint firstItem="FdU-hU-gHz" firstAttribute="top" secondItem="UjN-EJ-YJX" secondAttribute="top" id="T5b-fM-kGe"/>
+                    <constraint firstItem="FdU-hU-gHz" firstAttribute="leading" secondItem="UjN-EJ-YJX" secondAttribute="leading" id="WuX-AB-mc7"/>
+                    <constraint firstItem="kvV-ee-pyo" firstAttribute="height" secondItem="UjN-EJ-YJX" secondAttribute="height" id="YZf-Vn-oct"/>
+                    <constraint firstAttribute="trailing" secondItem="kvV-ee-pyo" secondAttribute="trailing" id="jyN-5Q-Tse"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="transactionAmountLabel" destination="kvV-ee-pyo" id="rWd-vk-UaZ"/>
+                <outlet property="transactionNameLabel" destination="FdU-hU-gHz" id="jca-eP-1IN"/>
+            </connections>
+            <point key="canvasLocation" x="8.6956521739130448" y="-342.85714285714283"/>
+        </tableViewCell>
+    </objects>
+</document>
