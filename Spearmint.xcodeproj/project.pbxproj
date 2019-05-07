@@ -25,7 +25,13 @@
 		76A2FA462280B0740066D594 /* TransactionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA452280B0740066D594 /* TransactionListViewController.swift */; };
 		76A2FA4C2280B4300066D594 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA4B2280B4300066D594 /* TransactionTableViewCell.swift */; };
 		76A2FA4E2280B4520066D594 /* TransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A2FA4D2280B4520066D594 /* TransactionTableViewCell.xib */; };
-		76A2FA502280D3410066D594 /* AddExpenseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A2FA4F2280D3410066D594 /* AddExpenseView.xib */; };
+		76A2FA562281F8BE0066D594 /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA552281F8BE0066D594 /* AddTransactionViewController.swift */; };
+		76A2FA582281F94E0066D594 /* DateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A2FA572281F94E0066D594 /* DateTableViewCell.xib */; };
+		76A2FA5A2281FA430066D594 /* AmountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A2FA592281FA430066D594 /* AmountTableViewCell.xib */; };
+		76A2FA5C2281FAE90066D594 /* VendorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A2FA5B2281FAE90066D594 /* VendorTableViewCell.xib */; };
+		76A2FA5E2281FB700066D594 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA5D2281FB700066D594 /* DateTableViewCell.swift */; };
+		76A2FA602281FBDD0066D594 /* AmountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA5F2281FBDD0066D594 /* AmountTableViewCell.swift */; };
+		76A2FA622281FBE60066D594 /* VendorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA612281FBE60066D594 /* VendorTableViewCell.swift */; };
 		76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3CBE7227FEEAC0010625A /* Currency.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,7 +77,13 @@
 		76A2FA452280B0740066D594 /* TransactionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewController.swift; sourceTree = "<group>"; };
 		76A2FA4B2280B4300066D594 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		76A2FA4D2280B4520066D594 /* TransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionTableViewCell.xib; sourceTree = "<group>"; };
-		76A2FA4F2280D3410066D594 /* AddExpenseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddExpenseView.xib; sourceTree = "<group>"; };
+		76A2FA552281F8BE0066D594 /* AddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
+		76A2FA572281F94E0066D594 /* DateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateTableViewCell.xib; sourceTree = "<group>"; };
+		76A2FA592281FA430066D594 /* AmountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmountTableViewCell.xib; sourceTree = "<group>"; };
+		76A2FA5B2281FAE90066D594 /* VendorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VendorTableViewCell.xib; sourceTree = "<group>"; };
+		76A2FA5D2281FB700066D594 /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
+		76A2FA5F2281FBDD0066D594 /* AmountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTableViewCell.swift; sourceTree = "<group>"; };
+		76A2FA612281FBE60066D594 /* VendorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorTableViewCell.swift; sourceTree = "<group>"; };
 		76E3CBE7227FEEAC0010625A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,7 +171,13 @@
 				76A2FA452280B0740066D594 /* TransactionListViewController.swift */,
 				76A2FA4B2280B4300066D594 /* TransactionTableViewCell.swift */,
 				76A2FA4D2280B4520066D594 /* TransactionTableViewCell.xib */,
-				76A2FA4F2280D3410066D594 /* AddExpenseView.xib */,
+				76A2FA552281F8BE0066D594 /* AddTransactionViewController.swift */,
+				76A2FA572281F94E0066D594 /* DateTableViewCell.xib */,
+				76A2FA592281FA430066D594 /* AmountTableViewCell.xib */,
+				76A2FA5B2281FAE90066D594 /* VendorTableViewCell.xib */,
+				76A2FA5D2281FB700066D594 /* DateTableViewCell.swift */,
+				76A2FA5F2281FBDD0066D594 /* AmountTableViewCell.swift */,
+				76A2FA612281FBE60066D594 /* VendorTableViewCell.swift */,
 			);
 			path = Transactions;
 			sourceTree = "<group>";
@@ -310,9 +328,11 @@
 			files = (
 				764AFD92226E7061007BFD90 /* LaunchScreen.storyboard in Resources */,
 				764AFD8F226E7061007BFD90 /* Assets.xcassets in Resources */,
+				76A2FA5C2281FAE90066D594 /* VendorTableViewCell.xib in Resources */,
 				76A2FA4E2280B4520066D594 /* TransactionTableViewCell.xib in Resources */,
 				764AFD8D226E7060007BFD90 /* Main.storyboard in Resources */,
-				76A2FA502280D3410066D594 /* AddExpenseView.xib in Resources */,
+				76A2FA582281F94E0066D594 /* DateTableViewCell.xib in Resources */,
+				76A2FA5A2281FA430066D594 /* AmountTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,15 +357,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76A2FA5E2281FB700066D594 /* DateTableViewCell.swift in Sources */,
 				7689F71B2271874900AD4225 /* Item.swift in Sources */,
 				7689F7152270E39900AD4225 /* TransactionType.swift in Sources */,
 				764AFD8A226E7060007BFD90 /* ViewController.swift in Sources */,
 				764AFDBE226EC42D007BFD90 /* AccountViewController.swift in Sources */,
 				7689F7112270E2FC00AD4225 /* Transaction.swift in Sources */,
+				76A2FA562281F8BE0066D594 /* AddTransactionViewController.swift in Sources */,
 				764AFD88226E7060007BFD90 /* AppDelegate.swift in Sources */,
 				76A2FA4C2280B4300066D594 /* TransactionTableViewCell.swift in Sources */,
 				76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */,
+				76A2FA622281FBE60066D594 /* VendorTableViewCell.swift in Sources */,
 				76A2FA462280B0740066D594 /* TransactionListViewController.swift in Sources */,
+				76A2FA602281FBDD0066D594 /* AmountTableViewCell.swift in Sources */,
 				764AFDBC226EC377007BFD90 /* SettingsTableViewCell.swift in Sources */,
 				7689F7192270E6F600AD4225 /* BudgetItem.swift in Sources */,
 				7689F7132270E31A00AD4225 /* Budget.swift in Sources */,

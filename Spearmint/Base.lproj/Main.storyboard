@@ -396,10 +396,10 @@
             </objects>
             <point key="canvasLocation" x="-455" y="-856"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Transaction View Controller-->
         <scene sceneID="lQV-68-3Yo">
             <objects>
-                <viewController id="KY1-d4-omc" sceneMemberID="viewController">
+                <viewController id="KY1-d4-omc" customClass="AddTransactionViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W0f-AF-nFQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -427,6 +427,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rjN-Mf-HuR"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Sag-sz-cE1" id="wx2-6u-fBv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="45X-MO-t1S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
