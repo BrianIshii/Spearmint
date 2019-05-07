@@ -32,6 +32,8 @@
 		76A2FA5E2281FB700066D594 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA5D2281FB700066D594 /* DateTableViewCell.swift */; };
 		76A2FA602281FBDD0066D594 /* AmountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA5F2281FBDD0066D594 /* AmountTableViewCell.swift */; };
 		76A2FA622281FBE60066D594 /* VendorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA612281FBE60066D594 /* VendorTableViewCell.swift */; };
+		76A2FA642282229D0066D594 /* Transactions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76A2FA632282229D0066D594 /* Transactions.storyboard */; };
+		76A2FA67228248220066D594 /* PaymentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA66228248220066D594 /* PaymentType.swift */; };
 		76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3CBE7227FEEAC0010625A /* Currency.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +86,8 @@
 		76A2FA5D2281FB700066D594 /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 		76A2FA5F2281FBDD0066D594 /* AmountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTableViewCell.swift; sourceTree = "<group>"; };
 		76A2FA612281FBE60066D594 /* VendorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorTableViewCell.swift; sourceTree = "<group>"; };
+		76A2FA632282229D0066D594 /* Transactions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Transactions.storyboard; sourceTree = "<group>"; };
+		76A2FA66228248220066D594 /* PaymentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentType.swift; sourceTree = "<group>"; };
 		76E3CBE7227FEEAC0010625A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +143,7 @@
 				764AFDB6226EB269007BFD90 /* Model */,
 				764AFD87226E7060007BFD90 /* AppDelegate.swift */,
 				764AFD89226E7060007BFD90 /* ViewController.swift */,
+				76A2FA632282229D0066D594 /* Transactions.storyboard */,
 				764AFD8B226E7060007BFD90 /* Main.storyboard */,
 				764AFD8E226E7061007BFD90 /* Assets.xcassets */,
 				764AFD90226E7061007BFD90 /* LaunchScreen.storyboard */,
@@ -185,12 +190,14 @@
 		764AFDB6226EB269007BFD90 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				76A2FA652282465B0066D594 /* DatabaseAccess */,
 				7689F7102270E2FC00AD4225 /* Transaction.swift */,
 				7689F7122270E31A00AD4225 /* Budget.swift */,
 				7689F7142270E39900AD4225 /* TransactionType.swift */,
 				7689F7182270E6F600AD4225 /* BudgetItem.swift */,
 				7689F71A2271874900AD4225 /* Item.swift */,
 				76E3CBE7227FEEAC0010625A /* Currency.swift */,
+				76A2FA66228248220066D594 /* PaymentType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -220,6 +227,13 @@
 			children = (
 			);
 			path = Budget;
+			sourceTree = "<group>";
+		};
+		76A2FA652282465B0066D594 /* DatabaseAccess */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DatabaseAccess;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,6 +347,7 @@
 				764AFD8D226E7060007BFD90 /* Main.storyboard in Resources */,
 				76A2FA582281F94E0066D594 /* DateTableViewCell.xib in Resources */,
 				76A2FA5A2281FA430066D594 /* AmountTableViewCell.xib in Resources */,
+				76A2FA642282229D0066D594 /* Transactions.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +376,7 @@
 				7689F71B2271874900AD4225 /* Item.swift in Sources */,
 				7689F7152270E39900AD4225 /* TransactionType.swift in Sources */,
 				764AFD8A226E7060007BFD90 /* ViewController.swift in Sources */,
+				76A2FA67228248220066D594 /* PaymentType.swift in Sources */,
 				764AFDBE226EC42D007BFD90 /* AccountViewController.swift in Sources */,
 				7689F7112270E2FC00AD4225 /* Transaction.swift in Sources */,
 				76A2FA562281F8BE0066D594 /* AddTransactionViewController.swift in Sources */,

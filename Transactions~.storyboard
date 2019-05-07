@@ -350,10 +350,66 @@
             </objects>
             <point key="canvasLocation" x="1391" y="-1606"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="K4c-FI-qTp">
+            <objects>
+                <viewController id="yV4-F7-YI9" customClass="TransactionListViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ksh-ws-LTY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BpP-Mv-zuI">
+                                <rect key="frame" x="0.0" y="116" width="414" height="697"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ych-wy-2jV">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Transactions" id="SdG-49-imA">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lRL-hz-TJX">
+                                            <connections>
+                                                <segue destination="KY1-d4-omc" kind="presentation" id="qM6-3g-hvL"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="utx-RV-yJF">
+                                <rect key="frame" x="0.0" y="88" width="414" height="28"/>
+                                <segments>
+                                    <segment title="Current Month"/>
+                                    <segment title="All"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BpP-Mv-zuI" firstAttribute="width" secondItem="ksh-ws-LTY" secondAttribute="width" id="3oJ-4A-iej"/>
+                            <constraint firstItem="utx-RV-yJF" firstAttribute="width" secondItem="ksh-ws-LTY" secondAttribute="width" id="9Nd-yk-zqc"/>
+                            <constraint firstItem="ych-wy-2jV" firstAttribute="width" secondItem="ksh-ws-LTY" secondAttribute="width" id="LEt-kN-mNJ"/>
+                            <constraint firstItem="ych-wy-2jV" firstAttribute="centerX" secondItem="Wey-25-Rik" secondAttribute="centerX" id="LVL-K2-60i"/>
+                            <constraint firstItem="Wey-25-Rik" firstAttribute="bottom" secondItem="BpP-Mv-zuI" secondAttribute="bottom" id="NpS-Zh-xUc"/>
+                            <constraint firstItem="BpP-Mv-zuI" firstAttribute="top" secondItem="utx-RV-yJF" secondAttribute="bottom" id="UBk-Ll-MRT"/>
+                            <constraint firstItem="BpP-Mv-zuI" firstAttribute="centerX" secondItem="Wey-25-Rik" secondAttribute="centerX" id="Uko-8B-4oy"/>
+                            <constraint firstItem="ych-wy-2jV" firstAttribute="top" secondItem="Wey-25-Rik" secondAttribute="top" id="Zey-lP-6VN"/>
+                            <constraint firstItem="utx-RV-yJF" firstAttribute="centerX" secondItem="Wey-25-Rik" secondAttribute="centerX" id="cfw-eO-ge1"/>
+                            <constraint firstItem="utx-RV-yJF" firstAttribute="top" secondItem="ych-wy-2jV" secondAttribute="bottom" id="xf5-df-BCR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Wey-25-Rik"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="lx1-1a-h8R"/>
+                    <connections>
+                        <outlet property="transactionTableView" destination="BpP-Mv-zuI" id="3ot-Pk-J4P"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Dd-U0-pQV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-455.07246376811599" y="-856.47321428571422"/>
+        </scene>
         <!--Add Transaction View Controller-->
         <scene sceneID="lQV-68-3Yo">
             <objects>
-                <viewController storyboardIdentifier="UIViewController-KY1-d4-omc" id="KY1-d4-omc" customClass="AddTransactionViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="KY1-d4-omc" customClass="AddTransactionViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W0f-AF-nFQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -438,7 +494,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="UuI-j3-Mtt" kind="relationship" relationship="viewControllers" id="fF0-F8-msz"/>
+                        <segue destination="yV4-F7-YI9" kind="relationship" relationship="viewControllers" id="fF0-F8-msz"/>
                         <segue destination="aGG-L8-6aJ" kind="relationship" relationship="viewControllers" id="Dxq-cs-eui"/>
                         <segue destination="U6a-RL-4I3" kind="relationship" relationship="viewControllers" id="2rS-fi-a1j"/>
                         <segue destination="IYY-vc-beH" kind="relationship" relationship="viewControllers" id="RKg-7M-KSd"/>
@@ -448,16 +504,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ywr-Br-Tb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1754" y="824"/>
-        </scene>
-        <!--Transactions-->
-        <scene sceneID="KPw-Mq-Su7">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Transactions" id="UuI-j3-Mtt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="rzD-x8-xbV"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3F9-oT-s7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-676" y="155"/>
         </scene>
     </scenes>
 </document>
