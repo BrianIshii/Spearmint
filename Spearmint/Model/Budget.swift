@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Budget {
+class Budget: Codable {
     
     var name: String
     var date: String

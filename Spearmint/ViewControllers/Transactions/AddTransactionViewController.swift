@@ -35,8 +35,11 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         if indexPath.row == 0 {
             let cell = Bundle.main.loadNibNamed(DateTableViewCell.xib, owner: self, options: nil)?.first as! DateTableViewCell
             
+
             dateTextField = cell.textField
             dateTextField.delegate = self
+            
+            dateTextField.text = TransactionDate.getCurrentDate()
             
             return cell
         } else if indexPath.row == 1 {
@@ -84,6 +87,8 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
             // not saved
             return
         }
+        
+        transaction = Transaction.dummyTransaction
         
         
     }

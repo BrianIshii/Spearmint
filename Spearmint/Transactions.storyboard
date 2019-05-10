@@ -40,6 +40,9 @@
                                     <segment title="Current Month"/>
                                     <segment title="All"/>
                                 </segments>
+                                <connections>
+                                    <action selector="toggleTransactions:" destination="yV4-F7-YI9" eventType="valueChanged" id="mKJ-o1-AU7"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -97,7 +100,7 @@
                                         </segmentedControl>
                                         <barButtonItem key="rightBarButtonItem" title="Save" id="Wwk-dA-G3x">
                                             <connections>
-                                                <segue destination="hJ0-Cn-e9D" kind="unwind" unwindAction="unwindFor:" id="dxf-3U-oeq"/>
+                                                <segue destination="hJ0-Cn-e9D" kind="unwind" unwindAction="unwindWithSender:" id="ut6-XO-kHB"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

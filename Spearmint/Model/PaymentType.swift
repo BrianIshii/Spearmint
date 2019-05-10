@@ -8,9 +8,9 @@
 
 import Foundation
 
-enum PaymentType {
-    case cash
-    case credit
-    case check
-    case other
+enum PaymentType: Int, Codable {
+    case cash = 0
+    case credit = 1
+    case check = 2
+    case other = 3
 }

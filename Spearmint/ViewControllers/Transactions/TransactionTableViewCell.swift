@@ -13,6 +13,7 @@ class TransactionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var transactionNameLabel: UILabel!
     @IBOutlet weak var transactionAmountLabel: UILabel!
+    @IBOutlet weak var transactionDateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

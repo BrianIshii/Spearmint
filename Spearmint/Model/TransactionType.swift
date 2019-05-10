@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TransactionType: Int {
+enum TransactionType: Int, Codable {
     case expense = 0
     case income = 1
 }

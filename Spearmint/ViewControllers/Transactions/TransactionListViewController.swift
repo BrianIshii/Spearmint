@@ -11,6 +11,7 @@ import UIKit
 class TransactionListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var transactionTableView: UITableView!
+    
     var transactions: [Transaction] = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -24,22 +25,48 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
         
         cell.transactionNameLabel.text = currentTransaction.name
         cell.transactionAmountLabel.text = String(currentTransaction.amount)
+        cell.transactionDateLabel.text = TransactionDate.getMonthAndDay(date: currentTransaction.date)
         
         return cell
     }
 
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            transactions.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            LocalAccess.updateTransactionPersistentStorage(transactions: transactions)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        transactions = Transaction.dummyTransactions
+        transactions = LocalAccess.getAllTransactions()
 
         transactionTableView.delegate = self
         transactionTableView.dataSource = self
         // Do any additional setup after loading the view.
     }
+    @IBAction func toggleTransactions(_ sender: UISegmentedControl) {
+        if (sender.selectedSegmentIndex == 0) {
+            print("current month")
+        } else {
+            print("all transactions")
+        }
+    }
     
-    @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {
-        
+    @IBAction func unwind(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? AddTransactionViewController, let transaction = sourceViewController.transaction {
+            
+            let newIndexPath = IndexPath(row: transactions.count, section: 0)
+            
+            transactions.append(transaction)
+            transactionTableView.insertRows(at: [newIndexPath], with: .automatic)
+            
+            transactionTableView.reloadData()
+            
+            LocalAccess.updateTransactionPersistentStorage(transactions: transactions)
+        }
     }
 
     // MARK: - Navigation

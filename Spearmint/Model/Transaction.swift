@@ -9,8 +9,9 @@
 import Foundation
 
 
-class Transaction {
+class Transaction: Codable {
     
+    var id: TransactionID
     var name: String
     var transactionType: TransactionType
     var merchant: String
@@ -24,6 +25,7 @@ class Transaction {
     
     init(name: String, transactionType: TransactionType, merchant: String, amount: Float,
          date: String, location: String, image: String, notes: String, budget: Budget, budgetItems: [Item]) {
+        self.id = TransactionID()
         self.name = name
         self.transactionType = transactionType
         self.merchant = merchant
@@ -36,9 +38,7 @@ class Transaction {
         self.budgetItems = budgetItems
     }
     
-    static let dummyTransactions =
-        [Transaction(name: "test1", transactionType: TransactionType.income, merchant: "Apple", amount: 10.00, date: Date().description, location: "N/A", image: "N/A", notes: "notes", budget: Budget(name: "budgetName", date: "date", items: []), budgetItems: []),
-    Transaction(name: "test2", transactionType: TransactionType.income, merchant: "Apple", amount: 10.00, date: Date().description, location: "N/A", image: "N/A", notes: "notes", budget: Budget(name: "budgetName", date: "date", items: []), budgetItems: []),
-    Transaction(name: "test3", transactionType: TransactionType.income, merchant: "Apple", amount: 10.00, date: Date().description, location: "N/A", image: "N/A", notes: "notes", budget: Budget(name: "budgetName", date: "date", items: []), budgetItems: [])]
+    static let dummyTransaction =
+        Transaction(name: "test1", transactionType: TransactionType.income, merchant: "Apple", amount: 10.00, date: TransactionDate.getCurrentDate(), location: "N/A", image: "N/A", notes: "notes", budget: Budget(name: "budgetName", date: "date", items: []), budgetItems: [])
     
 }

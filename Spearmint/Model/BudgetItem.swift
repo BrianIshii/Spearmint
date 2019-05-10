@@ -8,19 +8,15 @@
 
 import Foundation
 
-class BudgetItem {
+class BudgetItem: Codable {
     
     var name: String
     var planned: Float
     var actual: Float
-    var transactions: [Transaction]
-    var budget: Budget
     
-    init(name: String, planned: Float, actual: Float, transactions: [Transaction], budget: Budget) {
+    init(name: String, planned: Float, actual: Float) {
         self.name = name
         self.planned = planned
         self.actual = actual
-        self.transactions = transactions
-        self.budget = budget
     }
 }
