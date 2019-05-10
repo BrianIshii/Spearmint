@@ -13,33 +13,9 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
     @IBOutlet weak var transactionTableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    var transactionCount = 0
     var transactions: [Transaction] = []
+    var viewedTransactions: [Transaction] = []
     var currentDate: Date = Date()
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return transactionCount
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed(TransactionTableViewCell.xib, owner: self, options: nil)?.first as! TransactionTableViewCell
-        
-        let currentTransaction = transactions[indexPath.row]
-        
-        cell.transactionAmountLabel.text = Currency.currencyFormatter(total: String(currentTransaction.amount))
-        cell.transactionVendorLabel.text = currentTransaction.vendor
-        cell.transactionDateLabel.text = TransactionDate.getMonthAndDay(date: currentTransaction.date)
-        
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            LocalAccess.deleteTransaction(transaction: transactions[indexPath.row])
-            transactions.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +27,38 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
         transactionTableView.dataSource = self
         // Do any additional setup after loading the view.
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewedTransactions.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = Bundle.main.loadNibNamed(TransactionTableViewCell.xib, owner: self, options: nil)?.first as! TransactionTableViewCell
+        
+        let currentTransaction = viewedTransactions[indexPath.row]
+        
+        cell.transactionAmountLabel.text = Currency.currencyFormatter(total: String(currentTransaction.amount))
+        switch currentTransaction.transactionType {
+        case .expense:
+            cell.transactionAmountLabel.textColor = UIColor.red
+        case.income:
+            cell.transactionAmountLabel.textColor = UIColor.green
+        }
+        cell.transactionVendorLabel.text = currentTransaction.vendor
+        cell.transactionDateLabel.text = TransactionDate.getMonthAndDay(date: currentTransaction.date)
+        
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            LocalAccess.deleteTransaction(transaction: transactions[indexPath.row])
+            transactions.remove(at: indexPath.row)
+            
+            toggleCurrentAndAllTransactions(index: segmentedControl.selectedSegmentIndex)
+        }
+    }
+    
     @IBAction func toggleTransactions(_ sender: UISegmentedControl) {
         toggleCurrentAndAllTransactions(index: sender.selectedSegmentIndex)
     }
@@ -81,12 +89,12 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
             t.isInCurrentMonth()
         }
         
-        transactionCount = array.count
+        viewedTransactions = array
         transactionTableView.reloadData()
     }
     
     private func setListToAllTransactions() {
-        transactionCount = transactions.count
+        viewedTransactions = transactions
         transactionTableView.reloadData()
     }
 

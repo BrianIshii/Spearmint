@@ -126,6 +126,7 @@
                     </view>
                     <connections>
                         <outlet property="saveButton" destination="Wwk-dA-G3x" id="Um7-rS-bK9"/>
+                        <outlet property="segmentedControl" destination="Hw5-xm-rvn" id="ynj-ly-LVu"/>
                         <outlet property="tableView" destination="tK3-kA-WSD" id="s4w-lP-W7P"/>
                     </connections>
                 </viewController>

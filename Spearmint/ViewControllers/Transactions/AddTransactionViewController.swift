@@ -11,6 +11,7 @@ import UIKit
 class AddTransactionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     static let segueIdentifier = "addTransactionViewControllerSegue"
     
@@ -88,8 +89,9 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         let name = "test1"
         let date = dateLabel.text!
         let merchant = vendorTextField.text!
+        let transactionType = segmentedControl.selectedSegmentIndex == TransactionType.expense.rawValue ? TransactionType.expense : TransactionType.income
         let amount = Currency.currencyToFloat(total: amountTextField.text!)
-        transaction = Transaction(name: name, transactionType: TransactionType.income, merchant: merchant, amount: Float(amount), date: date, location: "N/A", image: "N/A", notes: "notes", budget: Budget(date: "date", items: []), budgetItems: [])
+        transaction = Transaction(name: name, transactionType: transactionType, merchant: merchant, amount: Float(amount), date: date, location: "N/A", image: "N/A", notes: "notes", budget: Budget(date: "date", items: []), budgetItems: [])
         
         
     }
