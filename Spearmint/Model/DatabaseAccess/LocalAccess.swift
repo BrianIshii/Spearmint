@@ -9,20 +9,30 @@
 import Foundation
 
 class LocalAccess {
+    public static var transactions: [String: Transaction] = getAllTransactions()
     
-    private static let transactions = "transactions"
+    private static let transactionString = "transactions"
     static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     
-    static let transactionURL = documentsDirectory.appendingPathComponent(transactions)
+    static let transactionURL = documentsDirectory.appendingPathComponent(transactionString)
     
+    static func addTransaction(transaction: Transaction) {
+        transactions[transaction.id.description()] = transaction
+        updateTransactionPersistentStorage()
+    }
     
-    static func getAllTransactions() -> [Transaction] {
-        var transactions: [Transaction]
+    static func deleteTransaction(transaction: Transaction) {
+        transactions.removeValue(forKey: transaction.id.description())
+        updateTransactionPersistentStorage()
+    }
+    
+    private static func getAllTransactions() -> [String: Transaction] {
+        var transactions: [String: Transaction]
         
         do {
             let data = try Data(contentsOf: transactionURL)
             let decoder = JSONDecoder()
-            let tempArr = try decoder.decode([Transaction].self, from: data)
+            let tempArr = try decoder.decode([String: Transaction].self, from: data)
             transactions = tempArr
             
             return transactions
@@ -31,10 +41,10 @@ class LocalAccess {
             print(error)
         }
         
-        return [Transaction]()
+        return [String: Transaction]()
     }
     
-    static func updateTransactionPersistentStorage(transactions: [Transaction]) {
+    static func updateTransactionPersistentStorage() {
         // persist data
         let encoder = JSONEncoder()
         do {

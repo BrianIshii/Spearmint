@@ -9,7 +9,7 @@
 import Foundation
 
 struct TransactionID: Codable {
-    let id: String
+    private let id: String
     
     init() {
         self.id = NSUUID().uuidString
@@ -17,5 +17,9 @@ struct TransactionID: Codable {
     
     init(id: String) {
         self.id = id
+    }
+    
+    func description() -> String {
+        return id
     }
 }

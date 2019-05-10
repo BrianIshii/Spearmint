@@ -15,9 +15,9 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     static let segueIdentifier = "addTransactionViewControllerSegue"
     
     var transaction: Transaction?
-    var dateTextField: UITextField!
     var amountTextField: UITextField!
     var vendorTextField: UITextField!
+    var dateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,18 +35,15 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         if indexPath.row == 0 {
             let cell = Bundle.main.loadNibNamed(DateTableViewCell.xib, owner: self, options: nil)?.first as! DateTableViewCell
             
+            cell.dateLabel.text = TransactionDate.getCurrentDate()
+            dateLabel = cell.dateLabel
 
-            dateTextField = cell.textField
-            dateTextField.delegate = self
-            
-            dateTextField.text = TransactionDate.getCurrentDate()
-            
             return cell
         } else if indexPath.row == 1 {
             let cell = Bundle.main.loadNibNamed(AmountTableViewCell.xib, owner: self, options: nil)?.first as! AmountTableViewCell
             
             amountTextField = cell.textField
-            amountTextField.delegate = self
+
             return cell
         } //else if indexPath.row == 2 {
         else {
@@ -88,7 +85,11 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
             return
         }
         
-        transaction = Transaction.dummyTransaction
+        let name = "test1"
+        let date = dateLabel.text!
+        let merchant = vendorTextField.text!
+        let amount = Currency.currencyToFloat(total: amountTextField.text!)
+        transaction = Transaction(name: name, transactionType: TransactionType.income, merchant: merchant, amount: Float(amount), date: date, location: "N/A", image: "N/A", notes: "notes", budget: Budget(date: "date", items: []), budgetItems: [])
         
         
     }

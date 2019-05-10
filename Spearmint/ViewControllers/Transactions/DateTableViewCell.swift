@@ -12,7 +12,8 @@ class DateTableViewCell: UITableViewCell {
     static let xib = "DateTableViewCell"
 
     @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,5 +25,9 @@ class DateTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    @IBAction func datePickerChanged(_ sender: UIDatePicker) {
+        print(sender.date.description)
+        dateLabel.text = DateFormatterFactory.mediumFormatter.string(from: sender.date)
+    }
+    
 }

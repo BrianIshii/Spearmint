@@ -62,6 +62,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="lx1-1a-h8R"/>
                     <connections>
+                        <outlet property="segmentedControl" destination="utx-RV-yJF" id="gPJ-VS-t85"/>
                         <outlet property="transactionTableView" destination="BpP-Mv-zuI" id="3ot-Pk-J4P"/>
                     </connections>
                 </viewController>

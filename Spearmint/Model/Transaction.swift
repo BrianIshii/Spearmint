@@ -11,10 +11,10 @@ import Foundation
 
 class Transaction: Codable {
     
-    var id: TransactionID
+    let id: TransactionID
     var name: String
     var transactionType: TransactionType
-    var merchant: String
+    var vendor: String
     var amount: Float
     var date: String
     var location: String
@@ -28,7 +28,7 @@ class Transaction: Codable {
         self.id = TransactionID()
         self.name = name
         self.transactionType = transactionType
-        self.merchant = merchant
+        self.vendor = merchant
         self.amount = amount
         self.date = date
         self.location = location
@@ -39,6 +39,16 @@ class Transaction: Codable {
     }
     
     static let dummyTransaction =
-        Transaction(name: "test1", transactionType: TransactionType.income, merchant: "Apple", amount: 10.00, date: TransactionDate.getCurrentDate(), location: "N/A", image: "N/A", notes: "notes", budget: Budget(name: "budgetName", date: "date", items: []), budgetItems: [])
+        Transaction(name: "test1", transactionType: TransactionType.income, merchant: "Apple", amount: 10.00, date: TransactionDate.getCurrentDate(), location: "N/A", image: "N/A", notes: "notes", budget: Budget(date: "date", items: []), budgetItems: [])
+ 
+    func isInCurrentMonth() -> Bool {
+        let currentDate = Date()
+        let transactionDate = DateFormatterFactory.mediumFormatter.date(from: date)!
+        return currentDate.isInSameMonth(date: transactionDate) && currentDate.isInSameYear(date: transactionDate)
+    }
+    
+    static func > (left: Transaction, right: Transaction) -> Bool {
+        return DateFormatterFactory.mediumFormatter.date(from: left.date)! > DateFormatterFactory.mediumFormatter.date(from: right.date)!
+    }
     
 }

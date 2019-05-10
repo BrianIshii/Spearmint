@@ -11,11 +11,14 @@ import UIKit
 class TransactionListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var transactionTableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
+    var transactionCount = 0
     var transactions: [Transaction] = []
+    var currentDate: Date = Date()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return transactions.count
+        return transactionCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -23,8 +26,8 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
         
         let currentTransaction = transactions[indexPath.row]
         
-        cell.transactionNameLabel.text = currentTransaction.name
-        cell.transactionAmountLabel.text = String(currentTransaction.amount)
+        cell.transactionAmountLabel.text = Currency.currencyFormatter(total: String(currentTransaction.amount))
+        cell.transactionVendorLabel.text = currentTransaction.vendor
         cell.transactionDateLabel.text = TransactionDate.getMonthAndDay(date: currentTransaction.date)
         
         return cell
@@ -32,41 +35,59 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            LocalAccess.deleteTransaction(transaction: transactions[indexPath.row])
             transactions.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            LocalAccess.updateTransactionPersistentStorage(transactions: transactions)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        transactions = LocalAccess.getAllTransactions()
-
+        transactions = Array(LocalAccess.transactions.values).sorted(by: >)
+        setListToCurrentMonthTransactions()
+        
         transactionTableView.delegate = self
         transactionTableView.dataSource = self
         // Do any additional setup after loading the view.
     }
     @IBAction func toggleTransactions(_ sender: UISegmentedControl) {
-        if (sender.selectedSegmentIndex == 0) {
-            print("current month")
-        } else {
-            print("all transactions")
-        }
+        toggleCurrentAndAllTransactions(index: sender.selectedSegmentIndex)
     }
     
     @IBAction func unwind(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? AddTransactionViewController, let transaction = sourceViewController.transaction {
             
-            let newIndexPath = IndexPath(row: transactions.count, section: 0)
-            
+            LocalAccess.addTransaction(transaction: transaction)
             transactions.append(transaction)
-            transactionTableView.insertRows(at: [newIndexPath], with: .automatic)
+            transactions.sort(by: >)
             
-            transactionTableView.reloadData()
-            
-            LocalAccess.updateTransactionPersistentStorage(transactions: transactions)
+            toggleCurrentAndAllTransactions(index: segmentedControl.selectedSegmentIndex)
         }
+    }
+    
+    private func toggleCurrentAndAllTransactions(index: Int) {
+        if (index == 0) {
+            //print("current month")
+            setListToCurrentMonthTransactions()
+        } else {
+            //print("all transactions")
+            setListToAllTransactions()
+        }
+    }
+    
+    private func setListToCurrentMonthTransactions() {
+        var array = transactions.filter { (t) -> Bool in
+            t.isInCurrentMonth()
+        }
+        
+        transactionCount = array.count
+        transactionTableView.reloadData()
+    }
+    
+    private func setListToAllTransactions() {
+        transactionCount = transactions.count
+        transactionTableView.reloadData()
     }
 
     // MARK: - Navigation

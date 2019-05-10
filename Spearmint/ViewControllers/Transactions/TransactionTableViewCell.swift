@@ -11,9 +11,9 @@ import UIKit
 class TransactionTableViewCell: UITableViewCell {
     static let xib = "TransactionTableViewCell"
     
-    @IBOutlet weak var transactionNameLabel: UILabel!
     @IBOutlet weak var transactionAmountLabel: UILabel!
     @IBOutlet weak var transactionDateLabel: UILabel!
+    @IBOutlet weak var transactionVendorLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

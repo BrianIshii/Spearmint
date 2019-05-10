@@ -10,12 +10,10 @@ import Foundation
 
 class Budget: Codable {
     
-    var name: String
     var date: String
     var items: [BudgetItem]
     
-    init(name: String, date: String, items: [BudgetItem]) {
-        self.name = name
+    init(date: String, items: [BudgetItem]) {
         self.date = date
         self.items = items
     }
