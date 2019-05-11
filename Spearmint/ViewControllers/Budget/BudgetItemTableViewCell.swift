@@ -9,9 +9,11 @@
 import UIKit
 
 class BudgetItemTableViewCell: UITableViewCell {
+    static let xib = "BudgetItemTableViewCell"
 
-    @IBOutlet weak var Label: UILabel!
+    @IBOutlet weak var budgetItemName: UILabel!
     @IBOutlet weak var textField: UITextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

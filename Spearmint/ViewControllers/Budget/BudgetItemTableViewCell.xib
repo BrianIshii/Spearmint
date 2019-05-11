@@ -24,7 +24,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzr-Zk-3mW">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="budgetItem" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzr-Zk-3mW">
                         <rect key="frame" x="0.0" y="0.0" width="207" height="69.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -50,7 +50,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="Label" destination="jzr-Zk-3mW" id="qWV-77-3gc"/>
+                <outlet property="budgetItemName" destination="jzr-Zk-3mW" id="r7K-Sw-Mtp"/>
                 <outlet property="textField" destination="Th4-1C-I4N" id="oTM-l5-qsC"/>
             </connections>
             <point key="canvasLocation" x="-946.37681159420299" y="59.598214285714285"/>

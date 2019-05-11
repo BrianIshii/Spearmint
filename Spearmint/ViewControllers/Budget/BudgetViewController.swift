@@ -8,8 +8,11 @@
 
 import UIKit
 
-class BudgetViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class BudgetViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDelegate, UITableViewDataSource {
+
+    
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var budgetButton: UIButton!
     
     var budgets: [Budget] = []
@@ -18,11 +21,13 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        collectionView.isHidden = true
+        
         budgets = [Budget(date: "2019-01", items: []),
                    Budget(date: "2019-02", items: []),
                    Budget(date: "2019-03", items: []),
                    Budget(date: "2019-04", items: []),
-                   Budget(date: "2019-05", items: [])]
+                   Budget(date: "2019-05", items: [BudgetItem(name: "Rent", planned: 700, actual: 0)])]
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -35,7 +40,11 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
 
         currentBudget = budgets[budgets.count - 1]
         budgetButton.setTitle(DateFormatterFactory.monthFullFormatter.string(from: DateFormatterFactory.yearAndMonthFormatter.date(from: currentBudget!.date)!), for: .normal)
-        // Do any additional setup after loading the view.
+
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.reloadData()
     }
     
 
@@ -48,6 +57,8 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: Collection View
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -82,6 +93,24 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         collectionView.isHidden = true
         budgetButton.setTitle(DateFormatterFactory.monthFullFormatter.string(from: DateFormatterFactory.yearAndMonthFormatter.date(from: currentBudget!.date)!), for: .normal)
+        
+        tableView.reloadData()
+    }
+    
+    // MARK: Table View
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (currentBudget?.items.count)!
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = Bundle.main.loadNibNamed(BudgetItemTableViewCell.xib, owner: self, options: nil)?.first as! BudgetItemTableViewCell
+        
+        let currentBudgetItem = currentBudget?.items[indexPath.row]
+        
+        cell.budgetItemName.text = currentBudgetItem?.name
+        
+        
+        return cell
     }
     
     @IBAction func toggleSelectBudget(_ sender: UIButton) {

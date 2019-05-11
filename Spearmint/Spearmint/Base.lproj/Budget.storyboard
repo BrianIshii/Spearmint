@@ -113,6 +113,7 @@
                     <connections>
                         <outlet property="budgetButton" destination="eoD-cT-7lw" id="hrp-KO-hGL"/>
                         <outlet property="collectionView" destination="ATC-2c-Ire" id="dMt-PI-h9x"/>
+                        <outlet property="tableView" destination="zha-B0-je9" id="lKU-rG-quW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCA-S9-1q7" userLabel="First Responder" sceneMemberID="firstResponder"/>

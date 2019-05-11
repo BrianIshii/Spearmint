@@ -9,9 +9,8 @@
 import UIKit
 
 class BudgetCollectionViewCell: UICollectionViewCell {
+    static let xib = "BudgetCollectionViewCell"
+
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
-    
-    static let xib = "BudgetCollectionViewCell"
-    
 }
