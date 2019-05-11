@@ -17,4 +17,6 @@ class Budget: Codable {
         self.date = date
         self.items = items
     }
+    
+    static let dummyBudget = Budget(date: DateFormatterFactory.mediumFormatter.string(from: Date()), items: [BudgetItem(name: "car", planned: 1.0, actual: 0.0)])
 }
