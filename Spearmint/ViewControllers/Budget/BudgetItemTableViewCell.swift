@@ -13,6 +13,7 @@ class BudgetItemTableViewCell: UITableViewCell {
 
     @IBOutlet weak var budgetItemName: UILabel!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var progressBar: UIProgressView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

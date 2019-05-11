@@ -27,7 +27,7 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
                    Budget(date: "2019-02", items: []),
                    Budget(date: "2019-03", items: []),
                    Budget(date: "2019-04", items: []),
-                   Budget(date: "2019-05", items: [BudgetItem(name: "Rent", planned: 700, actual: 0)])]
+                   Budget(date: "2019-05", items: BudgetItem.defaultBudgetItems())]
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -105,13 +105,15 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed(BudgetItemTableViewCell.xib, owner: self, options: nil)?.first as! BudgetItemTableViewCell
         
-        let currentBudgetItem = currentBudget?.items[indexPath.row]
+        let currentBudgetItem = currentBudget!.items[indexPath.row]
         
-        cell.budgetItemName.text = currentBudgetItem?.name
-        
+        cell.budgetItemName.text = currentBudgetItem.name
+        cell.progressBar.progress = currentBudgetItem.actual / currentBudgetItem.planned
         
         return cell
     }
+    
+    // MARK: Textfield
     
     @IBAction func toggleSelectBudget(_ sender: UIButton) {
         collectionView.isHidden = !collectionView.isHidden

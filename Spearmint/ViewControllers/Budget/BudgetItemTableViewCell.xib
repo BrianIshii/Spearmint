@@ -11,27 +11,27 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="xTM-Jb-6uN" userLabel="BudgetItemTableViewCell" customClass="BudgetItemTableViewCell" customModule="Spearmint" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="xTM-Jb-6uN" userLabel="BudgetItemTableViewCell" customClass="BudgetItemTableViewCell" customModule="Spearmint" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="363" height="80"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xTM-Jb-6uN" id="bgy-my-OzU">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="69.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="363" height="79.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Th4-1C-I4N">
-                        <rect key="frame" x="207" y="0.0" width="207" height="67.5"/>
+                        <rect key="frame" x="181.5" y="0.0" width="181.5" height="77.5"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="budgetItem" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzr-Zk-3mW">
-                        <rect key="frame" x="0.0" y="0.0" width="207" height="69.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="181.5" height="79.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Q6d-aP-r02">
-                        <rect key="frame" x="0.0" y="67.5" width="414" height="2"/>
+                        <rect key="frame" x="0.0" y="77.5" width="363" height="2"/>
                     </progressView>
                 </subviews>
                 <constraints>
@@ -51,9 +51,10 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="budgetItemName" destination="jzr-Zk-3mW" id="r7K-Sw-Mtp"/>
+                <outlet property="progressBar" destination="Q6d-aP-r02" id="2r4-mL-j00"/>
                 <outlet property="textField" destination="Th4-1C-I4N" id="oTM-l5-qsC"/>
             </connections>
-            <point key="canvasLocation" x="-946.37681159420299" y="59.598214285714285"/>
+            <point key="canvasLocation" x="-983.33333333333337" y="56.25"/>
         </tableViewCell>
     </objects>
 </document>
