@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7637A60D22862B6B007DD20B /* BudgetLocalAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637A60C22862B6B007DD20B /* BudgetLocalAccess.swift */; };
+		7637A61022864DBF007DD20B /* Budget.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7637A60E22864DBF007DD20B /* Budget.storyboard */; };
 		764AFD88226E7060007BFD90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764AFD87226E7060007BFD90 /* AppDelegate.swift */; };
 		764AFD8A226E7060007BFD90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764AFD89226E7060007BFD90 /* ViewController.swift */; };
 		764AFD8D226E7060007BFD90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 764AFD8B226E7060007BFD90 /* Main.storyboard */; };
@@ -63,6 +64,7 @@
 
 /* Begin PBXFileReference section */
 		7637A60C22862B6B007DD20B /* BudgetLocalAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetLocalAccess.swift; sourceTree = "<group>"; };
+		7637A60F22864DBF007DD20B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Spearmint/Base.lproj/Budget.storyboard; sourceTree = "<group>"; };
 		764AFD84226E7060007BFD90 /* Spearmint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spearmint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		764AFD87226E7060007BFD90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		764AFD89226E7060007BFD90 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				764AFDB6226EB269007BFD90 /* Model */,
 				764AFD87226E7060007BFD90 /* AppDelegate.swift */,
 				764AFD89226E7060007BFD90 /* ViewController.swift */,
+				7637A60E22864DBF007DD20B /* Budget.storyboard */,
 				76A2FA632282229D0066D594 /* Transactions.storyboard */,
 				764AFD8B226E7060007BFD90 /* Main.storyboard */,
 				764AFD8E226E7061007BFD90 /* Assets.xcassets */,
@@ -379,6 +382,7 @@
 			files = (
 				764AFD92226E7061007BFD90 /* LaunchScreen.storyboard in Resources */,
 				764AFD8F226E7061007BFD90 /* Assets.xcassets in Resources */,
+				7637A61022864DBF007DD20B /* Budget.storyboard in Resources */,
 				76A2FA5C2281FAE90066D594 /* VendorTableViewCell.xib in Resources */,
 				76A2FA4E2280B4520066D594 /* TransactionTableViewCell.xib in Resources */,
 				764AFD8D226E7060007BFD90 /* Main.storyboard in Resources */,
@@ -469,6 +473,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		7637A60E22864DBF007DD20B /* Budget.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7637A60F22864DBF007DD20B /* Base */,
+			);
+			name = Budget.storyboard;
+			sourceTree = "<group>";
+		};
 		764AFD8B226E7060007BFD90 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
