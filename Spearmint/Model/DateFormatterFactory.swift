@@ -11,6 +11,9 @@ class DateFormatterFactory {
     static let monthAndDayFormatter = createMonthAndDayFormatter()
     static let mediumFormatter = createMediumFormatter()
     static let yearAndMonthFormatter = createYearAndMonthFormatter()
+    static let monthThreeCharacterFormatter = createMonthThreeCharacterFormatterFormatter()
+    static let yearTwoCharacterFormatter = createYearTwoCharacterFormatter()
+    static let monthFullFormatter = createMonthFullFormattter()
     
     static private func createMonthAndDayFormatter() -> DateFormatter {
         let dateFormatter = DateFormatter()
@@ -29,10 +32,37 @@ class DateFormatterFactory {
         return dateFormatter
     }
     
-    static private func createYearAndMonthFormatter() -> DateFormatter{
+    static private func createYearAndMonthFormatter() -> DateFormatter {
         let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM"
+        dateFormatter.locale = Locale(identifier: "en_US")
+        
+        return dateFormatter
+    }
+    
+    static private func createMonthThreeCharacterFormatterFormatter() -> DateFormatter {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "MMM"
+        dateFormatter.locale = Locale(identifier: "en_US")
+        
+        return dateFormatter
+    }
+    
+    static private func createYearTwoCharacterFormatter() -> DateFormatter {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "YY"
+        dateFormatter.locale = Locale(identifier: "en_US")
+        
+        return dateFormatter
+    }
+    
+    static private func createMonthFullFormattter() -> DateFormatter {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "MMMM"
         dateFormatter.locale = Locale(identifier: "en_US")
         
         return dateFormatter
