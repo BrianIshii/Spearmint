@@ -10,6 +10,7 @@ import UIKit
 
 class TransactionListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var transactionTableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
@@ -25,6 +26,10 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
         
         transactionTableView.delegate = self
         transactionTableView.dataSource = self
+        
+        navigationBar.prefersLargeTitles = true
+//        let searchController = UISearchController(searchResultsController: nil)
+//        navigationItem.searchController = searchController
         // Do any additional setup after loading the view.
     }
     

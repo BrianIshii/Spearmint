@@ -35,19 +35,15 @@ class BudgetItem: Codable {
     }
     
     static func defaultBudgetItems() -> [BudgetItem] {
-        return [BudgetItem(name: "Paycheck 1"),
-                BudgetItem(name: "Mortgage/Rent"),
-                BudgetItem(name: "Water"),
-                BudgetItem(name: "Natural Gas"),
-                BudgetItem(name: "Electricity"),
-                BudgetItem(name: "Cable"),
-                BudgetItem(name: "Internet"),
-                BudgetItem(name: "Trash"),
-                BudgetItem(name: "Gas"),
-                BudgetItem(name: "Maintenance"),
-                BudgetItem(name: "Paycheck 1"),
-                BudgetItem(name: "Paycheck 1"),
-                BudgetItem(name: "Paycheck 1"),
-                BudgetItem(name: "Paycheck 1")]
+        return [BudgetItem(name: "Paycheck 1", category: BudgetItemCategory.income),
+                BudgetItem(name: "Mortgage/Rent", category: BudgetItemCategory.housing),
+                BudgetItem(name: "Water", category: BudgetItemCategory.housing),
+                BudgetItem(name: "Natural Gas", category: BudgetItemCategory.housing),
+                BudgetItem(name: "Electricity", category: BudgetItemCategory.housing),
+                BudgetItem(name: "Cable", category: BudgetItemCategory.housing),
+                BudgetItem(name: "Internet", category: BudgetItemCategory.housing),
+                BudgetItem(name: "Trash", category: BudgetItemCategory.housing),
+                BudgetItem(name: "Gas", category: BudgetItemCategory.transportation),
+                BudgetItem(name: "Maintenance", category: BudgetItemCategory.transportation)]
     }
 }
