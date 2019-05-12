@@ -57,7 +57,11 @@
                                 <items>
                                     <navigationItem id="HY0-A2-Pa6">
                                         <nil key="title"/>
-                                        <barButtonItem key="leftBarButtonItem" title="Item" id="ayA-KO-U0p"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Rearrange" id="ayA-KO-U0p">
+                                            <connections>
+                                                <action selector="rearrangeButtonPressed:" destination="ksr-wo-JLa" id="j4a-xW-AjX"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eoD-cT-7lw">
                                             <rect key="frame" x="124.5" y="7" width="165" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

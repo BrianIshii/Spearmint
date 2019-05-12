@@ -91,7 +91,7 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         let merchant = vendorTextField.text!
         let transactionType = segmentedControl.selectedSegmentIndex == TransactionType.expense.rawValue ? TransactionType.expense : TransactionType.income
         let amount = Currency.currencyToFloat(total: amountTextField.text!)
-        transaction = Transaction(name: name, transactionType: transactionType, merchant: merchant, amount: Float(amount), date: date, location: "N/A", image: "N/A", notes: "notes", budget: Budget(date: "date", items: []), budgetItems: [])
+        transaction = Transaction(name: name, transactionType: transactionType, merchant: merchant, amount: Float(amount), date: date, location: "N/A", image: "N/A", notes: "notes", budget: Budget(date: "date", items: [:]), budgetItems: [])
         
         
     }
