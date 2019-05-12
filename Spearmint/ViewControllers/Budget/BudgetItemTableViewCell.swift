@@ -12,7 +12,7 @@ class BudgetItemTableViewCell: UITableViewCell {
     static let xib = "BudgetItemTableViewCell"
 
     @IBOutlet weak var budgetItemName: UILabel!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textField: MoneyTextField!
     @IBOutlet weak var progressBar: UIProgressView!
     
     override func awakeFromNib() {
