@@ -32,6 +32,9 @@
                     <constraint firstItem="SkH-I9-Viy" firstAttribute="width" secondItem="caQ-AE-fkL" secondAttribute="width" id="uZa-bV-NA6"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="budgetCategoryLabel" destination="SkH-I9-Viy" id="QeI-t9-ckS"/>
+            </connections>
             <point key="canvasLocation" x="40.579710144927539" y="50.892857142857139"/>
         </tableViewCell>
     </objects>

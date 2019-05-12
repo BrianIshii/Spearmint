@@ -9,7 +9,11 @@
 import UIKit
 
 class BudgetSectionTableViewCell: UITableViewCell {
-
+    static let xib = "BudgetSection"
+    static let reuseIdentifier = "budgetSectionCel"
+    
+    @IBOutlet weak var budgetCategoryLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +25,18 @@ class BudgetSectionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    override var showsReorderControl: Bool {
+        get {
+            return true // short-circuit to on
+        }
+        set { }
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        if editing == false {
+            return // ignore any attempts to turn it off
+        }
+        
+        super.setEditing(editing, animated: animated)
+    }
 }

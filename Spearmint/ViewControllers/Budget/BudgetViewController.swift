@@ -30,6 +30,7 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
                         BudgetItemSection(category: .debt),
                         BudgetItemSection(category: .other)]
     var currentBudget: Budget?
+    var canRearrangeSections = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +58,7 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
 
         tableView.register(BudgetItemTableViewCell.self, forCellReuseIdentifier: BudgetItemTableViewCell.reuseIdentifier)
         tableView.register(UINib.init(nibName: BudgetItemTableViewCell.xib, bundle: nil), forCellReuseIdentifier: BudgetItemTableViewCell.reuseIdentifier)
+        tableView.register(UINib.init(nibName: BudgetSectionTableViewCell.xib, bundle: nil), forCellReuseIdentifier: BudgetSectionTableViewCell.reuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -139,19 +141,33 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return (currentBudget?.items.keys.count)!
+        if canRearrangeSections {
+            return 1
+        } else {
+            return (currentBudget?.items.keys.count)!
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if sections[section].isExpanded {
-            return (currentBudget?.items[sections[section].category]?.count)!
+        if canRearrangeSections {
+            return (currentBudget?.items.keys.count)!
         } else {
-            return 1
+            if sections[section].isExpanded {
+                return (currentBudget?.items[sections[section].category]?.count)!
+            } else {
+                return 1
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if sections[indexPath.section].isExpanded {
+        if canRearrangeSections {
+            let cell = tableView.dequeueReusableCell(withIdentifier: BudgetSectionTableViewCell.reuseIdentifier, for: indexPath) as! BudgetSectionTableViewCell
+            
+            cell.budgetCategoryLabel.text = sections[indexPath.row].category.rawValue
+            cell.setEditing(true, animated: true)
+            return cell
+        } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: BudgetItemTableViewCell.reuseIdentifier, for: indexPath) as! BudgetItemTableViewCell
 
             let currentBudgetItem = currentBudget!.items[sections[indexPath.section].category]![indexPath.row]
@@ -160,9 +176,21 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
             cell.progressBar.progress = currentBudgetItem.actual / currentBudgetItem.planned
             
             return cell
-        } else {
-            
         }
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return canRearrangeSections
+    }
+
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+
+        let item = sections[sourceIndexPath.row]
+        sections.remove(at: sourceIndexPath.row)
+        sections.insert(item, at: destinationIndexPath.row)
+        
+        tableView.reloadData()
     }
     
     // MARK: Textfield
@@ -177,11 +205,17 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
                 sections[i].collapse()
             }
             sender.title = "Done"
+            budgetButton.isEnabled = false
+            canRearrangeSections = true
+//            tableView.isEditing = true
         } else {
             for i in 0..<sections.count {
                 sections[i].expand()
             }
             sender.title = "Rearrange"
+            budgetButton.isEnabled = true
+            canRearrangeSections = false
+//            tableView.isEditing = false
         }
         tableView.reloadData()
         
