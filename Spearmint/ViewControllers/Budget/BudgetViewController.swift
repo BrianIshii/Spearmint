@@ -8,11 +8,11 @@
 
 import UIKit
 
-class BudgetViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDelegate, UITableViewDataSource {
+class BudgetViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: BudgetItemListTableView!
     @IBOutlet weak var budgetButton: UIButton!
     
     var budgets: [Budget] = []
@@ -29,7 +29,7 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
                         BudgetItemSection(category: .insurance),
                         BudgetItemSection(category: .debt),
                         BudgetItemSection(category: .other)]
-    var currentBudget: Budget?
+
     var canRearrangeSections = false
     
     override func viewDidLoad() {
@@ -51,18 +51,11 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
         layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
         collectionView.register(UINib(nibName: BudgetCollectionViewCell.xib, bundle: nil), forCellWithReuseIdentifier: BudgetCollectionViewCell.reuseIdentifier)
-        
-        
-        currentBudget = budgets[budgets.count - 1]
-        budgetButton.setTitle(DateFormatterFactory.monthFormatter.string(from: DateFormatterFactory.yearAndMonthFormatter.date(from: currentBudget!.date)!), for: .normal)
 
-        tableView.register(BudgetItemTableViewCell.self, forCellReuseIdentifier: BudgetItemTableViewCell.reuseIdentifier)
-        tableView.register(UINib.init(nibName: BudgetItemTableViewCell.xib, bundle: nil), forCellReuseIdentifier: BudgetItemTableViewCell.reuseIdentifier)
-        tableView.register(UINib.init(nibName: BudgetSectionTableViewCell.xib, bundle: nil), forCellReuseIdentifier: BudgetSectionTableViewCell.reuseIdentifier)
-        tableView.delegate = self
-        tableView.dataSource = self
-        
+        tableView.currentBudget = budgets[budgets.count - 1]
         tableView.reloadData()
+        
+        budgetButton.setTitle(tableView.currentBudget?.month, for: .normal)
     }
     
 
@@ -102,98 +95,13 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        currentBudget = budgets[indexPath.row]
+        tableView.currentBudget = budgets[indexPath.row]
         
         collectionView.isHidden = true
-        budgetButton.setTitle(DateFormatterFactory.monthFormatter.string(from: DateFormatterFactory.yearAndMonthFormatter.date(from: currentBudget!.date)!), for: .normal)
-        
+        budgetButton.setTitle(tableView.currentBudget?.month, for: .normal)
+
         tableView.reloadData()
     }
-    
-    // MARK: Table View
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.text = sections[section].category.rawValue
-        label.backgroundColor = UIColor.lightGray
-        return label
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if sections[section].isExpanded {
-            return CGFloat(32)
-        } else {
-            return 0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.text = "Add Item"
-        return label
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if sections[section].isExpanded {
-            return CGFloat(32)
-        } else {
-            return 0
-        }
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        if canRearrangeSections {
-            return 1
-        } else {
-            return (currentBudget?.items.keys.count)!
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if canRearrangeSections {
-            return (currentBudget?.items.keys.count)!
-        } else {
-            if sections[section].isExpanded {
-                return (currentBudget?.items[sections[section].category]?.count)!
-            } else {
-                return 1
-            }
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if canRearrangeSections {
-            let cell = tableView.dequeueReusableCell(withIdentifier: BudgetSectionTableViewCell.reuseIdentifier, for: indexPath) as! BudgetSectionTableViewCell
-            
-            cell.budgetCategoryLabel.text = sections[indexPath.row].category.rawValue
-            cell.setEditing(true, animated: true)
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: BudgetItemTableViewCell.reuseIdentifier, for: indexPath) as! BudgetItemTableViewCell
-
-            let currentBudgetItem = currentBudget!.items[sections[indexPath.section].category]![indexPath.row]
-            
-            cell.budgetItemName.text = currentBudgetItem.name
-            cell.progressBar.progress = currentBudgetItem.actual / currentBudgetItem.planned
-            
-            return cell
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return canRearrangeSections
-    }
-
-    
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-
-        let item = sections[sourceIndexPath.row]
-        sections.remove(at: sourceIndexPath.row)
-        sections.insert(item, at: destinationIndexPath.row)
-        
-        tableView.reloadData()
-    }
-    
-    // MARK: Textfield
     
     @IBAction func toggleSelectBudget(_ sender: UIButton) {
         collectionView.isHidden = !collectionView.isHidden
@@ -202,20 +110,18 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
     @IBAction func rearrangeButtonPressed(_ sender: UIBarButtonItem) {
         if sender.title == "Rearrange" {
             for i in 0..<sections.count {
-                sections[i].collapse()
+                tableView.sections[i].collapse()
             }
             sender.title = "Done"
             budgetButton.isEnabled = false
-            canRearrangeSections = true
-//            tableView.isEditing = true
+            tableView.canRearrangeSections = true
         } else {
             for i in 0..<sections.count {
-                sections[i].expand()
+                tableView.sections[i].expand()
             }
             sender.title = "Rearrange"
             budgetButton.isEnabled = true
-            canRearrangeSections = false
-//            tableView.isEditing = false
+            tableView.canRearrangeSections = false
         }
         tableView.reloadData()
         
