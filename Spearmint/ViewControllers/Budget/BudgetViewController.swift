@@ -36,11 +36,14 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
-        collectionView.register(UINib(nibName: BudgetCollectionViewCell.xib, bundle: nil), forCellWithReuseIdentifier: BudgetCollectionViewCell.xib)
-
+        collectionView.register(UINib(nibName: BudgetCollectionViewCell.xib, bundle: nil), forCellWithReuseIdentifier: BudgetCollectionViewCell.reuseIdentifier)
+        
+        
         currentBudget = budgets[budgets.count - 1]
         budgetButton.setTitle(DateFormatterFactory.monthFullFormatter.string(from: DateFormatterFactory.yearAndMonthFormatter.date(from: currentBudget!.date)!), for: .normal)
 
+        tableView.register(BudgetItemTableViewCell.self, forCellReuseIdentifier: BudgetItemTableViewCell.reuseIdentifier)
+        tableView.register(UINib.init(nibName: BudgetItemTableViewCell.xib, bundle: nil), forCellReuseIdentifier: BudgetItemTableViewCell.reuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -72,7 +75,7 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BudgetCollectionViewCell.xib, for: indexPath) as! BudgetCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BudgetCollectionViewCell.reuseIdentifier, for: indexPath) as! BudgetCollectionViewCell
 
         let currentBudget = budgets[indexPath.row]
         let date = DateFormatterFactory.yearAndMonthFormatter.date(from: currentBudget.date)
@@ -103,8 +106,8 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed(BudgetItemTableViewCell.xib, owner: self, options: nil)?.first as! BudgetItemTableViewCell
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: BudgetItemTableViewCell.reuseIdentifier, for: indexPath) as! BudgetItemTableViewCell
+
         let currentBudgetItem = currentBudget!.items[indexPath.row]
         
         cell.budgetItemName.text = currentBudgetItem.name

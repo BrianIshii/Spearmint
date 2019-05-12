@@ -10,6 +10,7 @@ import UIKit
 
 class BudgetCollectionViewCell: UICollectionViewCell {
     static let xib = "BudgetCollectionViewCell"
+    static let reuseIdentifier = "budgetCollectionViewCell"
 
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!

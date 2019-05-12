@@ -10,6 +10,7 @@ import UIKit
 
 class BudgetItemTableViewCell: UITableViewCell {
     static let xib = "BudgetItemTableViewCell"
+    static let reuseIdentifier = "budgetItemCell"
 
     @IBOutlet weak var budgetItemName: UILabel!
     @IBOutlet weak var textField: MoneyTextField!
