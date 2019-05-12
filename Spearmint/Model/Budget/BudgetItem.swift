@@ -47,6 +47,15 @@ class BudgetItem: Codable {
                     BudgetItem(name: "Trash", category: BudgetItemCategory.housing)],
                 BudgetItemCategory.transportation : [
                     BudgetItem(name: "Gas", category: BudgetItemCategory.transportation),
-                    BudgetItem(name: "Maintenance", category: BudgetItemCategory.transportation)]]
+                    BudgetItem(name: "Maintenance", category: BudgetItemCategory.transportation)],
+                BudgetItemCategory.giving : [],
+                BudgetItemCategory.savings : [],
+                BudgetItemCategory.food : [],
+                BudgetItemCategory.personal : [],
+                BudgetItemCategory.lifestyle : [],
+                BudgetItemCategory.health : [],
+                BudgetItemCategory.insurance : [],
+                BudgetItemCategory.debt : [],
+                BudgetItemCategory.other : []]
     }
 }
