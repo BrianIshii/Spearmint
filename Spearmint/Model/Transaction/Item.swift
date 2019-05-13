@@ -11,9 +11,10 @@ import Foundation
 class Item: Codable {
     var name: String
     var amount: Float
-    var budgetItem: BudgetItem
+    var budgetItem: BudgetItemID
+    var budgetItem
     
-    init(name: String, amount: Float, budgetItem: BudgetItem) {
+    init(name: String, amount: Float, budgetItem: BudgetItemID) {
         self.name = name
         self.amount = amount
         self.budgetItem = budgetItem

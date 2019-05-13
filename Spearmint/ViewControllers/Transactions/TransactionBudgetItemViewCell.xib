@@ -11,29 +11,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="xVi-dl-uVD" customClass="TransactionBudgetItemTableViewCell" customModule="Spearmint" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Po7-dV-bZx" userLabel="BudgetItemTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xVi-dl-uVD" id="AQb-zl-rM4">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Po7-dV-bZx" id="Fhe-UP-dIC">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="586-Y6-Zpl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                        <state key="normal" title="Select Budget Item"/>
-                        <connections>
-                            <action selector="selectBudgetItem:" destination="xVi-dl-uVD" eventType="touchUpInside" id="guj-t4-lrf"/>
-                        </connections>
-                    </button>
-                </subviews>
-                <constraints>
-                    <constraint firstItem="586-Y6-Zpl" firstAttribute="width" secondItem="AQb-zl-rM4" secondAttribute="width" id="CAP-bA-qYC"/>
-                    <constraint firstItem="586-Y6-Zpl" firstAttribute="centerX" secondItem="AQb-zl-rM4" secondAttribute="centerX" id="FPZ-Wl-kfN"/>
-                    <constraint firstItem="586-Y6-Zpl" firstAttribute="height" secondItem="AQb-zl-rM4" secondAttribute="height" id="lzr-XH-dDu"/>
-                    <constraint firstItem="586-Y6-Zpl" firstAttribute="centerY" secondItem="AQb-zl-rM4" secondAttribute="centerY" id="ul3-Ta-HUx"/>
-                </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="92.753623188405811" y="132.58928571428572"/>
+            <point key="canvasLocation" x="552" y="47"/>
         </tableViewCell>
     </objects>
 </document>

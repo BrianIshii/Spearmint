@@ -1,5 +1,5 @@
 //
-//  BudgetItemsTableView.swift
+//  SelectBudgetItemListTableView.swift
 //  Spearmint
 //
 //  Created by Brian Ishii on 5/12/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BudgetItemListTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
+class SelectBudgetItemListTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     var sections: [BudgetItemSection] = [
         BudgetItemSection(category: .income),
@@ -26,7 +26,8 @@ class BudgetItemListTableView: UITableView, UITableViewDelegate, UITableViewData
     var currentBudget: Budget?
     var canRearrangeSections = false
     var enableSelection = false
-
+    var selectedBudgetItems: [BudgetItem] = []
+    
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         setUp()
@@ -39,8 +40,7 @@ class BudgetItemListTableView: UITableView, UITableViewDelegate, UITableViewData
     
     func setUp() {
         register(BudgetItemTableViewCell.self, forCellReuseIdentifier: BudgetItemTableViewCell.reuseIdentifier)
-        register(UINib.init(nibName: BudgetItemTableViewCell.xib, bundle: nil), forCellReuseIdentifier: BudgetItemTableViewCell.reuseIdentifier)
-        register(UINib.init(nibName: BudgetSectionTableViewCell.xib, bundle: nil), forCellReuseIdentifier: BudgetSectionTableViewCell.reuseIdentifier)
+        register(UINib.init(nibName: SelectBudgetItemTableViewCell.xib, bundle: nil), forCellReuseIdentifier: SelectBudgetItemTableViewCell.reuseIdentifier)
         delegate = self
         dataSource = self
         
@@ -62,12 +62,6 @@ class BudgetItemListTableView: UITableView, UITableViewDelegate, UITableViewData
         }
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.text = "Add Item"
-        return label
-    }
-    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if sections[section].isExpanded {
             return CGFloat(32)
@@ -77,54 +71,42 @@ class BudgetItemListTableView: UITableView, UITableViewDelegate, UITableViewData
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if canRearrangeSections {
-            return 1
+        if let count = currentBudget?.items.keys.count {
+            return count
         } else {
-            if let count = currentBudget?.items.keys.count {
-                return count
-            } else {
-                return 1
-            }
+            return 1
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if canRearrangeSections {
-            return (currentBudget?.items.keys.count)!
-        } else {
-            if sections[section].isExpanded {
-                if let count = currentBudget?.items[sections[section].category]?.count {
-                    return count
-                } else {
-                    return 0
-                }
+        if sections[section].isExpanded {
+            if let count = currentBudget?.items[sections[section].category]?.count {
+                return count
             } else {
-                return 1
+                return 0
             }
+        } else {
+            return 1
         }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if canRearrangeSections {
-            let cell = tableView.dequeueReusableCell(withIdentifier: BudgetSectionTableViewCell.reuseIdentifier, for: indexPath) as! BudgetSectionTableViewCell
-            
-            cell.budgetCategoryLabel.text = sections[indexPath.row].category.rawValue
-            cell.setEditing(true, animated: true)
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: BudgetItemTableViewCell.reuseIdentifier, for: indexPath) as! BudgetItemTableViewCell
-            
-            let currentBudgetItem = currentBudget!.items[sections[indexPath.section].category]![indexPath.row]
-            
-            cell.budgetItemName.text = currentBudgetItem.name
-            cell.progressBar.progress = currentBudgetItem.actual / currentBudgetItem.planned
-            
-            return cell
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: SelectBudgetItemTableViewCell.reuseIdentifier, for: indexPath) as! SelectBudgetItemTableViewCell
+        
+        let currentBudgetItem = currentBudget!.items[sections[indexPath.section].category]![indexPath.row]
+        
+        cell.budgetItemName.text = currentBudgetItem.name
+        cell.progressBar.progress = currentBudgetItem.actual / currentBudgetItem.planned
+        cell.textField.isEnabled = false
+        cell.checkmarkImageView?.image = UIImage(named: "checkmark")
+        cell.checkmarkImageView?.isHidden = true
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return canRearrangeSections
+        return false
     }
     
     
@@ -137,13 +119,31 @@ class BudgetItemListTableView: UITableView, UITableViewDelegate, UITableViewData
         tableView.reloadData()
     }
     
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! SelectBudgetItemTableViewCell
+        let budgetItem = (currentBudget?.items[sections[indexPath.section].category]![indexPath.row])!
+        cell.checkmarkImageView?.isHidden = !cell.checkmarkImageView!.isHidden
+        if cell.checkmarkImageView.isHidden {
+            if let index = selectedBudgetItems.firstIndex(where: {(b) -> Bool in b == budgetItem}) {
+                selectedBudgetItems.remove(at: index)
+            }
+            
+        } else {
+            selectedBudgetItems.append(budgetItem)
+        }
     }
-    */
-
+    
+    func getCheckedCells() -> [BudgetItem] {
+        return selectedBudgetItems
+    }
+    
+    /*
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
+    
 }
+

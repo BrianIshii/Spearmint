@@ -18,12 +18,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="363" height="79.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Th4-1C-I4N" customClass="MoneyTextField" customModule="Spearmint" customModuleProvider="target">
-                        <rect key="frame" x="181.5" y="0.0" width="181.5" height="77.5"/>
-                        <nil key="textColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="budgetItem" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzr-Zk-3mW">
                         <rect key="frame" x="0.0" y="0.0" width="181.5" height="79.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -33,6 +27,12 @@
                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Q6d-aP-r02">
                         <rect key="frame" x="0.0" y="77.5" width="363" height="2"/>
                     </progressView>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Th4-1C-I4N" customClass="MoneyTextField" customModule="Spearmint" customModuleProvider="target">
+                        <rect key="frame" x="181" y="0.0" width="181.5" height="77.5"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Th4-1C-I4N" firstAttribute="top" secondItem="bgy-my-OzU" secondAttribute="top" id="9y2-kv-baL"/>

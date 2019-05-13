@@ -29,7 +29,7 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,14 +46,24 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
             amountTextField = cell.textField
 
             return cell
-        } //else if indexPath.row == 2 {
-        else {
+        } else if indexPath.row == 2 {
             let cell = Bundle.main.loadNibNamed(VendorTableViewCell.xib, owner: self, options: nil)?.first as! VendorTableViewCell
             
             vendorTextField = cell.textField
             vendorTextField.delegate = self
             
             return cell
+        } else {
+            let cell = Bundle.main.loadNibNamed(AddTransactionBudgetItemTableViewCell.xib, owner: self, options: nil)?.first as! AddTransactionBudgetItemTableViewCell
+            
+            
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.row == 3) {
+            performSegue(withIdentifier: AddBudgetItemSegue.segueIdentifier, sender: nil)
         }
     }
     
@@ -92,8 +102,13 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         let transactionType = segmentedControl.selectedSegmentIndex == TransactionType.expense.rawValue ? TransactionType.expense : TransactionType.income
         let amount = Currency.currencyToFloat(total: amountTextField.text!)
         transaction = Transaction(name: name, transactionType: transactionType, merchant: merchant, amount: Float(amount), date: date, location: "N/A", image: "N/A", notes: "notes", budget: Budget(date: "date", items: [:]), budgetItems: [])
-        
-        
     }
     
+    @IBAction func unwind(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? AddBudgetItemsViewController, let selectedBudgetItems = sourceViewController.selectedBudgetItems {
+            for item in selectedBudgetItems {
+                print(item.name)
+            }
+        }
+    }
 }

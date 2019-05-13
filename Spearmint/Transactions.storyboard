@@ -129,12 +129,65 @@
                         <outlet property="saveButton" destination="Wwk-dA-G3x" id="Um7-rS-bK9"/>
                         <outlet property="segmentedControl" destination="Hw5-xm-rvn" id="ynj-ly-LVu"/>
                         <outlet property="tableView" destination="tK3-kA-WSD" id="s4w-lP-W7P"/>
+                        <segue destination="EaN-97-phR" kind="show" identifier="addBudgetItemSegue" customClass="AddBudgetItemSegue" customModule="Spearmint" customModuleProvider="target" id="OTy-HR-M9F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQC-cO-O2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="hJ0-Cn-e9D" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="301" y="-856"/>
+            <point key="canvasLocation" x="361" y="-856"/>
+        </scene>
+        <!--Add Budget Items View Controller-->
+        <scene sceneID="FWM-j1-OU8">
+            <objects>
+                <viewController id="EaN-97-phR" customClass="AddBudgetItemsViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Rk-da-3I2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XsC-B6-BoR">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="Wd5-TX-sqe">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="grv-qN-eMj">
+                                            <connections>
+                                                <action selector="cancel:" destination="EaN-97-phR" id="PkK-bg-TAh"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="afF-Pg-aa5">
+                                            <connections>
+                                                <segue destination="qkK-h3-zLI" kind="unwind" unwindAction="unwindWithSender:" id="PM1-zz-ety"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gES-NA-Ih6" customClass="SelectBudgetItemListTableView" customModule="Spearmint" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XsC-B6-BoR" firstAttribute="width" secondItem="3Rk-da-3I2" secondAttribute="width" id="6Wz-wF-Tkw"/>
+                            <constraint firstItem="gES-NA-Ih6" firstAttribute="top" secondItem="XsC-B6-BoR" secondAttribute="bottom" id="7Ga-je-aod"/>
+                            <constraint firstItem="XsC-B6-BoR" firstAttribute="top" secondItem="XNg-Zt-3nh" secondAttribute="top" id="JHb-FI-d6i"/>
+                            <constraint firstItem="gES-NA-Ih6" firstAttribute="width" secondItem="3Rk-da-3I2" secondAttribute="width" id="Vd6-kq-4xj"/>
+                            <constraint firstItem="XNg-Zt-3nh" firstAttribute="bottom" secondItem="gES-NA-Ih6" secondAttribute="bottom" id="c9d-ns-y8E"/>
+                            <constraint firstItem="gES-NA-Ih6" firstAttribute="centerX" secondItem="XNg-Zt-3nh" secondAttribute="centerX" id="euU-AQ-bSu"/>
+                            <constraint firstItem="XsC-B6-BoR" firstAttribute="centerX" secondItem="XNg-Zt-3nh" secondAttribute="centerX" id="zSI-7T-dBy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XNg-Zt-3nh"/>
+                    </view>
+                    <connections>
+                        <outlet property="saveButton" destination="afF-Pg-aa5" id="4ZI-K6-spf"/>
+                        <outlet property="tableView" destination="gES-NA-Ih6" id="nXg-DD-tJ2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hlw-nW-fMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="qkK-h3-zLI" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1130" y="-856"/>
         </scene>
     </scenes>
 </document>

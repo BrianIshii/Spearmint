@@ -22,4 +22,8 @@ struct BudgetItemID: Codable {
     func description() -> String {
         return id
     }
+    
+    static func == (lhs: BudgetItemID, rhs: BudgetItemID) -> Bool {
+        return lhs.id == rhs.id
+    }
 }

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="2qZ-on-1GN" userLabel="SelectBudgetItemTableViewCell" customClass="SelectBudgetItemTableViewCell" customModule="Spearmint" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="525" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2qZ-on-1GN" id="dEP-CB-LPv">
+                <rect key="frame" x="0.0" y="0.0" width="525" height="79.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="budgetItem" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zii-Ul-dAx">
+                        <rect key="frame" x="79.5" y="0.0" width="223" height="79.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="z9X-ln-Qga">
+                        <rect key="frame" x="0.0" y="77.5" width="525" height="2"/>
+                    </progressView>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kWf-g6-tpj" customClass="MoneyTextField" customModule="Spearmint" customModuleProvider="target">
+                        <rect key="frame" x="302.5" y="0.0" width="222.5" height="77.5"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="5aG-ZU-bH1">
+                        <rect key="frame" x="0.0" y="0.0" width="79.5" height="79.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="5aG-ZU-bH1" secondAttribute="height" multiplier="1:1" id="5uX-jP-8Oh"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="kWf-g6-tpj" secondAttribute="trailing" id="4I1-Ni-7z5"/>
+                    <constraint firstItem="zii-Ul-dAx" firstAttribute="leading" secondItem="5aG-ZU-bH1" secondAttribute="trailing" id="5Ub-ub-179"/>
+                    <constraint firstItem="z9X-ln-Qga" firstAttribute="top" secondItem="zii-Ul-dAx" secondAttribute="bottom" constant="-2" id="AWK-9O-G6p"/>
+                    <constraint firstItem="z9X-ln-Qga" firstAttribute="leading" secondItem="dEP-CB-LPv" secondAttribute="leading" id="Bza-bH-igo"/>
+                    <constraint firstItem="kWf-g6-tpj" firstAttribute="top" secondItem="dEP-CB-LPv" secondAttribute="top" id="GkB-s8-dmg"/>
+                    <constraint firstItem="5aG-ZU-bH1" firstAttribute="leading" secondItem="dEP-CB-LPv" secondAttribute="leading" id="KaX-Wn-G8B"/>
+                    <constraint firstItem="5aG-ZU-bH1" firstAttribute="centerY" secondItem="dEP-CB-LPv" secondAttribute="centerY" id="LlC-IS-gvN"/>
+                    <constraint firstItem="z9X-ln-Qga" firstAttribute="width" secondItem="dEP-CB-LPv" secondAttribute="width" id="NDz-rq-5FQ"/>
+                    <constraint firstItem="kWf-g6-tpj" firstAttribute="leading" secondItem="zii-Ul-dAx" secondAttribute="trailing" id="NSa-AK-mvx"/>
+                    <constraint firstAttribute="bottom" secondItem="z9X-ln-Qga" secondAttribute="bottom" id="SuC-9j-GMS"/>
+                    <constraint firstItem="zii-Ul-dAx" firstAttribute="top" secondItem="dEP-CB-LPv" secondAttribute="top" id="iLO-Oe-H1l"/>
+                    <constraint firstItem="5aG-ZU-bH1" firstAttribute="height" secondItem="dEP-CB-LPv" secondAttribute="height" id="tPY-vt-9ci"/>
+                    <constraint firstItem="z9X-ln-Qga" firstAttribute="top" secondItem="zii-Ul-dAx" secondAttribute="bottom" constant="-2" id="tVL-h9-Xhk"/>
+                    <constraint firstItem="z9X-ln-Qga" firstAttribute="top" secondItem="kWf-g6-tpj" secondAttribute="bottom" id="vpk-3t-IZj"/>
+                    <constraint firstItem="zii-Ul-dAx" firstAttribute="width" secondItem="kWf-g6-tpj" secondAttribute="width" id="xst-9u-t1L"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="budgetItemName" destination="zii-Ul-dAx" id="DG6-VE-4Vt"/>
+                <outlet property="checkmarkImageView" destination="5aG-ZU-bH1" id="8UO-bW-Uce"/>
+                <outlet property="progressBar" destination="z9X-ln-Qga" id="fxX-YZ-W6Q"/>
+                <outlet property="textField" destination="kWf-g6-tpj" id="Wpw-fS-pn1"/>
+            </connections>
+            <point key="canvasLocation" x="-865.94202898550736" y="56.25"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="checkmark" width="48" height="48"/>
+    </resources>
+</document>

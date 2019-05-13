@@ -58,4 +58,8 @@ class BudgetItem: Codable {
                 BudgetItemCategory.debt : [],
                 BudgetItemCategory.other : []]
     }
+    
+    static func == (lhs: BudgetItem, rhs: BudgetItem) -> Bool {
+        return lhs.id == rhs.id
+    }
 }

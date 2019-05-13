@@ -8,10 +8,12 @@
 
 import UIKit
 
-class TransactionBudgetItemTableViewCell: UITableViewCell {
+class AddTransactionBudgetItemTableViewCell: UITableViewCell {
+    static let xib = "AddTransactionBudgetItemTableViewCell"
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.isUserInteractionEnabled = true
         // Initialization code
     }
 
@@ -20,7 +22,8 @@ class TransactionBudgetItemTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
-    @IBAction func selectBudgetItem(_ sender: UIButton) {
-    }
+//    @IBAction func selectBudgetItem(_ sender: UIButton) {
+//        print("hi")
+//
+//    }
 }
