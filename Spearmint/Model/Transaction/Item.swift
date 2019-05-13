@@ -12,11 +12,12 @@ class Item: Codable {
     var name: String
     var amount: Float
     var budgetItem: BudgetItemID
-    var budgetItem
+    var budgetItemCategory: BudgetItemCategory
     
-    init(name: String, amount: Float, budgetItem: BudgetItemID) {
+    init(name: String, amount: Float, budgetItem: BudgetItemID, budgetItemCategory: BudgetItemCategory) {
         self.name = name
         self.amount = amount
         self.budgetItem = budgetItem
+        self.budgetItemCategory = budgetItemCategory
     }
 }
