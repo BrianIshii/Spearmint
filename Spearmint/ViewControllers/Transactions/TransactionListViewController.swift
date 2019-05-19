@@ -58,7 +58,7 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            TransactionStore.deleteTransaction(transaction: transactions[indexPath.row])
+            LocalAccess.deleteTransaction(transactions[indexPath.row])
             transactions.remove(at: indexPath.row)
             
             toggleCurrentAndAllTransactions(index: segmentedControl.selectedSegmentIndex)
@@ -71,8 +71,7 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
     
     @IBAction func unwind(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? AddTransactionViewController, let transaction = sourceViewController.transaction {
-            
-            TransactionStore.addTransaction(transaction: transaction)
+            LocalAccess.addTransaction(transaction)
             transactions.append(transaction)
             transactions.sort(by: >)
             

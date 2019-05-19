@@ -9,4 +9,14 @@
 import Foundation
 class LocalAccess {
     public static let reset: Bool = false
+    
+    public static func deleteTransaction(_ transaction: Transaction) {
+        TransactionStore.deleteTransaction(transaction)
+        BudgetStore.deleteTransaction(transaction)
+    }
+    
+    public static func addTransaction(_ transaction: Transaction) {
+        TransactionStore.addTransaction(transaction)
+        BudgetStore.deleteTransaction(transaction)
+    }
 }

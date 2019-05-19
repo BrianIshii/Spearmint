@@ -22,20 +22,58 @@ class BudgetStore {
         return budgetDictionary[key] ?? Budget.dummyBudget
     }
     
-    static func addBudget(budget: Budget) {
+    static func addBudget(_ budget: Budget) {
         budgetDictionary[budget.date] = budget
         update()
     }
     
-    static func deleteBudget(budget: Budget) {
+    static func deleteBudget(_ budget: Budget) {
         budgetDictionary.removeValue(forKey: budget.date)
+        update()
+    }
+    
+    static func addTransaction(_ transaction: Transaction) {
+        if let budget = budgetDictionary[transaction.budgetDate] {
+            budget.transactions.append(transaction.id)
+            
+            for item in transaction.items {
+                if let categoryItems = budget.items[item.budgetItemCategory] {
+                    for i in categoryItems {
+                        if i.id == item.budgetItem {
+                            i.addTransaction(transaction)
+                            break
+                        }
+                    }
+                }
+            }
+        }
+        update()
+    }
+    
+    static func deleteTransaction(_ transaction: Transaction) {
+        if let budget = budgetDictionary[transaction.budgetDate] {
+            budget.transactions.removeAll(where: { (t) -> Bool in
+                return t == transaction.id
+                })
+            
+            for item in transaction.items {
+                if let categoryItems = budget.items[item.budgetItemCategory] {
+                    for i in categoryItems {
+                        if i.id == item.budgetItem {
+                            i.deleteTransaction(transaction)
+                            break
+                        }
+                    }
+                }
+            }
+        }
         update()
     }
     
     private static func getBudgets() -> [Budget] {
         var budgets: [Budget] = []
         
-        for (_,v) in budgetDictionary {
+        for (_, v) in budgetDictionary {
             budgets.append(v)
         }
         

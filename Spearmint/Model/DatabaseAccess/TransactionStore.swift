@@ -16,12 +16,12 @@ class TransactionStore {
     
     static let transactionURL = documentsDirectory.appendingPathComponent(transactionString)
     
-    static func addTransaction(transaction: Transaction) {
+    static func addTransaction(_ transaction: Transaction) {
         transactions[transaction.id.description()] = transaction
         update()
     }
     
-    static func deleteTransaction(transaction: Transaction) {
+    static func deleteTransaction(_ transaction: Transaction) {
         transactions.removeValue(forKey: transaction.id.description())
         update()
     }

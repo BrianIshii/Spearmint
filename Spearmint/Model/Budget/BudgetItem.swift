@@ -43,6 +43,18 @@ class BudgetItem: Codable {
         }
     }
     
+    func deleteTransaction(_ transaction: Transaction) {
+        transactions.removeAll(where: { (t) -> Bool in
+            return t == transaction.id
+        })
+        
+        for item in transaction.items {
+            if item.budgetItem == id {
+                actual -= item.amount
+            }
+        }
+    }
+    
     static func defaultBudgetItems() -> [BudgetItemCategory:[BudgetItem]] {
         return [BudgetItemCategory.income : [
                     BudgetItem(name: "Paycheck 1", category: BudgetItemCategory.income)],

@@ -281,7 +281,6 @@
 			children = (
 				76B548C3229141B9001B2FB1 /* Budget */,
 				76B548BE22913D92001B2FB1 /* Protocols and Extensions */,
-				7637A6362288AF46007DD20B /* TableView */,
 				7637A6262287EA62007DD20B /* Views */,
 				7637A62C2287EE25007DD20B /* TextField */,
 				76A2FA6822824CAE0066D594 /* Segue */,
@@ -411,6 +410,7 @@
 		76B548C3229141B9001B2FB1 /* Budget */ = {
 			isa = PBXGroup;
 			children = (
+				7637A6362288AF46007DD20B /* TableView */,
 				76B548C5229141D6001B2FB1 /* Cells */,
 				76B548C4229141C3001B2FB1 /* ViewControllers */,
 			);

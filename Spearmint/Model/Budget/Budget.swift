@@ -20,22 +20,6 @@ class Budget: Codable {
         self.items = items
     }
     
-    func addTransaction(_ transaction: Transaction) {
-        transactions.append(transaction.id)
-        
-        for item in transaction.items {
-            if let categoryItems = items[item.budgetItemCategory] {
-                for i in categoryItems {
-                    if i.id == item.budgetItem {
-                        i.addTransaction(transaction)
-                        break
-                    }
-                }
-            }
-        }
-        BudgetStore.update()
-    }
-    
     static let dummyBudget = Budget(date: DateFormatterFactory.mediumFormatter.string(from: Date()), items: BudgetItem.defaultBudgetItems())
     
     static func dateToString(_ date: Date) -> String {

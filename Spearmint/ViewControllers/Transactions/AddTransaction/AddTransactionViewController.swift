@@ -132,8 +132,6 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         
         transaction = Transaction(name: name, transactionType: transactionType, merchant: merchant, amount: Float(amount), date: date, location: "N/A", image: "N/A", notes: "notes", budgetID: budgetKey, items: items)
         
-        budget?.addTransaction(transaction!)
-
     }
     
     @IBAction func unwind(sender: UIStoryboardSegue) {
