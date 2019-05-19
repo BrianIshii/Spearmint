@@ -96,6 +96,8 @@ class SelectBudgetItemListTableView: UITableView, UITableViewDelegate, UITableVi
         
         let currentBudgetItem = currentBudget!.items[sections[indexPath.section].category]![indexPath.row]
         
+        cell.textField.text = String(format: "%.2f", currentBudgetItem.planned - currentBudgetItem.actual)
+
         cell.budgetItemName.text = currentBudgetItem.name
         cell.progressBar.progress = currentBudgetItem.actual / currentBudgetItem.planned
         cell.textField.isEnabled = false

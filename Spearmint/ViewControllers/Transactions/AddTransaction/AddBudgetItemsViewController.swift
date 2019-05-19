@@ -14,13 +14,15 @@ class AddBudgetItemsViewController: UIViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var selectedBudgetItems: [BudgetItem]?
+    var budgetDate: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        tableView.currentBudget = Budget(date: "2019-05", items: BudgetItem.defaultBudgetItems())
+        if let bd = budgetDate {
+            tableView.currentBudget = BudgetStore.getBudget(key: bd)
+        }
         tableView.reloadData()
         tableView.enableSelection = true
     }

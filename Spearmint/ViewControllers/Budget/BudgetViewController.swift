@@ -14,6 +14,7 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: BudgetItemListTableView!
     @IBOutlet weak var budgetButton: UIButton!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     var budgets: [Budget] = []
     var sections: [BudgetItemSection] = [
@@ -37,11 +38,12 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
 
         collectionView.isHidden = true
         
-        budgets = [Budget(date: "2019-01", items: [:]),
-                   Budget(date: "2019-02", items: [:]),
-                   Budget(date: "2019-03", items: [:]),
-                   Budget(date: "2019-04", items: [:]),
-                   Budget(date: "2019-05", items: BudgetItem.defaultBudgetItems())]
+        budgets = BudgetStore.budgets
+//        budgets = [Budget(date: "2019-01", items: [:]),
+//                   Budget(date: "2019-02", items: [:]),
+//                   Budget(date: "2019-03", items: [:]),
+//                   Budget(date: "2019-04", items: [:]),
+//                   Budget(date: "2019-05", items: BudgetItem.defaultBudgetItems())]
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -56,6 +58,10 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
         tableView.reloadData()
         
         budgetButton.setTitle(tableView.currentBudget?.month, for: .normal)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
 

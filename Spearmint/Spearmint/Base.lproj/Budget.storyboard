@@ -52,6 +52,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qAT-89-MqW">
+                                <rect key="frame" x="0.0" y="88" width="414" height="29"/>
+                                <segments>
+                                    <segment title="Planned"/>
+                                    <segment title="Current"/>
+                                </segments>
+                            </segmentedControl>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdj-RZ-s11">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
@@ -74,7 +81,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zha-B0-je9" customClass="BudgetItemListTableView" customModule="Spearmint" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="116" width="414" height="697"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ATC-2c-Ire">
@@ -95,15 +102,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vdj-RZ-s11" firstAttribute="top" secondItem="voc-Te-H7N" secondAttribute="top" id="8x5-H1-UON"/>
+                            <constraint firstItem="qAT-89-MqW" firstAttribute="width" secondItem="yap-Ap-xvU" secondAttribute="width" id="Ioz-3H-A25"/>
                             <constraint firstItem="vdj-RZ-s11" firstAttribute="width" secondItem="yap-Ap-xvU" secondAttribute="width" id="SnT-Hk-yAG"/>
                             <constraint firstItem="ATC-2c-Ire" firstAttribute="centerX" secondItem="zha-B0-je9" secondAttribute="centerX" id="WWo-QE-nQL"/>
                             <constraint firstItem="ATC-2c-Ire" firstAttribute="top" secondItem="vdj-RZ-s11" secondAttribute="bottom" constant="-2" id="Xsz-or-16A"/>
+                            <constraint firstItem="zha-B0-je9" firstAttribute="top" secondItem="qAT-89-MqW" secondAttribute="bottom" id="b6I-sz-7AO"/>
                             <constraint firstItem="zha-B0-je9" firstAttribute="centerX" secondItem="voc-Te-H7N" secondAttribute="centerX" id="bx6-e7-i82"/>
                             <constraint firstItem="vdj-RZ-s11" firstAttribute="centerX" secondItem="voc-Te-H7N" secondAttribute="centerX" id="dV2-Jb-cIS"/>
-                            <constraint firstItem="zha-B0-je9" firstAttribute="top" secondItem="vdj-RZ-s11" secondAttribute="bottom" id="e6d-Hf-6ED"/>
+                            <constraint firstItem="qAT-89-MqW" firstAttribute="centerX" secondItem="voc-Te-H7N" secondAttribute="centerX" id="edx-Vp-cZL"/>
                             <constraint firstItem="zha-B0-je9" firstAttribute="width" secondItem="yap-Ap-xvU" secondAttribute="width" id="gOv-RX-2jj"/>
                             <constraint firstItem="ATC-2c-Ire" firstAttribute="width" secondItem="zha-B0-je9" secondAttribute="width" id="iJU-FM-C9n"/>
                             <constraint firstItem="voc-Te-H7N" firstAttribute="bottom" secondItem="zha-B0-je9" secondAttribute="bottom" id="x5J-Jq-cVA"/>
+                            <constraint firstItem="qAT-89-MqW" firstAttribute="top" secondItem="vdj-RZ-s11" secondAttribute="bottom" id="ycr-bE-bao"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="voc-Te-H7N"/>
                     </view>
@@ -117,6 +127,7 @@
                     <connections>
                         <outlet property="budgetButton" destination="eoD-cT-7lw" id="hrp-KO-hGL"/>
                         <outlet property="collectionView" destination="ATC-2c-Ire" id="dMt-PI-h9x"/>
+                        <outlet property="segmentedControl" destination="qAT-89-MqW" id="SKn-I7-Voz"/>
                         <outlet property="tableView" destination="zha-B0-je9" id="lKU-rG-quW"/>
                     </connections>
                 </viewController>

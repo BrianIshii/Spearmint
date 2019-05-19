@@ -21,7 +21,7 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        transactions = Array(LocalAccess.transactions.values).sorted(by: >)
+        transactions = Array(TransactionStore.transactions.values).sorted(by: >)
         setListToCurrentMonthTransactions()
         
         transactionTableView.delegate = self
@@ -42,7 +42,8 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
         
         let currentTransaction = viewedTransactions[indexPath.row]
         
-        cell.transactionAmountLabel.text = Currency.currencyFormatter(total: String(currentTransaction.amount))
+        cell.transactionAmountLabel.text = Currency.currencyFormatter(total: String(format: "%.2f", currentTransaction.amount))
+
         switch currentTransaction.transactionType {
         case .expense:
             cell.transactionAmountLabel.textColor = UIColor.red
@@ -57,7 +58,7 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            LocalAccess.deleteTransaction(transaction: transactions[indexPath.row])
+            TransactionStore.deleteTransaction(transaction: transactions[indexPath.row])
             transactions.remove(at: indexPath.row)
             
             toggleCurrentAndAllTransactions(index: segmentedControl.selectedSegmentIndex)
@@ -71,7 +72,7 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
     @IBAction func unwind(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? AddTransactionViewController, let transaction = sourceViewController.transaction {
             
-            LocalAccess.addTransaction(transaction: transaction)
+            TransactionStore.addTransaction(transaction: transaction)
             transactions.append(transaction)
             transactions.sort(by: >)
             

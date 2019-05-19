@@ -118,6 +118,9 @@ class BudgetItemListTableView: UITableView, UITableViewDelegate, UITableViewData
             
             cell.budgetItemName.text = currentBudgetItem.name
             cell.progressBar.progress = currentBudgetItem.actual / currentBudgetItem.planned
+            print(currentBudgetItem.actual)
+            print(currentBudgetItem.planned)
+            cell.textField.text = String(format: "%.2f", currentBudgetItem.planned - currentBudgetItem.actual)
             
             return cell
         }

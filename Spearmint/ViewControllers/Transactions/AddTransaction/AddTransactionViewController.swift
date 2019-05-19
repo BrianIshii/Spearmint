@@ -19,6 +19,8 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     var amountTextField: UITextField!
     var vendorTextField: UITextField!
     var dateLabel: UILabel!
+    var items: [Item] = []
+    static let defaultFields: Int = 4
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +31,7 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return AddTransactionViewController.defaultFields + items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,9 +55,17 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
             vendorTextField.delegate = self
             
             return cell
-        } else {
+        } else if indexPath.row == 3{
             let cell = Bundle.main.loadNibNamed(AddTransactionBudgetItemTableViewCell.xib, owner: self, options: nil)?.first as! AddTransactionBudgetItemTableViewCell
             
+            
+            return cell
+        } else {
+            let cell = Bundle.main.loadNibNamed(ItemTableViewCell.xib, owner: self, options: nil)?.first as! ItemTableViewCell
+            
+            let item = items[indexPath.row - AddTransactionViewController.defaultFields]
+            
+            cell.itemName.text = item.name
             
             return cell
         }
@@ -91,6 +101,14 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == AddBudgetItemSegue.segueIdentifier {
+            let date = dateLabel.text!
+
+            if let vc = segue.destination as? AddBudgetItemsViewController {
+                vc.budgetDate = Budget.dateToString(DateFormatterFactory.mediumFormatter.date(from: date)!)
+            }
+        }
         guard let button = sender as? UIBarButtonItem, button === saveButton else {
             // not saved
             return
@@ -101,14 +119,30 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         let merchant = vendorTextField.text!
         let transactionType = segmentedControl.selectedSegmentIndex == TransactionType.expense.rawValue ? TransactionType.expense : TransactionType.income
         let amount = Currency.currencyToFloat(total: amountTextField.text!)
-        transaction = Transaction(name: name, transactionType: transactionType, merchant: merchant, amount: Float(amount), date: date, location: "N/A", image: "N/A", notes: "notes", budget: Budget(date: "date", items: [:]), budgetItems: [])
+        
+        let budgetKey = Budget.dateToString(DateFormatterFactory.mediumFormatter.date(from: date)!)
+        let budget = BudgetStore.budgetDictionary[budgetKey]
+        
+        for (index, item) in items.enumerated() {
+            if let cell = tableView.cellForRow(at: IndexPath(row: index + AddTransactionViewController.defaultFields, section: 0)) as? ItemTableViewCell {
+                item.amount = cell.textField.getAmount()
+            }
+        }
+        
+        
+        transaction = Transaction(name: name, transactionType: transactionType, merchant: merchant, amount: Float(amount), date: date, location: "N/A", image: "N/A", notes: "notes", budgetID: budgetKey, items: items)
+        
+        budget?.addTransaction(transaction!)
+
     }
     
     @IBAction func unwind(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? AddBudgetItemsViewController, let selectedBudgetItems = sourceViewController.selectedBudgetItems {
-            for item in selectedBudgetItems {
-                print(item.name)
+            
+            for budgetItem in selectedBudgetItems {
+                items.append(Item(name: budgetItem.name, amount: 0, budgetItem: budgetItem.id, budgetItemCategory: budgetItem.category))
             }
+            tableView.reloadData()
         }
     }
 }

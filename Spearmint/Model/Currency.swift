@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Currency {
+public class Currency {
     static public func currencyFormatter(total: String) -> String {
         var number: NSNumber!
         let formatter = NumberFormatter()
@@ -33,11 +33,11 @@ class Currency {
         return formatter.string(from: number)!
     }
     
-    static func currencyToFloat(total:String) -> Float {
+    static public func currencyToFloat(total:String) -> Float {
         let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
         
         let amountWithPrefix = regex.stringByReplacingMatches(in: total, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, total.count), withTemplate: "")
         
-        return (amountWithPrefix as NSString).floatValue
+        return (amountWithPrefix as NSString).floatValue / 100
     }
 }

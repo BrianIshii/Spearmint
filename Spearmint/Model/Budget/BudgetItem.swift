@@ -14,7 +14,7 @@ class BudgetItem: Codable {
     var category: BudgetItemCategory
     var planned: Float
     var actual: Float
-    var transactions: [TransactionID]
+    private var transactions: [TransactionID]
     
     init(name: String, category: BudgetItemCategory, planned: Float) {
         self.id = BudgetItemID()
@@ -29,9 +29,18 @@ class BudgetItem: Codable {
         self.id = BudgetItemID()
         self.name = name
         self.category = category
-        self.planned = 0
+        self.planned = 100
         self.actual = 0
         self.transactions = [TransactionID]()
+    }
+    
+    func addTransaction(_ transaction: Transaction) {
+        transactions.append(transaction.id)
+        for item in transaction.items {
+            if item.budgetItem == id {
+                actual += item.amount
+            }
+        }
     }
     
     static func defaultBudgetItems() -> [BudgetItemCategory:[BudgetItem]] {
