@@ -8,9 +8,8 @@
 
 import UIKit
 
-class BudgetItemTableViewCell: UITableViewCell {
+class BudgetItemTableViewCell: UITableViewCell, ReusableIdentifier {
     static let xib = "BudgetItemTableViewCell"
-    static let reuseIdentifier = "budgetItemCell"
 
     @IBOutlet weak var budgetItemName: UILabel!
     @IBOutlet weak var textField: MoneyTextField!
@@ -28,3 +27,12 @@ class BudgetItemTableViewCell: UITableViewCell {
     }
 
 }
+
+extension BudgetItemTableViewCell: ConfigurableCell {
+    func configure(object: BudgetItem) {
+        budgetItemName.text = object.name
+        progressBar.progress = object.actual / object.planned
+        textField.text = String(format: "%.2f", object.planned - object.actual)
+    }
+}
+

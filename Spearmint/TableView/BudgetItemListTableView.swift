@@ -112,17 +112,16 @@ class BudgetItemListTableView: UITableView, UITableViewDelegate, UITableViewData
             cell.setEditing(true, animated: true)
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: BudgetItemTableViewCell.reuseIdentifier, for: indexPath) as! BudgetItemTableViewCell
-            
-            let currentBudgetItem = currentBudget!.items[sections[indexPath.section].category]![indexPath.row]
-            
-            cell.budgetItemName.text = currentBudgetItem.name
-            cell.progressBar.progress = currentBudgetItem.actual / currentBudgetItem.planned
-            print(currentBudgetItem.actual)
-            print(currentBudgetItem.planned)
-            cell.textField.text = String(format: "%.2f", currentBudgetItem.planned - currentBudgetItem.actual)
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: BudgetItemTableViewCell.reuseIdentifier, for: indexPath)
+            configure(cell: cell, indexPath: indexPath)
             return cell
+        }
+    }
+    
+    private func configure(cell: UITableViewCell, indexPath: IndexPath) {
+        if let cell = cell as? BudgetItemTableViewCell {
+            let object = currentBudget!.items[sections[indexPath.section].category]![indexPath.row]
+            cell.configure(object: object)
         }
     }
     

@@ -9,8 +9,8 @@
 import UIKit
 
 class BudgetSectionTableViewCell: UITableViewCell {
-    static let xib = "BudgetSection"
-    static let reuseIdentifier = "budgetSectionCel"
+    static let xib = "BudgetSectionTableViewCell"
+    static let reuseIdentifier = "budgetSectionCell"
     
     @IBOutlet weak var budgetCategoryLabel: UILabel!
     
