@@ -42,7 +42,7 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
         
         let currentTransaction = viewedTransactions[indexPath.row]
         
-        cell.transactionAmountLabel.text = Currency.currencyFormatter(total: String(format: "%.2f", currentTransaction.amount))
+        cell.transactionAmountLabel.text = Currency.currencyFormatter(String(format: "%.2f", currentTransaction.amount))
 
         switch currentTransaction.transactionType {
         case .expense:
@@ -63,6 +63,10 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
             
             toggleCurrentAndAllTransactions(index: segmentedControl.selectedSegmentIndex)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: ViewTransactionSegue.segueIdentifier, sender: nil)
     }
     
     @IBAction func toggleTransactions(_ sender: UISegmentedControl) {
@@ -109,5 +113,11 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == ViewTransactionSegue.segueIdentifier {
+            if let vc = segue.destination as? AddTransactionViewController {
+                let selectedTransaction = transactions[transactionTableView.indexPathForSelectedRow!.row]
+                vc.transaction = selectedTransaction
+            }
+        }
     }
 }

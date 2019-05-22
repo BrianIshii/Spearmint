@@ -34,5 +34,9 @@ extension BudgetItemTableViewCell: ConfigurableCell {
         progressBar.progress = object.actual / object.planned
         textField.text = String(format: "%.2f", object.planned - object.actual)
     }
+    
+    func configure() {
+        
+    }
 }
 

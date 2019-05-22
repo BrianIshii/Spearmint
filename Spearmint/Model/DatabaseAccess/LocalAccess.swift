@@ -13,6 +13,7 @@ class LocalAccess {
     public static func deleteTransaction(_ transaction: Transaction) {
         TransactionStore.deleteTransaction(transaction)
         BudgetStore.deleteTransaction(transaction)
+        ImageStore.deleteImage(transaction.id)
     }
     
     public static func addTransaction(_ transaction: Transaction) {

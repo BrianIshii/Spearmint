@@ -11,4 +11,5 @@ import Foundation
 protocol ConfigurableCell {
     associatedtype Object
     func configure(object: Object)
+    func configure()
 }

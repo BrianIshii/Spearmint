@@ -14,6 +14,7 @@ class BudgetStore {
     public static var budgets: [Budget] = getBudgets()
     
     private static let budgetString = "budget"
+    
     static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     
     static let budgetURL = documentsDirectory.appendingPathComponent(budgetString)

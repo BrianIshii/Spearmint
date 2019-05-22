@@ -19,13 +19,13 @@ class Transaction: Codable {
     var amount: Float
     var date: String
     var location: String
-    var image: String
+    var hasImage: Bool
     var notes: String
     var budgetDate: String
     var items: [Item]
     
     init(name: String, transactionType: TransactionType, merchant: String, amount: Float,
-         date: String, location: String, image: String, notes: String, budgetID: String, items: [Item]) {
+         date: String, location: String, image: Bool, notes: String, budgetID: String, items: [Item]) {
         self.id = TransactionID()
         self.name = name
         self.transactionType = transactionType
@@ -34,14 +34,14 @@ class Transaction: Codable {
         self.amount = amount
         self.date = date
         self.location = location
-        self.image = image
+        self.hasImage = image
         self.notes = notes
         self.budgetDate = budgetID
         self.items = items
     }
     
     static let dummyTransaction =
-        Transaction(name: "test1", transactionType: TransactionType.income, merchant: "Apple", amount: 10.00, date: TransactionDate.getCurrentDate(), location: "N/A", image: "N/A", notes: "notes", budgetID: Budget.dateToString(Date()), items: [])
+        Transaction(name: "test1", transactionType: TransactionType.income, merchant: "Apple", amount: 10.00, date: TransactionDate.getCurrentDate(), location: "N/A", image: false, notes: "notes", budgetID: Budget.dateToString(Date()), items: [])
  
     func isInCurrentMonth() -> Bool {
         let currentDate = Date()

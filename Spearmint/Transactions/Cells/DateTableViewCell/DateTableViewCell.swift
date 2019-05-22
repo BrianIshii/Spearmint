@@ -26,7 +26,6 @@ class DateTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func datePickerChanged(_ sender: UIDatePicker) {
-        print(sender.date.description)
         dateLabel.text = DateFormatterFactory.mediumFormatter.string(from: sender.date)
     }
     

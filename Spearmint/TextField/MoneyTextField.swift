@@ -39,7 +39,7 @@ class MoneyTextField: UITextField, UITextFieldDelegate {
     
     func getAmount() -> Float {
         if let text = self.text {
-            return Currency.currencyToFloat(total: text)
+            return Currency.currencyToFloat(text)
         } else {
             return 0.0
         }
@@ -64,6 +64,6 @@ class MoneyTextField: UITextField, UITextFieldDelegate {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        textField.text = Currency.currencyFormatter(total: textField.text!)
+        textField.text = Currency.currencyFormatter(textField.text!)
     }
 }

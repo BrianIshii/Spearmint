@@ -15,6 +15,7 @@ enum rows : Int, Codable {
     case vendor = 2
     case image = 0
 }
+
 class AddTransactionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -27,6 +28,7 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     var amountTextField: UITextField!
     var vendorTextField: UITextField!
     var dateLabel: UILabel!
+    var selectedImage: UIImageView!
     var items: [Item] = []
     static let defaultFields: Int = 5
     
@@ -59,7 +61,12 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         case rows.image.rawValue:
             let cell = Bundle.main.loadNibNamed(ImageViewTableViewCell.xib, owner: self, options: nil)?.first as! ImageViewTableViewCell
             
+            if let t = transaction, t.hasImage == true {
+                cell.imageView?.image = ImageStore.getImage(transactionID: t.id)
+            }
+            selectedImage = cell.recieptImageView
             cell.controlller = self
+            
             return cell
         case rows.vendor.rawValue:
             let cell = Bundle.main.loadNibNamed(VendorTableViewCell.xib, owner: self, options: nil)?.first as! VendorTableViewCell
@@ -81,17 +88,23 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     
     private func configureDateCell(cell: UITableViewCell, indexPath: IndexPath) {
         if let cell = cell as? DateTableViewCell {
-            
-            cell.dateLabel.text = TransactionDate.getCurrentDate()
+            if let t = transaction {
+                cell.dateLabel.text = t.date
+                cell.datePicker.date = DateFormatterFactory.mediumFormatter.date(from: t.date)!
+            } else {
+                cell.dateLabel.text = TransactionDate.getCurrentDate()
+            }
             dateLabel = cell.dateLabel
-            
+
             //cell.configure(object: object)
         }
     }
     
     private func configureAmountCell(cell: UITableViewCell, indexPath: IndexPath) {
         if let cell = cell as? AmountTableViewCell {
-            
+            if let t = transaction {
+                cell.textField.text = Currency.currencyFormatter(t.amount)
+            }
             amountTextField = cell.textField
 
             //cell.configure(object: object)
@@ -147,10 +160,12 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         let date = dateLabel.text!
         let merchant = vendorTextField.text!
         let transactionType = segmentedControl.selectedSegmentIndex == TransactionType.expense.rawValue ? TransactionType.expense : TransactionType.income
-        let amount = Currency.currencyToFloat(total: amountTextField.text!)
+        let amount = Currency.currencyToFloat(amountTextField.text!)
         
         let budgetKey = Budget.dateToString(DateFormatterFactory.mediumFormatter.date(from: date)!)
         let budget = BudgetStore.budgetDictionary[budgetKey]
+        let hasImage = (selectedImage.image != nil) ? true : false
+        
         
         for (index, item) in items.enumerated() {
             if let cell = tableView.cellForRow(at: IndexPath(row: index + AddTransactionViewController.defaultFields, section: 0)) as? ItemTableViewCell {
@@ -159,8 +174,11 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         }
         
         
-        transaction = Transaction(name: name, transactionType: transactionType, merchant: merchant, amount: Float(amount), date: date, location: "N/A", image: "N/A", notes: "notes", budgetID: budgetKey, items: items)
+        transaction = Transaction(name: name, transactionType: transactionType, merchant: merchant, amount: Float(amount), date: date, location: "N/A", image: hasImage, notes: "notes", budgetID: budgetKey, items: items)
         
+        if hasImage {
+            ImageStore.saveImage(selectedImage.image!, transactionID: transaction!.id)
+        }
     }
     
     @IBAction func unwind(sender: UIStoryboardSegue) {
