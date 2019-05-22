@@ -70,6 +70,9 @@
 		76B548BD229135DE001B2FB1 /* LocalAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BC229135DE001B2FB1 /* LocalAccess.swift */; };
 		76B548C022913DB4001B2FB1 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */; };
 		76B548C222913E8E001B2FB1 /* ReusableIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548C122913E8E001B2FB1 /* ReusableIdentifier.swift */; };
+		76B548D322915C7D001B2FB1 /* ImageViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76B548D222915C7D001B2FB1 /* ImageViewTableViewCell.xib */; };
+		76B548D522915D14001B2FB1 /* ImageViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548D422915D14001B2FB1 /* ImageViewTableViewCell.swift */; };
+		76B548D822916195001B2FB1 /* AddTransactionImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548D722916195001B2FB1 /* AddTransactionImageViewController.swift */; };
 		76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3CBE7227FEEAC0010625A /* Currency.swift */; };
 /* End PBXBuildFile section */
 
@@ -160,6 +163,9 @@
 		76B548BC229135DE001B2FB1 /* LocalAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAccess.swift; sourceTree = "<group>"; };
 		76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
 		76B548C122913E8E001B2FB1 /* ReusableIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableIdentifier.swift; sourceTree = "<group>"; };
+		76B548D222915C7D001B2FB1 /* ImageViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewTableViewCell.xib; sourceTree = "<group>"; };
+		76B548D422915D14001B2FB1 /* ImageViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewTableViewCell.swift; sourceTree = "<group>"; };
+		76B548D722916195001B2FB1 /* AddTransactionImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionImageViewController.swift; sourceTree = "<group>"; };
 		76E3CBE7227FEEAC0010625A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -449,6 +455,7 @@
 				76A2FA452280B0740066D594 /* TransactionListViewController.swift */,
 				7637A63D2288F0C9007DD20B /* AddBudgetItemsViewController.swift */,
 				76A2FA552281F8BE0066D594 /* AddTransactionViewController.swift */,
+				76B548D722916195001B2FB1 /* AddTransactionImageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -456,6 +463,7 @@
 		76B548CB22915431001B2FB1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				76B548D622915D20001B2FB1 /* ImageViewTableViewCell */,
 				76B548D1229154C8001B2FB1 /* TransactionTableViewCell */,
 				76B548D022915496001B2FB1 /* AddTransactionBudgetItemTableViewCell */,
 				76B548CF2291547C001B2FB1 /* ItemTableViewCell */,
@@ -518,6 +526,15 @@
 				76A2FA4D2280B4520066D594 /* TransactionTableViewCell.xib */,
 			);
 			path = TransactionTableViewCell;
+			sourceTree = "<group>";
+		};
+		76B548D622915D20001B2FB1 /* ImageViewTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				76B548D222915C7D001B2FB1 /* ImageViewTableViewCell.xib */,
+				76B548D422915D14001B2FB1 /* ImageViewTableViewCell.swift */,
+			);
+			path = ImageViewTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -639,6 +656,7 @@
 				76A2FA582281F94E0066D594 /* DateTableViewCell.xib in Resources */,
 				76A2FA5A2281FA430066D594 /* AmountTableViewCell.xib in Resources */,
 				7637A6422288FED8007DD20B /* SelectBudgetItemTableViewCell.xib in Resources */,
+				76B548D322915C7D001B2FB1 /* ImageViewTableViewCell.xib in Resources */,
 				76A2FA642282229D0066D594 /* Transactions.storyboard in Resources */,
 				7637A6232287ACEF007DD20B /* AddTransactionBudgetItemTableViewCell.xib in Resources */,
 			);
@@ -678,7 +696,9 @@
 				7637A618228653E7007DD20B /* BudgetViewController.swift in Sources */,
 				7637A6302288997F007DD20B /* BudgetItemSection.swift in Sources */,
 				76A2FA6A22824CFE0066D594 /* AddTransactionSegue.swift in Sources */,
+				76B548D522915D14001B2FB1 /* ImageViewTableViewCell.swift in Sources */,
 				764AFD8A226E7060007BFD90 /* ViewController.swift in Sources */,
+				76B548D822916195001B2FB1 /* AddTransactionImageViewController.swift in Sources */,
 				7637A63E2288F0C9007DD20B /* AddBudgetItemsViewController.swift in Sources */,
 				7637A63C2288E74F007DD20B /* AddBudgetItemSegue.swift in Sources */,
 				76A2FA67228248220066D594 /* PaymentType.swift in Sources */,

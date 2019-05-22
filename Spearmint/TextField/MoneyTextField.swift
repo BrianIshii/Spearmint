@@ -33,7 +33,6 @@ class MoneyTextField: UITextField, UITextFieldDelegate {
         
         let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.doneButtonClicked))
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-
         toolBar.setItems([flexSpace, doneButton], animated: false)
         self.inputAccessoryView =  toolBar
     }

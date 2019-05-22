@@ -12,6 +12,7 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var addImageView: UITableView!
     
     static let segueIdentifier = "addTransactionViewControllerSegue"
     
@@ -20,7 +21,7 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     var vendorTextField: UITextField!
     var dateLabel: UILabel!
     var items: [Item] = []
-    static let defaultFields: Int = 4
+    static let defaultFields: Int = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,11 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
             let cell = Bundle.main.loadNibNamed(AddTransactionBudgetItemTableViewCell.xib, owner: self, options: nil)?.first as! AddTransactionBudgetItemTableViewCell
             
             
+            return cell
+        } else if indexPath.row == 4 {
+            let cell = Bundle.main.loadNibNamed(ImageViewTableViewCell.xib, owner: self, options: nil)?.first as! ImageViewTableViewCell
+            
+            cell.controlller = self
             return cell
         } else {
             let cell = Bundle.main.loadNibNamed(ItemTableViewCell.xib, owner: self, options: nil)?.first as! ItemTableViewCell

@@ -108,24 +108,37 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6IR-Qg-fpo">
+                                <rect key="frame" x="0.0" y="812" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3La-Xi-OAZ"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="JJc-GG-Xyj" kind="embed" id="Bzl-Pc-Jxo"/>
+                                </connections>
+                            </containerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tK3-kA-WSD">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="724"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bg9-hP-LLs" firstAttribute="bottom" secondItem="tK3-kA-WSD" secondAttribute="bottom" id="1zV-Ja-tWZ"/>
+                            <constraint firstItem="bg9-hP-LLs" firstAttribute="bottom" secondItem="6IR-Qg-fpo" secondAttribute="bottom" id="AdO-Jm-pQs"/>
                             <constraint firstItem="6v1-4e-A3P" firstAttribute="top" secondItem="bg9-hP-LLs" secondAttribute="top" id="AfS-QW-YDu"/>
-                            <constraint firstItem="tK3-kA-WSD" firstAttribute="top" secondItem="6v1-4e-A3P" secondAttribute="bottom" id="K0m-CF-Xye"/>
                             <constraint firstItem="6v1-4e-A3P" firstAttribute="width" secondItem="Zpg-mB-vRp" secondAttribute="width" id="Kmu-1Z-uqv"/>
                             <constraint firstItem="tK3-kA-WSD" firstAttribute="width" secondItem="Zpg-mB-vRp" secondAttribute="width" id="Wl1-UV-w3j"/>
                             <constraint firstItem="6v1-4e-A3P" firstAttribute="centerX" secondItem="bg9-hP-LLs" secondAttribute="centerX" id="Y5n-OT-mfC"/>
                             <constraint firstItem="tK3-kA-WSD" firstAttribute="centerX" secondItem="bg9-hP-LLs" secondAttribute="centerX" id="a60-Ud-12P"/>
+                            <constraint firstItem="6IR-Qg-fpo" firstAttribute="centerX" secondItem="bg9-hP-LLs" secondAttribute="centerX" id="eSr-UM-oQx"/>
+                            <constraint firstItem="tK3-kA-WSD" firstAttribute="top" secondItem="6v1-4e-A3P" secondAttribute="bottom" id="nYf-er-9o7"/>
+                            <constraint firstItem="6IR-Qg-fpo" firstAttribute="top" secondItem="tK3-kA-WSD" secondAttribute="bottom" id="vej-aX-Cug"/>
+                            <constraint firstItem="6IR-Qg-fpo" firstAttribute="width" secondItem="Zpg-mB-vRp" secondAttribute="width" id="whs-KK-22u"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bg9-hP-LLs"/>
                     </view>
                     <connections>
+                        <outlet property="addImageView" destination="tK3-kA-WSD" id="yHw-Qm-a3O"/>
                         <outlet property="saveButton" destination="Wwk-dA-G3x" id="Um7-rS-bK9"/>
                         <outlet property="segmentedControl" destination="Hw5-xm-rvn" id="ynj-ly-LVu"/>
                         <outlet property="tableView" destination="tK3-kA-WSD" id="s4w-lP-W7P"/>
@@ -135,7 +148,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQC-cO-O2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="hJ0-Cn-e9D" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="361" y="-856"/>
+            <point key="canvasLocation" x="360.86956521739131" y="-856.47321428571422"/>
         </scene>
         <!--Add Budget Items View Controller-->
         <scene sceneID="FWM-j1-OU8">
@@ -188,6 +201,55 @@
                 <exit id="qkK-h3-zLI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1130" y="-856"/>
+        </scene>
+        <!--Add Transaction Image View Controller-->
+        <scene sceneID="r9b-36-zth">
+            <objects>
+                <viewController id="JJc-GG-Xyj" customClass="AddTransactionImageViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qeE-Ec-GeE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ryd-Cf-JEm">
+                                <rect key="frame" x="372" y="0.0" width="42" height="50"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c6f-J7-XVd">
+                                <rect key="frame" x="0.0" y="0.0" width="372" height="50"/>
+                                <gestureRecognizers/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="Ryd-Cf-JEm" firstAttribute="centerY" secondItem="qeE-Ec-GeE" secondAttribute="centerY" id="08s-mT-pE1"/>
+                            <constraint firstAttribute="trailing" secondItem="Ryd-Cf-JEm" secondAttribute="trailing" id="Bz1-ms-OY8"/>
+                            <constraint firstItem="Ryd-Cf-JEm" firstAttribute="height" secondItem="qeE-Ec-GeE" secondAttribute="height" id="T0n-hZ-5yl"/>
+                            <constraint firstItem="c6f-J7-XVd" firstAttribute="centerY" secondItem="qeE-Ec-GeE" secondAttribute="centerY" id="Yrj-vK-TAO"/>
+                            <constraint firstItem="c6f-J7-XVd" firstAttribute="leading" secondItem="qeE-Ec-GeE" secondAttribute="leading" id="dgy-Fv-RUv"/>
+                            <constraint firstItem="Ryd-Cf-JEm" firstAttribute="leading" secondItem="c6f-J7-XVd" secondAttribute="trailing" id="raX-TA-AME"/>
+                            <constraint firstItem="c6f-J7-XVd" firstAttribute="height" secondItem="qeE-Ec-GeE" secondAttribute="height" id="wC1-eW-tMX"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="py0-a1-vAO" appends="YES" id="yUA-ry-OzT"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="Ryd-Cf-JEm" id="BrZ-8m-GtQ"/>
+                        <outlet property="selectedImageView" destination="c6f-J7-XVd" id="gMh-vL-eNb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3R4-A0-DLA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="py0-a1-vAO">
+                    <connections>
+                        <action selector="selectImage:" destination="JJc-GG-Xyj" id="q0L-D0-xOm"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="359" y="-301"/>
         </scene>
     </scenes>
 </document>
