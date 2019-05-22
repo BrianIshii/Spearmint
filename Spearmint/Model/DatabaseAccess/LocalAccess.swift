@@ -18,6 +18,6 @@ class LocalAccess {
     
     public static func addTransaction(_ transaction: Transaction) {
         TransactionStore.addTransaction(transaction)
-        BudgetStore.deleteTransaction(transaction)
+        BudgetStore.addTransaction(transaction)
     }
 }
