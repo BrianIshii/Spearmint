@@ -76,6 +76,8 @@
 		76B548DC2294ECA9001B2FB1 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548DB2294ECA9001B2FB1 /* ImageStore.swift */; };
 		76B548DE2294F0E4001B2FB1 /* ViewTransactionSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548DD2294F0E4001B2FB1 /* ViewTransactionSegue.swift */; };
 		76B548E02294F100001B2FB1 /* SegueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548DF2294F100001B2FB1 /* SegueIdentifier.swift */; };
+		76B548E422952DBF001B2FB1 /* SummaryPieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548E322952DBF001B2FB1 /* SummaryPieChartViewController.swift */; };
+		76B548E622952EEE001B2FB1 /* MasterSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548E522952EEE001B2FB1 /* MasterSummaryViewController.swift */; };
 		76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3CBE7227FEEAC0010625A /* Currency.swift */; };
 /* End PBXBuildFile section */
 
@@ -172,6 +174,8 @@
 		76B548DB2294ECA9001B2FB1 /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		76B548DD2294F0E4001B2FB1 /* ViewTransactionSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransactionSegue.swift; sourceTree = "<group>"; };
 		76B548DF2294F100001B2FB1 /* SegueIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueIdentifier.swift; sourceTree = "<group>"; };
+		76B548E322952DBF001B2FB1 /* SummaryPieChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPieChartViewController.swift; sourceTree = "<group>"; };
+		76B548E522952EEE001B2FB1 /* MasterSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterSummaryViewController.swift; sourceTree = "<group>"; };
 		76E3CBE7227FEEAC0010625A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -272,6 +276,7 @@
 		764AFD86226E7060007BFD90 /* Spearmint */ = {
 			isa = PBXGroup;
 			children = (
+				76B548E122952D95001B2FB1 /* Summary */,
 				764AFDB7226EB27C007BFD90 /* Account */,
 				764AFDB5226EB1AE007BFD90 /* Transactions */,
 				76B548C3229141B9001B2FB1 /* Budget */,
@@ -546,6 +551,23 @@
 			path = ImageViewTableViewCell;
 			sourceTree = "<group>";
 		};
+		76B548E122952D95001B2FB1 /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				76B548E222952DA7001B2FB1 /* ViewControllers */,
+			);
+			path = Summary;
+			sourceTree = "<group>";
+		};
+		76B548E222952DA7001B2FB1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				76B548E322952DBF001B2FB1 /* SummaryPieChartViewController.swift */,
+				76B548E522952EEE001B2FB1 /* MasterSummaryViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -707,6 +729,7 @@
 				76A2FA6A22824CFE0066D594 /* AddTransactionSegue.swift in Sources */,
 				76B548D522915D14001B2FB1 /* ImageViewTableViewCell.swift in Sources */,
 				764AFD8A226E7060007BFD90 /* ViewController.swift in Sources */,
+				76B548E422952DBF001B2FB1 /* SummaryPieChartViewController.swift in Sources */,
 				76B548DE2294F0E4001B2FB1 /* ViewTransactionSegue.swift in Sources */,
 				76B548D822916195001B2FB1 /* AddTransactionImageViewController.swift in Sources */,
 				7637A63E2288F0C9007DD20B /* AddBudgetItemsViewController.swift in Sources */,
@@ -731,6 +754,7 @@
 				7637A61622864FC5007DD20B /* BudgetItemTableViewCell.swift in Sources */,
 				7637A6252287AE00007DD20B /* AddTransactionBudgetItemTableViewCell.swift in Sources */,
 				7637A6282287EAB4007DD20B /* PieChartView.swift in Sources */,
+				76B548E622952EEE001B2FB1 /* MasterSummaryViewController.swift in Sources */,
 				764AFDBC226EC377007BFD90 /* SettingsTableViewCell.swift in Sources */,
 				76A2FA70228377080066D594 /* TransactionStore.swift in Sources */,
 				7637A63422889F8D007DD20B /* BudgetSectionTableViewCell.swift in Sources */,

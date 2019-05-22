@@ -19,7 +19,7 @@ class BudgetStore {
     
     static let budgetURL = documentsDirectory.appendingPathComponent(budgetString)
     
-    static func getBudget(key: String) -> Budget {
+    static func getBudget(_ key: String) -> Budget {
         return budgetDictionary[key] ?? Budget.dummyBudget
     }
     

@@ -13,38 +13,41 @@
         <!--Summary-->
         <scene sceneID="RsY-DU-dIN">
             <objects>
-                <viewController id="U6a-RL-4I3" sceneMemberID="viewController">
+                <viewController id="U6a-RL-4I3" customClass="MasterSummaryViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uup-1r-c6u">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o8c-9M-OVC" customClass="PieChartView" customModule="Spearmint" customModuleProvider="target">
-                                <rect key="frame" x="87" y="137" width="240" height="240"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2iL-4A-lfr">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d13-Pb-p4W">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="d13-Pb-p4W" secondAttribute="height" multiplier="1:1" id="EZB-8U-vNs"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="wDs-pf-TQG" kind="embed" id="OzG-dh-frW"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lit-tg-6lZ">
+                                        <rect key="frame" x="0.0" y="414" width="414" height="404"/>
+                                        <connections>
+                                            <segue destination="RKn-xB-MTa" kind="embed" id="LlB-Uv-bTT"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="o8c-9M-OVC" secondAttribute="height" multiplier="1:1" id="LRL-AD-yy0"/>
+                                    <constraint firstItem="d13-Pb-p4W" firstAttribute="width" secondItem="2iL-4A-lfr" secondAttribute="width" id="oG6-XK-0OQ"/>
                                 </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gb0-op-TtI">
-                                <rect key="frame" x="164.5" y="237" width="85" height="40"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qkp-RD-3x9">
-                                <rect key="frame" x="143" y="539" width="112" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add Transaction"/>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="GTC-kg-Wxu" firstAttribute="trailing" secondItem="o8c-9M-OVC" secondAttribute="trailing" constant="87" id="Qyf-JV-2Um"/>
-                            <constraint firstItem="o8c-9M-OVC" firstAttribute="centerX" secondItem="GTC-kg-Wxu" secondAttribute="centerX" id="Vq2-sp-e7J"/>
-                            <constraint firstItem="gb0-op-TtI" firstAttribute="centerX" secondItem="o8c-9M-OVC" secondAttribute="centerX" id="brv-Pc-kRQ"/>
-                            <constraint firstItem="gb0-op-TtI" firstAttribute="centerY" secondItem="o8c-9M-OVC" secondAttribute="centerY" id="e5p-tE-Tdq"/>
-                            <constraint firstItem="o8c-9M-OVC" firstAttribute="top" secondItem="GTC-kg-Wxu" secondAttribute="top" constant="93" id="nHR-gi-O9n"/>
-                            <constraint firstItem="o8c-9M-OVC" firstAttribute="leading" secondItem="GTC-kg-Wxu" secondAttribute="leading" constant="87" id="pLL-8g-FFK"/>
+                            <constraint firstItem="2iL-4A-lfr" firstAttribute="centerX" secondItem="GTC-kg-Wxu" secondAttribute="centerX" id="KRP-eh-5rJ"/>
+                            <constraint firstItem="2iL-4A-lfr" firstAttribute="centerY" secondItem="GTC-kg-Wxu" secondAttribute="centerY" id="Nh1-vi-W2d"/>
+                            <constraint firstItem="2iL-4A-lfr" firstAttribute="width" secondItem="GTC-kg-Wxu" secondAttribute="width" id="WBN-AP-NEk"/>
+                            <constraint firstItem="2iL-4A-lfr" firstAttribute="top" secondItem="GTC-kg-Wxu" secondAttribute="top" id="tRd-rb-rU6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GTC-kg-Wxu"/>
                     </view>
@@ -52,7 +55,70 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qi5-K6-HO5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="444.92753623188412" y="811.60714285714278"/>
+            <point key="canvasLocation" x="-404.34782608695656" y="845.75892857142856"/>
+        </scene>
+        <!--Summary Pie Chart View Controller-->
+        <scene sceneID="TGw-tw-rFN">
+            <objects>
+                <viewController id="wDs-pf-TQG" customClass="SummaryPieChartViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UiF-K1-GrG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o8c-9M-OVC" customClass="PieChartView" customModule="Spearmint" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gb0-op-TtI">
+                                        <rect key="frame" x="164.5" y="187" width="85" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="gb0-op-TtI" firstAttribute="centerX" secondItem="o8c-9M-OVC" secondAttribute="centerX" id="SwS-lS-iQh"/>
+                                    <constraint firstItem="gb0-op-TtI" firstAttribute="centerY" secondItem="o8c-9M-OVC" secondAttribute="centerY" id="UIT-C7-MF4"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="o8c-9M-OVC" firstAttribute="width" secondItem="UiF-K1-GrG" secondAttribute="width" id="Xxr-Cf-usS"/>
+                            <constraint firstItem="o8c-9M-OVC" firstAttribute="centerY" secondItem="UiF-K1-GrG" secondAttribute="centerY" id="YZE-NQ-3aJ"/>
+                            <constraint firstItem="o8c-9M-OVC" firstAttribute="height" secondItem="UiF-K1-GrG" secondAttribute="height" id="mnq-fn-JO9"/>
+                            <constraint firstItem="o8c-9M-OVC" firstAttribute="centerX" secondItem="UiF-K1-GrG" secondAttribute="centerX" id="v24-LV-iSB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="balanceLabel" destination="gb0-op-TtI" id="CnU-dh-MDI"/>
+                        <outlet property="pieChartView" destination="o8c-9M-OVC" id="NAI-vQ-QRj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ppv-Az-n5d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="559" y="690"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2QW-Wp-2Fh">
+            <objects>
+                <viewController id="RKn-xB-MTa" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bor-O5-2C4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="404"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qkp-RD-3x9">
+                                <rect key="frame" x="150" y="189" width="112" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Transaction"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fTD-UU-SvV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="558" y="1017"/>
         </scene>
     </scenes>
 </document>

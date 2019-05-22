@@ -81,6 +81,10 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
             
             toggleCurrentAndAllTransactions(index: segmentedControl.selectedSegmentIndex)
         }
+        
+        if let selectedIndexPath = transactionTableView.indexPathForSelectedRow {
+            transactionTableView.deselectRow(at: selectedIndexPath, animated: true)
+        }
     }
     
     private func toggleCurrentAndAllTransactions(index: Int) {
