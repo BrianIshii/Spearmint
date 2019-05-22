@@ -8,6 +8,13 @@
 
 import UIKit
 
+enum rows : Int, Codable {
+    case date = 1
+    case amount = 3
+    case items = 4
+    case vendor = 2
+    case image = 0
+}
 class AddTransactionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -36,37 +43,32 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
+        switch indexPath.row {
+        case rows.date.rawValue:
             let cell = Bundle.main.loadNibNamed(DateTableViewCell.xib, owner: self, options: nil)?.first as! DateTableViewCell
-            
-            cell.dateLabel.text = TransactionDate.getCurrentDate()
-            dateLabel = cell.dateLabel
-
+            configureDateCell(cell: cell, indexPath: indexPath)
             return cell
-        } else if indexPath.row == 1 {
+        case rows.amount.rawValue:
             let cell = Bundle.main.loadNibNamed(AmountTableViewCell.xib, owner: self, options: nil)?.first as! AmountTableViewCell
-            
-            amountTextField = cell.textField
-
+            configureAmountCell(cell: cell, indexPath: indexPath)
             return cell
-        } else if indexPath.row == 2 {
+        case rows.items.rawValue:
+            let cell = Bundle.main.loadNibNamed(AddTransactionBudgetItemTableViewCell.xib, owner: self, options: nil)?.first as! AddTransactionBudgetItemTableViewCell
+            
+            return cell
+        case rows.image.rawValue:
+            let cell = Bundle.main.loadNibNamed(ImageViewTableViewCell.xib, owner: self, options: nil)?.first as! ImageViewTableViewCell
+            
+            cell.controlller = self
+            return cell
+        case rows.vendor.rawValue:
             let cell = Bundle.main.loadNibNamed(VendorTableViewCell.xib, owner: self, options: nil)?.first as! VendorTableViewCell
             
             vendorTextField = cell.textField
             vendorTextField.delegate = self
             
             return cell
-        } else if indexPath.row == 3{
-            let cell = Bundle.main.loadNibNamed(AddTransactionBudgetItemTableViewCell.xib, owner: self, options: nil)?.first as! AddTransactionBudgetItemTableViewCell
-            
-            
-            return cell
-        } else if indexPath.row == 4 {
-            let cell = Bundle.main.loadNibNamed(ImageViewTableViewCell.xib, owner: self, options: nil)?.first as! ImageViewTableViewCell
-            
-            cell.controlller = self
-            return cell
-        } else {
+        default:
             let cell = Bundle.main.loadNibNamed(ItemTableViewCell.xib, owner: self, options: nil)?.first as! ItemTableViewCell
             
             let item = items[indexPath.row - AddTransactionViewController.defaultFields]
@@ -77,8 +79,29 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
+    private func configureDateCell(cell: UITableViewCell, indexPath: IndexPath) {
+        if let cell = cell as? DateTableViewCell {
+            
+            cell.dateLabel.text = TransactionDate.getCurrentDate()
+            dateLabel = cell.dateLabel
+            
+            //cell.configure(object: object)
+        }
+    }
+    
+    private func configureAmountCell(cell: UITableViewCell, indexPath: IndexPath) {
+        if let cell = cell as? AmountTableViewCell {
+            
+            amountTextField = cell.textField
+
+            //cell.configure(object: object)
+        }
+    }
+    
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.row == 3) {
+        if (indexPath.row == rows.items.rawValue) {
             performSegue(withIdentifier: AddBudgetItemSegue.segueIdentifier, sender: nil)
         }
     }
@@ -143,10 +166,14 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     @IBAction func unwind(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? AddBudgetItemsViewController, let selectedBudgetItems = sourceViewController.selectedBudgetItems {
             
-            for budgetItem in selectedBudgetItems {
+            var newIndexPaths: [IndexPath] = []
+            for (index, budgetItem) in selectedBudgetItems.enumerated() {
                 items.append(Item(name: budgetItem.name, amount: 0, budgetItem: budgetItem.id, budgetItemCategory: budgetItem.category))
+                newIndexPaths.append(IndexPath(row: AddTransactionViewController.defaultFields + index, section: 0))
             }
-            tableView.reloadData()
+            
+            tableView.insertRows(at: newIndexPaths, with: UITableView.RowAnimation.automatic)
+
         }
     }
 }

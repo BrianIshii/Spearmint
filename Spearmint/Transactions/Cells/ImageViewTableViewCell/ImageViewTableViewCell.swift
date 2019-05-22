@@ -60,3 +60,8 @@ class ImageViewTableViewCell: UITableViewCell, ReusableIdentifier, UIImagePicker
     }
 }
 
+extension ImageViewTableViewCell: ConfigurableCell {
+    func configure(object: BudgetItem) {
+    }
+}
+
