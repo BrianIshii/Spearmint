@@ -10,22 +10,9 @@ import UIKit
 
 class BudgetDataSource: NSObject {
     fileprivate let tableView: BudgetItemListTableView
-    var sections: [BudgetItemSection] = [
-        BudgetItemSection(category: .income),
-        BudgetItemSection(category: .housing),
-        BudgetItemSection(category: .transportation),
-        BudgetItemSection(category: .giving),
-        BudgetItemSection(category: .savings),
-        BudgetItemSection(category: .food),
-        BudgetItemSection(category: .personal),
-        BudgetItemSection(category: .lifestyle),
-        BudgetItemSection(category: .health),
-        BudgetItemSection(category: .insurance),
-        BudgetItemSection(category: .debt),
-        BudgetItemSection(category: .other)]
+    var sections: [BudgetItemSection] = BudgetItemSectionStore.defaultSections
     var currentBudget: Budget?
     var canRearrangeSections = false
-    var enableSelection = false
 
     
     init(tableView: BudgetItemListTableView) {
@@ -34,9 +21,6 @@ class BudgetDataSource: NSObject {
         
         tableView.dataSource = self
     }
-    
-
-    
 }
 
 extension BudgetDataSource: UITableViewDataSource {

@@ -13,7 +13,7 @@ class BudgetItemSectionStore {
     
     private static let budgetItemSectionString = "budgetItemSectionString"
     private static let budgetItemSectionURL = LocalAccess.documentsDirectory.appendingPathComponent(budgetItemSectionString)
-    private static let defaultSections: [BudgetItemSection] = [
+    public static let defaultSections: [BudgetItemSection] = [
         BudgetItemSection(category: .income),
         BudgetItemSection(category: .housing),
         BudgetItemSection(category: .transportation),
@@ -70,25 +70,3 @@ class BudgetItemSectionStore {
         }
     }
 }
-//var budgets: [String: Budget]
-//
-//if LocalAccess.reset {
-//    let currentBudget = Budget(date: Budget.dateToString(Date()), items: BudgetItem.defaultBudgetItems())
-//    update(data: [currentBudget.date : currentBudget], url: budgetURL)
-//    return [currentBudget.date : currentBudget]
-//}
-//
-//do {
-//    let data = try Data(contentsOf: budgetURL)
-//    let decoder = JSONDecoder()
-//    let tempArr = try decoder.decode([String: Budget].self, from: data)
-//    budgets = tempArr
-//
-//    return budgets
-//
-//} catch {
-//    print(error)
-//}
-//
-//let currentBudget = Budget(date: Budget.dateToString(Date()), items: BudgetItem.defaultBudgetItems())
-//return [currentBudget.date : currentBudget]
