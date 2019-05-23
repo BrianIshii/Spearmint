@@ -12,26 +12,11 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
 
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var tableView: BudgetItemListTableView!
     @IBOutlet weak var budgetButton: UIButton!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    fileprivate var budgetTableViewContoller: BudgetTableViewController?
     
     var budgets: [Budget] = []
-    var sections: [BudgetItemSection] = [
-                        BudgetItemSection(category: .income),
-                        BudgetItemSection(category: .housing),
-                        BudgetItemSection(category: .transportation),
-                        BudgetItemSection(category: .giving),
-                        BudgetItemSection(category: .savings),
-                        BudgetItemSection(category: .food),
-                        BudgetItemSection(category: .personal),
-                        BudgetItemSection(category: .lifestyle),
-                        BudgetItemSection(category: .health),
-                        BudgetItemSection(category: .insurance),
-                        BudgetItemSection(category: .debt),
-                        BudgetItemSection(category: .other)]
-
-    var canRearrangeSections = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +24,6 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
         collectionView.isHidden = true
         
         budgets = BudgetStore.budgets
-//        budgets = [Budget(date: "2019-01", items: [:]),
-//                   Budget(date: "2019-02", items: [:]),
-//                   Budget(date: "2019-03", items: [:]),
-//                   Budget(date: "2019-04", items: [:]),
-//                   Budget(date: "2019-05", items: BudgetItem.defaultBudgetItems())]
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -53,27 +33,28 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
         layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
         collectionView.register(UINib(nibName: BudgetCollectionViewCell.xib, bundle: nil), forCellWithReuseIdentifier: BudgetCollectionViewCell.reuseIdentifier)
-
-        tableView.currentBudget = budgets[budgets.count - 1]
-        tableView.reloadData()
         
-        budgetButton.setTitle(tableView.currentBudget?.month, for: .normal)
+        budgetButton.setTitle(BudgetStore.getBudget(Budget.dateToString(Date())).month, for: .normal)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        tableView.reloadData()
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        let destination = segue.destination
+        
+        if let vc = destination as? BudgetTableViewController {
+            budgetTableViewContoller = vc
+        }
     }
-    */
+ 
     
     // MARK: Collection View
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -100,13 +81,12 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        tableView.currentBudget = budgets[indexPath.row]
-        
+        if let budgetTableView = budgetTableViewContoller {
+            budgetTableView.updateBudget(budget: budgets[indexPath.row])
+            
+        }
         collectionView.isHidden = true
-        budgetButton.setTitle(tableView.currentBudget?.month, for: .normal)
-
-        tableView.reloadData()
+        budgetButton.setTitle(budgets[indexPath.row].month, for: .normal)
     }
     
     @IBAction func toggleSelectBudget(_ sender: UIButton) {
@@ -114,24 +94,21 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     @IBAction func rearrangeButtonPressed(_ sender: UIBarButtonItem) {
-        if sender.title == "Rearrange" {
-            for i in 0..<sections.count {
-                tableView.sections[i].collapse()
+        if let budgetTableView = budgetTableViewContoller {
+            if sender.title == "Rearrange" {
+                sender.title = "Done"
+                budgetButton.isEnabled = false
+            } else {
+                sender.title = "Rearrange"
+                budgetTableView.updateBudgetItemSections()
+                budgetButton.isEnabled = true
             }
-            sender.title = "Done"
-            budgetButton.isEnabled = false
-            tableView.canRearrangeSections = true
-        } else {
-            for i in 0..<sections.count {
-                tableView.sections[i].expand()
-            }
-            sender.title = "Rearrange"
-            budgetButton.isEnabled = true
-            tableView.canRearrangeSections = false
+            
+            budgetTableView.toggleRearrangingSections()
         }
-        tableView.reloadData()
-        
     }
+    
+    
     
     
 }

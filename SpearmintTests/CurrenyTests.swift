@@ -20,18 +20,18 @@ class CurrenyTests: XCTestCase {
     }
 
     func testOneDollar() {
-        XCTAssert(Currency.currencyToFloat(total: "$1.00") == 1)
-        XCTAssert(Currency.currencyFormatter(total: "1.00") == "$1.00")
+        XCTAssert(Currency.currencyToFloat("$1.00") == 1)
+        XCTAssert(Currency.currencyFormatter("1.00") == "$1.00")
     }
     
     func testOneDollarNinetyNineCents() {
-        XCTAssert(Currency.currencyToFloat(total: "$1.99") == 1.99)
-        XCTAssert(Currency.currencyFormatter(total: "1.99") == "$1.99")
+        XCTAssert(Currency.currencyToFloat("$1.99") == 1.99)
+        XCTAssert(Currency.currencyFormatter("1.99") == "$1.99")
     }
     
     func testTwentyDollars() {
-        XCTAssert(Currency.currencyToFloat(total: "$20.00") == 20.0)
-        XCTAssert(Currency.currencyFormatter(total: "20.00") == "$20.00")
+        XCTAssert(Currency.currencyToFloat("$20.00") == 20.0)
+        XCTAssert(Currency.currencyFormatter("20.00") == "$20.00")
 
     }
     

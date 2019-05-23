@@ -12,19 +12,23 @@ class BudgetStore {
     public static var budgetDictionary: [String : Budget] = getBudgetDictionary()
     
     public static var budgets: [Budget] = getBudgets()
-    
+        
     private static let budgetString = "budget"
-    
+
     static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     
     static let budgetURL = documentsDirectory.appendingPathComponent(budgetString)
-    
+
     static func getBudget(_ key: String) -> Budget {
         return budgetDictionary[key] ?? Budget.dummyBudget
     }
     
     static func addBudget(_ budget: Budget) {
-        budgetDictionary[budget.date] = budget
+        if budgetDictionary[budget.date] != nil {
+            print("already have budget")
+        } else {
+            budgetDictionary[budget.date] = budget
+        }
         update()
     }
     
@@ -47,6 +51,9 @@ class BudgetStore {
                     }
                 }
             }
+        } else {
+            budgetDictionary[transaction.budgetDate] = Budget(date: transaction.budgetDate, items: BudgetItem.defaultBudgetItems())
+            addTransaction(transaction)
         }
         update()
     }

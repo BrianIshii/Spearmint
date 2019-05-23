@@ -9,7 +9,8 @@
 import Foundation
 class LocalAccess {
     public static let reset: Bool = false
-    
+    public static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+
     public static func deleteTransaction(_ transaction: Transaction) {
         TransactionStore.deleteTransaction(transaction)
         BudgetStore.deleteTransaction(transaction)
@@ -20,4 +21,6 @@ class LocalAccess {
         TransactionStore.addTransaction(transaction)
         BudgetStore.addTransaction(transaction)
     }
+    
+    
 }
