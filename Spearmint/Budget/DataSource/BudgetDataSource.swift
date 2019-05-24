@@ -10,7 +10,7 @@ import UIKit
 
 class BudgetDataSource: NSObject {
     fileprivate let tableView: BudgetItemListTableView
-    var sections: [BudgetItemSection] = BudgetItemSectionStore.defaultSections
+    var sections: [BudgetItemSection] = BudgetItemSectionStore.budgetItemSections
     var currentBudget: Budget?
     var canRearrangeSections = false
 

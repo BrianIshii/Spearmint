@@ -10,19 +10,7 @@ import UIKit
 
 class SelectBudgetItemListTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
-    var sections: [BudgetItemSection] = [
-        BudgetItemSection(category: .income),
-        BudgetItemSection(category: .housing),
-        BudgetItemSection(category: .transportation),
-        BudgetItemSection(category: .giving),
-        BudgetItemSection(category: .savings),
-        BudgetItemSection(category: .food),
-        BudgetItemSection(category: .personal),
-        BudgetItemSection(category: .lifestyle),
-        BudgetItemSection(category: .health),
-        BudgetItemSection(category: .insurance),
-        BudgetItemSection(category: .debt),
-        BudgetItemSection(category: .other)]
+    var sections: [BudgetItemSection] = BudgetItemSectionStore.budgetItemSections
     var currentBudget: Budget?
     var canRearrangeSections = false
     var enableSelection = false

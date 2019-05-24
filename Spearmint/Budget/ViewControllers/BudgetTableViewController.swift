@@ -34,7 +34,6 @@ class BudgetTableViewController: UITableViewController {
         
         if let ds = dataSource {
             ds.currentBudget = BudgetStore.getBudget(Budget.dateToString(Date()))
-            ds.sections = BudgetItemSectionStore.budgetItemSections
         }
     }
 
