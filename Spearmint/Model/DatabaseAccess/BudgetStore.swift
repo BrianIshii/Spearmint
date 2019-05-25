@@ -9,6 +9,8 @@
 import Foundation
 
 class BudgetStore {
+    public static var budgetViewControllerNeedsUpdate = false
+    
     public static var budgetDictionary: [String : Budget] = getBudgetDictionary()
     
     public static var budgets: [Budget] = getBudgets()
@@ -115,6 +117,7 @@ class BudgetStore {
     
     static func update() {
         update(data: budgetDictionary, url: budgetURL)
+        budgetViewControllerNeedsUpdate = true
     }
     
     fileprivate static func update(data: [String : Budget], url: URL) {

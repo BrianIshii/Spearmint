@@ -10,8 +10,11 @@ import UIKit
 
 class AddBudgetItemViewController: UIViewController {
 
-    var budgetItem: BudgetItem?
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    var budgetItem: BudgetItem?
+    weak var addBudgetItemSectionViewController: AddBudgetItemSectionViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,7 +32,23 @@ class AddBudgetItemViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        budgetItem = BudgetItem(name: "cats", category: BudgetItemCategory.food, planned: 200.00)
+        if let destination = segue.destination as? AddBudgetItemSectionViewController {
+            destination.budgetItem = budgetItem
+            addBudgetItemSectionViewController = destination
+        }
+        
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            // not saved
+            return
+        }
+        if let controller = addBudgetItemSectionViewController {
+            let index = controller.budgetCategoryPicker.selectedRow(inComponent: 0)
+            let category: BudgetItemCategory = BudgetItemSectionStore.budgetItemSections[index].category
+            let name = controller.nameTextField.text!
+            let plannedAmount = Currency.currencyToFloat(controller.plannedAmountTextField.text!)
+            
+            budgetItem = BudgetItem(name: name, category: category, planned: plannedAmount)
+        }
     }
  
 

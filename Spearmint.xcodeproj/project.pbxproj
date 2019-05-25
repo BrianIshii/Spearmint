@@ -85,6 +85,8 @@
 		76B548EA22953426001B2FB1 /* ViewBudgetItemSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548E922953426001B2FB1 /* ViewBudgetItemSegue.swift */; };
 		76B548EC229535F0001B2FB1 /* BudgetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548EB229535F0001B2FB1 /* BudgetTableViewController.swift */; };
 		76B548EF22953685001B2FB1 /* BudgetDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548EE22953685001B2FB1 /* BudgetDataSource.swift */; };
+		76D22F78229A0DF100C06567 /* Analysis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D22F77229A0DF100C06567 /* Analysis.storyboard */; };
+		76D22F7A229A0E1900C06567 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D22F79229A0E1900C06567 /* Account.storyboard */; };
 		76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3CBE7227FEEAC0010625A /* Currency.swift */; };
 		76EF345422963BF1005A5C35 /* BudgetItemSectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */; };
 		76EF345622986CD8005A5C35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76EF345522986CD8005A5C35 /* GoogleService-Info.plist */; };
@@ -93,6 +95,8 @@
 		76EF345C2298D31E005A5C35 /* AddTransactionImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76EF345B2298D31E005A5C35 /* AddTransactionImage.storyboard */; };
 		76EF345E2298E049005A5C35 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF345D2298E049005A5C35 /* UIImageExtension.swift */; };
 		76EF34602298F8AF005A5C35 /* AddBudgetItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF345F2298F8AF005A5C35 /* AddBudgetItemViewController.swift */; };
+		76EF34652299E029005A5C35 /* AddBudgetItemSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF34642299E029005A5C35 /* AddBudgetItemSectionViewController.swift */; };
+		76EF34672299FCD7005A5C35 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EF34662299FCD7005A5C35 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,6 +203,8 @@
 		76B548E922953426001B2FB1 /* ViewBudgetItemSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBudgetItemSegue.swift; sourceTree = "<group>"; };
 		76B548EB229535F0001B2FB1 /* BudgetTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTableViewController.swift; sourceTree = "<group>"; };
 		76B548EE22953685001B2FB1 /* BudgetDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDataSource.swift; sourceTree = "<group>"; };
+		76D22F77229A0DF100C06567 /* Analysis.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Analysis.storyboard; sourceTree = "<group>"; };
+		76D22F79229A0E1900C06567 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		76E3CBE7227FEEAC0010625A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemSectionStore.swift; sourceTree = "<group>"; };
 		76EF345522986CD8005A5C35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -207,6 +213,8 @@
 		76EF345B2298D31E005A5C35 /* AddTransactionImage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddTransactionImage.storyboard; sourceTree = "<group>"; };
 		76EF345D2298E049005A5C35 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		76EF345F2298F8AF005A5C35 /* AddBudgetItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetItemViewController.swift; sourceTree = "<group>"; };
+		76EF34642299E029005A5C35 /* AddBudgetItemSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetItemSectionViewController.swift; sourceTree = "<group>"; };
+		76EF34662299FCD7005A5C35 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7E80DB5F205651E2DAB92ECD /* Pods_SpearmintTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpearmintTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC4A818360F2DDAAA186DA7 /* Pods-Spearmint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spearmint.debug.xcconfig"; path = "Target Support Files/Pods-Spearmint/Pods-Spearmint.debug.xcconfig"; sourceTree = "<group>"; };
 		A0857D97E263450E6900B129 /* Pods-Spearmint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spearmint.release.xcconfig"; path = "Target Support Files/Pods-Spearmint/Pods-Spearmint.release.xcconfig"; sourceTree = "<group>"; };
@@ -218,6 +226,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76EF34672299FCD7005A5C35 /* MapKit.framework in Frameworks */,
 				1BD869F4432509ACB31B176D /* Pods_Spearmint.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,6 +253,7 @@
 		3D1703AEC6B0CB76EA6FFCB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				76EF34662299FCD7005A5C35 /* MapKit.framework */,
 				0C3706670F34FDD564F61587 /* Pods_Spearmint.framework */,
 				7E80DB5F205651E2DAB92ECD /* Pods_SpearmintTests.framework */,
 				3BA4C0BF29F1449C4A62DFD2 /* Pods_SpearmintUITests.framework */,
@@ -340,6 +350,8 @@
 				7637A6292287EB1E007DD20B /* Summary.storyboard */,
 				7637A60E22864DBF007DD20B /* Budget.storyboard */,
 				76A2FA632282229D0066D594 /* Transactions.storyboard */,
+				76D22F77229A0DF100C06567 /* Analysis.storyboard */,
+				76D22F79229A0E1900C06567 /* Account.storyboard */,
 				76EF345B2298D31E005A5C35 /* AddTransactionImage.storyboard */,
 				764AFD8B226E7060007BFD90 /* Main.storyboard */,
 				764AFD8E226E7061007BFD90 /* Assets.xcassets */,
@@ -456,6 +468,7 @@
 		76B548C3229141B9001B2FB1 /* Budget */ = {
 			isa = PBXGroup;
 			children = (
+				76EF34612299DBA6005A5C35 /* Views */,
 				76B548ED2295366B001B2FB1 /* DataSource */,
 				7637A6362288AF46007DD20B /* TableView */,
 				76B548C5229141D6001B2FB1 /* Cells */,
@@ -471,6 +484,7 @@
 				76B548E7229533F9001B2FB1 /* BudgetItemViewController.swift */,
 				76B548EB229535F0001B2FB1 /* BudgetTableViewController.swift */,
 				76EF345F2298F8AF005A5C35 /* AddBudgetItemViewController.swift */,
+				76EF34642299E029005A5C35 /* AddBudgetItemSectionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -636,6 +650,13 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
+		76EF34612299DBA6005A5C35 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		D692118312A1BE281EB3B7C6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -722,6 +743,11 @@
 				TargetAttributes = {
 					764AFD83226E7060007BFD90 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					764AFD97226E7061007BFD90 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -764,6 +790,7 @@
 				764AFD8F226E7061007BFD90 /* Assets.xcassets in Resources */,
 				7637A647228920BA007DD20B /* ItemTableViewCell.xib in Resources */,
 				7637A61C22868C6D007DD20B /* BudgetCollectionViewCell.xib in Resources */,
+				76D22F7A229A0E1900C06567 /* Account.storyboard in Resources */,
 				7637A61022864DBF007DD20B /* Budget.storyboard in Resources */,
 				7637A62B2287EB1E007DD20B /* Summary.storyboard in Resources */,
 				76A2FA5C2281FAE90066D594 /* VendorTableViewCell.xib in Resources */,
@@ -772,6 +799,7 @@
 				76EF345C2298D31E005A5C35 /* AddTransactionImage.storyboard in Resources */,
 				76EF345622986CD8005A5C35 /* GoogleService-Info.plist in Resources */,
 				764AFD8D226E7060007BFD90 /* Main.storyboard in Resources */,
+				76D22F78229A0DF100C06567 /* Analysis.storyboard in Resources */,
 				76A2FA582281F94E0066D594 /* DateTableViewCell.xib in Resources */,
 				76A2FA5A2281FA430066D594 /* AmountTableViewCell.xib in Resources */,
 				7637A6422288FED8007DD20B /* SelectBudgetItemTableViewCell.xib in Resources */,
@@ -962,6 +990,7 @@
 				76A2FA722284FEFC0066D594 /* TransactionDate.swift in Sources */,
 				7689F7132270E31A00AD4225 /* Budget.swift in Sources */,
 				7637A6382288AF75007DD20B /* BudgetItemListTableView.swift in Sources */,
+				76EF34652299E029005A5C35 /* AddBudgetItemSectionViewController.swift in Sources */,
 				76B548DC2294ECA9001B2FB1 /* ImageStore.swift in Sources */,
 				764AFDBA226EC283007BFD90 /* SettingsTableViewController.swift in Sources */,
 				7637A61A22868C32007DD20B /* BudgetCollectionViewCell.swift in Sources */,

@@ -38,6 +38,10 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        if let viewController = budgetTableViewContoller, BudgetStore.budgetViewControllerNeedsUpdate {
+            viewController.tableView.reloadData()
+            BudgetStore.budgetViewControllerNeedsUpdate = false
+        }
     }
     
 

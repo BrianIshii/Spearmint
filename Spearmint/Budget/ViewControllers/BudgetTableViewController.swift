@@ -16,7 +16,7 @@ class BudgetTableViewController: UITableViewController {
 
     //weak var delegate: BudgetTableViewProviderDelegate?
     private var dataSource: BudgetDataSource?
-
+    private var selectedBudgetItem: BudgetItem?
     private let budgetItemSegue = "BudgetItemSegue"
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +39,7 @@ class BudgetTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedBudgetItem = dataSource?.getBudgetItem(indexPath: indexPath)
         performSegue(withIdentifier: budgetItemSegue, sender: nil)
     }
 
@@ -129,14 +130,17 @@ class BudgetTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if let destination = segue.destination as? BudgetItemViewController {
+            destination.budgetItem = selectedBudgetItem!
+        }
     }
-    */
+ 
 
 }

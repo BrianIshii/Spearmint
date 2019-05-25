@@ -91,11 +91,15 @@ extension BudgetDataSource: UITableViewDataSource {
         }
     }
 
-private func configure(cell: UITableViewCell, indexPath: IndexPath) {
-    if let cell = cell as? BudgetItemTableViewCell {
-        let object = currentBudget!.items[sections[indexPath.section].category]![indexPath.row]
-        cell.configure(object: object)
+    private func configure(cell: UITableViewCell, indexPath: IndexPath) {
+        if let cell = cell as? BudgetItemTableViewCell {
+            let object = currentBudget!.items[sections[indexPath.section].category]![indexPath.row]
+            cell.configure(object: object)
+        }
     }
-}
+    
+    public func getBudgetItem(indexPath: IndexPath) -> BudgetItem {
+        return currentBudget!.items[sections[indexPath.section].category]![indexPath.row]
+    }
     
 }

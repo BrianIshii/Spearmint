@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 enum rows : Int, Codable {
     case date = 1
@@ -16,7 +17,7 @@ enum rows : Int, Codable {
     case image = 0
 }
 
-class AddTransactionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class AddTransactionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -33,12 +34,53 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     var items: [Item] = []
     static let defaultFields: Int = 5
     
+    let locationManager = CLLocationManager()
+    var mapRegion: MKCoordinateRegion?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+        
+        configureLocationManager()
+    }
+    
+    func configureLocationManager() {
+        CLLocationManager.locationServicesEnabled()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = 1.0
+        locationManager.distanceFilter = 100.0
+        locationManager.startUpdatingLocation()
+        print(locationManager.location?.coordinate)
+        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+        mapRegion = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
+        findNearbyRestaurants()
+    }
+    
+    func findNearbyRestaurants() {
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = "food"
+        if let region = mapRegion {
+            request.region = region
+        }
+        
+        let search = MKLocalSearch(request: request)
+        search.start(completionHandler:
+            { localSearchResponse, error in
+                
+                if error == nil {
+                    for item in localSearchResponse!.mapItems {
+                        print(item.name)
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+        })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -118,7 +118,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MdE-KX-NkS">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="48k-yV-YIc">
+                                    <navigationItem title="Add Budget Item" id="48k-yV-YIc">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="nXO-lm-lhq">
                                             <connections>
                                                 <action selector="cancel:" destination="ozu-5s-ett" id="0dg-YK-6Mm"/>
@@ -132,15 +132,28 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z8p-vY-fv7">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <connections>
+                                    <segue destination="9Fi-TT-rsW" kind="embed" id="KaS-Ta-USh"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Z8p-vY-fv7" firstAttribute="width" secondItem="HCn-7I-jV2" secondAttribute="width" id="78n-KP-DqX"/>
+                            <constraint firstItem="Z8p-vY-fv7" firstAttribute="top" secondItem="MdE-KX-NkS" secondAttribute="bottom" id="Irc-IX-Jua"/>
                             <constraint firstItem="MdE-KX-NkS" firstAttribute="width" secondItem="HCn-7I-jV2" secondAttribute="width" id="J5D-dh-qbD"/>
+                            <constraint firstItem="Z8p-vY-fv7" firstAttribute="centerX" secondItem="cCt-VX-Zia" secondAttribute="centerX" id="Mat-Nn-hZa"/>
                             <constraint firstItem="MdE-KX-NkS" firstAttribute="top" secondItem="cCt-VX-Zia" secondAttribute="top" id="Peb-K2-SC4"/>
+                            <constraint firstItem="cCt-VX-Zia" firstAttribute="bottom" secondItem="Z8p-vY-fv7" secondAttribute="bottom" id="uww-r8-2qu"/>
                             <constraint firstItem="MdE-KX-NkS" firstAttribute="centerX" secondItem="cCt-VX-Zia" secondAttribute="centerX" id="y1l-ks-coL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cCt-VX-Zia"/>
                     </view>
+                    <connections>
+                        <outlet property="saveButton" destination="PlH-Hx-X5f" id="jqs-cX-mIN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7cp-8h-7jz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="cwk-hd-Mgd" userLabel="Exit" sceneMemberID="exit"/>
@@ -155,16 +168,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Budget Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNR-PS-ReB">
-                                <rect key="frame" x="160" y="155" width="94" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7h-Lo-Kh7">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="Hgg-Qf-mcE">
+                                    <navigationItem title="BudgetItemName" id="Hgg-Qf-mcE">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="mL4-p7-YKf">
                                             <connections>
                                                 <action selector="back:" destination="tsT-m5-R9F" id="0OP-ty-LAG"/>
@@ -173,13 +180,21 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Jm-aq-PWm">
+                                <rect key="frame" x="0.0" y="88" width="414" height="603"/>
+                                <connections>
+                                    <segue destination="9Fi-TT-rsW" kind="embed" id="0Be-7r-Wbj"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="4Jm-aq-PWm" firstAttribute="centerX" secondItem="y9N-Dt-FMD" secondAttribute="centerX" id="43V-bB-V7n"/>
+                            <constraint firstItem="4Jm-aq-PWm" firstAttribute="top" secondItem="I7h-Lo-Kh7" secondAttribute="bottom" id="DUu-xl-Onf"/>
                             <constraint firstItem="I7h-Lo-Kh7" firstAttribute="width" secondItem="xEr-aU-xHe" secondAttribute="width" id="Op7-2a-phM"/>
                             <constraint firstItem="I7h-Lo-Kh7" firstAttribute="top" secondItem="y9N-Dt-FMD" secondAttribute="top" id="RVd-hg-qyL"/>
-                            <constraint firstItem="TNR-PS-ReB" firstAttribute="centerX" secondItem="y9N-Dt-FMD" secondAttribute="centerX" id="cNc-yT-HR9"/>
-                            <constraint firstItem="TNR-PS-ReB" firstAttribute="top" secondItem="y9N-Dt-FMD" secondAttribute="top" constant="111" id="mMY-Ik-mNU"/>
+                            <constraint firstItem="y9N-Dt-FMD" firstAttribute="bottom" secondItem="4Jm-aq-PWm" secondAttribute="bottom" id="VZF-Sr-Eds"/>
+                            <constraint firstItem="4Jm-aq-PWm" firstAttribute="width" secondItem="xEr-aU-xHe" secondAttribute="width" id="hub-bH-UDT"/>
                             <constraint firstItem="I7h-Lo-Kh7" firstAttribute="centerX" secondItem="y9N-Dt-FMD" secondAttribute="centerX" id="ozH-VE-isP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y9N-Dt-FMD"/>
@@ -220,5 +235,65 @@
             </objects>
             <point key="canvasLocation" x="1983" y="-714"/>
         </scene>
+        <!--Add Budget Item Section View Controller-->
+        <scene sceneID="fwq-XK-cjf">
+            <objects>
+                <viewController id="9Fi-TT-rsW" customClass="AddBudgetItemSectionViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="w8D-Gt-0gW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bov-4m-cn2">
+                                <rect key="frame" x="0.0" y="31" width="414" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCP-3Q-KV4">
+                                <rect key="frame" x="0.0" y="159" width="414" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dCP-3Q-KV4" secondAttribute="height" multiplier="23:12" id="m9S-vS-8t8"/>
+                                </constraints>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Planned Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwr-qN-DIZ">
+                                <rect key="frame" x="0.0" y="69" width="414" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dJ2-oN-23J" customClass="MoneyTextField" customModule="Spearmint" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="97" width="414" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dCP-3Q-KV4" firstAttribute="width" secondItem="w8D-Gt-0gW" secondAttribute="width" id="FeQ-MA-6EO"/>
+                            <constraint firstItem="Bov-4m-cn2" firstAttribute="width" secondItem="w8D-Gt-0gW" secondAttribute="width" id="IOp-ve-D9U"/>
+                            <constraint firstItem="dCP-3Q-KV4" firstAttribute="top" secondItem="dJ2-oN-23J" secondAttribute="bottom" constant="32" id="Nhm-xX-1qD"/>
+                            <constraint firstItem="Bov-4m-cn2" firstAttribute="centerX" secondItem="w8D-Gt-0gW" secondAttribute="centerX" id="X47-c7-Hwj"/>
+                            <constraint firstItem="bwr-qN-DIZ" firstAttribute="top" secondItem="Bov-4m-cn2" secondAttribute="bottom" constant="8" id="ZBW-Rq-RMm"/>
+                            <constraint firstItem="Bov-4m-cn2" firstAttribute="top" secondItem="w8D-Gt-0gW" secondAttribute="top" constant="31" id="av3-JL-1Yh"/>
+                            <constraint firstItem="bwr-qN-DIZ" firstAttribute="centerX" secondItem="w8D-Gt-0gW" secondAttribute="centerX" id="ruD-IW-KW1"/>
+                            <constraint firstItem="dCP-3Q-KV4" firstAttribute="centerX" secondItem="w8D-Gt-0gW" secondAttribute="centerX" id="srb-YO-8PF"/>
+                            <constraint firstItem="dJ2-oN-23J" firstAttribute="top" secondItem="bwr-qN-DIZ" secondAttribute="bottom" constant="7" id="x8D-YK-gvr"/>
+                            <constraint firstItem="bwr-qN-DIZ" firstAttribute="width" secondItem="w8D-Gt-0gW" secondAttribute="width" id="ynX-IZ-qfa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="budgetCategoryPicker" destination="dCP-3Q-KV4" id="9Fj-gT-w5k"/>
+                        <outlet property="nameTextField" destination="Bov-4m-cn2" id="AP8-qg-tJd"/>
+                        <outlet property="plannedAmountTextField" destination="dJ2-oN-23J" id="mj7-OP-Qn2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eTm-L6-IQM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2745" y="-109"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="0Be-7r-Wbj"/>
+    </inferredMetricsTieBreakers>
 </document>
