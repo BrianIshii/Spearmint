@@ -18,6 +18,7 @@ class BudgetItemTableViewCell: UITableViewCell, ReusableIdentifier {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        textField.isUserInteractionEnabled = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

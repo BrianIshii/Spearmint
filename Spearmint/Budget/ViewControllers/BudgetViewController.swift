@@ -108,7 +108,9 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
         }
     }
     
-    
-    
-    
+    @IBAction func unwindToBudgetItems(sender: UIStoryboardSegue) {
+        if let source = sender.source as? AddBudgetItemViewController, let budgetItem = source.budgetItem {
+            budgetTableViewContoller!.addBudgetItem(budgetItem)
+        }
+    }
 }

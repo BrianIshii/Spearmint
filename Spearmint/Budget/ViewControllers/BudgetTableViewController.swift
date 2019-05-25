@@ -17,6 +17,7 @@ class BudgetTableViewController: UITableViewController {
     //weak var delegate: BudgetTableViewProviderDelegate?
     private var dataSource: BudgetDataSource?
 
+    private let budgetItemSegue = "BudgetItemSegue"
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +36,10 @@ class BudgetTableViewController: UITableViewController {
         if let ds = dataSource {
             ds.currentBudget = BudgetStore.getBudget(Budget.dateToString(Date()))
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: budgetItemSegue, sender: nil)
     }
 
     // MARK: - Table view data source
@@ -69,6 +74,15 @@ class BudgetTableViewController: UITableViewController {
             BudgetItemSectionStore.update()
         }
     }
+    
+    func addBudgetItem(_ budgetItem: BudgetItem) {
+        if let ds = dataSource, let currentBudget = ds.currentBudget {
+            currentBudget.addBudgetItem(budgetItem: budgetItem)
+            tableView.reloadData()
+        }
+    }
+    
+
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

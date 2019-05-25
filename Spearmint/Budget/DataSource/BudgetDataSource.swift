@@ -76,7 +76,7 @@ extension BudgetDataSource: UITableViewDataSource {
 
         tableView.reloadData()
     }
-    
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if canRearrangeSections {
             let cell = tableView.dequeueReusableCell(withIdentifier: BudgetSectionTableViewCell.reuseIdentifier, for: indexPath) as! BudgetSectionTableViewCell

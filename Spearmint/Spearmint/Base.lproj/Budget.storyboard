@@ -43,6 +43,11 @@
                                                 <action selector="toggleSelectBudget:" destination="ksr-wo-JLa" eventType="touchUpInside" id="pKk-oM-Ok1"/>
                                             </connections>
                                         </button>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="K1v-zn-U2r">
+                                            <connections>
+                                                <segue destination="ozu-5s-ett" kind="show" id="hJc-Mb-1wq"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -100,14 +105,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCA-S9-1q7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1158" y="-58"/>
+            <point key="canvasLocation" x="1167" y="-109"/>
+        </scene>
+        <!--Add Budget Item View Controller-->
+        <scene sceneID="ATs-Rq-Kkk">
+            <objects>
+                <viewController id="ozu-5s-ett" customClass="AddBudgetItemViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HCn-7I-jV2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MdE-KX-NkS">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="48k-yV-YIc">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="nXO-lm-lhq">
+                                            <connections>
+                                                <action selector="cancel:" destination="ozu-5s-ett" id="0dg-YK-6Mm"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="PlH-Hx-X5f">
+                                            <connections>
+                                                <segue destination="cwk-hd-Mgd" kind="unwind" unwindAction="unwindToBudgetItemsWithSender:" id="BNS-4k-PiE"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MdE-KX-NkS" firstAttribute="width" secondItem="HCn-7I-jV2" secondAttribute="width" id="J5D-dh-qbD"/>
+                            <constraint firstItem="MdE-KX-NkS" firstAttribute="top" secondItem="cCt-VX-Zia" secondAttribute="top" id="Peb-K2-SC4"/>
+                            <constraint firstItem="MdE-KX-NkS" firstAttribute="centerX" secondItem="cCt-VX-Zia" secondAttribute="centerX" id="y1l-ks-coL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cCt-VX-Zia"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7cp-8h-7jz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="cwk-hd-Mgd" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1981" y="-109"/>
         </scene>
         <!--Budget Item View Controller-->
         <scene sceneID="mNw-oG-IZm">
             <objects>
                 <viewController id="tsT-m5-R9F" customClass="BudgetItemViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xEr-aU-xHe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Budget Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNR-PS-ReB">
@@ -116,18 +161,33 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7h-Lo-Kh7">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="Hgg-Qf-mcE">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="mL4-p7-YKf">
+                                            <connections>
+                                                <action selector="back:" destination="tsT-m5-R9F" id="0OP-ty-LAG"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="I7h-Lo-Kh7" firstAttribute="width" secondItem="xEr-aU-xHe" secondAttribute="width" id="Op7-2a-phM"/>
+                            <constraint firstItem="I7h-Lo-Kh7" firstAttribute="top" secondItem="y9N-Dt-FMD" secondAttribute="top" id="RVd-hg-qyL"/>
                             <constraint firstItem="TNR-PS-ReB" firstAttribute="centerX" secondItem="y9N-Dt-FMD" secondAttribute="centerX" id="cNc-yT-HR9"/>
                             <constraint firstItem="TNR-PS-ReB" firstAttribute="top" secondItem="y9N-Dt-FMD" secondAttribute="top" constant="111" id="mMY-Ik-mNU"/>
+                            <constraint firstItem="I7h-Lo-Kh7" firstAttribute="centerX" secondItem="y9N-Dt-FMD" secondAttribute="centerX" id="ozH-VE-isP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y9N-Dt-FMD"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M2z-AF-WYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2000" y="-58"/>
+            <point key="canvasLocation" x="2746" y="-714"/>
         </scene>
         <!--Budget Table View Controller-->
         <scene sceneID="1TN-yf-MdS">
@@ -152,6 +212,9 @@
                             <outlet property="delegate" destination="UwO-hn-kn1" id="PDf-zp-QsR"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="tsT-m5-R9F" kind="show" identifier="BudgetItemSegue" id="fRk-7C-uOx"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VvO-BD-3BF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

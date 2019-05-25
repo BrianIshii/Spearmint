@@ -92,6 +92,7 @@
 		76EF345A2298D254005A5C35 /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF34592298D254005A5C35 /* AddImageViewController.swift */; };
 		76EF345C2298D31E005A5C35 /* AddTransactionImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76EF345B2298D31E005A5C35 /* AddTransactionImage.storyboard */; };
 		76EF345E2298E049005A5C35 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF345D2298E049005A5C35 /* UIImageExtension.swift */; };
+		76EF34602298F8AF005A5C35 /* AddBudgetItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF345F2298F8AF005A5C35 /* AddBudgetItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,6 +206,7 @@
 		76EF34592298D254005A5C35 /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
 		76EF345B2298D31E005A5C35 /* AddTransactionImage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddTransactionImage.storyboard; sourceTree = "<group>"; };
 		76EF345D2298E049005A5C35 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		76EF345F2298F8AF005A5C35 /* AddBudgetItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetItemViewController.swift; sourceTree = "<group>"; };
 		7E80DB5F205651E2DAB92ECD /* Pods_SpearmintTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpearmintTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC4A818360F2DDAAA186DA7 /* Pods-Spearmint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spearmint.debug.xcconfig"; path = "Target Support Files/Pods-Spearmint/Pods-Spearmint.debug.xcconfig"; sourceTree = "<group>"; };
 		A0857D97E263450E6900B129 /* Pods-Spearmint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spearmint.release.xcconfig"; path = "Target Support Files/Pods-Spearmint/Pods-Spearmint.release.xcconfig"; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 				7637A617228653E7007DD20B /* BudgetViewController.swift */,
 				76B548E7229533F9001B2FB1 /* BudgetItemViewController.swift */,
 				76B548EB229535F0001B2FB1 /* BudgetTableViewController.swift */,
+				76EF345F2298F8AF005A5C35 /* AddBudgetItemViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -916,6 +919,7 @@
 				7689F71B2271874900AD4225 /* Item.swift in Sources */,
 				7689F7152270E39900AD4225 /* TransactionType.swift in Sources */,
 				76EF345422963BF1005A5C35 /* BudgetItemSectionStore.swift in Sources */,
+				76EF34602298F8AF005A5C35 /* AddBudgetItemViewController.swift in Sources */,
 				76B548C022913DB4001B2FB1 /* ConfigurableCell.swift in Sources */,
 				7637A62E2287EE4D007DD20B /* MoneyTextField.swift in Sources */,
 				7637A618228653E7007DD20B /* BudgetViewController.swift in Sources */,
