@@ -156,6 +156,7 @@
                         <outlet property="segmentedControl" destination="Hw5-xm-rvn" id="ynj-ly-LVu"/>
                         <outlet property="tableView" destination="tK3-kA-WSD" id="s4w-lP-W7P"/>
                         <segue destination="EaN-97-phR" kind="show" identifier="AddBudgetItemSegue" customClass="AddBudgetItemSegue" customModule="Spearmint" customModuleProvider="target" id="OTy-HR-M9F"/>
+                        <segue destination="8dw-sQ-Ya5" kind="show" identifier="AddImageSegue" id="sPK-1x-M4W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQC-cO-O2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -213,7 +214,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hlw-nW-fMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="qkK-h3-zLI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1130" y="-856"/>
+            <point key="canvasLocation" x="1335" y="-680"/>
         </scene>
         <!--Add Transaction Image View Controller-->
         <scene sceneID="r9b-36-zth">
@@ -246,6 +247,7 @@
                             <constraint firstItem="Ryd-Cf-JEm" firstAttribute="leading" secondItem="c6f-J7-XVd" secondAttribute="trailing" id="raX-TA-AME"/>
                             <constraint firstItem="c6f-J7-XVd" firstAttribute="height" secondItem="qeE-Ec-GeE" secondAttribute="height" id="wC1-eW-tMX"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Xa0-Zb-2Ps"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="py0-a1-vAO" appends="YES" id="yUA-ry-OzT"/>
                         </connections>
@@ -263,6 +265,14 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="359" y="-301"/>
+        </scene>
+        <!--AddTransactionImage-->
+        <scene sceneID="brG-ZR-Hi2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddTransactionImage" id="8dw-sQ-Ya5" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3lm-sB-gfS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1335" y="-1366"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

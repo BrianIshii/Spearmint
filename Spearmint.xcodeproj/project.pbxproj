@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BD869F4432509ACB31B176D /* Pods_Spearmint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C3706670F34FDD564F61587 /* Pods_Spearmint.framework */; };
+		550B0A36AECD4801F762FADE /* Pods_SpearmintTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E80DB5F205651E2DAB92ECD /* Pods_SpearmintTests.framework */; };
+		6FA114086373F46C7BF691A3 /* Pods_SpearmintUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BA4C0BF29F1449C4A62DFD2 /* Pods_SpearmintUITests.framework */; };
 		7637A60D22862B6B007DD20B /* BudgetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637A60C22862B6B007DD20B /* BudgetStore.swift */; };
 		7637A61022864DBF007DD20B /* Budget.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7637A60E22864DBF007DD20B /* Budget.storyboard */; };
 		7637A61422864F23007DD20B /* BudgetItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7637A61322864F23007DD20B /* BudgetItemTableViewCell.xib */; };
@@ -84,6 +87,11 @@
 		76B548EF22953685001B2FB1 /* BudgetDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548EE22953685001B2FB1 /* BudgetDataSource.swift */; };
 		76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3CBE7227FEEAC0010625A /* Currency.swift */; };
 		76EF345422963BF1005A5C35 /* BudgetItemSectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */; };
+		76EF345622986CD8005A5C35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76EF345522986CD8005A5C35 /* GoogleService-Info.plist */; };
+		76EF34582298AAFB005A5C35 /* VisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF34572298AAFB005A5C35 /* VisionViewController.swift */; };
+		76EF345A2298D254005A5C35 /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF34592298D254005A5C35 /* AddImageViewController.swift */; };
+		76EF345C2298D31E005A5C35 /* AddTransactionImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76EF345B2298D31E005A5C35 /* AddTransactionImage.storyboard */; };
+		76EF345E2298E049005A5C35 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF345D2298E049005A5C35 /* UIImageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +112,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C3706670F34FDD564F61587 /* Pods_Spearmint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spearmint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D990FF3295C92B185D96464 /* Pods-SpearmintUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpearmintUITests.release.xcconfig"; path = "Target Support Files/Pods-SpearmintUITests/Pods-SpearmintUITests.release.xcconfig"; sourceTree = "<group>"; };
+		30F790D55FB47E58942AC213 /* Pods-SpearmintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpearmintTests.debug.xcconfig"; path = "Target Support Files/Pods-SpearmintTests/Pods-SpearmintTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3BA4C0BF29F1449C4A62DFD2 /* Pods_SpearmintUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpearmintUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		738DBB691C06DD966F9B38D1 /* Pods-SpearmintTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpearmintTests.release.xcconfig"; path = "Target Support Files/Pods-SpearmintTests/Pods-SpearmintTests.release.xcconfig"; sourceTree = "<group>"; };
 		7637A60C22862B6B007DD20B /* BudgetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetStore.swift; sourceTree = "<group>"; };
 		7637A60F22864DBF007DD20B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Spearmint/Base.lproj/Budget.storyboard; sourceTree = "<group>"; };
 		7637A61322864F23007DD20B /* BudgetItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BudgetItemTableViewCell.xib; sourceTree = "<group>"; };
@@ -187,6 +200,15 @@
 		76B548EE22953685001B2FB1 /* BudgetDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDataSource.swift; sourceTree = "<group>"; };
 		76E3CBE7227FEEAC0010625A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemSectionStore.swift; sourceTree = "<group>"; };
+		76EF345522986CD8005A5C35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		76EF34572298AAFB005A5C35 /* VisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionViewController.swift; sourceTree = "<group>"; };
+		76EF34592298D254005A5C35 /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
+		76EF345B2298D31E005A5C35 /* AddTransactionImage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddTransactionImage.storyboard; sourceTree = "<group>"; };
+		76EF345D2298E049005A5C35 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		7E80DB5F205651E2DAB92ECD /* Pods_SpearmintTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpearmintTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FC4A818360F2DDAAA186DA7 /* Pods-Spearmint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spearmint.debug.xcconfig"; path = "Target Support Files/Pods-Spearmint/Pods-Spearmint.debug.xcconfig"; sourceTree = "<group>"; };
+		A0857D97E263450E6900B129 /* Pods-Spearmint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spearmint.release.xcconfig"; path = "Target Support Files/Pods-Spearmint/Pods-Spearmint.release.xcconfig"; sourceTree = "<group>"; };
+		A5999217056EE1E0792FFF69 /* Pods-SpearmintUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpearmintUITests.debug.xcconfig"; path = "Target Support Files/Pods-SpearmintUITests/Pods-SpearmintUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +216,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BD869F4432509ACB31B176D /* Pods_Spearmint.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				550B0A36AECD4801F762FADE /* Pods_SpearmintTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,12 +232,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FA114086373F46C7BF691A3 /* Pods_SpearmintUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D1703AEC6B0CB76EA6FFCB1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C3706670F34FDD564F61587 /* Pods_Spearmint.framework */,
+				7E80DB5F205651E2DAB92ECD /* Pods_SpearmintTests.framework */,
+				3BA4C0BF29F1449C4A62DFD2 /* Pods_SpearmintUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7637A6212286B548007DD20B /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +305,8 @@
 				764AFD9B226E7061007BFD90 /* SpearmintTests */,
 				764AFDA6226E7061007BFD90 /* SpearmintUITests */,
 				764AFD85226E7060007BFD90 /* Products */,
+				D692118312A1BE281EB3B7C6 /* Pods */,
+				3D1703AEC6B0CB76EA6FFCB1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -301,10 +338,13 @@
 				7637A6292287EB1E007DD20B /* Summary.storyboard */,
 				7637A60E22864DBF007DD20B /* Budget.storyboard */,
 				76A2FA632282229D0066D594 /* Transactions.storyboard */,
+				76EF345B2298D31E005A5C35 /* AddTransactionImage.storyboard */,
 				764AFD8B226E7060007BFD90 /* Main.storyboard */,
 				764AFD8E226E7061007BFD90 /* Assets.xcassets */,
 				764AFD90226E7061007BFD90 /* LaunchScreen.storyboard */,
 				764AFD93226E7061007BFD90 /* Info.plist */,
+				76EF345522986CD8005A5C35 /* GoogleService-Info.plist */,
+				76EF34572298AAFB005A5C35 /* VisionViewController.swift */,
 			);
 			path = Spearmint;
 			sourceTree = "<group>";
@@ -397,6 +437,7 @@
 			isa = PBXGroup;
 			children = (
 				76A2FA7622851E730066D594 /* DateExtension.swift */,
+				76EF345D2298E049005A5C35 /* UIImageExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -485,6 +526,7 @@
 				7637A63D2288F0C9007DD20B /* AddBudgetItemsViewController.swift */,
 				76A2FA552281F8BE0066D594 /* AddTransactionViewController.swift */,
 				76B548D722916195001B2FB1 /* AddTransactionImageViewController.swift */,
+				76EF34592298D254005A5C35 /* AddImageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -591,6 +633,19 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
+		D692118312A1BE281EB3B7C6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7FC4A818360F2DDAAA186DA7 /* Pods-Spearmint.debug.xcconfig */,
+				A0857D97E263450E6900B129 /* Pods-Spearmint.release.xcconfig */,
+				30F790D55FB47E58942AC213 /* Pods-SpearmintTests.debug.xcconfig */,
+				738DBB691C06DD966F9B38D1 /* Pods-SpearmintTests.release.xcconfig */,
+				A5999217056EE1E0792FFF69 /* Pods-SpearmintUITests.debug.xcconfig */,
+				1D990FF3295C92B185D96464 /* Pods-SpearmintUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -598,9 +653,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 764AFDAC226E7061007BFD90 /* Build configuration list for PBXNativeTarget "Spearmint" */;
 			buildPhases = (
+				994C55D997D412E784AD1152 /* [CP] Check Pods Manifest.lock */,
 				764AFD80226E7060007BFD90 /* Sources */,
 				764AFD81226E7060007BFD90 /* Frameworks */,
 				764AFD82226E7060007BFD90 /* Resources */,
+				BAB99AE8E3AE81CA9B81B8B8 /* [CP] Embed Pods Frameworks */,
+				199DA7B7F67820F8751C70CF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -615,6 +673,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 764AFDAF226E7061007BFD90 /* Build configuration list for PBXNativeTarget "SpearmintTests" */;
 			buildPhases = (
+				06F9C0EC9FF9D00731D45545 /* [CP] Check Pods Manifest.lock */,
 				764AFD94226E7061007BFD90 /* Sources */,
 				764AFD95226E7061007BFD90 /* Frameworks */,
 				764AFD96226E7061007BFD90 /* Resources */,
@@ -633,6 +692,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 764AFDB2226E7061007BFD90 /* Build configuration list for PBXNativeTarget "SpearmintUITests" */;
 			buildPhases = (
+				081F6F11E25AF76CB096A09A /* [CP] Check Pods Manifest.lock */,
 				764AFD9F226E7061007BFD90 /* Sources */,
 				764AFDA0226E7061007BFD90 /* Frameworks */,
 				764AFDA1226E7061007BFD90 /* Resources */,
@@ -706,6 +766,8 @@
 				76A2FA5C2281FAE90066D594 /* VendorTableViewCell.xib in Resources */,
 				76A2FA4E2280B4520066D594 /* TransactionTableViewCell.xib in Resources */,
 				7637A61422864F23007DD20B /* BudgetItemTableViewCell.xib in Resources */,
+				76EF345C2298D31E005A5C35 /* AddTransactionImage.storyboard in Resources */,
+				76EF345622986CD8005A5C35 /* GoogleService-Info.plist in Resources */,
 				764AFD8D226E7060007BFD90 /* Main.storyboard in Resources */,
 				76A2FA582281F94E0066D594 /* DateTableViewCell.xib in Resources */,
 				76A2FA5A2281FA430066D594 /* AmountTableViewCell.xib in Resources */,
@@ -732,11 +794,115 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		06F9C0EC9FF9D00731D45545 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpearmintTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		081F6F11E25AF76CB096A09A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpearmintUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		199DA7B7F67820F8751C70CF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Spearmint/Pods-Spearmint-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Spearmint/Pods-Spearmint-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Spearmint/Pods-Spearmint-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		994C55D997D412E784AD1152 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Spearmint-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BAB99AE8E3AE81CA9B81B8B8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Spearmint/Pods-Spearmint-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Spearmint/Pods-Spearmint-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Spearmint/Pods-Spearmint-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		764AFD80226E7060007BFD90 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76EF345A2298D254005A5C35 /* AddImageViewController.swift in Sources */,
 				76B548EC229535F0001B2FB1 /* BudgetTableViewController.swift in Sources */,
 				76A2FA5E2281FB700066D594 /* DateTableViewCell.swift in Sources */,
 				7637A61E2286B1E1007DD20B /* BudgetItemID.swift in Sources */,
@@ -746,6 +912,7 @@
 				76B548C222913E8E001B2FB1 /* ReusableIdentifier.swift in Sources */,
 				7637A6402288FB5F007DD20B /* SelectBudgetItemListTableView.swift in Sources */,
 				76B548EA22953426001B2FB1 /* ViewBudgetItemSegue.swift in Sources */,
+				76EF345E2298E049005A5C35 /* UIImageExtension.swift in Sources */,
 				7689F71B2271874900AD4225 /* Item.swift in Sources */,
 				7689F7152270E39900AD4225 /* TransactionType.swift in Sources */,
 				76EF345422963BF1005A5C35 /* BudgetItemSectionStore.swift in Sources */,
@@ -771,6 +938,7 @@
 				76A2FA6E228375970066D594 /* TransactionID.swift in Sources */,
 				764AFD88226E7060007BFD90 /* AppDelegate.swift in Sources */,
 				76A2FA4C2280B4300066D594 /* TransactionTableViewCell.swift in Sources */,
+				76EF34582298AAFB005A5C35 /* VisionViewController.swift in Sources */,
 				76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */,
 				7637A60D22862B6B007DD20B /* BudgetStore.swift in Sources */,
 				76A2FA622281FBE60066D594 /* VendorTableViewCell.swift in Sources */,
@@ -982,6 +1150,7 @@
 		};
 		764AFDAD226E7061007BFD90 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7FC4A818360F2DDAAA186DA7 /* Pods-Spearmint.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1000,6 +1169,7 @@
 		};
 		764AFDAE226E7061007BFD90 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0857D97E263450E6900B129 /* Pods-Spearmint.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1018,6 +1188,7 @@
 		};
 		764AFDB0226E7061007BFD90 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30F790D55FB47E58942AC213 /* Pods-SpearmintTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1039,6 +1210,7 @@
 		};
 		764AFDB1226E7061007BFD90 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 738DBB691C06DD966F9B38D1 /* Pods-SpearmintTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1060,6 +1232,7 @@
 		};
 		764AFDB3226E7061007BFD90 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5999217056EE1E0792FFF69 /* Pods-SpearmintUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1080,6 +1253,7 @@
 		};
 		764AFDB4226E7061007BFD90 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D990FF3295C92B185D96464 /* Pods-SpearmintUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -24,7 +24,7 @@
                             <constraint firstAttribute="width" secondItem="4RL-bf-aMt" secondAttribute="height" multiplier="1:1" id="KAK-tw-n9S"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Wn-WM-OOU">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Wn-WM-OOU">
                         <rect key="frame" x="63.5" y="0.0" width="350.5" height="43.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -45,14 +45,8 @@
             <connections>
                 <outlet property="label" destination="0Wn-WM-OOU" id="aaX-TE-m82"/>
                 <outlet property="recieptImageView" destination="4RL-bf-aMt" id="NHL-8z-s9l"/>
-                <outletCollection property="gestureRecognizers" destination="hVj-Fc-EvI" appends="YES" id="R2p-kk-TSx"/>
             </connections>
             <point key="canvasLocation" x="231.8840579710145" y="-181.47321428571428"/>
         </tableViewCell>
-        <tapGestureRecognizer id="hVj-Fc-EvI">
-            <connections>
-                <action selector="selectImage:" destination="nf3-g7-QAa" id="mjx-Re-xll"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
 </document>
