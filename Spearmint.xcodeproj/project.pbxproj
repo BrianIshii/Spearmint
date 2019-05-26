@@ -87,6 +87,10 @@
 		76B548EF22953685001B2FB1 /* BudgetDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548EE22953685001B2FB1 /* BudgetDataSource.swift */; };
 		76D22F78229A0DF100C06567 /* Analysis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D22F77229A0DF100C06567 /* Analysis.storyboard */; };
 		76D22F7A229A0E1900C06567 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D22F79229A0E1900C06567 /* Account.storyboard */; };
+		76D22F7E229A281B00C06567 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D22F7D229A281B00C06567 /* AnalysisViewController.swift */; };
+		76D22F80229A29C500C06567 /* AnalysisCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D22F7F229A29C500C06567 /* AnalysisCollectionViewController.swift */; };
+		76D22F82229A2A9E00C06567 /* AnalysisCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D22F81229A2A9E00C06567 /* AnalysisCollectionViewCell.swift */; };
+		76D22F84229A324500C06567 /* PriceCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D22F83229A324500C06567 /* PriceCheckViewController.swift */; };
 		76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3CBE7227FEEAC0010625A /* Currency.swift */; };
 		76EF345422963BF1005A5C35 /* BudgetItemSectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */; };
 		76EF345622986CD8005A5C35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76EF345522986CD8005A5C35 /* GoogleService-Info.plist */; };
@@ -205,6 +209,10 @@
 		76B548EE22953685001B2FB1 /* BudgetDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDataSource.swift; sourceTree = "<group>"; };
 		76D22F77229A0DF100C06567 /* Analysis.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Analysis.storyboard; sourceTree = "<group>"; };
 		76D22F79229A0E1900C06567 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
+		76D22F7D229A281B00C06567 /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
+		76D22F7F229A29C500C06567 /* AnalysisCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisCollectionViewController.swift; sourceTree = "<group>"; };
+		76D22F81229A2A9E00C06567 /* AnalysisCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisCollectionViewCell.swift; sourceTree = "<group>"; };
+		76D22F83229A324500C06567 /* PriceCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCheckViewController.swift; sourceTree = "<group>"; };
 		76E3CBE7227FEEAC0010625A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemSectionStore.swift; sourceTree = "<group>"; };
 		76EF345522986CD8005A5C35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -335,12 +343,12 @@
 		764AFD86226E7060007BFD90 /* Spearmint */ = {
 			isa = PBXGroup;
 			children = (
+				76D22F7B229A27FE00C06567 /* Analysis */,
 				76B548E122952D95001B2FB1 /* Summary */,
 				764AFDB7226EB27C007BFD90 /* Account */,
 				764AFDB5226EB1AE007BFD90 /* Transactions */,
 				76B548C3229141B9001B2FB1 /* Budget */,
 				76B548BE22913D92001B2FB1 /* Protocols and Extensions */,
-				7637A6262287EA62007DD20B /* Views */,
 				7637A62C2287EE25007DD20B /* TextField */,
 				76A2FA6822824CAE0066D594 /* Segue */,
 				764AFDB8226EB2C9007BFD90 /* ViewControllers */,
@@ -628,6 +636,7 @@
 		76B548E122952D95001B2FB1 /* Summary */ = {
 			isa = PBXGroup;
 			children = (
+				7637A6262287EA62007DD20B /* Views */,
 				76B548E222952DA7001B2FB1 /* ViewControllers */,
 			);
 			path = Summary;
@@ -648,6 +657,25 @@
 				76B548EE22953685001B2FB1 /* BudgetDataSource.swift */,
 			);
 			path = DataSource;
+			sourceTree = "<group>";
+		};
+		76D22F7B229A27FE00C06567 /* Analysis */ = {
+			isa = PBXGroup;
+			children = (
+				76D22F7C229A280700C06567 /* ViewControllers */,
+				76D22F81229A2A9E00C06567 /* AnalysisCollectionViewCell.swift */,
+			);
+			path = Analysis;
+			sourceTree = "<group>";
+		};
+		76D22F7C229A280700C06567 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				76D22F7D229A281B00C06567 /* AnalysisViewController.swift */,
+				76D22F7F229A29C500C06567 /* AnalysisCollectionViewController.swift */,
+				76D22F83229A324500C06567 /* PriceCheckViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		76EF34612299DBA6005A5C35 /* Views */ = {
@@ -945,6 +973,8 @@
 				76B548EA22953426001B2FB1 /* ViewBudgetItemSegue.swift in Sources */,
 				76EF345E2298E049005A5C35 /* UIImageExtension.swift in Sources */,
 				7689F71B2271874900AD4225 /* Item.swift in Sources */,
+				76D22F82229A2A9E00C06567 /* AnalysisCollectionViewCell.swift in Sources */,
+				76D22F84229A324500C06567 /* PriceCheckViewController.swift in Sources */,
 				7689F7152270E39900AD4225 /* TransactionType.swift in Sources */,
 				76EF345422963BF1005A5C35 /* BudgetItemSectionStore.swift in Sources */,
 				76EF34602298F8AF005A5C35 /* AddBudgetItemViewController.swift in Sources */,
@@ -979,12 +1009,14 @@
 				76A2FA462280B0740066D594 /* TransactionListViewController.swift in Sources */,
 				76A2FA602281FBDD0066D594 /* AmountTableViewCell.swift in Sources */,
 				7637A6442288FF26007DD20B /* SelectBudgetItemTableViewCell.swift in Sources */,
+				76D22F7E229A281B00C06567 /* AnalysisViewController.swift in Sources */,
 				7637A61622864FC5007DD20B /* BudgetItemTableViewCell.swift in Sources */,
 				7637A6252287AE00007DD20B /* AddTransactionBudgetItemTableViewCell.swift in Sources */,
 				7637A6282287EAB4007DD20B /* PieChartView.swift in Sources */,
 				76B548E622952EEE001B2FB1 /* MasterSummaryViewController.swift in Sources */,
 				764AFDBC226EC377007BFD90 /* SettingsTableViewCell.swift in Sources */,
 				76A2FA70228377080066D594 /* TransactionStore.swift in Sources */,
+				76D22F80229A29C500C06567 /* AnalysisCollectionViewController.swift in Sources */,
 				7637A63422889F8D007DD20B /* BudgetSectionTableViewCell.swift in Sources */,
 				7689F7192270E6F600AD4225 /* BudgetItem.swift in Sources */,
 				76A2FA722284FEFC0066D594 /* TransactionDate.swift in Sources */,

@@ -18,14 +18,30 @@ class SummaryPieChartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        pieChartView.segments = [0.2, 0.4, 0.3, 0.1]
+        update()
+        pieChartView.setNeedsDisplay()
+
+    }
+
+    private func update() {
+        pieChartView.segments = []
         // Do any additional setup after loading the view.
         if let b = budget {
-            balanceLabel.text = Currency.currencyFormatter(b.totalIncome)
+            let totalIncome = b.totalIncome
+            balanceLabel.text = Currency.currencyFormatter(totalIncome)
+            
+            var total = Float(0.0)
+            var temp: [Float] = []
+            for (_, v) in b.totalExpenses {
+                let percentage = Float(v / totalIncome)
+                temp.append(percentage)
+                total += percentage
+            }
+            let rest = 1 - total
+            temp.append(rest)
+            pieChartView.segments = temp
         }
     }
-    
-
     /*
     // MARK: - Navigation
 

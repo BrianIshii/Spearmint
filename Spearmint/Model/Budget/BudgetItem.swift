@@ -57,7 +57,7 @@ class BudgetItem: Codable {
     
     static func defaultBudgetItems() -> [BudgetItemCategory:[BudgetItem]] {
         return [BudgetItemCategory.income : [
-                    BudgetItem(name: "Paycheck 1", category: BudgetItemCategory.income)],
+                    BudgetItem(name: "Paycheck 1", category: BudgetItemCategory.income, planned: 1000)],
                 BudgetItemCategory.housing : [
                     BudgetItem(name: "Mortgage/Rent", category: BudgetItemCategory.housing),
                     BudgetItem(name: "Water", category: BudgetItemCategory.housing),

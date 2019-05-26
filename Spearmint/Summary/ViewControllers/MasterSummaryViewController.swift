@@ -10,10 +10,18 @@ import UIKit
 
 class MasterSummaryViewController: UIViewController {
 
+    weak var summaryPieChartViewController: SummaryPieChartViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if BudgetStore.budgetViewControllerNeedsUpdate {
+            summaryPieChartViewController?.budget = BudgetStore.getBudget(Budget.dateToString(Date()))
+        }
     }
     
 
@@ -29,6 +37,7 @@ class MasterSummaryViewController: UIViewController {
         
         if let vc = destination as? SummaryPieChartViewController {
             vc.budget = BudgetStore.getBudget(Budget.dateToString(Date()))
+            summaryPieChartViewController = vc
         }
     }
  

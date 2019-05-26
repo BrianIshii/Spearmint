@@ -41,6 +41,24 @@ class Budget: Codable {
         return Float(total)
     }
     
+    var totalExpenses: [BudgetItemCategory: Float] {
+        var expenses: [BudgetItemCategory: Float] = [:]
+        
+        for key in items.keys {
+            if (key != BudgetItemCategory.income) {
+                var total: Float = 0.0
+
+                for item in items[key]! {
+                    total += item.actual
+                }
+                
+                expenses[key] = total
+            }
+        }
+
+        return expenses
+    }
+    
     var month: String {
         return DateFormatterFactory.monthFormatter.string(from: DateFormatterFactory.yearAndMonthFormatter.date(from: date)!)
     }

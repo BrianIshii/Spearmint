@@ -33,7 +33,7 @@ extension BudgetItemTableViewCell: ConfigurableCell {
     func configure(object: BudgetItem) {
         budgetItemName.text = object.name
         progressBar.progress = object.actual / object.planned
-        textField.text = String(format: "%.2f", object.planned - object.actual)
+        textField.text = Currency.currencyFormatter(object.planned - object.actual) + " left"
     }
     
     func configure() {
