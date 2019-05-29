@@ -152,6 +152,7 @@
                     </view>
                     <connections>
                         <outlet property="addImageView" destination="tK3-kA-WSD" id="yHw-Qm-a3O"/>
+                        <outlet property="navigationBar" destination="6v1-4e-A3P" id="1Rr-TT-egx"/>
                         <outlet property="saveButton" destination="Wwk-dA-G3x" id="Um7-rS-bK9"/>
                         <outlet property="segmentedControl" destination="Hw5-xm-rvn" id="ynj-ly-LVu"/>
                         <outlet property="tableView" destination="tK3-kA-WSD" id="s4w-lP-W7P"/>

@@ -27,16 +27,16 @@ class BudgetStore {
     }
     
     static func addBudget(_ budget: Budget) {
-        if budgetDictionary[budget.date] != nil {
+        if budgetDictionary[budget.dateString] != nil {
             print("already have budget")
         } else {
-            budgetDictionary[budget.date] = budget
+            budgetDictionary[budget.dateString] = budget
         }
         update()
     }
     
     static func deleteBudget(_ budget: Budget) {
-        budgetDictionary.removeValue(forKey: budget.date)
+        budgetDictionary.removeValue(forKey: budget.dateString)
         update()
     }
     
@@ -47,7 +47,7 @@ class BudgetStore {
             for item in transaction.items {
                 if let categoryItems = budget.items[item.budgetItemCategory] {
                     for i in categoryItems {
-                        if i.id == item.budgetItem {
+                        if i.name == item.name {
                             i.addTransaction(transaction)
                             break
                         }
@@ -55,8 +55,8 @@ class BudgetStore {
                 }
             }
         } else {
-            budgetDictionary[transaction.budgetDate] = Budget(date: transaction.budgetDate, items: BudgetItem.defaultBudgetItems())
-            addTransaction(transaction)
+            BudgetStore.addBudget(Budget(date: transaction.budgetDate, items: BudgetItem.defaultBudgetItems()))
+            BudgetStore.addTransaction(transaction)
         }
         update()
     }
@@ -88,7 +88,7 @@ class BudgetStore {
             budgets.append(v)
         }
         
-        return budgets
+        return budgets.sorted(by: <)
     }
     
     private static func getBudgetDictionary() -> [String: Budget] {
@@ -96,8 +96,8 @@ class BudgetStore {
         
         if LocalAccess.reset {
             let currentBudget = Budget(date: Budget.dateToString(Date()), items: BudgetItem.defaultBudgetItems())
-            update(data: [currentBudget.date : currentBudget], url: budgetURL)
-            return [currentBudget.date : currentBudget]
+            update(data: [currentBudget.dateString : currentBudget], url: budgetURL)
+            return [currentBudget.dateString : currentBudget]
         }
         
         do {
@@ -113,7 +113,7 @@ class BudgetStore {
         }
         
         let currentBudget = Budget(date: Budget.dateToString(Date()), items: BudgetItem.defaultBudgetItems())
-        return [currentBudget.date : currentBudget]
+        return [currentBudget.dateString : currentBudget]
     }
     
     static func update() {

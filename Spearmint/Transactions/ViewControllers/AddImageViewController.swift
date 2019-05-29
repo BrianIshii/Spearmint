@@ -82,10 +82,10 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
         image = selectedImage
         
         //uncomment to get text of image
-//        let visionImage = VisionImage(image: selectedImageView.image!)
-//        textRecognizer.process(visionImage) { (features, error) in
-//            self.processResult(from: features, error: error)
-//        }
+        let visionImage = VisionImage(image: selectedImageView.image!)
+        textRecognizer.process(visionImage) { (features, error) in
+            self.processResult(from: features, error: error)
+        }
         
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)

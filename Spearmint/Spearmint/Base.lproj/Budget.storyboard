@@ -45,7 +45,7 @@
                                         </button>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="K1v-zn-U2r">
                                             <connections>
-                                                <segue destination="ozu-5s-ett" kind="show" id="hJc-Mb-1wq"/>
+                                                <segue destination="ozu-5s-ett" kind="presentation" id="hJc-Mb-1wq"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -240,7 +240,7 @@
             <objects>
                 <viewController id="9Fi-TT-rsW" customClass="AddBudgetItemSectionViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w8D-Gt-0gW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bov-4m-cn2">
@@ -281,6 +281,7 @@
                             <constraint firstItem="dJ2-oN-23J" firstAttribute="top" secondItem="bwr-qN-DIZ" secondAttribute="bottom" constant="7" id="x8D-YK-gvr"/>
                             <constraint firstItem="bwr-qN-DIZ" firstAttribute="width" secondItem="w8D-Gt-0gW" secondAttribute="width" id="ynX-IZ-qfa"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="hpg-of-lNf"/>
                     </view>
                     <connections>
                         <outlet property="budgetCategoryPicker" destination="dCP-3Q-KV4" id="9Fj-gT-w5k"/>
@@ -294,6 +295,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0Be-7r-Wbj"/>
+        <segue reference="KaS-Ta-USh"/>
     </inferredMetricsTieBreakers>
 </document>

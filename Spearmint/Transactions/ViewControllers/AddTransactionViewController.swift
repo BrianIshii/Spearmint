@@ -22,6 +22,7 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var addImageView: UITableView!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     static let segueIdentifier = "addTransactionViewControllerSegue"
     private let addImageViewSegueIdentifier = "AddImageSegue"
@@ -33,7 +34,11 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     var selectedImage: UIImageView!
     var items: [Item] = []
     static let defaultFields: Int = 5
-    
+    var isKeyboardPresent: Bool = false
+    var keyboardHeight: CGFloat = 0
+    var tableViewOriginalY: CGFloat = 0
+//    var NavigationBarOriginalY: CGFloat = 0
+
     let locationManager = CLLocationManager()
     var mapRegion: MKCoordinateRegion?
     
@@ -45,7 +50,40 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         tableView.dataSource = self
         
         configureLocationManager()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+//            self.view.frame.origin.y -= keyboardSize.height
+//        }
+        print("k appear")
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if (!isKeyboardPresent) {
+                tableViewOriginalY = tableView.frame.origin.y
+                tableView.frame.origin.y -= keyboardSize.height
+                
+//                NavigationBarOriginalY = navigationBar.frame.origin.y
+//                navigationBar.frame.origin.y += keyboardSize.height
+                
+                isKeyboardPresent = true
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        print("k disappear")
+        if (isKeyboardPresent) {
+            tableView.frame.origin.y = tableViewOriginalY
+            
+//            navigationBar.frame.origin.y = NavigationBarOriginalY
+            isKeyboardPresent = false
+        }
+    }
+
     
     func configureLocationManager() {
         CLLocationManager.locationServicesEnabled()

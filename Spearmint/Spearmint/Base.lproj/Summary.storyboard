@@ -89,6 +89,7 @@
                             <constraint firstItem="o8c-9M-OVC" firstAttribute="height" secondItem="UiF-K1-GrG" secondAttribute="height" id="mnq-fn-JO9"/>
                             <constraint firstItem="o8c-9M-OVC" firstAttribute="centerX" secondItem="UiF-K1-GrG" secondAttribute="centerX" id="v24-LV-iSB"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="ps4-6g-ZV5"/>
                     </view>
                     <connections>
                         <outlet property="balanceLabel" destination="gb0-op-TtI" id="CnU-dh-MDI"/>
@@ -106,14 +107,8 @@
                     <view key="view" contentMode="scaleToFill" id="Bor-O5-2C4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="404"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qkp-RD-3x9">
-                                <rect key="frame" x="150" y="189" width="112" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add Transaction"/>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wGJ-lq-oOJ"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fTD-UU-SvV" userLabel="First Responder" sceneMemberID="firstResponder"/>

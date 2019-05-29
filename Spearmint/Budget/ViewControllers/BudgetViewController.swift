@@ -34,11 +34,15 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
         collectionView.collectionViewLayout = layout
         collectionView.register(UINib(nibName: BudgetCollectionViewCell.xib, bundle: nil), forCellWithReuseIdentifier: BudgetCollectionViewCell.reuseIdentifier)
         
+        collectionView.accessibilityScroll(UIAccessibilityScrollDirection.right)
+        
         budgetButton.setTitle(BudgetStore.getBudget(Budget.dateToString(Date())).month, for: .normal)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if let viewController = budgetTableViewContoller, BudgetStore.budgetViewControllerNeedsUpdate {
+            budgets = BudgetStore.budgets
+            collectionView.reloadData()
             viewController.tableView.reloadData()
             BudgetStore.budgetViewControllerNeedsUpdate = false
         }

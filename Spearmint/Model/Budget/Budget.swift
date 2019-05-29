@@ -10,12 +10,12 @@ import Foundation
 
 class Budget: Codable {
     
-    var date: String
+    var dateString: String
     var transactions: [TransactionID]
     var items: [BudgetItemCategory:[BudgetItem]]
     
     init(date: String, items: [BudgetItemCategory:[BudgetItem]]) {
-        self.date = date
+        self.dateString = date
         self.transactions = []
         self.items = items
     }
@@ -59,11 +59,19 @@ class Budget: Codable {
         return expenses
     }
     
+    static func < (lft: Budget, rht: Budget) -> Bool {
+        return lft.date < rht.date
+    }
+
+    var date: Date {
+        return DateFormatterFactory.yearAndMonthFormatter.date(from: dateString)!
+    }
+    
     var month: String {
-        return DateFormatterFactory.monthFormatter.string(from: DateFormatterFactory.yearAndMonthFormatter.date(from: date)!)
+        return DateFormatterFactory.monthFormatter.string(from: date)
     }
     
     var year: String {
-        return DateFormatterFactory.yearFormatter.string(from: DateFormatterFactory.yearAndMonthFormatter.date(from: date)!)
+        return DateFormatterFactory.yearFormatter.string(from: date)
     }
 }
