@@ -29,7 +29,7 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     
     var transaction: Transaction?
     var amountTextField: UITextField!
-    var vendorTextField: UITextField!
+    var vendorTextField: VendorTextField!
     var dateLabel: UILabel!
     var selectedImage: UIImageView!
     var items: [Item] = []
@@ -108,14 +108,18 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         let search = MKLocalSearch(request: request)
         search.start(completionHandler:
             { localSearchResponse, error in
-                
+                var temp: [String] = []
                 if error == nil {
                     for item in localSearchResponse!.mapItems {
+                        if let name = item.name {
+                            temp.append(name)
+                        }
                         print(item.name)
                     }
                     
                     DispatchQueue.main.async {
-                        self.tableView.reloadData()
+                        self.vendorTextField.view.suggestions = temp
+                        self.vendorTextField.view.addSuggestions()
                     }
                 }
         })

@@ -12,10 +12,12 @@ class VendorTableViewCell: UITableViewCell {
     static let xib = "VendorTableViewCell"
 
     @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textField: VendorTextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

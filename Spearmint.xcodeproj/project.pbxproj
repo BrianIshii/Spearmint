@@ -10,6 +10,8 @@
 		1BD869F4432509ACB31B176D /* Pods_Spearmint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C3706670F34FDD564F61587 /* Pods_Spearmint.framework */; };
 		550B0A36AECD4801F762FADE /* Pods_SpearmintTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E80DB5F205651E2DAB92ECD /* Pods_SpearmintTests.framework */; };
 		6FA114086373F46C7BF691A3 /* Pods_SpearmintUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BA4C0BF29F1449C4A62DFD2 /* Pods_SpearmintUITests.framework */; };
+		7632756D229F08930099532A /* VendorTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7632756C229F08930099532A /* VendorTextField.swift */; };
+		76327575229F13FC0099532A /* SuggestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76327574229F13FC0099532A /* SuggestionsView.swift */; };
 		7637A60D22862B6B007DD20B /* BudgetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637A60C22862B6B007DD20B /* BudgetStore.swift */; };
 		7637A61022864DBF007DD20B /* Budget.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7637A60E22864DBF007DD20B /* Budget.storyboard */; };
 		7637A61422864F23007DD20B /* BudgetItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7637A61322864F23007DD20B /* BudgetItemTableViewCell.xib */; };
@@ -126,6 +128,8 @@
 		30F790D55FB47E58942AC213 /* Pods-SpearmintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpearmintTests.debug.xcconfig"; path = "Target Support Files/Pods-SpearmintTests/Pods-SpearmintTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3BA4C0BF29F1449C4A62DFD2 /* Pods_SpearmintUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpearmintUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		738DBB691C06DD966F9B38D1 /* Pods-SpearmintTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpearmintTests.release.xcconfig"; path = "Target Support Files/Pods-SpearmintTests/Pods-SpearmintTests.release.xcconfig"; sourceTree = "<group>"; };
+		7632756C229F08930099532A /* VendorTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorTextField.swift; sourceTree = "<group>"; };
+		76327574229F13FC0099532A /* SuggestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsView.swift; sourceTree = "<group>"; };
 		7637A60C22862B6B007DD20B /* BudgetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetStore.swift; sourceTree = "<group>"; };
 		7637A60F22864DBF007DD20B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Spearmint/Base.lproj/Budget.storyboard; sourceTree = "<group>"; };
 		7637A61322864F23007DD20B /* BudgetItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BudgetItemTableViewCell.xib; sourceTree = "<group>"; };
@@ -293,6 +297,8 @@
 			isa = PBXGroup;
 			children = (
 				7637A62D2287EE4D007DD20B /* MoneyTextField.swift */,
+				7632756C229F08930099532A /* VendorTextField.swift */,
+				76327574229F13FC0099532A /* SuggestionsView.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -998,6 +1004,7 @@
 				76B548EF22953685001B2FB1 /* BudgetDataSource.swift in Sources */,
 				76A2FA562281F8BE0066D594 /* AddTransactionViewController.swift in Sources */,
 				76A2FA6E228375970066D594 /* TransactionID.swift in Sources */,
+				7632756D229F08930099532A /* VendorTextField.swift in Sources */,
 				764AFD88226E7060007BFD90 /* AppDelegate.swift in Sources */,
 				76A2FA4C2280B4300066D594 /* TransactionTableViewCell.swift in Sources */,
 				76EF34582298AAFB005A5C35 /* VisionViewController.swift in Sources */,
@@ -1022,6 +1029,7 @@
 				76A2FA722284FEFC0066D594 /* TransactionDate.swift in Sources */,
 				7689F7132270E31A00AD4225 /* Budget.swift in Sources */,
 				7637A6382288AF75007DD20B /* BudgetItemListTableView.swift in Sources */,
+				76327575229F13FC0099532A /* SuggestionsView.swift in Sources */,
 				76EF34652299E029005A5C35 /* AddBudgetItemSectionViewController.swift in Sources */,
 				76B548DC2294ECA9001B2FB1 /* ImageStore.swift in Sources */,
 				764AFDBA226EC283007BFD90 /* SettingsTableViewController.swift in Sources */,
