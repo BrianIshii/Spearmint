@@ -9,10 +9,10 @@
 import UIKit
 
 class SuggestionsView: UIView {
-    @IBOutlet weak dynamic var toolBar: UIToolbar!
-    @IBOutlet weak dynamic var leftItem: UIBarButtonItem!
-    @IBOutlet weak dynamic var middleItem: UIBarButtonItem!
-    @IBOutlet weak dynamic var rightItem: UIBarButtonItem!
+    @IBOutlet weak var toolBar: UIToolbar!
+    @IBOutlet weak var leftItem: UIBarButtonItem!
+    @IBOutlet weak var middleItem: UIBarButtonItem!
+    @IBOutlet weak var rightItem: UIBarButtonItem!
 
     weak var textField: VendorTextField?
     
@@ -68,7 +68,7 @@ class SuggestionsView: UIView {
         }
     }
     
-    @objc func addSuggestions() {
+    func addSuggestions() {
         leftItem.title = suggestions[0]
         middleItem.title = suggestions[1]
         rightItem.title = suggestions[2]

@@ -39,7 +39,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="387"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RXY-RI-qWk">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iAa-gJ-9My">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -72,8 +72,8 @@
                                                     <constraint firstItem="qcq-PA-B8F" firstAttribute="leading" secondItem="iAa-gJ-9My" secondAttribute="leading" id="zmP-MS-sVh"/>
                                                 </constraints>
                                             </view>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gOU-jL-PTP">
-                                                <rect key="frame" x="0.0" y="50" width="414" height="350"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gOU-jL-PTP">
+                                                <rect key="frame" x="0.0" y="50" width="414" height="750"/>
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="dOG-tE-RvY" appends="YES" id="u2N-9c-3I1"/>
@@ -82,8 +82,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="iAa-gJ-9My" firstAttribute="width" secondItem="gOU-jL-PTP" secondAttribute="width" id="9PM-aG-Tvf"/>
-                                            <constraint firstAttribute="height" constant="400" id="BpJ-TT-Ijp"/>
-                                            <constraint firstItem="gOU-jL-PTP" firstAttribute="top" secondItem="iAa-gJ-9My" secondAttribute="bottom" id="aXC-ss-mbw"/>
+                                            <constraint firstAttribute="height" constant="800" id="BpJ-TT-Ijp"/>
                                             <constraint firstItem="gOU-jL-PTP" firstAttribute="top" secondItem="iAa-gJ-9My" secondAttribute="bottom" id="j0J-Go-V61"/>
                                         </constraints>
                                     </stackView>
@@ -123,15 +122,12 @@
                     <connections>
                         <outlet property="cameraButton" destination="uN4-XX-vHM" id="oon-i7-LsK"/>
                         <outlet property="selectedImageView" destination="gOU-jL-PTP" id="WAW-qw-BDF"/>
+                        <outlet property="stackView" destination="RXY-RI-qWk" id="uuk-6J-3rh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HNH-J7-sRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ekW-dp-umz" userLabel="Exit" sceneMemberID="exit"/>
-                <tapGestureRecognizer id="dOG-tE-RvY">
-                    <connections>
-                        <action selector="onSelectImageView:" destination="p8S-S3-QhZ" id="wZ7-d6-yhP"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="dOG-tE-RvY"/>
             </objects>
             <point key="canvasLocation" x="505.79710144927537" y="-1336.6071428571429"/>
         </scene>
@@ -143,11 +139,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="387"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="MQB-T7-GKX"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PxI-nu-4eH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1387" y="-958"/>
+            <point key="canvasLocation" x="1372" y="-1170"/>
         </scene>
     </scenes>
 </document>

@@ -9,11 +9,12 @@
 import UIKit
 import FirebaseMLVision
 
-class AddImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var textRecognizer: VisionTextRecognizer!
 
     @IBOutlet weak var selectedImageView: UIImageView!
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var cameraButton: UIButton!
     var image: UIImage?
     
@@ -69,8 +70,8 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
         // Dismiss the picker if the user canceled.
         dismiss(animated: true, completion: nil)
     }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         // The info dictionary may contain multiple representations of the image. You want to use the original.
         guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
@@ -78,6 +79,7 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
         }
         
         // Set photoImageView to display the selected image.
+
         selectedImageView.image = selectedImage
         image = selectedImage
         
@@ -108,10 +110,55 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
         for block in text!.blocks {
             for line in block.lines {
                 for element in line.elements {
-                    print(element.text)
+                    print(element.text + element.frame.debugDescription)
+                    let transformedRect = element.frame.applying(transformMatrix())
+
+                    let view = ImageFrameView(frame: transformedRect)
+                    view.backgroundColor = .blue
+                    view.text = element.text
+                    selectedImageView.addSubview(view)
+                    
+                    let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+                    
+                    gestureRecognizer.delegate = self
+                    view.addGestureRecognizer(gestureRecognizer)
                 }
             }
         }
     }
+    
+    @objc func handleTap(_ sender: Any) {
+        if let gesture = sender as? UITapGestureRecognizer,
+            let view = gesture.view as? ImageFrameView {
+            print(view.text)
+        }
+        print("tapped")
+    }
+    
+    private func transformMatrix() -> CGAffineTransform {
+        guard let image = selectedImageView.image else { return CGAffineTransform() }
+        let imageViewWidth = selectedImageView.frame.size.width
+        let imageViewHeight = selectedImageView.frame.size.height
+        let imageWidth = image.size.width
+        let imageHeight = image.size.height
+        
+        let imageViewAspectRatio = imageViewWidth / imageViewHeight
+        let imageAspectRatio = imageWidth / imageHeight
+        let scale = (imageViewAspectRatio > imageAspectRatio) ?
+            imageViewHeight / imageHeight :
+            imageViewWidth / imageWidth
+        
+        // Image view's `contentMode` is `scaleAspectFit`, which scales the image to fit the size of the
+        // image view by maintaining the aspect ratio. Multiple by `scale` to get image's original size.
+        let scaledImageWidth = imageWidth * scale
+        let scaledImageHeight = imageHeight * scale
+        let xValue = (imageViewWidth - scaledImageWidth) / CGFloat(2.0)
+        let yValue = (imageViewHeight - scaledImageHeight) / CGFloat(2.0)
+        
+        var transform = CGAffineTransform.identity.translatedBy(x: xValue, y: yValue)
+        transform = transform.scaledBy(x: scale, y: scale)
+        return transform
+    }
+
 
 }

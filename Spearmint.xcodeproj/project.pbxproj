@@ -12,6 +12,7 @@
 		6FA114086373F46C7BF691A3 /* Pods_SpearmintUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BA4C0BF29F1449C4A62DFD2 /* Pods_SpearmintUITests.framework */; };
 		7632756D229F08930099532A /* VendorTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7632756C229F08930099532A /* VendorTextField.swift */; };
 		76327575229F13FC0099532A /* SuggestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76327574229F13FC0099532A /* SuggestionsView.swift */; };
+		763275BF22A59FF20099532A /* ImageFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763275BE22A59FF20099532A /* ImageFrameView.swift */; };
 		7637A60D22862B6B007DD20B /* BudgetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637A60C22862B6B007DD20B /* BudgetStore.swift */; };
 		7637A61022864DBF007DD20B /* Budget.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7637A60E22864DBF007DD20B /* Budget.storyboard */; };
 		7637A61422864F23007DD20B /* BudgetItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7637A61322864F23007DD20B /* BudgetItemTableViewCell.xib */; };
@@ -130,6 +131,7 @@
 		738DBB691C06DD966F9B38D1 /* Pods-SpearmintTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpearmintTests.release.xcconfig"; path = "Target Support Files/Pods-SpearmintTests/Pods-SpearmintTests.release.xcconfig"; sourceTree = "<group>"; };
 		7632756C229F08930099532A /* VendorTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorTextField.swift; sourceTree = "<group>"; };
 		76327574229F13FC0099532A /* SuggestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsView.swift; sourceTree = "<group>"; };
+		763275BE22A59FF20099532A /* ImageFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFrameView.swift; sourceTree = "<group>"; };
 		7637A60C22862B6B007DD20B /* BudgetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetStore.swift; sourceTree = "<group>"; };
 		7637A60F22864DBF007DD20B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Spearmint/Base.lproj/Budget.storyboard; sourceTree = "<group>"; };
 		7637A61322864F23007DD20B /* BudgetItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BudgetItemTableViewCell.xib; sourceTree = "<group>"; };
@@ -558,6 +560,7 @@
 				76A2FA552281F8BE0066D594 /* AddTransactionViewController.swift */,
 				76B548D722916195001B2FB1 /* AddTransactionImageViewController.swift */,
 				76EF34592298D254005A5C35 /* AddImageViewController.swift */,
+				763275BE22A59FF20099532A /* ImageFrameView.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -983,6 +986,7 @@
 				76D22F84229A324500C06567 /* PriceCheckViewController.swift in Sources */,
 				7689F7152270E39900AD4225 /* TransactionType.swift in Sources */,
 				76EF345422963BF1005A5C35 /* BudgetItemSectionStore.swift in Sources */,
+				763275BF22A59FF20099532A /* ImageFrameView.swift in Sources */,
 				76EF34602298F8AF005A5C35 /* AddBudgetItemViewController.swift in Sources */,
 				76B548C022913DB4001B2FB1 /* ConfigurableCell.swift in Sources */,
 				7637A62E2287EE4D007DD20B /* MoneyTextField.swift in Sources */,
