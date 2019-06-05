@@ -64,7 +64,7 @@ class Budget: Codable {
     }
 
     var date: Date {
-        return DateFormatterFactory.yearAndMonthFormatter.date(from: dateString)!
+        return DateFormatterFactory.yearAndMonthFormatter.date(from: dateString) ?? Date()
     }
     
     var month: String {

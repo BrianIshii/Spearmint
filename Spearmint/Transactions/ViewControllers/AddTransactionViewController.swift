@@ -37,6 +37,7 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     var isKeyboardPresent: Bool = false
     var keyboardHeight: CGFloat = 0
     var tableViewOriginalY: CGFloat = 0
+    var numberOfSections: Int = 1
 //    var NavigationBarOriginalY: CGFloat = 0
 
     let locationManager = CLLocationManager()
@@ -87,15 +88,26 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     
     func configureLocationManager() {
         CLLocationManager.locationServicesEnabled()
-        locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
         locationManager.desiredAccuracy = 1.0
         locationManager.distanceFilter = 100.0
         locationManager.startUpdatingLocation()
-        print(locationManager.location?.coordinate)
+        locationManager.requestWhenInUseAuthorization()
+    }
+    
+    func getLocation() {
         let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
         mapRegion = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
         findNearbyRestaurants()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse:
+            getLocation()
+        default:
+            return
+        }
     }
     
     func findNearbyRestaurants() {
@@ -125,65 +137,86 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         })
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return numberOfSections
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return AddTransactionViewController.defaultFields + items.count
+        if section == 0 {
+            return AddTransactionViewController.defaultFields + items.count
+        }
+        return 0
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == rows.image.rawValue {
-            return CGFloat(100)
-        } else if indexPath.row ==  rows.date.rawValue {
-            return CGFloat(240)
+        if indexPath.section == 0 {
+            if indexPath.row == rows.image.rawValue {
+                return CGFloat(100)
+            } else if indexPath.row ==  rows.date.rawValue {
+                return CGFloat(240)
+            }
+            return CGFloat(60)
         }
         return CGFloat(60)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case rows.date.rawValue:
-            let cell = Bundle.main.loadNibNamed(DateTableViewCell.xib, owner: self, options: nil)?.first as! DateTableViewCell
-            configureDateCell(cell: cell, indexPath: indexPath)
-            return cell
-        case rows.amount.rawValue:
-            let cell = Bundle.main.loadNibNamed(AmountTableViewCell.xib, owner: self, options: nil)?.first as! AmountTableViewCell
-            configureAmountCell(cell: cell, indexPath: indexPath)
-            return cell
-        case rows.items.rawValue:
-            let cell = Bundle.main.loadNibNamed(AddTransactionBudgetItemTableViewCell.xib, owner: self, options: nil)?.first as! AddTransactionBudgetItemTableViewCell
-            
-            return cell
-        case rows.image.rawValue:
-            let cell = Bundle.main.loadNibNamed(ImageViewTableViewCell.xib, owner: self, options: nil)?.first as! ImageViewTableViewCell
-            
-            if let t = transaction, t.hasImage == true {
-                cell.recieptImageView.image = ImageStore.getImage(transactionID: t.id)
-            } else {
-                cell.recieptImageView.image = UIImage(imageLiteralResourceName: "default")
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case rows.date.rawValue:
+                let cell = Bundle.main.loadNibNamed(DateTableViewCell.xib, owner: self, options: nil)?.first as! DateTableViewCell
+                configureDateCell(cell: cell, indexPath: indexPath)
+                return cell
+            case rows.amount.rawValue:
+                let cell = Bundle.main.loadNibNamed(AmountTableViewCell.xib, owner: self, options: nil)?.first as! AmountTableViewCell
+                configureAmountCell(cell: cell, indexPath: indexPath)
+                return cell
+            case rows.items.rawValue:
+                let cell = Bundle.main.loadNibNamed(AddTransactionBudgetItemTableViewCell.xib, owner: self, options: nil)?.first as! AddTransactionBudgetItemTableViewCell
+                
+                return cell
+            case rows.image.rawValue:
+                let cell = Bundle.main.loadNibNamed(ImageViewTableViewCell.xib, owner: self, options: nil)?.first as! ImageViewTableViewCell
+                
+                if let t = transaction, t.hasImage == true {
+                    cell.recieptImageView.image = ImageStore.getImage(transactionID: t.id)
+                } else {
+                    cell.recieptImageView.image = UIImage(imageLiteralResourceName: "default")
+                }
+                selectedImage = cell.recieptImageView
+                cell.controller = self
+                
+    //            let tap = UIGestureRecognizer(target: self, action: #selector(self.tappedImageView(_:)))
+    //            cell.isUserInteractionEnabled = true
+    //            cell.imageView?.addGestureRecognizer(tap)
+    //            cell.imageView?.isUserInteractionEnabled = true
+                return cell
+            case rows.vendor.rawValue:
+                let cell = Bundle.main.loadNibNamed(VendorTableViewCell.xib, owner: self, options: nil)?.first as! VendorTableViewCell
+                
+                vendorTextField = cell.textField
+                vendorTextField.delegate = self
+                
+                return cell
+            default:
+                let cell = Bundle.main.loadNibNamed(ItemTableViewCell.xib, owner: self, options: nil)?.first as! ItemTableViewCell
+                
+                let item = items[indexPath.row - AddTransactionViewController.defaultFields]
+                
+                cell.itemName.text = item.name
+                
+                return cell
             }
-            selectedImage = cell.recieptImageView
-            cell.controller = self
-            
-//            let tap = UIGestureRecognizer(target: self, action: #selector(self.tappedImageView(_:)))
-//            cell.isUserInteractionEnabled = true
-//            cell.imageView?.addGestureRecognizer(tap)
-//            cell.imageView?.isUserInteractionEnabled = true
-            return cell
-        case rows.vendor.rawValue:
-            let cell = Bundle.main.loadNibNamed(VendorTableViewCell.xib, owner: self, options: nil)?.first as! VendorTableViewCell
-            
-            vendorTextField = cell.textField
-            vendorTextField.delegate = self
-            
-            return cell
-        default:
-            let cell = Bundle.main.loadNibNamed(ItemTableViewCell.xib, owner: self, options: nil)?.first as! ItemTableViewCell
-            
-            let item = items[indexPath.row - AddTransactionViewController.defaultFields]
-            
-            cell.itemName.text = item.name
-            
-            return cell
         }
+        let cell = Bundle.main.loadNibNamed(ItemTableViewCell.xib, owner: self, options: nil)?.first as! ItemTableViewCell
+        
+        let item = items[indexPath.row - AddTransactionViewController.defaultFields]
+        
+        cell.itemName.text = item.name
+        
+        return cell
+        
     }
     
     @objc func tappedImageView(_ sender: UIGestureRecognizer) {
@@ -218,13 +251,15 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case rows.items.rawValue:
-            performSegue(withIdentifier: AddBudgetItemSegue.segueIdentifier, sender: nil)
-        case rows.image.rawValue:
-            performSegue(withIdentifier: addImageViewSegueIdentifier, sender: nil)
-        default:
-            return
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case rows.items.rawValue:
+                performSegue(withIdentifier: AddBudgetItemSegue.segueIdentifier, sender: nil)
+            case rows.image.rawValue:
+                performSegue(withIdentifier: addImageViewSegueIdentifier, sender: nil)
+            default:
+                return
+            }
         }
     }
     
@@ -304,8 +339,10 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
                 items.append(Item(name: budgetItem.name, amount: 0, budgetItem: budgetItem.id, budgetItemCategory: budgetItem.category))
                 newIndexPaths.append(IndexPath(row: AddTransactionViewController.defaultFields + index, section: 0))
             }
-            
             tableView.insertRows(at: newIndexPaths, with: UITableView.RowAnimation.automatic)
+
+            numberOfSections += 1
+            tableView.insertSections([1], with: UITableView.RowAnimation.automatic)
         } else if let sourceViewController = sender.source as? AddImageViewController, let image = sourceViewController.image {
             print("unwind")
             selectedImage.image = image

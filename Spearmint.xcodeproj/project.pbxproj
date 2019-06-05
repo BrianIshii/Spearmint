@@ -13,6 +13,9 @@
 		7632756D229F08930099532A /* VendorTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7632756C229F08930099532A /* VendorTextField.swift */; };
 		76327575229F13FC0099532A /* SuggestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76327574229F13FC0099532A /* SuggestionsView.swift */; };
 		763275BF22A59FF20099532A /* ImageFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763275BE22A59FF20099532A /* ImageFrameView.swift */; };
+		763275C322A5B9EE0099532A /* AddContentsFromImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763275C222A5B9EE0099532A /* AddContentsFromImageViewController.swift */; };
+		763275C722A836FB0099532A /* AddItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763275C522A836FB0099532A /* AddItemTableViewCell.swift */; };
+		763275C822A836FB0099532A /* AddItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763275C622A836FB0099532A /* AddItemTableViewCell.xib */; };
 		7637A60D22862B6B007DD20B /* BudgetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637A60C22862B6B007DD20B /* BudgetStore.swift */; };
 		7637A61022864DBF007DD20B /* Budget.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7637A60E22864DBF007DD20B /* Budget.storyboard */; };
 		7637A61422864F23007DD20B /* BudgetItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7637A61322864F23007DD20B /* BudgetItemTableViewCell.xib */; };
@@ -132,6 +135,9 @@
 		7632756C229F08930099532A /* VendorTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorTextField.swift; sourceTree = "<group>"; };
 		76327574229F13FC0099532A /* SuggestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsView.swift; sourceTree = "<group>"; };
 		763275BE22A59FF20099532A /* ImageFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFrameView.swift; sourceTree = "<group>"; };
+		763275C222A5B9EE0099532A /* AddContentsFromImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentsFromImageViewController.swift; sourceTree = "<group>"; };
+		763275C522A836FB0099532A /* AddItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTableViewCell.swift; sourceTree = "<group>"; };
+		763275C622A836FB0099532A /* AddItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddItemTableViewCell.xib; sourceTree = "<group>"; };
 		7637A60C22862B6B007DD20B /* BudgetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetStore.swift; sourceTree = "<group>"; };
 		7637A60F22864DBF007DD20B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Spearmint/Base.lproj/Budget.storyboard; sourceTree = "<group>"; };
 		7637A61322864F23007DD20B /* BudgetItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BudgetItemTableViewCell.xib; sourceTree = "<group>"; };
@@ -273,6 +279,15 @@
 				3BA4C0BF29F1449C4A62DFD2 /* Pods_SpearmintUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		763275C922A837030099532A /* AddItemTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				763275C522A836FB0099532A /* AddItemTableViewCell.swift */,
+				763275C622A836FB0099532A /* AddItemTableViewCell.xib */,
+			);
+			path = AddItemTableViewCell;
 			sourceTree = "<group>";
 		};
 		7637A6212286B548007DD20B /* Transaction */ = {
@@ -561,6 +576,7 @@
 				76B548D722916195001B2FB1 /* AddTransactionImageViewController.swift */,
 				76EF34592298D254005A5C35 /* AddImageViewController.swift */,
 				763275BE22A59FF20099532A /* ImageFrameView.swift */,
+				763275C222A5B9EE0099532A /* AddContentsFromImageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -568,6 +584,7 @@
 		76B548CB22915431001B2FB1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				763275C922A837030099532A /* AddItemTableViewCell */,
 				76B548D622915D20001B2FB1 /* ImageViewTableViewCell */,
 				76B548D1229154C8001B2FB1 /* TransactionTableViewCell */,
 				76B548D022915496001B2FB1 /* AddTransactionBudgetItemTableViewCell */,
@@ -842,6 +859,7 @@
 				7637A6422288FED8007DD20B /* SelectBudgetItemTableViewCell.xib in Resources */,
 				76B548D322915C7D001B2FB1 /* ImageViewTableViewCell.xib in Resources */,
 				76A2FA642282229D0066D594 /* Transactions.storyboard in Resources */,
+				763275C822A836FB0099532A /* AddItemTableViewCell.xib in Resources */,
 				7637A6232287ACEF007DD20B /* AddTransactionBudgetItemTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -986,6 +1004,7 @@
 				76D22F84229A324500C06567 /* PriceCheckViewController.swift in Sources */,
 				7689F7152270E39900AD4225 /* TransactionType.swift in Sources */,
 				76EF345422963BF1005A5C35 /* BudgetItemSectionStore.swift in Sources */,
+				763275C722A836FB0099532A /* AddItemTableViewCell.swift in Sources */,
 				763275BF22A59FF20099532A /* ImageFrameView.swift in Sources */,
 				76EF34602298F8AF005A5C35 /* AddBudgetItemViewController.swift in Sources */,
 				76B548C022913DB4001B2FB1 /* ConfigurableCell.swift in Sources */,
@@ -1023,6 +1042,7 @@
 				76D22F7E229A281B00C06567 /* AnalysisViewController.swift in Sources */,
 				7637A61622864FC5007DD20B /* BudgetItemTableViewCell.swift in Sources */,
 				7637A6252287AE00007DD20B /* AddTransactionBudgetItemTableViewCell.swift in Sources */,
+				763275C322A5B9EE0099532A /* AddContentsFromImageViewController.swift in Sources */,
 				7637A6282287EAB4007DD20B /* PieChartView.swift in Sources */,
 				76B548E622952EEE001B2FB1 /* MasterSummaryViewController.swift in Sources */,
 				764AFDBC226EC377007BFD90 /* SettingsTableViewCell.swift in Sources */,

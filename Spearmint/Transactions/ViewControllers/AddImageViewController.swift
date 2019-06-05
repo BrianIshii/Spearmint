@@ -12,9 +12,9 @@ import FirebaseMLVision
 class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var textRecognizer: VisionTextRecognizer!
+    weak var addContentsViewController: AddContentsFromImageViewController?
 
     @IBOutlet weak var selectedImageView: UIImageView!
-    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var cameraButton: UIButton!
     var image: UIImage?
     
@@ -43,15 +43,18 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
         dismiss(animated: true, completion: nil)
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if let vc = segue.destination as? AddContentsFromImageViewController {
+            addContentsViewController = vc
+        }
     }
-    */
+ 
     @IBAction func onSelectImageView(_ sender: Any) {
         print("hi")
         selectImage()
@@ -79,7 +82,7 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
         }
         
         // Set photoImageView to display the selected image.
-
+        
         selectedImageView.image = selectedImage
         image = selectedImage
         
@@ -115,6 +118,7 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
 
                     let view = ImageFrameView(frame: transformedRect)
                     view.backgroundColor = .blue
+                    view.alpha = 0.3
                     view.text = element.text
                     selectedImageView.addSubview(view)
                     
@@ -130,6 +134,9 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
     @objc func handleTap(_ sender: Any) {
         if let gesture = sender as? UITapGestureRecognizer,
             let view = gesture.view as? ImageFrameView {
+            if let vc = addContentsViewController, let text = view.text {
+                vc.textField.text?.append(" \(text)")
+            }
             print(view.text)
         }
         print("tapped")
