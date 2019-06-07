@@ -17,7 +17,7 @@ enum rows : Int, Codable {
     case image = 0
 }
 
-class AddTransactionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate {
+class AddTransactionViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -33,11 +33,14 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     var dateLabel: UILabel!
     var selectedImage: UIImageView!
     var items: [Item] = []
+    var itemsDictionary: [[Item]] = []
+    var budgetItems: [BudgetItem] = []
     static let defaultFields: Int = 5
     var isKeyboardPresent: Bool = false
     var keyboardHeight: CGFloat = 0
     var tableViewOriginalY: CGFloat = 0
     var numberOfSections: Int = 1
+    var canAddItems: Bool = true
 //    var NavigationBarOriginalY: CGFloat = 0
 
     let locationManager = CLLocationManager()
@@ -137,88 +140,6 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         })
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return numberOfSections
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return AddTransactionViewController.defaultFields + items.count
-        }
-        return 0
-        
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            if indexPath.row == rows.image.rawValue {
-                return CGFloat(100)
-            } else if indexPath.row ==  rows.date.rawValue {
-                return CGFloat(240)
-            }
-            return CGFloat(60)
-        }
-        return CGFloat(60)
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            switch indexPath.row {
-            case rows.date.rawValue:
-                let cell = Bundle.main.loadNibNamed(DateTableViewCell.xib, owner: self, options: nil)?.first as! DateTableViewCell
-                configureDateCell(cell: cell, indexPath: indexPath)
-                return cell
-            case rows.amount.rawValue:
-                let cell = Bundle.main.loadNibNamed(AmountTableViewCell.xib, owner: self, options: nil)?.first as! AmountTableViewCell
-                configureAmountCell(cell: cell, indexPath: indexPath)
-                return cell
-            case rows.items.rawValue:
-                let cell = Bundle.main.loadNibNamed(AddTransactionBudgetItemTableViewCell.xib, owner: self, options: nil)?.first as! AddTransactionBudgetItemTableViewCell
-                
-                return cell
-            case rows.image.rawValue:
-                let cell = Bundle.main.loadNibNamed(ImageViewTableViewCell.xib, owner: self, options: nil)?.first as! ImageViewTableViewCell
-                
-                if let t = transaction, t.hasImage == true {
-                    cell.recieptImageView.image = ImageStore.getImage(transactionID: t.id)
-                } else {
-                    cell.recieptImageView.image = UIImage(imageLiteralResourceName: "default")
-                }
-                selectedImage = cell.recieptImageView
-                cell.controller = self
-                
-    //            let tap = UIGestureRecognizer(target: self, action: #selector(self.tappedImageView(_:)))
-    //            cell.isUserInteractionEnabled = true
-    //            cell.imageView?.addGestureRecognizer(tap)
-    //            cell.imageView?.isUserInteractionEnabled = true
-                return cell
-            case rows.vendor.rawValue:
-                let cell = Bundle.main.loadNibNamed(VendorTableViewCell.xib, owner: self, options: nil)?.first as! VendorTableViewCell
-                
-                vendorTextField = cell.textField
-                vendorTextField.delegate = self
-                
-                return cell
-            default:
-                let cell = Bundle.main.loadNibNamed(ItemTableViewCell.xib, owner: self, options: nil)?.first as! ItemTableViewCell
-                
-                let item = items[indexPath.row - AddTransactionViewController.defaultFields]
-                
-                cell.itemName.text = item.name
-                
-                return cell
-            }
-        }
-        let cell = Bundle.main.loadNibNamed(ItemTableViewCell.xib, owner: self, options: nil)?.first as! ItemTableViewCell
-        
-        let item = items[indexPath.row - AddTransactionViewController.defaultFields]
-        
-        cell.itemName.text = item.name
-        
-        return cell
-        
-    }
-    
     @objc func tappedImageView(_ sender: UIGestureRecognizer) {
         print("hi")
     }
@@ -245,21 +166,6 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
             amountTextField = cell.textField
 
             //cell.configure(object: object)
-        }
-    }
-    
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            switch indexPath.row {
-            case rows.items.rawValue:
-                performSegue(withIdentifier: AddBudgetItemSegue.segueIdentifier, sender: nil)
-            case rows.image.rawValue:
-                performSegue(withIdentifier: addImageViewSegueIdentifier, sender: nil)
-            default:
-                return
-            }
         }
     }
     
@@ -316,6 +222,19 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         let budget = BudgetStore.budgetDictionary[budgetKey]
         let hasImage = ((selectedImage.image?.isEqualTo(UIImage(imageLiteralResourceName: "default")))!) ? false : true
         
+        var transactionItems: [Item] = []
+        
+        for (section, items) in itemsDictionary.enumerated() {
+            for (row, item) in items.enumerated() {
+                let indexPath = IndexPath(row: row, section: section + 1)
+                if let cell = tableView.cellForRow(at: indexPath) as? ItemTableViewCell {
+                    item.amount = cell.textField.getAmount()
+                    item.name = cell.nameTextField.text ?? ""
+                }
+                
+                transactionItems.append(item)
+            }
+        }
         
         for (index, item) in items.enumerated() {
             if let cell = tableView.cellForRow(at: IndexPath(row: index + AddTransactionViewController.defaultFields, section: 0)) as? ItemTableViewCell {
@@ -324,7 +243,7 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         }
         
         
-        transaction = Transaction(name: name, transactionType: transactionType, merchant: merchant, amount: Float(amount), date: date, location: "N/A", image: hasImage, notes: "notes", budgetID: budgetKey, items: items)
+        transaction = Transaction(name: name, transactionType: transactionType, merchant: merchant, amount: Float(amount), date: date, location: "N/A", image: hasImage, notes: "notes", budgetID: budgetKey, items: transactionItems)
         
         if hasImage {
             ImageStore.saveImage(selectedImage.image!, transactionID: transaction!.id)
@@ -333,49 +252,152 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBAction func unwind(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? AddBudgetItemsViewController, let selectedBudgetItems = sourceViewController.selectedBudgetItems {
-            
-            var newIndexPaths: [IndexPath] = []
-            for (index, budgetItem) in selectedBudgetItems.enumerated() {
-                items.append(Item(name: budgetItem.name, amount: 0, budgetItem: budgetItem.id, budgetItemCategory: budgetItem.category))
-                newIndexPaths.append(IndexPath(row: AddTransactionViewController.defaultFields + index, section: 0))
-            }
-            tableView.insertRows(at: newIndexPaths, with: UITableView.RowAnimation.automatic)
-
-            numberOfSections += 1
-            tableView.insertSections([1], with: UITableView.RowAnimation.automatic)
+            updateItems(selectedBudgetItems)
+            canAddItems = false
         } else if let sourceViewController = sender.source as? AddImageViewController, let image = sourceViewController.image {
             print("unwind")
             selectedImage.image = image
         }
     }
     
-//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-//        // Dismiss the picker if the user canceled.
-//        dismiss(animated: true, completion: nil)
-//    }
-//    
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        
-//        // The info dictionary may contain multiple representations of the image. You want to use the original.
-//        guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
-//            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
-//        }
-//        
-//        // Set photoImageView to display the selected image.
-//        self.selectedImage.image = selectedImage
-//        
-//        // Dismiss the picker.
-//        dismiss(animated: true, completion: nil)
-//    }
-//    
-//    func selectImage() {
-//        let imagePickerController = UIImagePickerController()
-//        
-//        
-//        // Make sure ViewController is notified when the user picks an image.
-//        imagePickerController.delegate = self
-//        imagePickerController.sourceType = .photoLibrary
-//        
-//        present(imagePickerController, animated: true, completion: nil)
-//    }
+    
+    fileprivate func updateItems(_ budgetItems: [BudgetItem]) {
+        self.budgetItems = budgetItems
+
+        for (index, budgetItem) in budgetItems.enumerated() {
+            var newIndexPaths: [IndexPath] = []
+
+            itemsDictionary.append([])
+            
+            numberOfSections += 1
+            tableView.insertSections([numberOfSections - 1], with: UITableView.RowAnimation.automatic)
+
+            let item: Item
+            if budgetItems.count == 1 {
+                item = Item(name: "", amount: Currency.currencyToFloat(amountTextField.text!), budgetItem: budgetItem.name, budgetItemCategory: budgetItem.category)
+            } else  {
+                item = Item(name: "", amount: 0, budgetItem: budgetItem.name, budgetItemCategory: budgetItem.category)
+            }
+            itemsDictionary[numberOfSections - 2].append(item)
+
+            newIndexPaths.append(IndexPath(row: 0, section: numberOfSections - 1))
+            tableView.insertRows(at: newIndexPaths, with: UITableView.RowAnimation.automatic)
+        }
+    }
+}
+
+extension AddTransactionViewController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard section != 0 else { return nil }
+        return budgetItems[section - 1].name
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return numberOfSections
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return AddTransactionViewController.defaultFields + items.count
+        } else {
+            return itemsDictionary[section - 1].count + 1
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            if indexPath.row == rows.image.rawValue {
+                return CGFloat(100)
+            } else if indexPath.row ==  rows.date.rawValue {
+                return CGFloat(240)
+            }
+            return CGFloat(60)
+        }
+        return CGFloat(60)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case rows.date.rawValue:
+                let cell = Bundle.main.loadNibNamed(DateTableViewCell.xib, owner: self, options: nil)?.first as! DateTableViewCell
+                configureDateCell(cell: cell, indexPath: indexPath)
+                return cell
+            case rows.amount.rawValue:
+                let cell = Bundle.main.loadNibNamed(AmountTableViewCell.xib, owner: self, options: nil)?.first as! AmountTableViewCell
+                configureAmountCell(cell: cell, indexPath: indexPath)
+                return cell
+            case rows.items.rawValue:
+                let cell = Bundle.main.loadNibNamed(AddTransactionBudgetItemTableViewCell.xib, owner: self, options: nil)?.first as! AddTransactionBudgetItemTableViewCell
+                
+                return cell
+            case rows.image.rawValue:
+                let cell = Bundle.main.loadNibNamed(ImageViewTableViewCell.xib, owner: self, options: nil)?.first as! ImageViewTableViewCell
+                
+                if let t = transaction, t.hasImage == true {
+                    cell.recieptImageView.image = ImageStore.getImage(transactionID: t.id)
+                } else {
+                    cell.recieptImageView.image = UIImage(imageLiteralResourceName: "default")
+                }
+                selectedImage = cell.recieptImageView
+                cell.controller = self
+                return cell
+            case rows.vendor.rawValue:
+                let cell = Bundle.main.loadNibNamed(VendorTableViewCell.xib, owner: self, options: nil)?.first as! VendorTableViewCell
+                
+                vendorTextField = cell.textField
+                vendorTextField.delegate = self
+                
+                return cell
+            default:
+                let cell = Bundle.main.loadNibNamed(ItemTableViewCell.xib, owner: self, options: nil)?.first as! ItemTableViewCell
+                
+                let item = items[indexPath.row - AddTransactionViewController.defaultFields]
+                
+                return cell
+            }
+        } else {
+            if indexPath.row < itemsDictionary[indexPath.section - 1].count {
+                let cell = Bundle.main.loadNibNamed(ItemTableViewCell.xib, owner: self, options: nil)?.first as! ItemTableViewCell
+                
+                let item = itemsDictionary[indexPath.section - 1][indexPath.row]
+                
+                if item.amount > 0 {
+                    cell.textField.text = Currency.currencyFormatter(item.amount)
+                }
+                
+                return cell
+            } else {
+                let cell = Bundle.main.loadNibNamed(AddItemTableViewCell.xib, owner: self, options: nil)?.first as! AddItemTableViewCell
+                
+                return cell
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case rows.items.rawValue:
+                if (canAddItems) {
+                    performSegue(withIdentifier: AddBudgetItemSegue.segueIdentifier, sender: nil)
+                }
+            case rows.image.rawValue:
+                performSegue(withIdentifier: addImageViewSegueIdentifier, sender: nil)
+            default:
+                return
+            }
+        } else {
+            let budgetIndex = indexPath.section - 1
+            if indexPath.row == itemsDictionary[budgetIndex].count {
+                let budgetItem = budgetItems[budgetIndex]
+                let item = Item(name: "", amount: 0, budgetItem: budgetItem.name, budgetItemCategory: budgetItem.category)
+                itemsDictionary[budgetIndex].append(item)
+                
+                let newIndexPaths = [IndexPath(row: itemsDictionary[budgetIndex].count - 1, section: indexPath.section)]
+                tableView.insertRows(at: newIndexPaths, with: UITableView.RowAnimation.automatic)
+            }
+        }
+    }
 }

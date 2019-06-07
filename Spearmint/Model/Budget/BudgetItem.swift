@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BudgetItem: Codable {
+class BudgetItem: Codable, Hashable {
     var id: BudgetItemID
     var name: String
     var category: BudgetItemCategory
@@ -37,7 +37,7 @@ class BudgetItem: Codable {
     func addTransaction(_ transaction: Transaction) {
         transactions.append(transaction.id)
         for item in transaction.items {
-            if item.budgetItem == id {
+            if item.budgetItemName == name {
                 actual += item.amount
             }
         }
@@ -49,7 +49,7 @@ class BudgetItem: Codable {
         })
         
         for item in transaction.items {
-            if item.budgetItem == id {
+            if item.budgetItemName == name {
                 actual -= item.amount
             }
         }
@@ -82,5 +82,11 @@ class BudgetItem: Codable {
     
     static func == (lhs: BudgetItem, rhs: BudgetItem) -> Bool {
         return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id.description())
+        hasher.combine(name)
+        hasher.combine(category)
     }
 }

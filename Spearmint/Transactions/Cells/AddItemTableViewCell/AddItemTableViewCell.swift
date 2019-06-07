@@ -9,6 +9,7 @@
 import UIKit
 
 class AddItemTableViewCell: UITableViewCell {
+    static let xib = "AddItemTableViewCell"
 
     override func awakeFromNib() {
         super.awakeFromNib()

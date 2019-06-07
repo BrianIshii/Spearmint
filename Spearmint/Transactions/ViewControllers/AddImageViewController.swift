@@ -14,6 +14,8 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
     var textRecognizer: VisionTextRecognizer!
     weak var addContentsViewController: AddContentsFromImageViewController?
 
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var stackViewHeightContraint: NSLayoutConstraint!
     @IBOutlet weak var selectedImageView: UIImageView!
     @IBOutlet weak var cameraButton: UIButton!
     var image: UIImage?
@@ -33,7 +35,6 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
         
         selectedImageView.isUserInteractionEnabled = true
         selectedImageView.image = UIImage(imageLiteralResourceName: "default")
-
         // Do any additional setup after loading the view.
     }
     
@@ -85,7 +86,9 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
         
         selectedImageView.image = selectedImage
         image = selectedImage
-        
+        print(selectedImage.size.height)
+        stackViewHeightContraint.constant = 800
+
         //uncomment to get text of image
         let visionImage = VisionImage(image: selectedImageView.image!)
         textRecognizer.process(visionImage) { (features, error) in
@@ -123,12 +126,16 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
                     selectedImageView.addSubview(view)
                     
                     let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-                    
+               
                     gestureRecognizer.delegate = self
                     view.addGestureRecognizer(gestureRecognizer)
                 }
             }
         }
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     @objc func handleTap(_ sender: Any) {

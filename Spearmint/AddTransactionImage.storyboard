@@ -130,6 +130,8 @@
                     <connections>
                         <outlet property="cameraButton" destination="uN4-XX-vHM" id="oon-i7-LsK"/>
                         <outlet property="selectedImageView" destination="gOU-jL-PTP" id="WAW-qw-BDF"/>
+                        <outlet property="stackView" destination="RXY-RI-qWk" id="9hw-ld-lzp"/>
+                        <outlet property="stackViewHeightContraint" destination="BpJ-TT-Ijp" id="xDN-Kx-fGB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HNH-J7-sRS" userLabel="First Responder" sceneMemberID="firstResponder"/>

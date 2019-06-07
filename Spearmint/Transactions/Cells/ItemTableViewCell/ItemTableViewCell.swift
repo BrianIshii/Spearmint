@@ -11,11 +11,14 @@ import UIKit
 class ItemTableViewCell: UITableViewCell {
     static let xib = "ItemTableViewCell"
 
-    @IBOutlet weak var itemName: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var textField: MoneyTextField!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        nameTextField.placeholder = "name"
+        nameTextField.delegate = self
+        textField.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -23,5 +26,12 @@ class ItemTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+}
 
+extension ItemTableViewCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
 }

@@ -47,7 +47,7 @@ class BudgetStore {
             for item in transaction.items {
                 if let categoryItems = budget.items[item.budgetItemCategory] {
                     for i in categoryItems {
-                        if i.name == item.name {
+                        if i.name == item.budgetItemName {
                             i.addTransaction(transaction)
                             break
                         }
@@ -70,7 +70,7 @@ class BudgetStore {
             for item in transaction.items {
                 if let categoryItems = budget.items[item.budgetItemCategory] {
                     for i in categoryItems {
-                        if i.id == item.budgetItem {
+                        if i.name == item.budgetItemName {
                             i.deleteTransaction(transaction)
                             break
                         }

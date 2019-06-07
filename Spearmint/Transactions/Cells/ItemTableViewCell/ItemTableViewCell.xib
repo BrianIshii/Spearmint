@@ -18,34 +18,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9h-2j-VQC">
-                        <rect key="frame" x="0.0" y="0.0" width="207" height="43.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GaZ-aQ-sij" customClass="MoneyTextField" customModule="Spearmint" customModuleProvider="target">
                         <rect key="frame" x="207" y="0.0" width="207" height="43.5"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b44-oX-rBq">
+                        <rect key="frame" x="0.0" y="0.0" width="207" height="43.5"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="I9h-2j-VQC" firstAttribute="centerY" secondItem="ygO-Hs-rxL" secondAttribute="centerY" id="1I6-SA-BaZ"/>
                     <constraint firstItem="GaZ-aQ-sij" firstAttribute="top" secondItem="ygO-Hs-rxL" secondAttribute="top" id="99V-ss-6K8"/>
                     <constraint firstAttribute="trailing" secondItem="GaZ-aQ-sij" secondAttribute="trailing" id="GbC-Jn-EwM"/>
+                    <constraint firstItem="GaZ-aQ-sij" firstAttribute="leading" secondItem="b44-oX-rBq" secondAttribute="trailing" id="J9U-2Y-AUC"/>
+                    <constraint firstItem="b44-oX-rBq" firstAttribute="centerY" secondItem="ygO-Hs-rxL" secondAttribute="centerY" id="P1I-aO-ELQ"/>
                     <constraint firstItem="GaZ-aQ-sij" firstAttribute="centerY" secondItem="ygO-Hs-rxL" secondAttribute="centerY" id="TBl-Wf-TLv"/>
-                    <constraint firstItem="I9h-2j-VQC" firstAttribute="height" secondItem="ygO-Hs-rxL" secondAttribute="height" id="cQk-pa-Rzc"/>
+                    <constraint firstItem="b44-oX-rBq" firstAttribute="width" secondItem="GaZ-aQ-sij" secondAttribute="width" id="ZgW-vu-fRy"/>
                     <constraint firstAttribute="bottom" secondItem="GaZ-aQ-sij" secondAttribute="bottom" id="esq-SM-bDz"/>
-                    <constraint firstItem="GaZ-aQ-sij" firstAttribute="leading" secondItem="I9h-2j-VQC" secondAttribute="trailing" id="l7h-e4-Ghf"/>
-                    <constraint firstItem="I9h-2j-VQC" firstAttribute="leading" secondItem="ygO-Hs-rxL" secondAttribute="leading" id="p1W-po-bGB"/>
+                    <constraint firstItem="b44-oX-rBq" firstAttribute="height" secondItem="ygO-Hs-rxL" secondAttribute="height" id="ikv-TC-J7O"/>
                     <constraint firstItem="GaZ-aQ-sij" firstAttribute="height" secondItem="ygO-Hs-rxL" secondAttribute="height" id="tyE-gx-4dj"/>
-                    <constraint firstItem="GaZ-aQ-sij" firstAttribute="width" secondItem="I9h-2j-VQC" secondAttribute="width" id="zQ7-rb-qEz"/>
+                    <constraint firstItem="b44-oX-rBq" firstAttribute="leading" secondItem="ygO-Hs-rxL" secondAttribute="leading" id="zLN-d1-mTK"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="itemName" destination="I9h-2j-VQC" id="5yt-9d-Wb2"/>
+                <outlet property="nameTextField" destination="b44-oX-rBq" id="Ge8-hg-en4"/>
                 <outlet property="textField" destination="GaZ-aQ-sij" id="rNq-Eb-iYe"/>
             </connections>
             <point key="canvasLocation" x="70" y="138"/>
