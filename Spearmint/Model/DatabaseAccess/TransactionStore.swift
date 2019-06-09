@@ -26,6 +26,9 @@ class TransactionStore {
         update()
     }
     
+    static func getTransaction(_ id: TransactionID) -> Transaction? {
+        return transactions[id.description()]
+    }
     private static func getAllTransactions() -> [String: Transaction] {
         var transactions: [String: Transaction]
         

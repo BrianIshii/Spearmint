@@ -9,11 +9,21 @@
 import UIKit
 
 private let reuseIdentifier = "analysisCell"
+private let segueIdentifer = "analysisSegue"
 
 class AnalysisCollectionViewController: UICollectionViewController {
-
+    var items: [Item] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let budget = BudgetStore.getBudget(Budget.dateToString(Date()))
+        
+        let mostExpensiveItems = budget.mostExpensiveItemPerCategory
+        
+        for (k,v) in mostExpensiveItems {
+            items.append(v)
+        }
+        reloadInputViews()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -21,15 +31,19 @@ class AnalysisCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        
+        if let vc = segue.destination as? PriceCheckViewController {
+            vc.item = items[collectionView.indexPathsForSelectedItems![0].row].name
+        }
     }
-    */
+ 
 
     // MARK: UICollectionViewDataSource
 
@@ -41,14 +55,16 @@ class AnalysisCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 4
+        return items.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AnalysisCollectionViewCell
     
+        let item = items[indexPath.row]
+
         // Configure the cell
-        cell.name.text = "most expensive item"
+        cell.name.text = item.name
         cell.backgroundColor = .lightGray
         return cell
     }
@@ -68,6 +84,7 @@ class AnalysisCollectionViewController: UICollectionViewController {
         return true
     }
     */
+    
 
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item

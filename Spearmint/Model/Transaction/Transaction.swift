@@ -49,6 +49,24 @@ class Transaction: Codable {
         return currentDate.isInSameMonth(date: transactionDate) && currentDate.isInSameYear(date: transactionDate)
     }
     
+    func mostExpensiveItem(_ budgetItem: BudgetItem) -> Item? {
+        var expensiveItem: Item?
+        for item in items {
+            if item.budgetItemName == budgetItem.name
+                && item.budgetItemCategory == budgetItem.category {
+                if let currentExpensiveItem = expensiveItem {
+                    if currentExpensiveItem.amount < item.amount {
+                        expensiveItem = item
+                    }
+                } else {
+                    expensiveItem = item
+                }
+            }
+        }
+        
+        return expensiveItem
+    }
+    
     static func > (left: Transaction, right: Transaction) -> Bool {
         return DateFormatterFactory.mediumFormatter.date(from: left.date)! > DateFormatterFactory.mediumFormatter.date(from: right.date)!
     }

@@ -32,8 +32,19 @@ class BudgetItemTableViewCell: UITableViewCell, ReusableIdentifier {
 extension BudgetItemTableViewCell: ConfigurableCell {
     func configure(object: BudgetItem) {
         budgetItemName.text = object.name
-        progressBar.progress = object.actual / object.planned
-        textField.text = Currency.currencyFormatter(object.planned - object.actual) + " left"
+        if object.actual > object.planned {
+            progressBar.progress = 1
+            progressBar.progressTintColor = .red
+            textField.text = "-" + Currency.currencyFormatter(object.planned - object.actual) + " left"
+            textField.textColor = .red
+        } else {
+            progressBar.progress = object.actual / object.planned
+            progressBar.progressTintColor = .blue
+            textField.text = Currency.currencyFormatter(object.planned - object.actual) + " left"
+            textField.textColor = .black
+
+        }
+
     }
     
     func configure() {

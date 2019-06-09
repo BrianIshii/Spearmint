@@ -143,6 +143,7 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
             let view = gesture.view as? ImageFrameView {
             if let vc = addContentsViewController, let text = view.text {
                 vc.textField.text?.append(" \(text)")
+                vc.update()
             }
             print(view.text)
         }

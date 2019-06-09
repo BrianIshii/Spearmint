@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddBudgetItemSectionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class AddBudgetItemSectionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var plannedAmountTextField: MoneyTextField!
@@ -23,6 +23,8 @@ class AddBudgetItemSectionViewController: UIViewController, UIPickerViewDataSour
         budgetCategoryPicker.delegate = self
         budgetCategoryPicker.dataSource = self
         
+        nameTextField.delegate = self
+        
         if let item = budgetItem {
             nameTextField.text = item.name
             plannedAmountTextField.text = Currency.currencyFormatter(item.planned)
@@ -32,11 +34,27 @@ class AddBudgetItemSectionViewController: UIViewController, UIPickerViewDataSour
                 }
             }
             
-            nameTextField.isUserInteractionEnabled = false
-            plannedAmountTextField.isUserInteractionEnabled = false
-            budgetCategoryPicker.isUserInteractionEnabled = false
+            disableEditing()
         }
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    func enableEditing() {
+        nameTextField.isUserInteractionEnabled = true
+        plannedAmountTextField.isUserInteractionEnabled = true
+        budgetCategoryPicker.isUserInteractionEnabled = true
+    }
+    
+    func disableEditing() {
+        nameTextField.isUserInteractionEnabled = false
+        plannedAmountTextField.isUserInteractionEnabled = false
+        budgetCategoryPicker.isUserInteractionEnabled = false
     }
     
 

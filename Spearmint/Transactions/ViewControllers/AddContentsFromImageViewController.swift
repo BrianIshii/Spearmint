@@ -10,33 +10,80 @@ import UIKit
 
 enum Fields: Int {
     case vendor = 0
-    case total = 1
+    case items = 1
+    case total = 2
 }
 
 class AddContentsFromImageViewController: UIViewController, UITextFieldDelegate {
 
     var vendor: String?
     var total: String?
+    var previous: Int?
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var textField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        textField.delegate = self
 
         // Do any additional setup after loading the view.
     }
     
     @IBAction func toggleFields(_ sender: UISegmentedControl) {
+        if let previous = previous {
+            setField(previous)
+        }
+        
+        
         switch sender.selectedSegmentIndex {
         case Fields.vendor.rawValue:
-            total = textField.text
+            textField.isHidden = false
             textField.text = vendor ?? ""
-        default:
-            vendor = textField.text
+        case Fields.total.rawValue:
+            textField.isHidden = false
             textField.text = total ?? ""
+        case Fields.items.rawValue:
+            textField.isHidden = true
+        default:
+            break
+        }
+        
+        self.previous = sender.selectedSegmentIndex
+    }
+    
+    func setField(_ field: Int) {
+        switch field {
+        case Fields.vendor.rawValue:
+            vendor = textField.text
+        case Fields.total.rawValue:
+            total = textField.text
+        case Fields.items.rawValue:
+            break
+        default:
+            break
         }
     }
     
+    func update() {
+        switch segmentedControl.selectedSegmentIndex {
+        case Fields.vendor.rawValue:
+            vendor = textField.text
+        case Fields.total.rawValue:
+            total = textField.text
+        case Fields.items.rawValue:
+            break
+        default:
+            break
+        }
+    }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+
     /*
     // MARK: - Navigation
 

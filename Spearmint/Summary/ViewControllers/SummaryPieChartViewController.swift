@@ -20,11 +20,16 @@ class SummaryPieChartViewController: UIViewController {
 
         update()
         pieChartView.setNeedsDisplay()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
+        update()
+        pieChartView.setNeedsDisplay()
     }
 
     private func update() {
-        pieChartView.segments = []
         // Do any additional setup after loading the view.
         if let b = budget {
             let totalIncome = b.totalIncome
@@ -32,10 +37,12 @@ class SummaryPieChartViewController: UIViewController {
             
             var total = Float(0.0)
             var temp: [Float] = []
-            for (_, v) in b.totalExpenses {
-                let percentage = Float(v / totalIncome)
-                temp.append(percentage)
-                total += percentage
+            for key in BudgetItemSectionStore.budgetItemSections {
+                if let expenses = b.totalExpenses[key.category] {
+                    let percentage = Float(expenses / totalIncome)
+                    temp.append(percentage)
+                    total += percentage
+                }
             }
             let rest = 1 - total
             temp.append(rest)

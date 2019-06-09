@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 struct BudgetItemSection: Codable {
     var category: BudgetItemCategory
     var isExpanded: Bool

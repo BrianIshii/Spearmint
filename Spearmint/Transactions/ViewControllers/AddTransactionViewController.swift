@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MapKit
 
 enum rows : Int, Codable {
     case date = 1
@@ -17,7 +16,7 @@ enum rows : Int, Codable {
     case image = 0
 }
 
-class AddTransactionViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
+class AddTransactionViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -42,9 +41,6 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate, CLLoc
     var numberOfSections: Int = 1
     var canAddItems: Bool = true
 //    var NavigationBarOriginalY: CGFloat = 0
-
-    let locationManager = CLLocationManager()
-    var mapRegion: MKCoordinateRegion?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,9 +48,7 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate, CLLoc
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
-        
-        configureLocationManager()
-        
+                
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
@@ -86,58 +80,6 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate, CLLoc
 //            navigationBar.frame.origin.y = NavigationBarOriginalY
             isKeyboardPresent = false
         }
-    }
-
-    
-    func configureLocationManager() {
-        CLLocationManager.locationServicesEnabled()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = 1.0
-        locationManager.distanceFilter = 100.0
-        locationManager.startUpdatingLocation()
-        locationManager.requestWhenInUseAuthorization()
-    }
-    
-    func getLocation() {
-        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-        mapRegion = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
-        findNearbyRestaurants()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .authorizedWhenInUse:
-            getLocation()
-        default:
-            return
-        }
-    }
-    
-    func findNearbyRestaurants() {
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = "food"
-        if let region = mapRegion {
-            request.region = region
-        }
-        
-        let search = MKLocalSearch(request: request)
-        search.start(completionHandler:
-            { localSearchResponse, error in
-                var temp: [String] = []
-                if error == nil {
-                    for item in localSearchResponse!.mapItems {
-                        if let name = item.name {
-                            temp.append(name)
-                        }
-                        print(item.name)
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.vendorTextField.view.suggestions = temp
-                        self.vendorTextField.view.addSuggestions()
-                    }
-                }
-        })
     }
     
     @objc func tappedImageView(_ sender: UIGestureRecognizer) {
@@ -207,6 +149,7 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate, CLLoc
         default:
             break
         }
+        
         guard let button = sender as? UIBarButtonItem, button === saveButton else {
             // not saved
             return
@@ -256,6 +199,13 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate, CLLoc
             canAddItems = false
         } else if let sourceViewController = sender.source as? AddImageViewController, let image = sourceViewController.image {
             print("unwind")
+            if let vendor = sourceViewController.addContentsViewController?.vendor {
+                vendorTextField.text = vendor
+            }
+            if let total = sourceViewController.addContentsViewController?.total {
+                amountTextField.text = total
+            }
+            
             selectedImage.image = image
         }
     }
@@ -347,7 +297,6 @@ extension AddTransactionViewController : UITableViewDelegate, UITableViewDataSou
                 let cell = Bundle.main.loadNibNamed(VendorTableViewCell.xib, owner: self, options: nil)?.first as! VendorTableViewCell
                 
                 vendorTextField = cell.textField
-                vendorTextField.delegate = self
                 
                 return cell
             default:

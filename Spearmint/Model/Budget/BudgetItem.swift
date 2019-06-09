@@ -55,6 +55,25 @@ class BudgetItem: Codable, Hashable {
         }
     }
     
+    func mostExpensiveItem() -> Item? {
+        var expensiveItem: Item?
+        for id in transactions {
+            if let transaction = TransactionStore.getTransaction(id) {
+                if let item = transaction.mostExpensiveItem(self) {
+                    if let currentExpensiveItem = expensiveItem{
+                        if currentExpensiveItem.amount < item.amount {
+                            expensiveItem = item
+                        }
+                    } else {
+                        expensiveItem = item
+                    }
+                }
+            }
+        }
+        
+        return expensiveItem
+    }
+    
     static func defaultBudgetItems() -> [BudgetItemCategory:[BudgetItem]] {
         return [BudgetItemCategory.income : [
                     BudgetItem(name: "Paycheck 1", category: BudgetItemCategory.income, planned: 1000)],

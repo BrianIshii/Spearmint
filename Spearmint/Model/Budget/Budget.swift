@@ -44,19 +44,48 @@ class Budget: Codable {
     var totalExpenses: [BudgetItemCategory: Float] {
         var expenses: [BudgetItemCategory: Float] = [:]
         
-        for key in items.keys {
-            if (key != BudgetItemCategory.income) {
+        for key in BudgetItemSectionStore.budgetItemSections {
+            if (key.category != BudgetItemCategory.income) {
                 var total: Float = 0.0
 
-                for item in items[key]! {
+                for item in items[key.category]! {
                     total += item.actual
                 }
                 
-                expenses[key] = total
+                expenses[key.category] = total
             }
         }
 
         return expenses
+    }
+    
+    var mostExpensiveItemPerCategory: [BudgetItemCategory: Item] {
+        var items: [BudgetItemCategory: Item] = [:]
+        
+        for key in BudgetItemSectionStore.budgetItemSections {
+            var mostExpensiveItem: Item?
+            if (key.category != BudgetItemCategory.income) {
+                
+                for item in self.items[key.category]! {
+                    if let current = item.mostExpensiveItem() {
+                        mostExpensiveItem = current
+                    } else if let currentExpensiveItem = mostExpensiveItem, let current = item.mostExpensiveItem() {
+                        if currentExpensiveItem.amount < current.amount {
+                            mostExpensiveItem = current
+                        }
+                    }
+                }
+                
+                if let temp = mostExpensiveItem {
+                    items[key.category] = temp
+                }
+            }
+            
+
+            
+        }
+        
+        return items
     }
     
     static func < (lft: Budget, rht: Budget) -> Bool {

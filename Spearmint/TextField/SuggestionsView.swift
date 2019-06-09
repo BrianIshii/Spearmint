@@ -35,9 +35,9 @@ class SuggestionsView: UIView {
         newToolBar.sizeToFit()
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let b1 = UIBarButtonItem(title: "food", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.clickedLeftSuggestion))
-        let b2 = UIBarButtonItem(title: "food", style: UIBarButtonItem.Style.plain, target: nil, action: #selector(self.clickedMiddleSuggestion))
-        let b3 = UIBarButtonItem(title: "food", style: UIBarButtonItem.Style.plain, target: nil, action: #selector(self.clickedRightSuggestion))
+        let b1 = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.clickedLeftSuggestion))
+        let b2 = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: #selector(self.clickedMiddleSuggestion))
+        let b3 = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: #selector(self.clickedRightSuggestion))
         newToolBar.setItems([b1, flexSpace, b2, flexSpace, b3], animated: false)
         
         toolBar = newToolBar
@@ -68,10 +68,17 @@ class SuggestionsView: UIView {
         }
     }
     
-    func addSuggestions() {
+    func addSuggestions(_ suggestions: [String]) {
+        var suggestions = suggestions
+        
+        while suggestions.count < 3 {
+            suggestions.append("")
+        }
+        
         leftItem.title = suggestions[0]
         middleItem.title = suggestions[1]
         rightItem.title = suggestions[2]
+        
     }
     
     func update() {

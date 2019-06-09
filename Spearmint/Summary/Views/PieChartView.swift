@@ -12,6 +12,7 @@ class PieChartView: UIView {
 
     var segments: [Float]
     var paths: [UIBezierPath] = []
+    
     init(frame: CGRect, segments: [Float]) {
         self.segments = segments
         self.paths = []
@@ -25,6 +26,7 @@ class PieChartView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
+        removePath()
         drawPieChart()
     }
     
@@ -42,11 +44,11 @@ class PieChartView: UIView {
         }
     
         for i in 0..<(segments.count - 1) {
-        let end = CGFloat(start + CGFloat(segments[i]) * 2 * CGFloat.pi)
-        let path = drawPath(center: center, radius: radius, start: start, end: end, color: strokeColors[i], lineWidth: frame.width / 25)
-    
-        start = end
-        paths.append(path)
+            let end = CGFloat(start + CGFloat(segments[i]) * 2 * CGFloat.pi)
+            let path = drawPath(center: center, radius: radius, start: start, end: end, color: strokeColors[i], lineWidth: frame.width / 25)
+        
+            start = end
+            paths.append(path)
         }
     
         let restPath = drawPath(center: center, radius: radius, start: start, end: CGFloat.pi * 3 / 2, color: UIColor.lightGray, lineWidth: frame.width / 75)

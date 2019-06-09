@@ -83,6 +83,14 @@ class BudgetTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let dataSource = dataSource {
+            if dataSource.canRearrangeSections {
+                return CGFloat(20)
+            }
+        }
+        return CGFloat(60)
+    }
 
 
     /*
@@ -139,6 +147,7 @@ class BudgetTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         if let destination = segue.destination as? BudgetItemViewController {
             destination.budgetItem = selectedBudgetItem!
+            destination.tableView = self
         }
     }
  

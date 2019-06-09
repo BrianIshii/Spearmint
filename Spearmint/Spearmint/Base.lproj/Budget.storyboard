@@ -177,6 +177,11 @@
                                                 <action selector="back:" destination="tsT-m5-R9F" id="0OP-ty-LAG"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Item" id="MLv-hW-Q8k">
+                                            <connections>
+                                                <action selector="onEdit:" destination="tsT-m5-R9F" id="ZqD-AH-yh3"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -199,6 +204,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y9N-Dt-FMD"/>
                     </view>
+                    <connections>
+                        <outlet property="editButton" destination="MLv-hW-Q8k" id="15a-z7-XVd"/>
+                        <outlet property="navBar" destination="I7h-Lo-Kh7" id="9Hg-rf-zxn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M2z-AF-WYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -240,7 +249,7 @@
             <objects>
                 <viewController id="9Fi-TT-rsW" customClass="AddBudgetItemSectionViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w8D-Gt-0gW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bov-4m-cn2">
@@ -295,6 +304,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="KaS-Ta-USh"/>
+        <segue reference="0Be-7r-Wbj"/>
     </inferredMetricsTieBreakers>
 </document>
