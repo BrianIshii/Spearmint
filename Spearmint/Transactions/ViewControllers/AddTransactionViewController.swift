@@ -31,7 +31,6 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
     var vendorTextField: VendorTextField!
     var dateLabel: UILabel!
     var selectedImage: UIImageView!
-    var items: [Item] = []
     var itemsDictionary: [[Item]] = []
     var budgetItems: [BudgetItem] = []
     static let defaultFields: Int = 5
@@ -145,6 +144,7 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
         case addImageViewSegueIdentifier:
             if let image = selectedImage.image, let vc = segue.destination as? AddImageViewController {
                 vc.image = image
+                vc.previous = self
             }
         default:
             break
@@ -179,13 +179,6 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
-        for (index, item) in items.enumerated() {
-            if let cell = tableView.cellForRow(at: IndexPath(row: index + AddTransactionViewController.defaultFields, section: 0)) as? ItemTableViewCell {
-                item.amount = cell.textField.getAmount()
-            }
-        }
-        
-        
         transaction = Transaction(name: name, transactionType: transactionType, merchant: merchant, amount: Float(amount), date: date, location: "N/A", image: hasImage, notes: "notes", budgetID: budgetKey, items: transactionItems)
         
         if hasImage {
@@ -198,18 +191,49 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
             updateItems(selectedBudgetItems)
             canAddItems = false
         } else if let sourceViewController = sender.source as? AddImageViewController, let image = sourceViewController.image {
-            print("unwind")
-            if let vendor = sourceViewController.addContentsViewController?.vendor {
-                vendorTextField.text = vendor
-            }
-            if let total = sourceViewController.addContentsViewController?.total {
-                amountTextField.text = total
+
+            if let content = sourceViewController.addContentsViewController {
+                vendorTextField.text = content.vendor
+                amountTextField.text = content.total
+                
+                updateItems(content.budgetItems, items: content.itemsDictionary)
             }
             
             selectedImage.image = image
+            
         }
     }
     
+    func unwindFromImage(_ vc: AddImageViewController) {
+        if let content = vc.addContentsViewController {
+            vendorTextField.text = content.vendor
+            amountTextField.text = content.total
+            
+            updateItems(content.budgetItems, items: content.itemsDictionary)
+        }
+        
+        selectedImage.image = vc.image
+    }
+    
+    fileprivate func updateItems(_ budgetItems: [BudgetItem], items: [[Item]]) {
+        self.budgetItems = budgetItems
+        
+        for (index, budgetItem) in budgetItems.enumerated() {
+            var newIndexPaths: [IndexPath] = []
+            
+            itemsDictionary.append([])
+            
+            numberOfSections += 1
+            tableView.insertSections([numberOfSections - 1], with: UITableView.RowAnimation.automatic)
+            
+            for (index, item) in items[index].enumerated() {
+                itemsDictionary[numberOfSections - 2].append(item)
+                newIndexPaths.append(IndexPath(row: index, section: numberOfSections - 1))
+            }
+            
+            tableView.insertRows(at: newIndexPaths, with: UITableView.RowAnimation.automatic)
+        }
+    }
     
     fileprivate func updateItems(_ budgetItems: [BudgetItem]) {
         self.budgetItems = budgetItems
@@ -248,7 +272,7 @@ extension AddTransactionViewController : UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return AddTransactionViewController.defaultFields + items.count
+            return AddTransactionViewController.defaultFields
         } else {
             return itemsDictionary[section - 1].count + 1
         }
@@ -302,8 +326,6 @@ extension AddTransactionViewController : UITableViewDelegate, UITableViewDataSou
             default:
                 let cell = Bundle.main.loadNibNamed(ItemTableViewCell.xib, owner: self, options: nil)?.first as! ItemTableViewCell
                 
-                let item = items[indexPath.row - AddTransactionViewController.defaultFields]
-                
                 return cell
             }
         } else {
@@ -314,6 +336,10 @@ extension AddTransactionViewController : UITableViewDelegate, UITableViewDataSou
                 
                 if item.amount > 0 {
                     cell.textField.text = Currency.currencyFormatter(item.amount)
+                }
+                
+                if item.name != "" {
+                    cell.nameTextField.text = item.name
                 }
                 
                 return cell
@@ -333,7 +359,7 @@ extension AddTransactionViewController : UITableViewDelegate, UITableViewDataSou
                     performSegue(withIdentifier: AddBudgetItemSegue.segueIdentifier, sender: nil)
                 }
             case rows.image.rawValue:
-                performSegue(withIdentifier: addImageViewSegueIdentifier, sender: nil)
+                performSegue(withIdentifier: addImageViewSegueIdentifier, sender: self)
             default:
                 return
             }

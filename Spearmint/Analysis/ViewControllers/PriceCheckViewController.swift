@@ -22,7 +22,9 @@ class PriceCheckViewController: UIViewController, UIWebViewDelegate {
         
         if let i = item {
             navBar.topItem?.title = i
-            webView.loadRequest(NSURLRequest(url: NSURL(string: "https://www.google.com/search?q=\(i)&tbm=shop")! as URL) as URLRequest)
+            let urli = i.trimmingCharacters(in: NSCharacterSet.whitespaces).replacingOccurrences(of: " ", with: "+")
+            let urlString = "https://www.google.com/search?q=\(urli)&tbm=shop"
+            webView.loadRequest(NSURLRequest(url: NSURL(string: urlString)! as URL) as URLRequest)
             
         }
         

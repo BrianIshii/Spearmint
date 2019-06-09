@@ -11,8 +11,10 @@ import UIKit
 class SummaryPieChartViewController: UIViewController {
 
     @IBOutlet weak var pieChartView: PieChartView!
-    @IBOutlet weak var balanceLabel: UILabel!
-    
+    @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var bottomLabel: UILabel!
+    var budgetSections: [BudgetItemSection] = BudgetItemSectionStore.budgetItemSections
+
     var budget: Budget?
     
     override func viewDidLoad() {
@@ -33,21 +35,46 @@ class SummaryPieChartViewController: UIViewController {
         // Do any additional setup after loading the view.
         if let b = budget {
             let totalIncome = b.totalIncome
-            balanceLabel.text = Currency.currencyFormatter(totalIncome)
-            
+            bottomLabel.text = Currency.currencyFormatter(totalIncome)
+            topLabel.text = "Income"
+
             var total = Float(0.0)
             var temp: [Float] = []
             for key in BudgetItemSectionStore.budgetItemSections {
-                if let expenses = b.totalExpenses[key.category] {
-                    let percentage = Float(expenses / totalIncome)
-                    temp.append(percentage)
-                    total += percentage
+                if key.category == BudgetItemCategory.income {
+                    temp.append(0.0)
+                } else {
+                    if let expenses = b.totalExpenses[key.category] {
+                        let percentage = Float(expenses / totalIncome)
+                        temp.append(percentage)
+                        total += percentage
+                    } else {
+                        temp.append(0.0)
+                    }
                 }
             }
             let rest = 1 - total
             temp.append(rest)
             pieChartView.segments = temp
         }
+    }
+    
+    func changeSection(_ index: Int) {
+        if index < 1 {
+            if let b = budget {
+                bottomLabel.text = Currency.currencyFormatter(b.totalIncome)
+            } else {
+                bottomLabel.text = ""
+            }
+            
+            topLabel.text = "Income"
+        } else {
+            topLabel.text = budgetSections[index].category.rawValue
+            let numPercent = Int(pieChartView.segments[index] * 100)
+            bottomLabel.text = "\(numPercent.description) %"
+        }
+        pieChartView.updatePath(index)
+
     }
     /*
     // MARK: - Navigation

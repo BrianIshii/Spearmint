@@ -39,6 +39,10 @@ class MasterSummaryViewController: UIViewController {
             vc.budget = BudgetStore.getBudget(Budget.dateToString(Date()))
             summaryPieChartViewController = vc
         }
+        
+        if let vc = destination as? SummaryPickerViewController {
+            vc.masterSummaryViewController = self
+        }
     }
  
 

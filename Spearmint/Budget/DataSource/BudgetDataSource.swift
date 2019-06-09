@@ -87,6 +87,7 @@ extension BudgetDataSource: UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: BudgetItemTableViewCell.reuseIdentifier, for: indexPath)
             configure(cell: cell, indexPath: indexPath)
+            
             return cell
         }
     }

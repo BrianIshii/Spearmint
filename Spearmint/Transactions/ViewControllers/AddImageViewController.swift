@@ -12,6 +12,7 @@ import FirebaseMLVision
 class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var textRecognizer: VisionTextRecognizer!
+    weak var previous: AddTransactionViewController?
     weak var addContentsViewController: AddContentsFromImageViewController?
 
     @IBOutlet weak var stackView: UIStackView!
@@ -44,7 +45,11 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
         dismiss(animated: true, completion: nil)
     }
     
-    
+    @IBAction func save(_ sender: UIBarButtonItem) {
+        addContentsViewController!.saveItems()
+        previous!.unwindFromImage(self)
+        dismiss(animated: true, completion: nil)
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -53,6 +58,9 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
         // Pass the selected object to the new view controller.
         if let vc = segue.destination as? AddContentsFromImageViewController {
             addContentsViewController = vc
+            vc.previousVC = self
+        } else if let vc = segue.destination as? AddBudgetItemsViewController {
+            vc.budgetDate = Budget.dateToString(Date())
         }
     }
  
@@ -87,7 +95,7 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
         selectedImageView.image = selectedImage
         image = selectedImage
         print(selectedImage.size.height)
-        stackViewHeightContraint.constant = 800
+        stackViewHeightContraint.constant = stackViewHeightContraint.constant + selectedImage.size.height
 
         //uncomment to get text of image
         let visionImage = VisionImage(image: selectedImageView.image!)
@@ -142,12 +150,25 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
         if let gesture = sender as? UITapGestureRecognizer,
             let view = gesture.view as? ImageFrameView {
             if let vc = addContentsViewController, let text = view.text {
-                vc.textField.text?.append(" \(text)")
-                vc.update()
+                if vc.textField.isHidden {
+                    for cell in vc.tableView.visibleCells {
+                        if let cell = cell as? ItemTableViewCell {
+                            if cell.textField.isEditing {
+                                cell.textField.text?.append(" \(text)")
+                                return
+                            } else if cell.nameTextField.isEditing {
+                                cell.nameTextField.text?.append(" \(text)")
+                                return
+                            }
+                        }
+                    }
+                } else {
+                    vc.textField.text?.append(" \(text)")
+                    vc.update()
+                }
             }
             print(view.text)
         }
-        print("tapped")
     }
     
     private func transformMatrix() -> CGAffineTransform {

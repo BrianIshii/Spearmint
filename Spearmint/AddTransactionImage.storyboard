@@ -29,7 +29,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Save" id="z4g-ce-37k">
                                             <connections>
-                                                <segue destination="ekW-dp-umz" kind="unwind" unwindAction="unwindWithSender:" id="Mn2-Nx-ssi"/>
+                                                <action selector="save:" destination="p8S-S3-QhZ" id="BgQ-r1-g5g"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -132,10 +132,10 @@
                         <outlet property="selectedImageView" destination="gOU-jL-PTP" id="WAW-qw-BDF"/>
                         <outlet property="stackView" destination="RXY-RI-qWk" id="9hw-ld-lzp"/>
                         <outlet property="stackViewHeightContraint" destination="BpJ-TT-Ijp" id="xDN-Kx-fGB"/>
+                        <segue destination="a6g-pm-Mpo" kind="show" identifier="AddBudgetItemSegue" customClass="AddBudgetItemSegue" customModule="Spearmint" customModuleProvider="target" id="yfZ-NR-1L0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HNH-J7-sRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="ekW-dp-umz" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="dOG-tE-RvY"/>
             </objects>
             <point key="canvasLocation" x="505.79710144927537" y="-1336.6071428571429"/>
@@ -165,26 +165,88 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XZn-yU-9K2">
+                                <rect key="frame" x="0.0" y="82" width="414" height="271"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ERg-H5-F3e" firstAttribute="width" secondItem="h6W-hN-kdZ" secondAttribute="width" id="0Bn-hA-VA8"/>
+                            <constraint firstItem="MQB-T7-GKX" firstAttribute="bottom" secondItem="XZn-yU-9K2" secondAttribute="bottom" id="FRu-ob-KHW"/>
                             <constraint firstItem="QI4-yI-Men" firstAttribute="centerX" secondItem="MQB-T7-GKX" secondAttribute="centerX" id="TY0-Wo-pmc"/>
+                            <constraint firstItem="XZn-yU-9K2" firstAttribute="width" secondItem="h6W-hN-kdZ" secondAttribute="width" id="VCk-1j-j9i"/>
                             <constraint firstItem="QI4-yI-Men" firstAttribute="width" secondItem="h6W-hN-kdZ" secondAttribute="width" id="VpT-If-pV5"/>
                             <constraint firstItem="ERg-H5-F3e" firstAttribute="centerX" secondItem="MQB-T7-GKX" secondAttribute="centerX" id="X44-z3-XJB"/>
                             <constraint firstItem="QI4-yI-Men" firstAttribute="top" secondItem="MQB-T7-GKX" secondAttribute="top" id="a4R-IM-BiV"/>
+                            <constraint firstItem="XZn-yU-9K2" firstAttribute="top" secondItem="QI4-yI-Men" secondAttribute="bottom" constant="10" id="cnK-q6-bDv"/>
+                            <constraint firstItem="XZn-yU-9K2" firstAttribute="centerX" secondItem="MQB-T7-GKX" secondAttribute="centerX" id="f0I-po-Gqb"/>
                             <constraint firstItem="ERg-H5-F3e" firstAttribute="top" secondItem="QI4-yI-Men" secondAttribute="bottom" constant="71" id="vz9-CW-TxN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MQB-T7-GKX"/>
                     </view>
                     <connections>
                         <outlet property="segmentedControl" destination="QI4-yI-Men" id="f4L-ut-tFv"/>
+                        <outlet property="tableView" destination="XZn-yU-9K2" id="VcC-IO-8cV"/>
                         <outlet property="textField" destination="ERg-H5-F3e" id="AwG-Cn-T6K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PxI-nu-4eH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1372" y="-1170"/>
+        </scene>
+        <!--Add Budget Items View Controller-->
+        <scene sceneID="GDh-nQ-g6y">
+            <objects>
+                <viewController storyboardIdentifier="AddTransactionID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a6g-pm-Mpo" customClass="AddBudgetItemsViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lv3-W7-60a">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vsh-ex-FUC">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="bNW-Y8-Hsj">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="RCa-m6-Rja">
+                                            <connections>
+                                                <action selector="cancel:" destination="a6g-pm-Mpo" id="lRZ-fV-ZME"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="9qg-EM-DN9">
+                                            <connections>
+                                                <action selector="save:" destination="a6g-pm-Mpo" id="IGU-QP-DvX"/>
+                                                <segue destination="v5m-qz-tPG" kind="unwind" unwindAction="unwindWithSender:" id="Op3-GZ-or3"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ioB-l1-gTG" customClass="SelectBudgetItemListTableView" customModule="Spearmint" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ioB-l1-gTG" firstAttribute="top" secondItem="Vsh-ex-FUC" secondAttribute="bottom" id="34Q-Dl-NcX"/>
+                            <constraint firstItem="Vsh-ex-FUC" firstAttribute="centerX" secondItem="kWj-XZ-Cyu" secondAttribute="centerX" id="Gz4-gb-Rfx"/>
+                            <constraint firstItem="Vsh-ex-FUC" firstAttribute="top" secondItem="kWj-XZ-Cyu" secondAttribute="top" id="H65-5S-5hz"/>
+                            <constraint firstItem="kWj-XZ-Cyu" firstAttribute="bottom" secondItem="ioB-l1-gTG" secondAttribute="bottom" id="JA9-T7-euS"/>
+                            <constraint firstItem="Vsh-ex-FUC" firstAttribute="width" secondItem="Lv3-W7-60a" secondAttribute="width" id="JBz-zC-hs0"/>
+                            <constraint firstItem="ioB-l1-gTG" firstAttribute="width" secondItem="Lv3-W7-60a" secondAttribute="width" id="bCu-aS-QNu"/>
+                            <constraint firstItem="ioB-l1-gTG" firstAttribute="centerX" secondItem="kWj-XZ-Cyu" secondAttribute="centerX" id="lCL-gg-H3K"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kWj-XZ-Cyu"/>
+                    </view>
+                    <connections>
+                        <outlet property="saveButton" destination="9qg-EM-DN9" id="Yvl-hp-NGs"/>
+                        <outlet property="tableView" destination="ioB-l1-gTG" id="Z57-bM-Yrw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hrf-dc-pR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="v5m-qz-tPG" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1371" y="-1677"/>
         </scene>
     </scenes>
 </document>

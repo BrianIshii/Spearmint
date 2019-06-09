@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BudgetViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class BudgetViewController: UIViewController {
 
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -22,6 +22,13 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
         super.viewDidLoad()
 
         collectionView.isHidden = true
+        
+        budgets = BudgetStore.budgets
+        
+        if Date().isInSameMonth(date: budgets[budgets.count - 1].date) {
+            let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: Date())
+            BudgetStore.addBudget(Budget(date: Budget.dateToString(nextMonth!), items: BudgetItem.defaultBudgetItems()))
+        }
         
         budgets = BudgetStore.budgets
         
@@ -62,40 +69,6 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
             budgetTableViewContoller = vc
         }
     }
- 
-    
-    // MARK: Collection View
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return budgets.count
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: 50, height: 50)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BudgetCollectionViewCell.reuseIdentifier, for: indexPath) as! BudgetCollectionViewCell
-
-        let currentBudget = budgets[indexPath.row]
-        
-        cell.monthLabel.text = currentBudget.month.prefix(3).description
-        cell.yearLabel.text = currentBudget.year.dropFirst(2).description
-
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let budgetTableView = budgetTableViewContoller {
-            budgetTableView.updateBudget(budget: budgets[indexPath.row])
-            
-        }
-        collectionView.isHidden = true
-        budgetButton.setTitle(budgets[indexPath.row].month, for: .normal)
-    }
     
     @IBAction func toggleSelectBudget(_ sender: UIButton) {
         collectionView.isHidden = !collectionView.isHidden
@@ -120,5 +93,40 @@ class BudgetViewController: UIViewController, UICollectionViewDataSource, UIColl
         if let source = sender.source as? AddBudgetItemViewController, let budgetItem = source.budgetItem {
             budgetTableViewContoller!.addBudgetItem(budgetItem)
         }
+    }
+}
+
+extension BudgetViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    // MARK: Collection View
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return budgets.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: 50, height: 50)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BudgetCollectionViewCell.reuseIdentifier, for: indexPath) as! BudgetCollectionViewCell
+        
+        let currentBudget = budgets[indexPath.row]
+        
+        cell.monthLabel.text = currentBudget.month.prefix(3).description
+        cell.yearLabel.text = currentBudget.year.dropFirst(2).description
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let budgetTableView = budgetTableViewContoller {
+            budgetTableView.updateBudget(budget: budgets[indexPath.row])
+            
+        }
+        collectionView.isHidden = true
+        budgetButton.setTitle(budgets[indexPath.row].month, for: .normal)
     }
 }

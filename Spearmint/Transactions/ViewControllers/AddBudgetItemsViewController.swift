@@ -32,6 +32,15 @@ class AddBudgetItemsViewController: UIViewController {
     }
     
     
+//    @IBAction func save(_ sender: UIBarButtonItem) {
+//        if let vc = previous as? AddTransactionViewController {
+//            vc.unwindFromAddItems(self)
+//        } else if let vc = previous as? AddContentsFromImageViewController {
+//            vc.unwindFromAddItems(self)
+//        }
+//        dismiss(animated: true, completion: nil)
+//
+//    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

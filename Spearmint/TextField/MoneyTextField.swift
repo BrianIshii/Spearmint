@@ -37,7 +37,7 @@ class MoneyTextField: UITextField, UITextFieldDelegate {
         //let prac = UIBarButtonItem(title: "food", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
         toolBar.setItems([flexSpace, doneButton], animated: false)
         
-        self.inputAccessoryView =  toolBar
+        self.inputAccessoryView = toolBar
     }
     
     func getAmount() -> Float {
