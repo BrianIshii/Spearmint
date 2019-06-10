@@ -73,25 +73,18 @@
                                                 </constraints>
                                             </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gOU-jL-PTP">
-                                                <rect key="frame" x="0.0" y="50" width="414" height="310"/>
+                                                <rect key="frame" x="0.0" y="50" width="414" height="350"/>
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="dOG-tE-RvY" appends="YES" id="u2N-9c-3I1"/>
                                                 </connections>
                                             </imageView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XMG-Sh-zkc">
-                                                <rect key="frame" x="0.0" y="360" width="414" height="40"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="kWV-dn-gVw"/>
-                                                </constraints>
-                                            </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="iAa-gJ-9My" firstAttribute="width" secondItem="gOU-jL-PTP" secondAttribute="width" id="9PM-aG-Tvf"/>
                                             <constraint firstAttribute="height" constant="400" id="BpJ-TT-Ijp"/>
-                                            <constraint firstItem="XMG-Sh-zkc" firstAttribute="top" secondItem="gOU-jL-PTP" secondAttribute="bottom" id="Tj6-ud-ewA"/>
                                             <constraint firstItem="gOU-jL-PTP" firstAttribute="top" secondItem="iAa-gJ-9My" secondAttribute="bottom" id="j0J-Go-V61"/>
+                                            <constraint firstItem="gOU-jL-PTP" firstAttribute="top" secondItem="iAa-gJ-9My" secondAttribute="bottom" id="lPe-lF-HgY"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>

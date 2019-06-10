@@ -25,7 +25,7 @@ class Budget: Codable {
         BudgetStore.update()
     }
     
-    static let dummyBudget = Budget(date: DateFormatterFactory.mediumFormatter.string(from: Date()), items: BudgetItem.defaultBudgetItems())
+//    static let dummyBudget = Budget(date: DateFormatterFactory.mediumFormatter.string(from: Date()), items: BudgetItem.defaultBudgetItems())
     
     static func dateToString(_ date: Date) -> String {
         return DateFormatterFactory.yearAndMonthFormatter.string(from: date)

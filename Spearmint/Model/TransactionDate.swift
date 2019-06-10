@@ -12,6 +12,7 @@ class TransactionDate {
     static func getCurrentDate() -> String {
         let currentDateTime = Date()
 
+        
         return DateFormatterFactory.mediumFormatter.string(from: currentDateTime)
     }
     

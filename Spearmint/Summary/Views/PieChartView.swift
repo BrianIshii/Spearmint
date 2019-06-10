@@ -41,11 +41,11 @@ class PieChartView: UIView {
         
         var start = CGFloat.pi * 3 / 2
     
-        if segments.count == 0 {
+        if segments.last == 1.0 {
             let _ = drawPath(center: center, radius: radius, start: 0, end: CGFloat.pi * 2, color: UIColor.lightGray, lineWidth: frame.width / 75, index: 0)
         return
         }
-    
+            
         for i in 0..<(segments.count - 1) {
             let end = CGFloat(start + CGFloat(segments[i]) * 2 * CGFloat.pi)
             let path = drawPath(center: center, radius: radius, start: start, end: end, color: strokeColors[i], lineWidth: frame.width / 25, index: i)
@@ -54,6 +54,7 @@ class PieChartView: UIView {
             paths.append(path)
         }
     
+        
         let restPath = drawPath(center: center, radius: radius, start: start, end: CGFloat.pi * 3 / 2, color: UIColor.lightGray, lineWidth: frame.width / 75, index: segments.count - 1)
     
         paths.append(restPath)
@@ -73,7 +74,7 @@ class PieChartView: UIView {
         //path.stroke()
         var nextPathLayer: CAShapeLayer
         
-        if index < CApaths.count - 1 {
+        if index <= CApaths.count - 1 {
             nextPathLayer = CApaths[index]
         } else {
             nextPathLayer = CAShapeLayer()
@@ -89,7 +90,7 @@ class PieChartView: UIView {
                 nextPathLayer.lineWidth = lineWidth * 2
             }
         }
-        if index < CApaths.count - 1 {
+        if index <= CApaths.count - 1 {
         } else {
             CApaths.append(nextPathLayer)
             self.layer.addSublayer(CApaths[CApaths.count - 1])

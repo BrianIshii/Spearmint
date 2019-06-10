@@ -43,10 +43,11 @@ class BudgetViewController: UIViewController {
         
         collectionView.accessibilityScroll(UIAccessibilityScrollDirection.right)
         
-        budgetButton.setTitle(BudgetStore.getBudget(Budget.dateToString(Date())).month, for: .normal)
+        budgetButton.setTitle(BudgetStore.getBudget(Budget.dateToString(Date()))?.month, for: .normal)
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         if let viewController = budgetTableViewContoller, BudgetStore.budgetViewControllerNeedsUpdate {
             budgets = BudgetStore.budgets
             collectionView.reloadData()

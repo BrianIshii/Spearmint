@@ -22,8 +22,9 @@ class BudgetStore {
     
     static let budgetURL = documentsDirectory.appendingPathComponent(budgetString)
 
-    static func getBudget(_ key: String) -> Budget {
-        return budgetDictionary[key] ?? Budget.dummyBudget
+    static func getBudget(_ key: String) -> Budget? {
+        return budgetDictionary[key]
+//            ?? Budget.dummyBudget
     }
     
     static func addBudget(_ budget: Budget) {
@@ -118,8 +119,6 @@ class BudgetStore {
     
     static func update() {
         update(data: budgetDictionary, url: budgetURL)
-        budgetViewControllerNeedsUpdate = true
-        SummaryViewControllerNeedsUpdate = true
     }
     
     fileprivate static func update(data: [String : Budget], url: URL) {
@@ -130,5 +129,8 @@ class BudgetStore {
         } catch {
             print(error)
         }
+        
+        budgetViewControllerNeedsUpdate = true
+        SummaryViewControllerNeedsUpdate = true
     }
 }

@@ -14,6 +14,7 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
     var textRecognizer: VisionTextRecognizer!
     weak var previous: AddTransactionViewController?
     weak var addContentsViewController: AddContentsFromImageViewController?
+    var visionTextBlocks: [VisionTextBlock]?
 
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var stackViewHeightContraint: NSLayoutConstraint!
@@ -50,8 +51,31 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
         previous!.unwindFromImage(self)
         dismiss(animated: true, completion: nil)
     }
+    
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        for subview in self.selectedImageView.subviews {
+            subview.removeFromSuperview()
+        }
+        
+        updateStackViewHeightContraint()
+        
+        coordinator.animate(alongsideTransition: nil, completion: {
+            _ in
+
+            guard let visionTextBlocks = self.visionTextBlocks else { return }
+
+            DispatchQueue.main.async {
+
+            self.addFrames(visionTextBlocks)
+            }
+
+        })
+    }
     // MARK: - Navigation
 
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -95,8 +119,12 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
         selectedImageView.image = selectedImage
         image = selectedImage
         print(selectedImage.size.height)
-        stackViewHeightContraint.constant = stackViewHeightContraint.constant + selectedImage.size.height
-
+        
+        let aspectRatio = selectedImage.size.height / selectedImage.size.width
+        let height: CGFloat = 90
+        
+        stackViewHeightContraint.constant = height + aspectRatio * self.view.frame.width
+        
         //uncomment to get text of image
         let visionImage = VisionImage(image: selectedImageView.image!)
         textRecognizer.process(visionImage) { (features, error) in
@@ -105,6 +133,16 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
         
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
+    }
+    
+    func updateStackViewHeightContraint() {
+        guard let image = image else { return }
+
+        let aspectRatio = image.size.height / image.size.width
+        let height: CGFloat = 90
+        
+        stackViewHeightContraint.constant = height + aspectRatio * self.view.frame.height
+        
     }
     
     func selectImage() {
@@ -121,12 +159,17 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
     func processResult(from text: VisionText?, error: Error?) {
         guard let features = text, let image = selectedImageView.image else { return }
         
-        for block in text!.blocks {
+        visionTextBlocks = text!.blocks
+        addFrames(text!.blocks)
+    }
+    
+    func addFrames(_ blocks: [VisionTextBlock]) {
+        for block in blocks {
             for line in block.lines {
                 for element in line.elements {
-                    print(element.text + element.frame.debugDescription)
+                    //print(element.text + element.frame.debugDescription)
                     let transformedRect = element.frame.applying(transformMatrix())
-
+                    
                     let view = ImageFrameView(frame: transformedRect)
                     view.backgroundColor = .blue
                     view.alpha = 0.3
@@ -134,7 +177,7 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
                     selectedImageView.addSubview(view)
                     
                     let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-               
+                    
                     gestureRecognizer.delegate = self
                     view.addGestureRecognizer(gestureRecognizer)
                 }
@@ -155,11 +198,10 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
                         if let cell = cell as? ItemTableViewCell {
                             if cell.textField.isEditing {
                                 cell.textField.text?.append(" \(text)")
-                                return
                             } else if cell.nameTextField.isEditing {
                                 cell.nameTextField.text?.append(" \(text)")
-                                return
                             }
+                            vc.saveItems()
                         }
                     }
                 } else {
@@ -173,6 +215,7 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
     
     private func transformMatrix() -> CGAffineTransform {
         guard let image = selectedImageView.image else { return CGAffineTransform() }
+        
         let imageViewWidth = selectedImageView.frame.size.width
         let imageViewHeight = selectedImageView.frame.size.height
         let imageWidth = image.size.width

@@ -16,19 +16,37 @@ class AnalysisCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let budget = BudgetStore.getBudget(Budget.dateToString(Date()))
         
-        let mostExpensiveItems = budget.mostExpensiveItemPerCategory
+        let mostExpensiveItems = budget!.mostExpensiveItemPerCategory
         
         for (k,v) in mostExpensiveItems {
             items.append(v)
         }
         reloadInputViews()
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if TransactionStore.analysisViewController {
+            TransactionStore.analysisViewController = false
+        
+            let budget = BudgetStore.getBudget(Budget.dateToString(Date()))
+
+            let mostExpensiveItems = budget!.mostExpensiveItemPerCategory
+            
+            for (k,v) in mostExpensiveItems {
+                items.append(v)
+            }
+            
+            self.reloadInputViews()
+        }
     }
 
     
@@ -64,7 +82,9 @@ class AnalysisCollectionViewController: UICollectionViewController {
         let item = items[indexPath.row]
 
         // Configure the cell
+        cell.category.text = "Most Expensive Item for: \(item.budgetItemCategory.rawValue)"
         cell.name.text = item.name
+        cell.price.text = "Current Price: \(Currency.currencyFormatter(item.amount))"
         cell.backgroundColor = .lightGray
         return cell
     }

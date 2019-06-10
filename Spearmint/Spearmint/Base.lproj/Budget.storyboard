@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Budgets-->
         <scene sceneID="juM-ll-cBP">
             <objects>
                 <viewController id="ksr-wo-JLa" customClass="BudgetViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
@@ -90,7 +90,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="voc-Te-H7N"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="o24-QX-onU"/>
+                    <tabBarItem key="tabBarItem" title="Budgets" id="o24-QX-onU"/>
                     <navigationItem key="navigationItem" id="NGZ-YZ-16b">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" id="cpf-0W-7Gg"/>

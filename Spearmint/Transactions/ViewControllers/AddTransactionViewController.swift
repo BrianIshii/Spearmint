@@ -51,6 +51,9 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+        if let t = transaction {
+            canAddItems = false
+        }
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -202,6 +205,10 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
             selectedImage.image = image
             
         }
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
     
     func unwindFromImage(_ vc: AddImageViewController) {
@@ -321,6 +328,10 @@ extension AddTransactionViewController : UITableViewDelegate, UITableViewDataSou
                 let cell = Bundle.main.loadNibNamed(VendorTableViewCell.xib, owner: self, options: nil)?.first as! VendorTableViewCell
                 
                 vendorTextField = cell.textField
+                
+                if let t = transaction {
+                    cell.textField.text = Currency.currencyFormatter(t.vendor)
+                }
                 
                 return cell
             default:

@@ -33,6 +33,15 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if TransactionStore.TransactionControllerNeedsUpdate {
+            TransactionStore.TransactionControllerNeedsUpdate = false
+            transactions = Array(TransactionStore.transactions.values).sorted(by: >)
+            toggleCurrentAndAllTransactions(index: 0)
+            segmentedControl.selectedSegmentIndex = 0
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewedTransactions.count
     }

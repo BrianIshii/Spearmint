@@ -9,6 +9,8 @@
 import Foundation
 
 class TransactionStore {
+    public static var TransactionControllerNeedsUpdate = false
+    public static var analysisViewController = false
     public static var transactions: [String: Transaction] = getAllTransactions()
     
     private static let transactionString = "transactions"
@@ -64,5 +66,8 @@ class TransactionStore {
         } catch {
             print(error)
         }
+        
+        TransactionControllerNeedsUpdate = true
+        analysisViewController = true
     }
 }

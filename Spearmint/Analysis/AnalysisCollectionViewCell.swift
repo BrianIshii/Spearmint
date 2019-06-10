@@ -10,5 +10,6 @@ import UIKit
 
 class AnalysisCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var name: UILabel!
-    
+    @IBOutlet weak var category: UILabel!
+    @IBOutlet weak var price: UILabel!
 }

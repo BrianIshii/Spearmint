@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kwO-p1-zQB">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +15,7 @@
             <objects>
                 <tableViewController id="kas-vx-ZEs" customClass="SettingsTableViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mCh-qk-lnI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -67,21 +71,33 @@
         <!--Account-->
         <scene sceneID="wB0-TD-iPw">
             <objects>
-                <viewController id="xmb-TB-H1U" sceneMemberID="viewController">
+                <viewController id="xmb-TB-H1U" customClass="AccountViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K11-ng-2j8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxd-Zi-OKl">
-                                <rect key="frame" x="179" y="302" width="57" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxd-Zi-OKl">
+                                <rect key="frame" x="178.5" y="302" width="57" height="30"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
                                     <segue destination="kas-vx-ZEs" kind="show" id="1uJ-FM-dNp"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLQ-7k-ebq">
+                                <rect key="frame" x="125" y="392" width="164" height="30"/>
+                                <state key="normal" title="Add Demo Transactions"/>
+                                <connections>
+                                    <action selector="addDemoTransactions:" destination="xmb-TB-H1U" eventType="touchUpInside" id="HOq-rT-HZX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VLQ-7k-ebq" firstAttribute="centerX" secondItem="5Tl-Bb-lag" secondAttribute="centerX" id="1qD-wJ-E07"/>
+                            <constraint firstItem="mxd-Zi-OKl" firstAttribute="centerX" secondItem="5Tl-Bb-lag" secondAttribute="centerX" id="C6v-nL-Fqp"/>
+                            <constraint firstItem="mxd-Zi-OKl" firstAttribute="top" secondItem="5Tl-Bb-lag" secondAttribute="top" constant="214" id="Yno-ci-nmT"/>
+                            <constraint firstItem="VLQ-7k-ebq" firstAttribute="top" secondItem="mxd-Zi-OKl" secondAttribute="bottom" constant="60" id="vyt-st-j2P"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5Tl-Bb-lag"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" id="W8z-NW-q72"/>

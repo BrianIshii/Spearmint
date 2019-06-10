@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Transactions-->
         <scene sceneID="K4c-FI-qTp">
             <objects>
                 <viewController id="yV4-F7-YI9" customClass="TransactionListViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BpP-Mv-zuI">
-                                <rect key="frame" x="0.0" y="116" width="414" height="746"/>
+                                <rect key="frame" x="0.0" y="116" width="414" height="697"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="fA2-BB-QJP">
@@ -73,7 +73,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wey-25-Rik"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="lx1-1a-h8R"/>
+                    <tabBarItem key="tabBarItem" title="Transactions" id="fq9-mt-Dpb"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="navigationBar" destination="ych-wy-2jV" id="Vbp-Tk-Qzj"/>
                         <outlet property="segmentedControl" destination="utx-RV-yJF" id="gPJ-VS-t85"/>
