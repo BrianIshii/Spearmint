@@ -19,17 +19,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Budget Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SkH-I9-Viy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                        <rect key="frame" x="20" y="0.0" width="394" height="43.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="SkH-I9-Viy" firstAttribute="centerX" secondItem="caQ-AE-fkL" secondAttribute="centerX" id="QSy-ZG-AAF"/>
+                    <constraint firstAttribute="trailing" secondItem="SkH-I9-Viy" secondAttribute="trailing" id="I4x-Wt-xJJ"/>
                     <constraint firstItem="SkH-I9-Viy" firstAttribute="height" secondItem="caQ-AE-fkL" secondAttribute="height" id="YB7-wB-GQj"/>
                     <constraint firstItem="SkH-I9-Viy" firstAttribute="centerY" secondItem="caQ-AE-fkL" secondAttribute="centerY" id="qwL-uj-lkj"/>
-                    <constraint firstItem="SkH-I9-Viy" firstAttribute="width" secondItem="caQ-AE-fkL" secondAttribute="width" id="uZa-bV-NA6"/>
+                    <constraint firstItem="SkH-I9-Viy" firstAttribute="leading" secondItem="caQ-AE-fkL" secondAttribute="leading" constant="20" id="wKm-uw-jPe"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

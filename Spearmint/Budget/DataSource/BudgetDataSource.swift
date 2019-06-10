@@ -82,6 +82,8 @@ extension BudgetDataSource: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: BudgetSectionTableViewCell.reuseIdentifier, for: indexPath) as! BudgetSectionTableViewCell
             
             cell.budgetCategoryLabel.text = sections[indexPath.row].category.rawValue
+            cell.backgroundColor = UIColor(red: 232/255, green: 233/255, blue: 237/255, alpha: 1)
+            cell.budgetCategoryLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
             cell.setEditing(true, animated: true)
             return cell
         } else {

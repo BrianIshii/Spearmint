@@ -86,7 +86,7 @@ class BudgetTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let dataSource = dataSource {
             if dataSource.canRearrangeSections {
-                return CGFloat(20)
+                return CGFloat(30)
             }
         }
         return CGFloat(60)

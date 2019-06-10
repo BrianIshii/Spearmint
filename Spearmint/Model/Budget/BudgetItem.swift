@@ -43,6 +43,16 @@ class BudgetItem: Codable, Hashable {
         }
     }
     
+    func addTransactionItem(_ transaction: Transaction, _ item: Item) {
+        if !transactions.contains(where: { $0.description() == transaction.id.description() }) {
+            transactions.append(transaction.id)
+        }
+        
+        if item.budgetItemName == name {
+            actual += item.amount
+        }
+    }
+    
     func deleteTransaction(_ transaction: Transaction) {
         transactions.removeAll(where: { (t) -> Bool in
             return t == transaction.id
@@ -52,6 +62,16 @@ class BudgetItem: Codable, Hashable {
             if item.budgetItemName == name {
                 actual -= item.amount
             }
+        }
+    }
+    
+    func deleteTransactionItem(_ transaction: Transaction, _ item: Item) {
+        transactions.removeAll(where: { (t) -> Bool in
+            return t == transaction.id
+        })
+        
+        if item.budgetItemName == name {
+            actual -= item.amount
         }
     }
     
