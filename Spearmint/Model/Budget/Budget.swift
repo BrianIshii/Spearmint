@@ -20,6 +20,12 @@ class Budget: Codable {
         self.items = items
     }
     
+    init(date: Date, items: [BudgetItemCategory:[BudgetItem]]) {
+        self.dateString = Budget.dateToString(date)
+        self.transactions = []
+        self.items = items
+    }
+    
     func addBudgetItem(budgetItem: BudgetItem) {
         items[budgetItem.category]!.append(budgetItem)
         BudgetStore.update()

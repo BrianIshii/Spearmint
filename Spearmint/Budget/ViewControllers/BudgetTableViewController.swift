@@ -56,39 +56,40 @@ class BudgetTableViewController: UITableViewController {
     }
     
     func toggleRearrangingSections() {
-        if let dataSource = dataSource {
-            dataSource.canRearrangeSections = !dataSource.canRearrangeSections
-        }
+        guard let dataSource = dataSource else { return }
+
+        dataSource.canRearrangeSections = !dataSource.canRearrangeSections
         tableView.reloadData()
     }
     
     func updateBudget(budget: Budget) {
-        if let ds = dataSource {
-            ds.currentBudget = budget
-        }
+        guard let dataSource = dataSource else { return }
+
+        dataSource.currentBudget = budget
         tableView.reloadData()
     }
     
     func updateBudgetItemSections() {
-        if let ds = dataSource {
-            BudgetItemSectionStore.budgetItemSections = ds.sections
-            BudgetItemSectionStore.update()
-        }
+        guard let dataSource = dataSource else { return }
+
+        BudgetItemSectionStore.budgetItemSections = dataSource.sections
+        BudgetItemSectionStore.update()
     }
     
     func addBudgetItem(_ budgetItem: BudgetItem) {
-        if let ds = dataSource, let currentBudget = ds.currentBudget {
-            currentBudget.addBudgetItem(budgetItem: budgetItem)
-            tableView.reloadData()
-        }
+        guard let dataSource = dataSource else { return }
+        guard let currentBudget = dataSource.currentBudget else { return }
+        
+        currentBudget.addBudgetItem(budgetItem: budgetItem)
+        tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if let dataSource = dataSource {
-            if dataSource.canRearrangeSections {
-                return CGFloat(30)
-            }
+        guard let dataSource = dataSource else { return CGFloat(60) }
+        if dataSource.canRearrangeSections {
+            return CGFloat(30)
         }
+        
         return CGFloat(60)
     }
 
