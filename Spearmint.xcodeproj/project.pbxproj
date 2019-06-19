@@ -108,6 +108,7 @@
 		76EF34602298F8AF005A5C35 /* AddBudgetItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF345F2298F8AF005A5C35 /* AddBudgetItemViewController.swift */; };
 		76EF34652299E029005A5C35 /* AddBudgetItemSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF34642299E029005A5C35 /* AddBudgetItemSectionViewController.swift */; };
 		76EF34672299FCD7005A5C35 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EF34662299FCD7005A5C35 /* MapKit.framework */; };
+		76F4235C22BA02CE00E7B868 /* TransactionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4235B22BA02CE00E7B868 /* TransactionDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,6 +238,7 @@
 		76EF345F2298F8AF005A5C35 /* AddBudgetItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetItemViewController.swift; sourceTree = "<group>"; };
 		76EF34642299E029005A5C35 /* AddBudgetItemSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetItemSectionViewController.swift; sourceTree = "<group>"; };
 		76EF34662299FCD7005A5C35 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		76F4235B22BA02CE00E7B868 /* TransactionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDataSource.swift; sourceTree = "<group>"; };
 		7E80DB5F205651E2DAB92ECD /* Pods_SpearmintTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpearmintTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC4A818360F2DDAAA186DA7 /* Pods-Spearmint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spearmint.debug.xcconfig"; path = "Target Support Files/Pods-Spearmint/Pods-Spearmint.debug.xcconfig"; sourceTree = "<group>"; };
 		A0857D97E263450E6900B129 /* Pods-Spearmint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spearmint.release.xcconfig"; path = "Target Support Files/Pods-Spearmint/Pods-Spearmint.release.xcconfig"; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 		764AFD86226E7060007BFD90 /* Spearmint */ = {
 			isa = PBXGroup;
 			children = (
+				76F4235D22BA03E100E7B868 /* DataSource */,
 				76D22F7B229A27FE00C06567 /* Analysis */,
 				76B548E122952D95001B2FB1 /* Summary */,
 				764AFDB7226EB27C007BFD90 /* Account */,
@@ -418,6 +421,7 @@
 		764AFDB5226EB1AE007BFD90 /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
+				76F4235A22BA02A700E7B868 /* DataSource */,
 				76B548CB22915431001B2FB1 /* Cells */,
 				76B548CA22915381001B2FB1 /* ViewControllers */,
 				7637A6392288E48C007DD20B /* TransactionBudgetItemViewCell.xib */,
@@ -712,6 +716,21 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		76F4235A22BA02A700E7B868 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				76F4235B22BA02CE00E7B868 /* TransactionDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		76F4235D22BA03E100E7B868 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		D692118312A1BE281EB3B7C6 /* Pods */ = {
@@ -1046,6 +1065,7 @@
 				76D22F7E229A281B00C06567 /* AnalysisViewController.swift in Sources */,
 				7637A61622864FC5007DD20B /* BudgetItemTableViewCell.swift in Sources */,
 				7637A6252287AE00007DD20B /* AddTransactionBudgetItemTableViewCell.swift in Sources */,
+				76F4235C22BA02CE00E7B868 /* TransactionDataSource.swift in Sources */,
 				763275C322A5B9EE0099532A /* AddContentsFromImageViewController.swift in Sources */,
 				7637A6282287EAB4007DD20B /* PieChartView.swift in Sources */,
 				76B548E622952EEE001B2FB1 /* MasterSummaryViewController.swift in Sources */,

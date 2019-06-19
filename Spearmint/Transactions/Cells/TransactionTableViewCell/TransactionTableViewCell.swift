@@ -27,3 +27,23 @@ class TransactionTableViewCell: UITableViewCell {
     }
 
 }
+
+extension TransactionTableViewCell: ConfigurableCell {
+    func configure(object: Transaction) {
+        
+        transactionAmountLabel.text = Currency.currencyFormatter(String(format: "%.2f", object.amount))
+        
+        switch object.transactionType {
+        case .expense:
+            transactionAmountLabel.textColor = UIColor.red
+        case.income:
+            transactionAmountLabel.textColor = UIColor.green
+        }
+        transactionVendorLabel.text = object.vendor
+        transactionDateLabel.text = TransactionDate.getMonthAndDay(date: object.date)
+    }
+    
+    func configure() {
+        
+    }
+}

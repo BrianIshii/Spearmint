@@ -8,12 +8,14 @@
 
 import UIKit
 
-class TransactionListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TransactionListViewController: UIViewController {
     
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var transactionTableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
+    
+    private var dataSource: TransactionDataSource?
     var transactions: [Transaction] = []
     var viewedTransactions: [Transaction] = []
     var currentDate: Date = Date()
@@ -22,102 +24,53 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
         super.viewDidLoad()
         
         transactions = Array(TransactionStore.transactions.values).sorted(by: >)
-        setListToCurrentMonthTransactions()
         
         transactionTableView.delegate = self
-        transactionTableView.dataSource = self
         
         navigationBar.prefersLargeTitles = true
 //        let searchController = UISearchController(searchResultsController: nil)
 //        navigationItem.searchController = searchController
         // Do any additional setup after loading the view.
+        
+        dataSource = TransactionDataSource(tableView: transactionTableView)
+        
+        guard let dataSource = dataSource else { return }
+        
+        dataSource.transactions = Array(TransactionStore.transactions.values).sorted(by: >)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        guard let dataSource = dataSource else { return }
+
         if TransactionStore.TransactionControllerNeedsUpdate {
             TransactionStore.TransactionControllerNeedsUpdate = false
             transactions = Array(TransactionStore.transactions.values).sorted(by: >)
-            toggleCurrentAndAllTransactions(index: 0)
+            dataSource.toggleCurrentAndAllTransactions(index: 0)
             segmentedControl.selectedSegmentIndex = 0
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewedTransactions.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed(TransactionTableViewCell.xib, owner: self, options: nil)?.first as! TransactionTableViewCell
-        
-        let currentTransaction = viewedTransactions[indexPath.row]
-        
-        cell.transactionAmountLabel.text = Currency.currencyFormatter(String(format: "%.2f", currentTransaction.amount))
-
-        switch currentTransaction.transactionType {
-        case .expense:
-            cell.transactionAmountLabel.textColor = UIColor.red
-        case.income:
-            cell.transactionAmountLabel.textColor = UIColor.green
-        }
-        cell.transactionVendorLabel.text = currentTransaction.vendor
-        cell.transactionDateLabel.text = TransactionDate.getMonthAndDay(date: currentTransaction.date)
-        
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            LocalAccess.deleteTransaction(transactions[indexPath.row])
-            transactions.remove(at: indexPath.row)
-            
-            toggleCurrentAndAllTransactions(index: segmentedControl.selectedSegmentIndex)
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: ViewTransactionSegue.segueIdentifier, sender: nil)
-    }
-    
     @IBAction func toggleTransactions(_ sender: UISegmentedControl) {
-        toggleCurrentAndAllTransactions(index: sender.selectedSegmentIndex)
+        guard let dataSource = dataSource else { return }
+
+        dataSource.toggleCurrentAndAllTransactions(index: sender.selectedSegmentIndex)
     }
     
     @IBAction func unwind(sender: UIStoryboardSegue) {
+        guard let dataSource = dataSource else { return }
+        
         if let sourceViewController = sender.source as? AddTransactionViewController, let transaction = sourceViewController.transaction {
             LocalAccess.addTransaction(transaction)
             transactions.append(transaction)
             transactions.sort(by: >)
             
-            toggleCurrentAndAllTransactions(index: segmentedControl.selectedSegmentIndex)
+            dataSource.toggleCurrentAndAllTransactions(index: segmentedControl.selectedSegmentIndex)
         }
         
         if let selectedIndexPath = transactionTableView.indexPathForSelectedRow {
             transactionTableView.deselectRow(at: selectedIndexPath, animated: true)
         }
-    }
-    
-    private func toggleCurrentAndAllTransactions(index: Int) {
-        if (index == 0) {
-            //print("current month")
-            setListToCurrentMonthTransactions()
-        } else {
-            //print("all transactions")
-            setListToAllTransactions()
-        }
-    }
-    
-    private func setListToCurrentMonthTransactions() {
-        var array = transactions.filter { (t) -> Bool in
-            t.isInCurrentMonth()
-        }
-        
-        viewedTransactions = array
-        transactionTableView.reloadData()
-    }
-    
-    private func setListToAllTransactions() {
-        viewedTransactions = transactions
-        transactionTableView.reloadData()
     }
 
     // MARK: - Navigation
@@ -132,5 +85,22 @@ class TransactionListViewController: UIViewController, UITableViewDataSource, UI
                 vc.transaction = selectedTransaction
             }
         }
+    }
+}
+
+extension TransactionListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard let dataSource = dataSource else { return }
+        
+        if editingStyle == .delete {
+            LocalAccess.deleteTransaction(transactions[indexPath.row])
+            transactions.remove(at: indexPath.row)
+            
+            dataSource.toggleCurrentAndAllTransactions(index: segmentedControl.selectedSegmentIndex)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: ViewTransactionSegue.segueIdentifier, sender: nil)
     }
 }

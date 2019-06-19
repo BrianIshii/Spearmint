@@ -31,7 +31,7 @@ class BudgetTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        dataSource = BudgetDataSource(tableView: tableView as! BudgetItemListTableView)
+        dataSource = BudgetDataSource(tableView: tableView)
         
         if let ds = dataSource {
             ds.currentBudget = BudgetStore.getBudget(Budget.dateToString(Date()))
@@ -86,6 +86,7 @@ class BudgetTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let dataSource = dataSource else { return CGFloat(60) }
+        
         if dataSource.canRearrangeSections {
             return CGFloat(30)
         }

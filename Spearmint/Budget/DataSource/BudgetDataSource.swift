@@ -9,13 +9,13 @@
 import UIKit
 
 class BudgetDataSource: NSObject {
-    fileprivate let tableView: BudgetItemListTableView
+    fileprivate let tableView: UITableView
     var sections: [BudgetItemSection] = BudgetItemSectionStore.budgetItemSections
     var currentBudget: Budget?
     var canRearrangeSections = false
 
     
-    init(tableView: BudgetItemListTableView) {
+    init(tableView: UITableView) {
         self.tableView = tableView
         super.init()
         
