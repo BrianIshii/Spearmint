@@ -5,6 +5,8 @@ xcode_scheme: Spearmint
 xcode_sdk: iphonesimulator12.2
 xcode_destination: platform=iOS Simulator,OS=12.2,name=iPhone Xs
 
+podfile: Podfile
+
 before_install:
     - rvm use system
     - sudo gem install cocoapods -v '1.7.2'
