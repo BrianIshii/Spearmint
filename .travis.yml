@@ -1,5 +1,4 @@
-language:
-  - swift
+language: objective-c
 osx_image: xcode10.2
 xcode_scheme: SpearmintTests
 xcode_destination: platform=iOS Simulator,OS=12.2,name=iPhone XR
