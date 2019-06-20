@@ -109,6 +109,7 @@
 		76EF34652299E029005A5C35 /* AddBudgetItemSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF34642299E029005A5C35 /* AddBudgetItemSectionViewController.swift */; };
 		76EF34672299FCD7005A5C35 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EF34662299FCD7005A5C35 /* MapKit.framework */; };
 		76F4235C22BA02CE00E7B868 /* TransactionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4235B22BA02CE00E7B868 /* TransactionDataSource.swift */; };
+		76F4235F22BB4AF500E7B868 /* BudgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4235E22BB4AF500E7B868 /* BudgetTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -239,6 +240,7 @@
 		76EF34642299E029005A5C35 /* AddBudgetItemSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetItemSectionViewController.swift; sourceTree = "<group>"; };
 		76EF34662299FCD7005A5C35 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		76F4235B22BA02CE00E7B868 /* TransactionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDataSource.swift; sourceTree = "<group>"; };
+		76F4235E22BB4AF500E7B868 /* BudgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTests.swift; sourceTree = "<group>"; };
 		7E80DB5F205651E2DAB92ECD /* Pods_SpearmintTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpearmintTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC4A818360F2DDAAA186DA7 /* Pods-Spearmint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spearmint.debug.xcconfig"; path = "Target Support Files/Pods-Spearmint/Pods-Spearmint.debug.xcconfig"; sourceTree = "<group>"; };
 		A0857D97E263450E6900B129 /* Pods-Spearmint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spearmint.release.xcconfig"; path = "Target Support Files/Pods-Spearmint/Pods-Spearmint.release.xcconfig"; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 				764AFD9C226E7061007BFD90 /* SpearmintTests.swift */,
 				764AFD9E226E7061007BFD90 /* Info.plist */,
 				76B548BA22913069001B2FB1 /* CurrenyTests.swift */,
+				76F4235E22BB4AF500E7B868 /* BudgetTests.swift */,
 			);
 			path = SpearmintTests;
 			sourceTree = "<group>";
@@ -1089,6 +1092,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76F4235F22BB4AF500E7B868 /* BudgetTests.swift in Sources */,
 				764AFD9D226E7061007BFD90 /* SpearmintTests.swift in Sources */,
 				76B548BB22913069001B2FB1 /* CurrenyTests.swift in Sources */,
 			);
