@@ -3,9 +3,8 @@ language:
 osx_image: xcode10.2
 xcode_scheme: SpearmintTests
 xcode_destination: platform=iOS Simulator,OS=12.2,name=iPhone XR
-podfile: Podfile
 
-#before_install:
-#    - rvm use system
-#    - sudo gem install cocoapods -v '1.2.0'
+before_install:
+    - rvm use system
+    - sudo gem install cocoapods -v '1.7.0'
 
