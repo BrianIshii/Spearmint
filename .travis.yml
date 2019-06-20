@@ -1,7 +1,7 @@
 language: objective-c
 osx_image: xcode10.2
 xcode_workspace: Spearmint.xcworkspace
-xcode_scheme: SpearmintTests
+xcode_scheme: Spearmint
 xcode_sdk: iphonesimulator12.2
 xcode_destination: platform=iOS Simulator,OS=12.2,name=iPhone Xs
 
