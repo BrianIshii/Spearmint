@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1BD869F4432509ACB31B176D /* Pods_Spearmint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C3706670F34FDD564F61587 /* Pods_Spearmint.framework */; };
-		550B0A36AECD4801F762FADE /* Pods_SpearmintTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E80DB5F205651E2DAB92ECD /* Pods_SpearmintTests.framework */; };
-		6FA114086373F46C7BF691A3 /* Pods_SpearmintUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BA4C0BF29F1449C4A62DFD2 /* Pods_SpearmintUITests.framework */; };
 		7632756D229F08930099532A /* VendorTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7632756C229F08930099532A /* VendorTextField.swift */; };
 		76327575229F13FC0099532A /* SuggestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76327574229F13FC0099532A /* SuggestionsView.swift */; };
 		763275BF22A59FF20099532A /* ImageFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763275BE22A59FF20099532A /* ImageFrameView.swift */; };
@@ -110,6 +107,9 @@
 		76EF34672299FCD7005A5C35 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EF34662299FCD7005A5C35 /* MapKit.framework */; };
 		76F4235C22BA02CE00E7B868 /* TransactionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4235B22BA02CE00E7B868 /* TransactionDataSource.swift */; };
 		76F4235F22BB4AF500E7B868 /* BudgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4235E22BB4AF500E7B868 /* BudgetTests.swift */; };
+		8C358F36EF8B95A59EFE86A9 /* libPods-Spearmint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5F0B3815F25922C7D10D61 /* libPods-Spearmint.a */; };
+		AD33E71841DF4F0E61F0F54B /* libPods-SpearmintTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E00FF3C8E9852A3C8405DF6 /* libPods-SpearmintTests.a */; };
+		E4382AD067BA2C794744425D /* libPods-SpearmintUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 545E6A7C20C3C5635D4B9DB5 /* libPods-SpearmintUITests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,11 +130,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0C3706670F34FDD564F61587 /* Pods_Spearmint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spearmint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D990FF3295C92B185D96464 /* Pods-SpearmintUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpearmintUITests.release.xcconfig"; path = "Target Support Files/Pods-SpearmintUITests/Pods-SpearmintUITests.release.xcconfig"; sourceTree = "<group>"; };
-		30F790D55FB47E58942AC213 /* Pods-SpearmintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpearmintTests.debug.xcconfig"; path = "Target Support Files/Pods-SpearmintTests/Pods-SpearmintTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3BA4C0BF29F1449C4A62DFD2 /* Pods_SpearmintUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpearmintUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		738DBB691C06DD966F9B38D1 /* Pods-SpearmintTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpearmintTests.release.xcconfig"; path = "Target Support Files/Pods-SpearmintTests/Pods-SpearmintTests.release.xcconfig"; sourceTree = "<group>"; };
+		0E00FF3C8E9852A3C8405DF6 /* libPods-SpearmintTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SpearmintTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E5F0B3815F25922C7D10D61 /* libPods-Spearmint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Spearmint.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		305620DD9AB50D65E585919C /* Pods-Spearmint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spearmint.release.xcconfig"; path = "Target Support Files/Pods-Spearmint/Pods-Spearmint.release.xcconfig"; sourceTree = "<group>"; };
+		38382D5A7A8A404A69F106A9 /* Pods-SpearmintUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpearmintUITests.debug.xcconfig"; path = "Target Support Files/Pods-SpearmintUITests/Pods-SpearmintUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		47AD33D33B300E5D80F6D3CA /* Pods-SpearmintUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpearmintUITests.release.xcconfig"; path = "Target Support Files/Pods-SpearmintUITests/Pods-SpearmintUITests.release.xcconfig"; sourceTree = "<group>"; };
+		545E6A7C20C3C5635D4B9DB5 /* libPods-SpearmintUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SpearmintUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BB2A02C44AE709DA729DB6E /* Pods-SpearmintTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpearmintTests.release.xcconfig"; path = "Target Support Files/Pods-SpearmintTests/Pods-SpearmintTests.release.xcconfig"; sourceTree = "<group>"; };
 		7632756C229F08930099532A /* VendorTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorTextField.swift; sourceTree = "<group>"; };
 		76327574229F13FC0099532A /* SuggestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsView.swift; sourceTree = "<group>"; };
 		763275BE22A59FF20099532A /* ImageFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFrameView.swift; sourceTree = "<group>"; };
@@ -241,10 +243,8 @@
 		76EF34662299FCD7005A5C35 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		76F4235B22BA02CE00E7B868 /* TransactionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDataSource.swift; sourceTree = "<group>"; };
 		76F4235E22BB4AF500E7B868 /* BudgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTests.swift; sourceTree = "<group>"; };
-		7E80DB5F205651E2DAB92ECD /* Pods_SpearmintTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpearmintTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FC4A818360F2DDAAA186DA7 /* Pods-Spearmint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spearmint.debug.xcconfig"; path = "Target Support Files/Pods-Spearmint/Pods-Spearmint.debug.xcconfig"; sourceTree = "<group>"; };
-		A0857D97E263450E6900B129 /* Pods-Spearmint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spearmint.release.xcconfig"; path = "Target Support Files/Pods-Spearmint/Pods-Spearmint.release.xcconfig"; sourceTree = "<group>"; };
-		A5999217056EE1E0792FFF69 /* Pods-SpearmintUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpearmintUITests.debug.xcconfig"; path = "Target Support Files/Pods-SpearmintUITests/Pods-SpearmintUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C51C6518E66B1688FCEA119B /* Pods-Spearmint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spearmint.debug.xcconfig"; path = "Target Support Files/Pods-Spearmint/Pods-Spearmint.debug.xcconfig"; sourceTree = "<group>"; };
+		F06046302A5C5C32EB52D302 /* Pods-SpearmintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpearmintTests.debug.xcconfig"; path = "Target Support Files/Pods-SpearmintTests/Pods-SpearmintTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,7 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76EF34672299FCD7005A5C35 /* MapKit.framework in Frameworks */,
-				1BD869F4432509ACB31B176D /* Pods_Spearmint.framework in Frameworks */,
+				8C358F36EF8B95A59EFE86A9 /* libPods-Spearmint.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +261,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				550B0A36AECD4801F762FADE /* Pods_SpearmintTests.framework in Frameworks */,
+				AD33E71841DF4F0E61F0F54B /* libPods-SpearmintTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +269,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FA114086373F46C7BF691A3 /* Pods_SpearmintUITests.framework in Frameworks */,
+				E4382AD067BA2C794744425D /* libPods-SpearmintUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,9 +280,9 @@
 			isa = PBXGroup;
 			children = (
 				76EF34662299FCD7005A5C35 /* MapKit.framework */,
-				0C3706670F34FDD564F61587 /* Pods_Spearmint.framework */,
-				7E80DB5F205651E2DAB92ECD /* Pods_SpearmintTests.framework */,
-				3BA4C0BF29F1449C4A62DFD2 /* Pods_SpearmintUITests.framework */,
+				0E5F0B3815F25922C7D10D61 /* libPods-Spearmint.a */,
+				0E00FF3C8E9852A3C8405DF6 /* libPods-SpearmintTests.a */,
+				545E6A7C20C3C5635D4B9DB5 /* libPods-SpearmintUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -739,12 +739,12 @@
 		D692118312A1BE281EB3B7C6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7FC4A818360F2DDAAA186DA7 /* Pods-Spearmint.debug.xcconfig */,
-				A0857D97E263450E6900B129 /* Pods-Spearmint.release.xcconfig */,
-				30F790D55FB47E58942AC213 /* Pods-SpearmintTests.debug.xcconfig */,
-				738DBB691C06DD966F9B38D1 /* Pods-SpearmintTests.release.xcconfig */,
-				A5999217056EE1E0792FFF69 /* Pods-SpearmintUITests.debug.xcconfig */,
-				1D990FF3295C92B185D96464 /* Pods-SpearmintUITests.release.xcconfig */,
+				C51C6518E66B1688FCEA119B /* Pods-Spearmint.debug.xcconfig */,
+				305620DD9AB50D65E585919C /* Pods-Spearmint.release.xcconfig */,
+				F06046302A5C5C32EB52D302 /* Pods-SpearmintTests.debug.xcconfig */,
+				5BB2A02C44AE709DA729DB6E /* Pods-SpearmintTests.release.xcconfig */,
+				38382D5A7A8A404A69F106A9 /* Pods-SpearmintUITests.debug.xcconfig */,
+				47AD33D33B300E5D80F6D3CA /* Pods-SpearmintUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -756,12 +756,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 764AFDAC226E7061007BFD90 /* Build configuration list for PBXNativeTarget "Spearmint" */;
 			buildPhases = (
-				994C55D997D412E784AD1152 /* [CP] Check Pods Manifest.lock */,
+				D3EA98BDE6769ACCD0006EAD /* [CP] Check Pods Manifest.lock */,
 				764AFD80226E7060007BFD90 /* Sources */,
 				764AFD81226E7060007BFD90 /* Frameworks */,
 				764AFD82226E7060007BFD90 /* Resources */,
-				BAB99AE8E3AE81CA9B81B8B8 /* [CP] Embed Pods Frameworks */,
-				199DA7B7F67820F8751C70CF /* [CP] Copy Pods Resources */,
+				1B7EBFF15BE47E1046E96369 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -776,7 +775,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 764AFDAF226E7061007BFD90 /* Build configuration list for PBXNativeTarget "SpearmintTests" */;
 			buildPhases = (
-				06F9C0EC9FF9D00731D45545 /* [CP] Check Pods Manifest.lock */,
+				1265DDB0FEC26A8911010871 /* [CP] Check Pods Manifest.lock */,
 				764AFD94226E7061007BFD90 /* Sources */,
 				764AFD95226E7061007BFD90 /* Frameworks */,
 				764AFD96226E7061007BFD90 /* Resources */,
@@ -795,7 +794,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 764AFDB2226E7061007BFD90 /* Build configuration list for PBXNativeTarget "SpearmintUITests" */;
 			buildPhases = (
-				081F6F11E25AF76CB096A09A /* [CP] Check Pods Manifest.lock */,
+				DC0A4A9B764F3EBA65B214D7 /* [CP] Check Pods Manifest.lock */,
 				764AFD9F226E7061007BFD90 /* Sources */,
 				764AFDA0226E7061007BFD90 /* Frameworks */,
 				764AFDA1226E7061007BFD90 /* Resources */,
@@ -906,7 +905,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		06F9C0EC9FF9D00731D45545 /* [CP] Check Pods Manifest.lock */ = {
+		1265DDB0FEC26A8911010871 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -928,29 +927,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		081F6F11E25AF76CB096A09A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SpearmintUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		199DA7B7F67820F8751C70CF /* [CP] Copy Pods Resources */ = {
+		1B7EBFF15BE47E1046E96369 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -967,7 +944,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Spearmint/Pods-Spearmint-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		994C55D997D412E784AD1152 /* [CP] Check Pods Manifest.lock */ = {
+		D3EA98BDE6769ACCD0006EAD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -989,21 +966,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BAB99AE8E3AE81CA9B81B8B8 /* [CP] Embed Pods Frameworks */ = {
+		DC0A4A9B764F3EBA65B214D7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Spearmint/Pods-Spearmint-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Spearmint/Pods-Spearmint-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpearmintUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Spearmint/Pods-Spearmint-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1275,7 +1257,7 @@
 		};
 		764AFDAD226E7061007BFD90 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7FC4A818360F2DDAAA186DA7 /* Pods-Spearmint.debug.xcconfig */;
+			baseConfigurationReference = C51C6518E66B1688FCEA119B /* Pods-Spearmint.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1294,7 +1276,7 @@
 		};
 		764AFDAE226E7061007BFD90 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A0857D97E263450E6900B129 /* Pods-Spearmint.release.xcconfig */;
+			baseConfigurationReference = 305620DD9AB50D65E585919C /* Pods-Spearmint.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1313,7 +1295,7 @@
 		};
 		764AFDB0226E7061007BFD90 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30F790D55FB47E58942AC213 /* Pods-SpearmintTests.debug.xcconfig */;
+			baseConfigurationReference = F06046302A5C5C32EB52D302 /* Pods-SpearmintTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1335,7 +1317,7 @@
 		};
 		764AFDB1226E7061007BFD90 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 738DBB691C06DD966F9B38D1 /* Pods-SpearmintTests.release.xcconfig */;
+			baseConfigurationReference = 5BB2A02C44AE709DA729DB6E /* Pods-SpearmintTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1357,7 +1339,7 @@
 		};
 		764AFDB3226E7061007BFD90 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A5999217056EE1E0792FFF69 /* Pods-SpearmintUITests.debug.xcconfig */;
+			baseConfigurationReference = 38382D5A7A8A404A69F106A9 /* Pods-SpearmintUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1378,7 +1360,7 @@
 		};
 		764AFDB4226E7061007BFD90 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1D990FF3295C92B185D96464 /* Pods-SpearmintUITests.release.xcconfig */;
+			baseConfigurationReference = 47AD33D33B300E5D80F6D3CA /* Pods-SpearmintUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
