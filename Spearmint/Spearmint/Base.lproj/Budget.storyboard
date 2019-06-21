@@ -270,8 +270,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dJ2-oN-23J" customClass="MoneyTextField" customModule="Spearmint" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="97" width="414" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dJ2-oN-23J" customClass="MoneyTextField" customModule="Spearmint" customModuleProvider="target">
+                                <rect key="frame" x="194.5" y="97" width="25" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -281,6 +281,7 @@
                         <constraints>
                             <constraint firstItem="dCP-3Q-KV4" firstAttribute="width" secondItem="w8D-Gt-0gW" secondAttribute="width" id="FeQ-MA-6EO"/>
                             <constraint firstItem="Bov-4m-cn2" firstAttribute="width" secondItem="w8D-Gt-0gW" secondAttribute="width" id="IOp-ve-D9U"/>
+                            <constraint firstItem="dJ2-oN-23J" firstAttribute="centerX" secondItem="hpg-of-lNf" secondAttribute="centerX" id="Lj4-n4-KRc"/>
                             <constraint firstItem="dCP-3Q-KV4" firstAttribute="top" secondItem="dJ2-oN-23J" secondAttribute="bottom" constant="32" id="Nhm-xX-1qD"/>
                             <constraint firstItem="Bov-4m-cn2" firstAttribute="centerX" secondItem="w8D-Gt-0gW" secondAttribute="centerX" id="X47-c7-Hwj"/>
                             <constraint firstItem="bwr-qN-DIZ" firstAttribute="top" secondItem="Bov-4m-cn2" secondAttribute="bottom" constant="8" id="ZBW-Rq-RMm"/>
