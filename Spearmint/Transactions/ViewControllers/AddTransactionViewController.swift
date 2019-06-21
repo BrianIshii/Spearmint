@@ -51,7 +51,7 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        if let t = transaction {
+        if transaction != nil {
             canAddItems = false
         }
     }
@@ -165,7 +165,7 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
         let amount = Currency.currencyToFloat(amountTextField.text!)
         
         let budgetKey = Budget.dateToString(DateFormatterFactory.mediumFormatter.date(from: date)!)
-        let budget = BudgetStore.budgetDictionary[budgetKey]
+        _ = BudgetStore.budgetDictionary[budgetKey]
         let hasImage = ((selectedImage.image?.isEqualTo(UIImage(imageLiteralResourceName: "default")))!) ? false : true
         
         var transactionItems: [Item] = []
@@ -225,7 +225,7 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
     fileprivate func updateItems(_ budgetItems: [BudgetItem], items: [[Item]]) {
         self.budgetItems = budgetItems
         
-        for (index, budgetItem) in budgetItems.enumerated() {
+        for (index, _) in budgetItems.enumerated() {
             var newIndexPaths: [IndexPath] = []
             
             itemsDictionary.append([])
@@ -245,7 +245,7 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
     fileprivate func updateItems(_ budgetItems: [BudgetItem]) {
         self.budgetItems = budgetItems
 
-        for (index, budgetItem) in budgetItems.enumerated() {
+        for (_, budgetItem) in budgetItems.enumerated() {
             var newIndexPaths: [IndexPath] = []
 
             itemsDictionary.append([])

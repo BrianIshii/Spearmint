@@ -98,7 +98,6 @@
 		76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3CBE7227FEEAC0010625A /* Currency.swift */; };
 		76EF345422963BF1005A5C35 /* BudgetItemSectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */; };
 		76EF345622986CD8005A5C35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76EF345522986CD8005A5C35 /* GoogleService-Info.plist */; };
-		76EF34582298AAFB005A5C35 /* VisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF34572298AAFB005A5C35 /* VisionViewController.swift */; };
 		76EF345A2298D254005A5C35 /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF34592298D254005A5C35 /* AddImageViewController.swift */; };
 		76EF345C2298D31E005A5C35 /* AddTransactionImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76EF345B2298D31E005A5C35 /* AddTransactionImage.storyboard */; };
 		76EF345E2298E049005A5C35 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF345D2298E049005A5C35 /* UIImageExtension.swift */; };
@@ -107,6 +106,7 @@
 		76EF34672299FCD7005A5C35 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EF34662299FCD7005A5C35 /* MapKit.framework */; };
 		76F4235C22BA02CE00E7B868 /* TransactionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4235B22BA02CE00E7B868 /* TransactionDataSource.swift */; };
 		76F4235F22BB4AF500E7B868 /* BudgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4235E22BB4AF500E7B868 /* BudgetTests.swift */; };
+		76F4236122BC9EC000E7B868 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76F4236022BC9EC000E7B868 /* WebKit.framework */; };
 		8C358F36EF8B95A59EFE86A9 /* libPods-Spearmint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5F0B3815F25922C7D10D61 /* libPods-Spearmint.a */; };
 		AD33E71841DF4F0E61F0F54B /* libPods-SpearmintTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E00FF3C8E9852A3C8405DF6 /* libPods-SpearmintTests.a */; };
 		E4382AD067BA2C794744425D /* libPods-SpearmintUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 545E6A7C20C3C5635D4B9DB5 /* libPods-SpearmintUITests.a */; };
@@ -234,7 +234,6 @@
 		76E3CBE7227FEEAC0010625A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemSectionStore.swift; sourceTree = "<group>"; };
 		76EF345522986CD8005A5C35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		76EF34572298AAFB005A5C35 /* VisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionViewController.swift; sourceTree = "<group>"; };
 		76EF34592298D254005A5C35 /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
 		76EF345B2298D31E005A5C35 /* AddTransactionImage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddTransactionImage.storyboard; sourceTree = "<group>"; };
 		76EF345D2298E049005A5C35 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
@@ -243,6 +242,7 @@
 		76EF34662299FCD7005A5C35 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		76F4235B22BA02CE00E7B868 /* TransactionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDataSource.swift; sourceTree = "<group>"; };
 		76F4235E22BB4AF500E7B868 /* BudgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTests.swift; sourceTree = "<group>"; };
+		76F4236022BC9EC000E7B868 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		C51C6518E66B1688FCEA119B /* Pods-Spearmint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spearmint.debug.xcconfig"; path = "Target Support Files/Pods-Spearmint/Pods-Spearmint.debug.xcconfig"; sourceTree = "<group>"; };
 		F06046302A5C5C32EB52D302 /* Pods-SpearmintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpearmintTests.debug.xcconfig"; path = "Target Support Files/Pods-SpearmintTests/Pods-SpearmintTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -252,6 +252,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76F4236122BC9EC000E7B868 /* WebKit.framework in Frameworks */,
 				76EF34672299FCD7005A5C35 /* MapKit.framework in Frameworks */,
 				8C358F36EF8B95A59EFE86A9 /* libPods-Spearmint.a in Frameworks */,
 			);
@@ -279,6 +280,7 @@
 		3D1703AEC6B0CB76EA6FFCB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				76F4236022BC9EC000E7B868 /* WebKit.framework */,
 				76EF34662299FCD7005A5C35 /* MapKit.framework */,
 				0E5F0B3815F25922C7D10D61 /* libPods-Spearmint.a */,
 				0E00FF3C8E9852A3C8405DF6 /* libPods-SpearmintTests.a */,
@@ -396,7 +398,6 @@
 				764AFD90226E7061007BFD90 /* LaunchScreen.storyboard */,
 				764AFD93226E7061007BFD90 /* Info.plist */,
 				76EF345522986CD8005A5C35 /* GoogleService-Info.plist */,
-				76EF34572298AAFB005A5C35 /* VisionViewController.swift */,
 			);
 			path = Spearmint;
 			sourceTree = "<group>";
@@ -1038,7 +1039,6 @@
 				7632756D229F08930099532A /* VendorTextField.swift in Sources */,
 				764AFD88226E7060007BFD90 /* AppDelegate.swift in Sources */,
 				76A2FA4C2280B4300066D594 /* TransactionTableViewCell.swift in Sources */,
-				76EF34582298AAFB005A5C35 /* VisionViewController.swift in Sources */,
 				76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */,
 				7637A60D22862B6B007DD20B /* BudgetStore.swift in Sources */,
 				76A2FA622281FBE60066D594 /* VendorTableViewCell.swift in Sources */,

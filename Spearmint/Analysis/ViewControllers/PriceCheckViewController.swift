@@ -7,33 +7,25 @@
 //
 
 import UIKit
+import WebKit
 
-class PriceCheckViewController: UIViewController, UIWebViewDelegate {
+class PriceCheckViewController: UIViewController {
 
-    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var navBar: UINavigationBar!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var item: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        webView.delegate = self
         
         if let i = item {
             navBar.topItem?.title = i
             let urli = i.trimmingCharacters(in: NSCharacterSet.whitespaces).replacingOccurrences(of: " ", with: "+")
             let urlString = "https://www.google.com/search?q=\(urli)&tbm=shop"
-            webView.loadRequest(NSURLRequest(url: NSURL(string: urlString)! as URL) as URLRequest)
+            webView.load(NSURLRequest(url: NSURL(string: urlString)! as URL) as URLRequest)
             
         }
-        
-        activityIndicator.startAnimating()
-        activityIndicator.hidesWhenStopped = true
-    }
-    
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        activityIndicator.stopAnimating()
     }
 
     @IBAction func back(_ sender: UIBarButtonItem) {

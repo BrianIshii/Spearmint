@@ -6,47 +6,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Vision View Controller-->
-        <scene sceneID="G29-12-bVK">
-            <objects>
-                <viewController id="Exr-5a-fJR" customClass="VisionViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wbJ-WC-dPT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XvU-1H-U1g">
-                                <rect key="frame" x="184" y="121" width="46" height="590"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="Exr-5a-fJR" eventType="touchUpInside" id="g0V-X9-k33"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hi" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Btq-K4-v2h">
-                                <rect key="frame" x="0.0" y="44" width="414" height="77"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Btq-K4-v2h" firstAttribute="width" secondItem="wbJ-WC-dPT" secondAttribute="width" id="1h9-Qb-ZIk"/>
-                            <constraint firstItem="XvU-1H-U1g" firstAttribute="top" secondItem="Btq-K4-v2h" secondAttribute="bottom" id="Cue-xW-83h"/>
-                            <constraint firstItem="Btq-K4-v2h" firstAttribute="top" secondItem="a73-Fi-txE" secondAttribute="top" id="Kgl-62-N5R"/>
-                            <constraint firstItem="Btq-K4-v2h" firstAttribute="centerX" secondItem="a73-Fi-txE" secondAttribute="centerX" id="OHh-S6-oYq"/>
-                            <constraint firstItem="a73-Fi-txE" firstAttribute="bottom" secondItem="XvU-1H-U1g" secondAttribute="bottom" constant="151" id="t3z-tJ-hyR"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="a73-Fi-txE"/>
-                    </view>
-                    <connections>
-                        <outlet property="imageView" destination="Btq-K4-v2h" id="0Rn-Ow-26F"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jmL-Js-PtT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2599" y="972"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="pNu-hy-Dxb">
             <objects>
@@ -119,7 +81,4 @@
             <point key="canvasLocation" x="-918" y="907"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="hi" width="234.5" height="77"/>
-    </resources>
 </document>

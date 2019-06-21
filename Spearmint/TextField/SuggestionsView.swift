@@ -50,21 +50,21 @@ class SuggestionsView: UIView {
     @objc func clickedLeftSuggestion() {
         if let tf = textField {
             tf.text = leftItem.title
-            tf.textFieldShouldReturn(tf)
+            let _ = tf.textFieldShouldReturn(tf)
         }
     }
     
     @objc func clickedMiddleSuggestion() {
         if let tf = textField {
             tf.text = middleItem.title
-            tf.textFieldShouldReturn(tf)
+            let _ = tf.textFieldShouldReturn(tf)
         }
     }
     
     @objc func clickedRightSuggestion() {
         if let tf = textField {
             tf.text = rightItem.title
-            tf.textFieldShouldReturn(tf)
+            let _ =  tf.textFieldShouldReturn(tf)
         }
     }
     

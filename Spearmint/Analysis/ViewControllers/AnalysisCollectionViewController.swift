@@ -21,7 +21,7 @@ class AnalysisCollectionViewController: UICollectionViewController {
         
         let mostExpensiveItems = budget!.mostExpensiveItemPerCategory
         
-        for (k,v) in mostExpensiveItems {
+        for (_,v) in mostExpensiveItems {
             items.append(v)
         }
         reloadInputViews()
@@ -41,7 +41,7 @@ class AnalysisCollectionViewController: UICollectionViewController {
 
             let mostExpensiveItems = budget!.mostExpensiveItemPerCategory
             
-            for (k,v) in mostExpensiveItems {
+            for (_,v) in mostExpensiveItems {
                 items.append(v)
             }
             

@@ -157,10 +157,10 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
     }
     
     func processResult(from text: VisionText?, error: Error?) {
-        guard let features = text, let image = selectedImageView.image else { return }
+        guard let features = text else { return }
         
-        visionTextBlocks = text!.blocks
-        addFrames(text!.blocks)
+        visionTextBlocks = features.blocks
+        addFrames(features.blocks)
     }
     
     func addFrames(_ blocks: [VisionTextBlock]) {
@@ -209,7 +209,7 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
                     vc.update()
                 }
             }
-            print(view.text)
+//            print(view.text)
         }
     }
     

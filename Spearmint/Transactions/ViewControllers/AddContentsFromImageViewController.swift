@@ -124,7 +124,7 @@ class AddContentsFromImageViewController: UIViewController, UITextFieldDelegate 
     fileprivate func updateItems(_ budgetItems: [BudgetItem]) {
         self.budgetItems = budgetItems
         
-        for (index, budgetItem) in budgetItems.enumerated() {
+        for (_, budgetItem) in budgetItems.enumerated() {
             var newIndexPaths: [IndexPath] = []
             
             itemsDictionary.append([])

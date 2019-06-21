@@ -136,32 +136,30 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1R-oR-5Xw">
-                                <rect key="frame" x="0.0" y="88" width="414" height="652"/>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8g0-kx-qbk">
+                                <rect key="frame" x="0.0" y="44" width="414" height="696"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1cS-cM-MPd">
-                                <rect key="frame" x="197" y="382" width="20" height="20"/>
-                            </activityIndicatorView>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Q1R-oR-5Xw" firstAttribute="centerX" secondItem="oJT-tO-6JR" secondAttribute="centerX" id="DET-XY-ciP"/>
-                            <constraint firstItem="1cS-cM-MPd" firstAttribute="centerY" secondItem="oJT-tO-6JR" secondAttribute="centerY" id="LRK-Xy-045"/>
-                            <constraint firstItem="oJT-tO-6JR" firstAttribute="bottom" secondItem="Q1R-oR-5Xw" secondAttribute="bottom" id="Mfc-h6-ZIQ"/>
-                            <constraint firstItem="Q1R-oR-5Xw" firstAttribute="top" secondItem="bSl-mD-iVD" secondAttribute="bottom" id="YbV-qP-Sgf"/>
-                            <constraint firstItem="Q1R-oR-5Xw" firstAttribute="width" secondItem="K5H-cc-7So" secondAttribute="width" id="bvj-Ix-UWp"/>
+                            <constraint firstItem="8g0-kx-qbk" firstAttribute="width" secondItem="K5H-cc-7So" secondAttribute="width" id="EqR-0H-dWW"/>
+                            <constraint firstItem="8g0-kx-qbk" firstAttribute="top" secondItem="oJT-tO-6JR" secondAttribute="top" id="Ho0-Q0-AL0"/>
+                            <constraint firstItem="8g0-kx-qbk" firstAttribute="centerX" secondItem="oJT-tO-6JR" secondAttribute="centerX" id="PxK-nz-gyW"/>
+                            <constraint firstItem="oJT-tO-6JR" firstAttribute="bottom" secondItem="8g0-kx-qbk" secondAttribute="bottom" id="R0V-E8-leP"/>
                             <constraint firstItem="bSl-mD-iVD" firstAttribute="centerX" secondItem="oJT-tO-6JR" secondAttribute="centerX" id="dQQ-Hn-VUo"/>
                             <constraint firstItem="bSl-mD-iVD" firstAttribute="width" secondItem="K5H-cc-7So" secondAttribute="width" id="kTI-zo-fOi"/>
-                            <constraint firstItem="1cS-cM-MPd" firstAttribute="centerX" secondItem="oJT-tO-6JR" secondAttribute="centerX" id="tDb-Ms-L3e"/>
                             <constraint firstItem="bSl-mD-iVD" firstAttribute="top" secondItem="oJT-tO-6JR" secondAttribute="top" id="yed-0C-VsI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oJT-tO-6JR"/>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="1cS-cM-MPd" id="pF7-0B-iAv"/>
                         <outlet property="navBar" destination="bSl-mD-iVD" id="x3K-Vi-0UQ"/>
-                        <outlet property="webView" destination="Q1R-oR-5Xw" id="Heg-da-M0b"/>
+                        <outlet property="webView" destination="8g0-kx-qbk" id="9a8-SR-LYp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T3N-pP-yrw" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -29,7 +29,7 @@ class TransactionDataSource: NSObject {
     }
     
     private func setListToCurrentMonthTransactions() {
-        var array = transactions.filter { (t) -> Bool in
+        let array = transactions.filter { (t) -> Bool in
             t.isInCurrentMonth()
         }
         
