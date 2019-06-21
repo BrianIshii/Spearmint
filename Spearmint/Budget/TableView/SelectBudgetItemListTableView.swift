@@ -27,7 +27,7 @@ class SelectBudgetItemListTableView: UITableView, UITableViewDelegate, UITableVi
     }
     
     func setUp() {
-        register(BudgetItemTableViewCell.self, forCellReuseIdentifier: BudgetItemTableViewCell.reuseIdentifier)
+        register(UINib.init(nibName: BudgetItemTableViewCell.xib, bundle: nil), forCellReuseIdentifier: BudgetItemTableViewCell.reuseIdentifier)
         register(UINib.init(nibName: SelectBudgetItemTableViewCell.xib, bundle: nil), forCellReuseIdentifier: SelectBudgetItemTableViewCell.reuseIdentifier)
         delegate = self
         dataSource = self
