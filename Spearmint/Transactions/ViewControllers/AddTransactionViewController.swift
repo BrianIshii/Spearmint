@@ -29,7 +29,7 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
     var transaction: Transaction?
     var amountTextField: UITextField!
     var vendorTextField: VendorTextField!
-    var dateLabel: UILabel!
+    var dateTextField: UITextField!
     var selectedImage: UIImageView!
     var itemsDictionary: [[Item]] = []
     var budgetItems: [BudgetItem] = []
@@ -91,12 +91,11 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
     private func configureDateCell(cell: UITableViewCell, indexPath: IndexPath) {
         if let cell = cell as? DateTableViewCell {
             if let t = transaction {
-                cell.dateLabel.text = t.date
-                cell.datePicker.date = DateFormatterFactory.mediumFormatter.date(from: t.date)!
+                cell.textField.text = t.date
             } else {
-                cell.dateLabel.text = TransactionDate.getCurrentDate()
+                cell.textField.text = TransactionDate.getCurrentDate()
             }
-            dateLabel = cell.dateLabel
+            dateTextField = cell.textField
 
             //cell.configure(object: object)
         }
@@ -139,7 +138,7 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
         switch segue.identifier {
         case AddBudgetItemSegue.segueIdentifier:
-            let date = dateLabel.text!
+            let date = dateTextField.text!
             
             if let vc = segue.destination as? AddBudgetItemsViewController {
                 vc.budgetDate = Budget.dateToString(DateFormatterFactory.mediumFormatter.date(from: date)!)
@@ -159,7 +158,7 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
         }
         
         let name = "test1"
-        let date = dateLabel.text!
+        let date = dateTextField.text!
         let merchant = vendorTextField.text!
         let transactionType = segmentedControl.selectedSegmentIndex == TransactionType.expense.rawValue ? TransactionType.expense : TransactionType.income
         let amount = Currency.currencyToFloat(amountTextField.text!)
@@ -290,8 +289,6 @@ extension AddTransactionViewController : UITableViewDelegate, UITableViewDataSou
         if indexPath.section == 0 {
             if indexPath.row == rows.image.rawValue {
                 return CGFloat(100)
-            } else if indexPath.row ==  rows.date.rawValue {
-                return CGFloat(240)
             }
             return CGFloat(60)
         }
