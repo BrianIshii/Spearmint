@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>BUNDLE_ID</string>
+	<string>brianlishii.Spearmint</string>
 	<key>PROJECT_ID</key>
 	<string>spearmint</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>GOOGLE_APP_ID</string>
+	<string>1:821637951928:ios:889f9b3aee484dce</string>
 	<key>DATABASE_URL</key>
 	<string>DATABASE_URL</string>
 </dict>
