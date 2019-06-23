@@ -22,10 +22,10 @@ class Transaction: Codable {
     var hasImage: Bool
     var notes: String
     var budgetDate: String
-    var items: [Item]
+    var items: [String : [Item]]
     
     init(name: String, transactionType: TransactionType, merchant: String, amount: Float,
-         date: String, location: String, image: Bool, notes: String, budgetID: String, items: [Item]) {
+         date: String, location: String, image: Bool, notes: String, budgetID: String, items: [String : [Item]]) {
         self.id = TransactionID()
         self.name = name
         self.transactionType = transactionType
@@ -41,7 +41,7 @@ class Transaction: Codable {
     }
     
     static let dummyTransaction =
-        Transaction(name: "test1", transactionType: TransactionType.income, merchant: "Apple", amount: 10.00, date: TransactionDate.getCurrentDate(), location: "N/A", image: false, notes: "notes", budgetID: Budget.dateToString(Date()), items: [])
+        Transaction(name: "test1", transactionType: TransactionType.income, merchant: "Apple", amount: 10.00, date: TransactionDate.getCurrentDate(), location: "N/A", image: false, notes: "notes", budgetID: Budget.dateToString(Date()), items: [:])
  
     func isInCurrentMonth() -> Bool {
         let currentDate = Date()
@@ -51,15 +51,17 @@ class Transaction: Codable {
     
     func mostExpensiveItem(_ budgetItem: BudgetItem) -> Item? {
         var expensiveItem: Item?
-        for item in items {
-            if item.budgetItemName == budgetItem.name
-                && item.budgetItemCategory == budgetItem.category {
-                if let currentExpensiveItem = expensiveItem {
-                    if currentExpensiveItem.amount < item.amount {
+        for (_, v) in items {
+            for item in v {
+                if item.budgetItemName == budgetItem.name
+                    && item.budgetItemCategory == budgetItem.category {
+                    if let currentExpensiveItem = expensiveItem {
+                        if currentExpensiveItem.amount < item.amount {
+                            expensiveItem = item
+                        }
+                    } else {
                         expensiveItem = item
                     }
-                } else {
-                    expensiveItem = item
                 }
             }
         }

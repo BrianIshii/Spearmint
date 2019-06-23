@@ -51,24 +51,19 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+        tableView.register(UINib.init(nibName: DateTableViewCell.xib, bundle: nil), forCellReuseIdentifier: DateTableViewCell.reuseIdentifier)
+
         if transaction != nil {
             canAddItems = false
         }
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-//            self.view.frame.origin.y -= keyboardSize.height
-//        }
         print("k appear")
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if (!isKeyboardPresent) {
                 tableViewOriginalY = tableView.frame.origin.y
                 tableView.frame.origin.y -= keyboardSize.height
-                
-//                NavigationBarOriginalY = navigationBar.frame.origin.y
-//                navigationBar.frame.origin.y += keyboardSize.height
-                
                 isKeyboardPresent = true
             }
         }
@@ -79,36 +74,27 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
         if (isKeyboardPresent) {
             tableView.frame.origin.y = tableViewOriginalY
             
-//            navigationBar.frame.origin.y = NavigationBarOriginalY
             isKeyboardPresent = false
         }
-    }
-    
-    @objc func tappedImageView(_ sender: UIGestureRecognizer) {
-        print("hi")
     }
     
     private func configureDateCell(cell: UITableViewCell, indexPath: IndexPath) {
         if let cell = cell as? DateTableViewCell {
             if let t = transaction {
-                cell.textField.text = t.date
+                cell.configure(object: t)
             } else {
-                cell.textField.text = TransactionDate.getCurrentDate()
+                cell.configure()
             }
             dateTextField = cell.textField
-
-            //cell.configure(object: object)
         }
     }
     
     private func configureAmountCell(cell: UITableViewCell, indexPath: IndexPath) {
         if let cell = cell as? AmountTableViewCell {
             if let t = transaction {
-                cell.textField.text = Currency.currencyFormatter(t.amount)
+                cell.configure(object: t)
             }
             amountTextField = cell.textField
-
-            //cell.configure(object: object)
         }
     }
     
@@ -167,18 +153,20 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
         _ = BudgetStore.budgetDictionary[budgetKey]
         let hasImage = ((selectedImage.image?.isEqualTo(UIImage(imageLiteralResourceName: "default")))!) ? false : true
         
-        var transactionItems: [Item] = []
+        var transactionItems: [String: [Item]] = [:]
         
-        for (section, items) in itemsDictionary.enumerated() {
-            for (row, item) in items.enumerated() {
+        for (section, cells) in itemsDictionary.enumerated() {
+            var items: [Item] = []
+            for (row, item) in cells.enumerated() {
                 let indexPath = IndexPath(row: row, section: section + 1)
                 if let cell = tableView.cellForRow(at: indexPath) as? ItemTableViewCell {
                     item.amount = cell.textField.getAmount()
                     item.name = cell.nameTextField.text ?? ""
                 }
                 
-                transactionItems.append(item)
+                items.append(item)
             }
+            transactionItems[budgetItems[section].name] = items
         }
         
         transaction = Transaction(name: name, transactionType: transactionType, merchant: merchant, amount: Float(amount), date: date, location: "N/A", image: hasImage, notes: "notes", budgetID: budgetKey, items: transactionItems)

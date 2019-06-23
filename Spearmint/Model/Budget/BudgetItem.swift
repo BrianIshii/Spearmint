@@ -36,9 +36,11 @@ class BudgetItem: Codable, Hashable {
     
     func addTransaction(_ transaction: Transaction) {
         transactions.append(transaction.id)
-        for item in transaction.items {
-            if item.budgetItemName == name {
-                actual += item.amount
+        for (k, v) in transaction.items {
+            if k == name {
+                for item in v {
+                    actual += item.amount
+                }
             }
         }
     }
@@ -58,9 +60,11 @@ class BudgetItem: Codable, Hashable {
             return t == transaction.id
         })
         
-        for item in transaction.items {
-            if item.budgetItemName == name {
-                actual -= item.amount
+        for (k, v) in transaction.items {
+            if k == name {
+                for item in v {
+                    actual -= item.amount
+                }
             }
         }
     }

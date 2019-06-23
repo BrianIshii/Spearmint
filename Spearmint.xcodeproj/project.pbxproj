@@ -562,8 +562,8 @@
 		76B548C822914258001B2FB1 /* BudgetSectionTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				7637A63122889F31007DD20B /* BudgetSectionTableViewCell.xib */,
 				7637A63322889F8D007DD20B /* BudgetSectionTableViewCell.swift */,
+				7637A63122889F31007DD20B /* BudgetSectionTableViewCell.xib */,
 			);
 			path = BudgetSectionTableViewCell;
 			sourceTree = "<group>";

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AmountTableViewCell: UITableViewCell {
+class AmountTableViewCell: UITableViewCell, ReusableIdentifier {
     static let xib = "AmountTableViewCell"
 
     @IBOutlet weak var label: UILabel!
@@ -23,5 +23,14 @@ class AmountTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+}
+
+extension AmountTableViewCell: ConfigurableCell {
+    func configure(object: Transaction) {
+        textField.text = Currency.currencyFormatter(object.amount)
+    }
+    
+    func configure() {
     }
 }

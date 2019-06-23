@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 class LocalAccess {
     public static let reset: Bool = false
     public static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!

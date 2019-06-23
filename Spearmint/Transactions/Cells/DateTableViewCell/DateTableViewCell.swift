@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DateTableViewCell: UITableViewCell {
+class DateTableViewCell: UITableViewCell, ReusableIdentifier {
     static let xib = "DateTableViewCell"
 
     @IBOutlet weak var label: UILabel!
@@ -63,6 +63,13 @@ extension DateTableViewCell: UITextFieldDelegate {
     }
 }
 
-extension DateTableViewCell: UIPickerViewDelegate {
+extension DateTableViewCell: ConfigurableCell {
+    func configure(object: Transaction) {
+        textField.text = object.date
+    }
+    
+    func configure() {
+        textField.text = TransactionDate.getCurrentDate()
+    }
     
 }

@@ -45,15 +45,18 @@ class BudgetStore {
         if let budget = budgetDictionary[transaction.budgetDate] {
             budget.transactions.append(transaction.id)
             
-            for item in transaction.items {
-                if let categoryItems = budget.items[item.budgetItemCategory] {
-                    for i in categoryItems {
-                        if i.name == item.budgetItemName {
-                            i.addTransactionItem(transaction, item)
+            for (_,v) in transaction.items {
+                if let category = budget.items[v[0].budgetItemCategory] {
+                    for i in category {
+                        if i.name == v[0].budgetItemName {
+                            for item in v {
+                                    i.addTransactionItem(transaction, item)
+                            }
                             break
                         }
                     }
                 }
+                
             }
         } else {
             BudgetStore.addBudget(Budget(date: transaction.budgetDate, items: BudgetItem.defaultBudgetItems()))
@@ -68,11 +71,13 @@ class BudgetStore {
                 return t == transaction.id
                 })
             
-            for item in transaction.items {
-                if let categoryItems = budget.items[item.budgetItemCategory] {
+            for (_,v) in transaction.items {
+                if let categoryItems = budget.items[v[0].budgetItemCategory] {
                     for i in categoryItems {
-                        if i.name == item.budgetItemName {
-                            i.deleteTransactionItem(transaction, item)
+                        if i.name == v[0].budgetItemName {
+                            for item in v {
+                                i.deleteTransactionItem(transaction, item)
+                            }
                             break
                         }
                     }
