@@ -10,10 +10,15 @@ import Foundation
 
 protocol ReusableIdentifier: class {
     static var reuseIdentifier: String { get }
+    static var xib: String { get }
 }
 
 extension ReusableIdentifier {
     static var reuseIdentifier: String {
+        return "\(self)"
+    }
+    
+    static var xib: String {
         return "\(self)"
     }
 }

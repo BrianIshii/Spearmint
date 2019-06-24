@@ -9,8 +9,6 @@
 import UIKit
 
 class DateTableViewCell: UITableViewCell, ReusableIdentifier {
-    static let xib = "DateTableViewCell"
-
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var textField: UITextField!
     

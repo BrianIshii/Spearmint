@@ -8,9 +8,7 @@
 
 import UIKit
 
-class VendorTableViewCell: UITableViewCell {
-    static let xib = "VendorTableViewCell"
-
+class VendorTableViewCell: UITableViewCell, ReusableIdentifier {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var textField: VendorTextField!
     
@@ -25,5 +23,13 @@ class VendorTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+}
 
+extension VendorTableViewCell: ConfigurableCell {
+    func configure(object: Transaction) {
+        textField.text = Currency.currencyFormatter(object.vendor)
+    }
+    
+    func configure() {
+    }
 }

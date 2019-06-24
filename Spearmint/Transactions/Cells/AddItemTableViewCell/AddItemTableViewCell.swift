@@ -8,9 +8,7 @@
 
 import UIKit
 
-class AddItemTableViewCell: UITableViewCell {
-    static let xib = "AddItemTableViewCell"
-
+class AddItemTableViewCell: UITableViewCell, ReusableIdentifier {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,5 +19,12 @@ class AddItemTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+}
+
+extension AddItemTableViewCell: ConfigurableCell {
+    func configure(object: Transaction) {
+    }
     
+    func configure() {
+    }
 }

@@ -8,10 +8,7 @@
 
 import UIKit
 
-class ImageViewTableViewCell: UITableViewCell, ReusableIdentifier, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    static let xib = "ImageViewTableViewCell"
-    weak var controller: AddTransactionViewController?
-
+class ImageViewTableViewCell: UITableViewCell, ReusableIdentifier {
     @IBOutlet weak var recieptImageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     
@@ -26,18 +23,15 @@ class ImageViewTableViewCell: UITableViewCell, ReusableIdentifier, UIImagePicker
 
         // Configure the view for the selected state
     }
-
-    @IBAction func selectImage(_ sender: Any) {
-        //controller!.selectImage()
-    }
 }
 
 extension ImageViewTableViewCell: ConfigurableCell {
-    func configure(object: BudgetItem) {
+    func configure(object: Transaction) {
+        recieptImageView.image = ImageStore.getImage(transactionID: object.id)
     }
     
     func configure() {
-        
+        recieptImageView.image = UIImage(imageLiteralResourceName: "default")
     }
 }
 

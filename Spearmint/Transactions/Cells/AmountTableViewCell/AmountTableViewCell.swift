@@ -9,8 +9,6 @@
 import UIKit
 
 class AmountTableViewCell: UITableViewCell, ReusableIdentifier {
-    static let xib = "AmountTableViewCell"
-
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var textField: MoneyTextField!
     

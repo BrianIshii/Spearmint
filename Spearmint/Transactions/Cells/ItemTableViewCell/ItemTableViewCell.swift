@@ -8,9 +8,7 @@
 
 import UIKit
 
-class ItemTableViewCell: UITableViewCell {
-    static let xib = "ItemTableViewCell"
-
+class ItemTableViewCell: UITableViewCell, ReusableIdentifier {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var textField: MoneyTextField!
     override func awakeFromNib() {
@@ -25,6 +23,21 @@ class ItemTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+}
+
+extension ItemTableViewCell: ConfigurableCell {
+    func configure(object: Item) {
+        if object.amount > 0 {
+            textField.text = Currency.currencyFormatter(object.amount)
+        }
+        
+        if object.name != "" {
+            nameTextField.text = object.name
+        }
+    }
+    
+    func configure() {
     }
 }
 

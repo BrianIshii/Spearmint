@@ -52,6 +52,11 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         tableView.register(UINib.init(nibName: DateTableViewCell.xib, bundle: nil), forCellReuseIdentifier: DateTableViewCell.reuseIdentifier)
+        tableView.register(UINib.init(nibName: AmountTableViewCell.xib, bundle: nil), forCellReuseIdentifier: AmountTableViewCell.reuseIdentifier)
+        tableView.register(UINib.init(nibName: VendorTableViewCell.xib, bundle: nil), forCellReuseIdentifier: VendorTableViewCell.reuseIdentifier)
+        tableView.register(UINib.init(nibName: ImageViewTableViewCell.xib, bundle: nil), forCellReuseIdentifier: ImageViewTableViewCell.reuseIdentifier)
+        tableView.register(UINib.init(nibName: AddItemTableViewCell.xib, bundle: nil), forCellReuseIdentifier: AddItemTableViewCell.reuseIdentifier)
+        tableView.register(UINib.init(nibName: ItemTableViewCell.xib, bundle: nil), forCellReuseIdentifier: ItemTableViewCell.reuseIdentifier)
 
         if transaction != nil {
             canAddItems = false
@@ -95,6 +100,29 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
                 cell.configure(object: t)
             }
             amountTextField = cell.textField
+        }
+    }
+    
+    private func configureVendorCell(cell: UITableViewCell, indexPath: IndexPath) {
+        if let cell = cell as? VendorTableViewCell {
+            if let t = transaction {
+                cell.configure(object: t)
+            }
+            
+            vendorTextField = cell.textField
+        }
+    }
+    
+    private func configureImageCell(cell: UITableViewCell, indexPath: IndexPath) {
+        if let cell = cell as? ImageViewTableViewCell {
+
+            if let t = transaction, t.hasImage == true {
+                cell.configure(object: t)
+            } else {
+                cell.configure()
+            }
+            
+            selectedImage = cell.recieptImageView
         }
     }
     
@@ -254,25 +282,7 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
-extension AddTransactionViewController : UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard section != 0 else { return nil }
-        return budgetItems[section - 1].name
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return numberOfSections
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return AddTransactionViewController.defaultFields
-        } else {
-            return itemsDictionary[section - 1].count + 1
-        }
-        
-    }
-    
+extension AddTransactionViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             if indexPath.row == rows.image.rawValue {
@@ -281,70 +291,6 @@ extension AddTransactionViewController : UITableViewDelegate, UITableViewDataSou
             return CGFloat(60)
         }
         return CGFloat(60)
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            switch indexPath.row {
-            case rows.date.rawValue:
-                let cell = Bundle.main.loadNibNamed(DateTableViewCell.xib, owner: self, options: nil)?.first as! DateTableViewCell
-                configureDateCell(cell: cell, indexPath: indexPath)
-                return cell
-            case rows.amount.rawValue:
-                let cell = Bundle.main.loadNibNamed(AmountTableViewCell.xib, owner: self, options: nil)?.first as! AmountTableViewCell
-                configureAmountCell(cell: cell, indexPath: indexPath)
-                return cell
-            case rows.items.rawValue:
-                let cell = Bundle.main.loadNibNamed(AddTransactionBudgetItemTableViewCell.xib, owner: self, options: nil)?.first as! AddTransactionBudgetItemTableViewCell
-                
-                return cell
-            case rows.image.rawValue:
-                let cell = Bundle.main.loadNibNamed(ImageViewTableViewCell.xib, owner: self, options: nil)?.first as! ImageViewTableViewCell
-                
-                if let t = transaction, t.hasImage == true {
-                    cell.recieptImageView.image = ImageStore.getImage(transactionID: t.id)
-                } else {
-                    cell.recieptImageView.image = UIImage(imageLiteralResourceName: "default")
-                }
-                selectedImage = cell.recieptImageView
-                cell.controller = self
-                return cell
-            case rows.vendor.rawValue:
-                let cell = Bundle.main.loadNibNamed(VendorTableViewCell.xib, owner: self, options: nil)?.first as! VendorTableViewCell
-                
-                vendorTextField = cell.textField
-                
-                if let t = transaction {
-                    cell.textField.text = Currency.currencyFormatter(t.vendor)
-                }
-                
-                return cell
-            default:
-                let cell = Bundle.main.loadNibNamed(ItemTableViewCell.xib, owner: self, options: nil)?.first as! ItemTableViewCell
-                
-                return cell
-            }
-        } else {
-            if indexPath.row < itemsDictionary[indexPath.section - 1].count {
-                let cell = Bundle.main.loadNibNamed(ItemTableViewCell.xib, owner: self, options: nil)?.first as! ItemTableViewCell
-                
-                let item = itemsDictionary[indexPath.section - 1][indexPath.row]
-                
-                if item.amount > 0 {
-                    cell.textField.text = Currency.currencyFormatter(item.amount)
-                }
-                
-                if item.name != "" {
-                    cell.nameTextField.text = item.name
-                }
-                
-                return cell
-            } else {
-                let cell = Bundle.main.loadNibNamed(AddItemTableViewCell.xib, owner: self, options: nil)?.first as! AddItemTableViewCell
-                
-                return cell
-            }
-        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -370,5 +316,76 @@ extension AddTransactionViewController : UITableViewDelegate, UITableViewDataSou
                 tableView.insertRows(at: newIndexPaths, with: UITableView.RowAnimation.automatic)
             }
         }
+    }
+}
+
+extension AddTransactionViewController : UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case rows.date.rawValue:
+                let cell = tableView.dequeueReusableCell(withIdentifier: DateTableViewCell.reuseIdentifier, for: indexPath) as! DateTableViewCell
+                configureDateCell(cell: cell, indexPath: indexPath)
+                return cell
+            case rows.amount.rawValue:
+                let cell = tableView.dequeueReusableCell(withIdentifier: AmountTableViewCell.reuseIdentifier, for: indexPath) as! AmountTableViewCell
+                configureAmountCell(cell: cell, indexPath: indexPath)
+                return cell
+            case rows.items.rawValue:
+                let cell = Bundle.main.loadNibNamed(AddTransactionBudgetItemTableViewCell.xib, owner: self, options: nil)?.first as! AddTransactionBudgetItemTableViewCell
+                
+                return cell
+            case rows.image.rawValue:
+                let cell = tableView.dequeueReusableCell(withIdentifier: ImageViewTableViewCell.reuseIdentifier, for: indexPath) as! ImageViewTableViewCell
+                
+                configureImageCell(cell: cell, indexPath: indexPath)
+                
+                return cell
+            case rows.vendor.rawValue:
+                let cell = tableView.dequeueReusableCell(withIdentifier: VendorTableViewCell.reuseIdentifier, for: indexPath) as! VendorTableViewCell
+                
+                configureVendorCell(cell: cell, indexPath: indexPath)
+                
+                return cell
+            default:
+                let cell = Bundle.main.loadNibNamed(ItemTableViewCell.xib, owner: self, options: nil)?.first as! ItemTableViewCell
+                
+                return cell
+            }
+        } else {
+            if indexPath.row < itemsDictionary[indexPath.section - 1].count {
+                let cell = tableView.dequeueReusableCell(withIdentifier: ItemTableViewCell.reuseIdentifier, for: indexPath) as! ItemTableViewCell
+                
+                let item = itemsDictionary[indexPath.section - 1][indexPath.row]
+                
+                cell.configure(object: item)
+                
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: AddItemTableViewCell.reuseIdentifier, for: indexPath) as! AddItemTableViewCell
+                
+                cell.configure()
+                
+                return cell
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard section != 0 else { return nil }
+        return budgetItems[section - 1].name
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return numberOfSections
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return AddTransactionViewController.defaultFields
+        } else {
+            return itemsDictionary[section - 1].count + 1
+        }
+        
     }
 }
