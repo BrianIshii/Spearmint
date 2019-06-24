@@ -110,6 +110,7 @@
 		76F4236422C05BFD00E7B868 /* VendorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4236322C05BFD00E7B868 /* VendorStore.swift */; };
 		76F4236722C05EF300E7B868 /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4236622C05EF300E7B868 /* Vendor.swift */; };
 		76F4236922C05EFC00E7B868 /* VendorID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4236822C05EFC00E7B868 /* VendorID.swift */; };
+		76F4236C22C06CF100E7B868 /* Saveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4236B22C06CF100E7B868 /* Saveable.swift */; };
 		8C358F36EF8B95A59EFE86A9 /* libPods-Spearmint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5F0B3815F25922C7D10D61 /* libPods-Spearmint.a */; };
 		AD33E71841DF4F0E61F0F54B /* libPods-SpearmintTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E00FF3C8E9852A3C8405DF6 /* libPods-SpearmintTests.a */; };
 		E4382AD067BA2C794744425D /* libPods-SpearmintUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 545E6A7C20C3C5635D4B9DB5 /* libPods-SpearmintUITests.a */; };
@@ -249,6 +250,7 @@
 		76F4236322C05BFD00E7B868 /* VendorStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorStore.swift; sourceTree = "<group>"; };
 		76F4236622C05EF300E7B868 /* Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
 		76F4236822C05EFC00E7B868 /* VendorID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorID.swift; sourceTree = "<group>"; };
+		76F4236B22C06CF100E7B868 /* Saveable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saveable.swift; sourceTree = "<group>"; };
 		C51C6518E66B1688FCEA119B /* Pods-Spearmint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spearmint.debug.xcconfig"; path = "Target Support Files/Pods-Spearmint/Pods-Spearmint.debug.xcconfig"; sourceTree = "<group>"; };
 		F06046302A5C5C32EB52D302 /* Pods-SpearmintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpearmintTests.debug.xcconfig"; path = "Target Support Files/Pods-SpearmintTests/Pods-SpearmintTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -766,6 +768,7 @@
 		76F4236A22C05FA900E7B868 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				76F4236B22C06CF100E7B868 /* Saveable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1060,6 +1063,7 @@
 				76B548E422952DBF001B2FB1 /* SummaryPieChartViewController.swift in Sources */,
 				76B548DE2294F0E4001B2FB1 /* ViewTransactionSegue.swift in Sources */,
 				76B548D822916195001B2FB1 /* AddTransactionImageViewController.swift in Sources */,
+				76F4236C22C06CF100E7B868 /* Saveable.swift in Sources */,
 				7637A63E2288F0C9007DD20B /* AddBudgetItemsViewController.swift in Sources */,
 				7637A63C2288E74F007DD20B /* AddBudgetItemSegue.swift in Sources */,
 				76A2FA67228248220066D594 /* PaymentType.swift in Sources */,

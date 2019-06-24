@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Vendor {
+class Vendor: Saveable {
     let vendorID: VendorID
     var name: String
     var transactionIDs: [TransactionID]

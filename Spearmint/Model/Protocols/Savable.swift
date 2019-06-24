@@ -1,5 +1,5 @@
 //
-//  VendorStore.swift
+//  Savable.swift
 //  Spearmint
 //
 //  Created by Brian Ishii on 6/23/19.
@@ -8,5 +8,5 @@
 
 import Foundation
 
-class VendorStore {
+protocol Saveable {
 }

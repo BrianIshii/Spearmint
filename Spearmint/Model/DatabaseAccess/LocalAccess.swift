@@ -23,5 +23,16 @@ class LocalAccess {
         BudgetStore.addTransaction(transaction)
     }
     
-    
+    func getDictionary<T: Budget>(someT: T.Type) -> [T] {
+        do {
+            let data = try Data(contentsOf: BudgetStore.budgetURL)
+            let decoder = JSONDecoder()
+            let tempArr = try decoder.decode(someT, from: data)
+            
+            return tempArr
+        } catch {
+            print(error)
+        }
+    }
+
 }
