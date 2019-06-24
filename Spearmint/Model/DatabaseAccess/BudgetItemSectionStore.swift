@@ -27,24 +27,18 @@ class BudgetItemSectionStore {
         BudgetItemSection(category: .debt),
         BudgetItemSection(category: .other)]
     
-    private static func getBudgetItemSections() -> [BudgetItemSection] {
-        var budgetItemSections: [BudgetItemSection] = []
-        
+    private static func getBudgetItemSections() -> [BudgetItemSection] {        
         if LocalAccess.reset {
             return resetBudgetItemSections()
         }
-        do {
-            let data = try Data(contentsOf: budgetItemSectionURL)
-            let decoder = JSONDecoder()
-            let temp = try decoder.decode([BudgetItemSection].self, from: data)
-            
-            budgetItemSections = temp
-            return budgetItemSections
-        } catch {
-            print(error)
-        }
         
-        return resetBudgetItemSections()
+        let array = LocalAccess.getData(saveable: BudgetItemSection.self)
+        
+        if array.count == 0 {
+            return resetBudgetItemSections()
+        } else {
+            return array
+        }
     }
     
     fileprivate static func resetBudgetItemSections() -> [BudgetItemSection] {
@@ -60,13 +54,6 @@ class BudgetItemSectionStore {
     }
     
     fileprivate static func update(_ data: [BudgetItemSection]) {
-        let encoder = JSONEncoder()
-        
-        do {
-            let jsonData = try encoder.encode(data)
-            try jsonData.write(to: budgetItemSectionURL)
-        } catch {
-            print(error)
-        }
+        LocalAccess.updateData(data: data)
     }
 }

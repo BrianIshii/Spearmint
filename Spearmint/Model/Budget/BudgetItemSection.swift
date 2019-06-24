@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BudgetItemSection: Codable {
+class BudgetItemSection: Saveable {
     var category: BudgetItemCategory
     var isExpanded: Bool
 
@@ -17,11 +17,11 @@ struct BudgetItemSection: Codable {
         self.isExpanded = true
     }
     
-    mutating func collapse() {
+    public func collapse() {
         self.isExpanded = false
     }
     
-    mutating func expand() {
+    public func expand() {
         self.isExpanded = true
     }
 }

@@ -49,4 +49,29 @@ class LocalAccess {
             print(error)
         }
     }
+    
+    public static func getData<SaveableObject: Saveable>(saveable: SaveableObject.Type) -> [SaveableObject] {
+        do {
+            let url = documentsDirectory.appendingPathComponent(SaveableObject.urlString)
+            let data = try Data(contentsOf: url)
+            let decoder = JSONDecoder()
+            let array = try decoder.decode([SaveableObject].self, from: data)
+            
+            return array
+        } catch {
+            print(error)
+        }
+        
+        return []
+    }
+    public static func updateData<SaveableObject: Saveable>(data: [SaveableObject]) {
+        let encoder = JSONEncoder()
+        do {
+            let url = documentsDirectory.appendingPathComponent(SaveableObject.urlString)
+            let jsonData = try encoder.encode(data)
+            try jsonData.write(to: url)
+        } catch {
+            print(error)
+        }
+    }
 }

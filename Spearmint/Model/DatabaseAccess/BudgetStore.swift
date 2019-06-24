@@ -97,42 +97,28 @@ class BudgetStore {
     }
     
     private static func getBudgetDictionary() -> [String: Budget] {
-        var budgets: [String: Budget]
         
         if LocalAccess.reset {
             let currentBudget = Budget(date: Budget.dateToString(Date()), items: BudgetItem.defaultBudgetItems())
-            update(data: [currentBudget.dateString : currentBudget], url: budgetURL)
+            update(data: [currentBudget.dateString : currentBudget])
             return [currentBudget.dateString : currentBudget]
         }
         
-        do {
-            let data = try Data(contentsOf: budgetURL)
-            let decoder = JSONDecoder()
-            let tempArr = try decoder.decode([String: Budget].self, from: data)
-            budgets = tempArr
-            
-            return budgets
-            
-        } catch {
-            print(error)
+        let temp = LocalAccess.getDictionary(saveable: Budget.self)
+        if temp.count == 0 {
+            let currentBudget = Budget(date: Budget.dateToString(Date()), items: BudgetItem.defaultBudgetItems())
+            return [currentBudget.dateString : currentBudget]
+        } else {
+            return temp
         }
-        
-        let currentBudget = Budget(date: Budget.dateToString(Date()), items: BudgetItem.defaultBudgetItems())
-        return [currentBudget.dateString : currentBudget]
     }
     
     static func update() {
-        update(data: budgetDictionary, url: budgetURL)
+        update(data: budgetDictionary)
     }
     
-    fileprivate static func update(data: [String : Budget], url: URL) {
-        let encoder = JSONEncoder()
-        do {
-            let jsonData = try encoder.encode(data)
-            try jsonData.write(to: url)
-        } catch {
-            print(error)
-        }
+    fileprivate static func update(data: [String : Budget]) {
+        LocalAccess.updateDictionary(data: data)
         
         budgetViewControllerNeedsUpdate = true
         SummaryViewControllerNeedsUpdate = true

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Budget: Codable {
+class Budget: Saveable {
     
     var dateString: String
     var transactions: [TransactionID]
@@ -30,8 +30,6 @@ class Budget: Codable {
         items[budgetItem.category]!.append(budgetItem)
         BudgetStore.update()
     }
-    
-//    static let dummyBudget = Budget(date: DateFormatterFactory.mediumFormatter.string(from: Date()), items: BudgetItem.defaultBudgetItems())
     
     static func dateToString(_ date: Date) -> String {
         return DateFormatterFactory.yearAndMonthFormatter.string(from: date)
@@ -86,9 +84,6 @@ class Budget: Codable {
                     items[key.category] = temp
                 }
             }
-            
-
-            
         }
         
         return items
