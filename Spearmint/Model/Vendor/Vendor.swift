@@ -9,5 +9,17 @@
 import Foundation
 
 class Vendor {
+    let vendorID: VendorID
+    var name: String
+    var transactionIDs: [TransactionID]
     
+    init(name: String) {
+        self.vendorID = VendorID()
+        self.name = name
+        self.transactionIDs = []
+    }
+    
+    func addTransaction(_ transaction: Transaction) {
+        transactionIDs.append(transaction.id)
+    }
 }
