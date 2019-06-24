@@ -13,11 +13,6 @@ class TransactionStore {
     public static var analysisViewController = false
     public static var transactions: [String: Transaction] = getAllTransactions()
     
-    private static let transactionString = "transactions"
-    static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    
-    static let transactionURL = documentsDirectory.appendingPathComponent(transactionString)
-    
     static func addTransaction(_ transaction: Transaction) {
         transactions[transaction.id.description()] = transaction
         update()
@@ -31,41 +26,21 @@ class TransactionStore {
     static func getTransaction(_ id: TransactionID) -> Transaction? {
         return transactions[id.description()]
     }
-    private static func getAllTransactions() -> [String: Transaction] {
-        var transactions: [String: Transaction]
-        
+    private static func getAllTransactions() -> [String: Transaction] {        
         if LocalAccess.reset {
-            update(data: [String: Transaction](), url: transactionURL)
+            update(data: [String: Transaction]())
             return [String: Transaction]()
         }
         
-        do {
-            let data = try Data(contentsOf: transactionURL)
-            let decoder = JSONDecoder()
-            let tempArr = try decoder.decode([String: Transaction].self, from: data)
-            transactions = tempArr
-            
-            return transactions
-
-        } catch {
-            print(error)
-        }
-        
-        return [String: Transaction]()
+        return LocalAccess.getDictionary(saveable: Transaction.self)
     }
     
     static func update() {
-        update(data: transactions, url: transactionURL)
+        update(data: transactions)
     }
     
-    fileprivate static func update(data: [String : Transaction], url: URL) {
-        let encoder = JSONEncoder()
-        do {
-            let jsonData = try encoder.encode(data)
-            try jsonData.write(to: url)
-        } catch {
-            print(error)
-        }
+    fileprivate static func update(data: [String : Transaction]) {
+        LocalAccess.updateDictionary(data: transactions)
         
         TransactionControllerNeedsUpdate = true
         analysisViewController = true

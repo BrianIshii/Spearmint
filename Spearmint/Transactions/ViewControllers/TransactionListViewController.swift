@@ -36,8 +36,8 @@ class TransactionListViewController: UIViewController {
         
         guard let dataSource = dataSource else { return }
         
-        dataSource.transactions = Array(TransactionStore.transactions.values).sorted(by: >)
-        
+        dataSource.transactions = transactions
+        transactionTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {

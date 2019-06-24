@@ -24,7 +24,6 @@ class BudgetStore {
 
     static func getBudget(_ key: String) -> Budget? {
         return budgetDictionary[key]
-//            ?? Budget.dummyBudget
     }
     
     static func addBudget(_ budget: Budget) {

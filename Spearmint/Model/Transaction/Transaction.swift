@@ -9,7 +9,7 @@
 import Foundation
 
 
-class Transaction: Codable {
+class Transaction: Saveable {
     
     let id: TransactionID
     var name: String

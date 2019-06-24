@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct VendorID {
+struct VendorID: Codable {
     private let id: String
     
     init() {

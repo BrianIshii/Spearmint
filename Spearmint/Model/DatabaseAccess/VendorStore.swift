@@ -9,4 +9,13 @@
 import Foundation
 
 class VendorStore {
+    public static var vendorDictionary: [String: Vendor] = getVendorDictionary()
+
+    static func getVendorDictionary() -> [String: Vendor] {
+        return LocalAccess.getDictionary(saveable: Vendor.self)
+    }
+    
+    static func updateVendorDictionary() {
+        LocalAccess.updateDictionary(data: vendorDictionary)
+    }
 }
