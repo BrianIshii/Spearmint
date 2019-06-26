@@ -171,7 +171,11 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        let name = "test1"
+        addTransaction()
+    }
+    
+    fileprivate func addTransaction() {
+        let name = ""
         let date = dateTextField.text!
         let merchant = vendorTextField.text!
         let transactionType = segmentedControl.selectedSegmentIndex == TransactionType.expense.rawValue ? TransactionType.expense : TransactionType.income
@@ -203,7 +207,6 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
             ImageStore.saveImage(selectedImage.image!, transactionID: transaction!.id)
         }
     }
-    
     @IBAction func unwind(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? AddBudgetItemsViewController, let selectedBudgetItems = sourceViewController.selectedBudgetItems {
             updateItems(selectedBudgetItems)

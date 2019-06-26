@@ -12,7 +12,6 @@ import UIKit
 class ImageStore {
     static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     
-    
     static func saveImage(_ image: UIImage, transactionID: TransactionID) {
         do {
             if let imageData = image.pngData() {
