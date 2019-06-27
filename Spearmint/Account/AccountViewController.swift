@@ -21,7 +21,7 @@ class AccountViewController: UIViewController {
         let dictionary = BudgetStore.budgetDictionary
         
         let budget = dictionary[Budget.dateToString(Date())]!
-        LocalAccess.addTransaction(Transaction(name: "transaction 1", transactionType: TransactionType.income, merchant: "Company 123", amount: 3000, date: "Jun 1, 2019", location: "", image: false, notes: "", budgetID: budget.dateString, items: ["Paycheck 1" : [Item(name: "Paycheck", amount: 3000, budgetItem: "Paycheck 1", budgetItemCategory: BudgetItemCategory.income)]]))
+        LocalAccess.addTransaction(Transaction(name: "transaction 1", transactionType: TransactionType.income, vendor: "Company 123", amount: 3000, date: "Jun 1, 2019", location: "", image: false, notes: "", budgetID: budget.dateString, items: ["Paycheck 1" : [Item(name: "Paycheck", amount: 3000, budgetItem: "Paycheck 1", budgetItemCategory: BudgetItemCategory.income)]]))
         
         print("done")
     }

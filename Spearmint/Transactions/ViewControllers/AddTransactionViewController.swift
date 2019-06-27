@@ -177,7 +177,7 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
     fileprivate func addTransaction() {
         let name = ""
         let date = dateTextField.text!
-        let merchant = vendorTextField.text!
+        let vendor = vendorTextField.text!
         let transactionType = segmentedControl.selectedSegmentIndex == TransactionType.expense.rawValue ? TransactionType.expense : TransactionType.income
         let amount = Currency.currencyToFloat(amountTextField.text!)
         
@@ -201,8 +201,8 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
             transactionItems[budgetItems[section].name] = items
         }
         
-        transaction = Transaction(name: name, transactionType: transactionType, merchant: merchant, amount: Float(amount), date: date, location: "N/A", image: hasImage, notes: "notes", budgetID: budgetKey, items: transactionItems)
-        
+        transaction = Transaction(name: name, transactionType: transactionType, vendor: vendor, amount: Float(amount), date: date, location: "N/A", image: hasImage, notes: "notes", budgetID: budgetKey, items: transactionItems)
+                
         if hasImage {
             ImageStore.saveImage(selectedImage.image!, transactionID: transaction!.id)
         }

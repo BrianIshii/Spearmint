@@ -12,6 +12,8 @@ class LocalAccess {
     public static let reset: Bool = false
     public static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     
+    public static let vendorStore: VendorStore = VendorStore()
+
     public static func deleteTransaction(_ transaction: Transaction) {
         TransactionStore.deleteTransaction(transaction)
         BudgetStore.deleteTransaction(transaction)
@@ -21,6 +23,7 @@ class LocalAccess {
     public static func addTransaction(_ transaction: Transaction) {
         TransactionStore.addTransaction(transaction)
         BudgetStore.addTransaction(transaction)
+        vendorStore.addVendor(vendor: Vendor(name: transaction.vendor))
         print("added transaction")
     }
     

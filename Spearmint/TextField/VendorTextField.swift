@@ -40,11 +40,7 @@ class VendorTextField: UITextField, UITextFieldDelegate {
         view.frame.size.width = self.frame.width
         view.textField = self
         self.inputAccessoryView = view
-            //            let accessoryView = UIView(frame: .zero)
-//            accessoryView.backgroundColor = .lightGray
-//            accessoryView.alpha = 0.6
-//            return accessoryView
-//            }(
+
         configureLocationManager()
     }
     
@@ -55,8 +51,10 @@ class VendorTextField: UITextField, UITextFieldDelegate {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        print("changed")
+        guard let text = textField.text else { return }
+        
         findSuggestions()
+        print(LocalAccess.vendorStore.query(text))
     }
     /*
     // Only override draw() if you perform custom drawing.
