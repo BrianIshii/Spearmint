@@ -58,7 +58,7 @@ class BudgetStore {
                 
             }
         } else {
-            BudgetStore.addBudget(Budget(date: transaction.budgetDate, items: BudgetItem.defaultBudgetItems()))
+            BudgetStore.addBudget(Budget(date: transaction.budgetDate, items: LocalAccess.budgetItemStore.getBudgetItems()))
             BudgetStore.addTransaction(transaction)
         }
         update()
@@ -99,14 +99,14 @@ class BudgetStore {
     private static func getBudgetDictionary() -> [String: Budget] {
         
         if LocalAccess.reset {
-            let currentBudget = Budget(date: Budget.dateToString(Date()), items: BudgetItem.defaultBudgetItems())
+            let currentBudget = Budget(date: Budget.dateToString(Date()), items: LocalAccess.budgetItemStore.getBudgetItems())
             update(data: [currentBudget.dateString : currentBudget])
             return [currentBudget.dateString : currentBudget]
         }
         
         let temp = LocalAccess.getDictionary(saveable: Budget.self)
         if temp.count == 0 {
-            let currentBudget = Budget(date: Budget.dateToString(Date()), items: BudgetItem.defaultBudgetItems())
+            let currentBudget = Budget(date: Budget.dateToString(Date()), items: LocalAccess.budgetItemStore.getBudgetItems())
             return [currentBudget.dateString : currentBudget]
         } else {
             return temp

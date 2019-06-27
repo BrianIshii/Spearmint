@@ -8,12 +8,13 @@
 
 import Foundation
 
-class BudgetItem: Codable, Hashable {
+class BudgetItem: Saveable, Hashable {
     var id: BudgetItemID
     var name: String
     var category: BudgetItemCategory
     var planned: Float
     var actual: Float
+    var isActive: Bool
     private var transactions: [TransactionID]
     
     init(name: String, category: BudgetItemCategory, planned: Float) {
@@ -22,6 +23,7 @@ class BudgetItem: Codable, Hashable {
         self.category = category
         self.planned = planned
         self.actual = 0
+        self.isActive = true
         self.transactions = [TransactionID]()
     }
     
@@ -31,6 +33,7 @@ class BudgetItem: Codable, Hashable {
         self.category = category
         self.planned = 100
         self.actual = 0
+        self.isActive = true
         self.transactions = [TransactionID]()
     }
     
@@ -96,44 +99,6 @@ class BudgetItem: Codable, Hashable {
         }
         
         return expensiveItem
-    }
-    
-    static func defaultBudgetItems() -> [BudgetItemCategory:[BudgetItem]] {
-        return [BudgetItemCategory.income : [
-                    BudgetItem(name: "Paycheck 1", category: BudgetItemCategory.income, planned: 6000)],
-                BudgetItemCategory.housing : [
-                    BudgetItem(name: "Mortgage/Rent", category: BudgetItemCategory.housing, planned: 2500),
-                    BudgetItem(name: "Water", category: BudgetItemCategory.housing),
-                    BudgetItem(name: "Natural Gas", category: BudgetItemCategory.housing),
-                    BudgetItem(name: "Electricity", category: BudgetItemCategory.housing),
-                    BudgetItem(name: "Cable", category: BudgetItemCategory.housing),
-                    BudgetItem(name: "Internet", category: BudgetItemCategory.housing),
-                    BudgetItem(name: "Trash", category: BudgetItemCategory.housing)],
-                BudgetItemCategory.transportation : [
-                    BudgetItem(name: "Gas", category: BudgetItemCategory.transportation, planned: 200),
-                    BudgetItem(name: "Maintenance", category: BudgetItemCategory.transportation)],
-                BudgetItemCategory.giving : [
-                    BudgetItem(name: "Charity", category: BudgetItemCategory.giving)],
-                BudgetItemCategory.savings : [
-                    BudgetItem(name: "Retirement", category: BudgetItemCategory.savings, planned: 2000)],
-                BudgetItemCategory.food : [
-                    BudgetItem(name: "Groceries", category: BudgetItemCategory.food),
-                     BudgetItem(name: "Eating Out", category: BudgetItemCategory.food)],
-                BudgetItemCategory.personal : [
-                    BudgetItem(name: "Personal Items", category: BudgetItemCategory.personal, planned: 250),
-                    BudgetItem(name: "Subscriptions", category: BudgetItemCategory.personal)],
-                BudgetItemCategory.lifestyle : [
-                    BudgetItem(name: "Movies", category: BudgetItemCategory.lifestyle),
-                    BudgetItem(name: "Outdoor Stuff", category: BudgetItemCategory.lifestyle)],
-                BudgetItemCategory.health : [
-                    BudgetItem(name: "Rock Climbing Gym", category: BudgetItemCategory.health)],
-                BudgetItemCategory.insurance : [
-                    BudgetItem(name: "Health Insurance", category: BudgetItemCategory.insurance),
-                    BudgetItem(name: "Car Insurance", category: BudgetItemCategory.insurance)],
-                BudgetItemCategory.debt : [
-                    BudgetItem(name: "Credit Card", category: BudgetItemCategory.debt),
-                    BudgetItem(name: "Student Loan", category: BudgetItemCategory.debt)],
-                BudgetItemCategory.other : []]
     }
     
     static func == (lhs: BudgetItem, rhs: BudgetItem) -> Bool {
