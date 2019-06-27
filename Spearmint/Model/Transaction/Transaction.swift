@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class Transaction: Saveable {
     
     let id: TransactionID
@@ -39,9 +38,6 @@ class Transaction: Saveable {
         self.budgetDate = budgetID
         self.items = items
     }
-    
-    static let dummyTransaction =
-        Transaction(name: "test1", transactionType: TransactionType.income, vendor: "Apple", amount: 10.00, date: TransactionDate.getCurrentDate(), location: "N/A", image: false, notes: "notes", budgetID: Budget.dateToString(Date()), items: [:])
  
     func isInCurrentMonth() -> Bool {
         let currentDate = Date()
