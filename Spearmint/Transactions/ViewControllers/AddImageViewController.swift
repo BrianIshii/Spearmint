@@ -84,7 +84,7 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
             addContentsViewController = vc
             vc.previousVC = self
         } else if let vc = segue.destination as? AddBudgetItemsViewController {
-            vc.budgetDate = Budget.dateToString(Date())
+            vc.budgetDate = BudgetDate(Date())
         }
     }
  

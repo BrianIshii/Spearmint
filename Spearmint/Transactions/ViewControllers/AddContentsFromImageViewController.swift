@@ -109,7 +109,7 @@ class AddContentsFromImageViewController: UIViewController, UITextFieldDelegate 
         // Pass the selected object to the new view controller.
         if segue.identifier == AddBudgetItemSegue.segueIdentifier{
             if let vc = segue.destination as? AddBudgetItemsViewController {
-                vc.budgetDate = Budget.dateToString(Date())
+                vc.budgetDate = BudgetDate(Date())
             }
         }
     }

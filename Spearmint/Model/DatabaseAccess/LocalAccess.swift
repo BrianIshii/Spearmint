@@ -28,12 +28,13 @@ class LocalAccess {
         print("added transaction")
     }
     
-    public static func getDictionary<SaveableObject: Saveable>(saveable: SaveableObject.Type) -> [String: SaveableObject] {
+    public static func getDictionary
+        <K: SaveableKey, V: Saveable>(key: K.Type, object: V.Type) -> [K: V] {
         do {
-            let url = documentsDirectory.appendingPathComponent(SaveableObject.urlString)
+            let url = documentsDirectory.appendingPathComponent(V.urlString)
             let data = try Data(contentsOf: url)
             let decoder = JSONDecoder()
-            let dictionary = try decoder.decode([String : SaveableObject].self, from: data)
+            let dictionary = try decoder.decode([K: V].self, from: data)
             
             return dictionary
         } catch {
@@ -43,10 +44,10 @@ class LocalAccess {
         return [:]
     }
     
-    public static func updateDictionary<SaveableObject: Saveable>(data: [String : SaveableObject]) {
+    public static func updateDictionary<K: SaveableKey, V: Saveable>(data: [K: V]) {
         let encoder = JSONEncoder()
         do {
-            let url = documentsDirectory.appendingPathComponent(SaveableObject.urlString)
+            let url = documentsDirectory.appendingPathComponent(V.urlString)
             let jsonData = try encoder.encode(data)
             try jsonData.write(to: url)
         } catch {

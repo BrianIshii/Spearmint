@@ -155,7 +155,7 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
             let date = dateTextField.text!
             
             if let vc = segue.destination as? AddBudgetItemsViewController {
-                vc.budgetDate = Budget.dateToString(DateFormatterFactory.mediumFormatter.date(from: date)!)
+                vc.budgetDate = BudgetDate(date)
             }
         case addImageViewSegueIdentifier:
             if let image = selectedImage.image, let vc = segue.destination as? AddImageViewController {
@@ -181,7 +181,7 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
         let transactionType = segmentedControl.selectedSegmentIndex == TransactionType.expense.rawValue ? TransactionType.expense : TransactionType.income
         let amount = Currency.currencyToFloat(amountTextField.text!)
         
-        let budgetKey = Budget.dateToString(DateFormatterFactory.mediumFormatter.date(from: date)!)
+        let budgetKey = BudgetDate(DateFormatterFactory.mediumFormatter.date(from: date)!)
         _ = BudgetStore.budgetDictionary[budgetKey]
         let hasImage = ((selectedImage.image?.isEqualTo(UIImage(imageLiteralResourceName: "default")))!) ? false : true
         
@@ -201,7 +201,7 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
             transactionItems[budgetItems[section].name] = items
         }
         
-        transaction = Transaction(name: name, transactionType: transactionType, vendor: vendor, amount: Float(amount), date: date, location: "N/A", image: hasImage, notes: "notes", budgetID: budgetKey, items: transactionItems)
+        transaction = Transaction(name: name, transactionType: transactionType, vendor: vendor, amount: Float(amount), date: date, location: "N/A", image: hasImage, notes: "notes", budgetDate: budgetKey, items: transactionItems)
                 
         if hasImage {
             ImageStore.saveImage(selectedImage.image!, transactionID: transaction!.id)

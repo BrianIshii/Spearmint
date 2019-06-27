@@ -20,11 +20,11 @@ class Transaction: Saveable {
     var location: String
     var hasImage: Bool
     var notes: String
-    var budgetDate: String
+    var budgetDate: BudgetDate
     var items: [String : [Item]]
     
     init(name: String, transactionType: TransactionType, vendor: String, amount: Float,
-         date: String, location: String, image: Bool, notes: String, budgetID: String, items: [String : [Item]]) {
+         date: String, location: String, image: Bool, notes: String, budgetDate: BudgetDate, items: [String : [Item]]) {
         self.id = TransactionID()
         self.name = name
         self.transactionType = transactionType
@@ -35,7 +35,7 @@ class Transaction: Saveable {
         self.location = location
         self.hasImage = image
         self.notes = notes
-        self.budgetDate = budgetID
+        self.budgetDate = budgetDate
         self.items = items
     }
  

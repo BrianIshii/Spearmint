@@ -10,20 +10,32 @@ import Foundation
 
 class Budget: Saveable {
     
-    var dateString: String
+    private var budgetDate: BudgetDate
     var transactions: [TransactionID]
     var items: [BudgetItemCategory:[BudgetItem]]
     
     init(date: String, items: [BudgetItemCategory:[BudgetItem]]) {
-        self.dateString = date
+        self.budgetDate = BudgetDate(date)
         self.transactions = []
         self.items = items
     }
     
     init(date: Date, items: [BudgetItemCategory:[BudgetItem]]) {
-        self.dateString = Budget.dateToString(date)
+        self.budgetDate = BudgetDate(date)
         self.transactions = []
         self.items = items
+    }
+    
+    init(_ date: BudgetDate, items: [BudgetItemCategory:[BudgetItem]]) {
+        self.budgetDate = date
+        self.items = items
+        self.transactions = []
+    }
+    
+    init(_ date: BudgetDate) {
+        self.budgetDate = date
+        self.items = LocalAccess.budgetItemStore.getBudgetItems()
+        self.transactions = []
     }
     
     func addBudgetItem(budgetItem: BudgetItem) {
@@ -90,18 +102,22 @@ class Budget: Saveable {
     }
     
     static func < (lft: Budget, rht: Budget) -> Bool {
-        return lft.date < rht.date
+        return lft.budgetDate < rht.budgetDate
     }
-
+    
     var date: Date {
-        return DateFormatterFactory.yearAndMonthFormatter.date(from: dateString) ?? Date()
+        return budgetDate.date
     }
     
     var month: String {
-        return DateFormatterFactory.monthFormatter.string(from: date)
+        return budgetDate.month
     }
     
     var year: String {
-        return DateFormatterFactory.yearFormatter.string(from: date)
+        return budgetDate.year
+    }
+    
+    public var id: BudgetDate {
+        return budgetDate
     }
 }

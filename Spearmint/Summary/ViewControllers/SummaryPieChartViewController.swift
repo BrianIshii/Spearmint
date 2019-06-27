@@ -34,7 +34,7 @@ class SummaryPieChartViewController: UIViewController {
 
     private func update() {
         // Do any additional setup after loading the view.
-        if let b = BudgetStore.getBudget(Budget.dateToString(Date())) {
+        if let b = BudgetStore.getBudget(BudgetDate(Date())) {
             let totalIncome = b.totalIncome
 
 

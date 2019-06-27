@@ -32,7 +32,7 @@ class TransactionStore {
             return [String: Transaction]()
         }
         
-        return LocalAccess.getDictionary(saveable: Transaction.self)
+        return LocalAccess.getDictionary(key: String.self, object: Transaction.self)
     }
     
     static func update() {
@@ -47,5 +47,5 @@ class TransactionStore {
     }
     
     static let dummyTransaction =
-        Transaction(name: "test1", transactionType: TransactionType.income, vendor: "Apple", amount: 10.00, date: TransactionDate.getCurrentDate(), location: "N/A", image: false, notes: "notes", budgetID: Budget.dateToString(Date()), items: [:])
+        Transaction(name: "test1", transactionType: TransactionType.income, vendor: "Apple", amount: 10.00, date: TransactionDate.getCurrentDate(), location: "N/A", image: false, notes: "notes", budgetDate: BudgetDate(Date()), items: [:])
 }

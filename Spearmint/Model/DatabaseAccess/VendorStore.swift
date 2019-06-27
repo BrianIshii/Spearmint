@@ -31,7 +31,7 @@ class VendorStore {
     }
 
     fileprivate func getVendorDictionary() -> [String: Vendor] {
-        return LocalAccess.getDictionary(saveable: Vendor.self)
+        return LocalAccess.getDictionary(key: String.self, object: Vendor.self)
     }
     
     fileprivate func updateVendorDictionary() {

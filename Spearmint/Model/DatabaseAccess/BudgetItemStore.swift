@@ -50,7 +50,7 @@ class BudgetItemStore {
     }
     
     fileprivate func getBudgetItemDictionary() -> [String: BudgetItem] {
-        return LocalAccess.getDictionary(saveable: BudgetItem.self)
+        return LocalAccess.getDictionary(key: String.self, object: BudgetItem.self)
     }
     
     fileprivate func getActiveBudgetItems() -> [BudgetItemCategory : [BudgetItem]] {

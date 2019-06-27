@@ -14,7 +14,7 @@ class AddBudgetItemsViewController: UIViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var selectedBudgetItems: [BudgetItem]?
-    var budgetDate: String?
+    var budgetDate: BudgetDate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -12,7 +12,7 @@ class BudgetStore {
     public static var budgetViewControllerNeedsUpdate = false
     public static var SummaryViewControllerNeedsUpdate = false
 
-    public static var budgetDictionary: [String : Budget] = getBudgetDictionary()
+    public static var budgetDictionary: [BudgetDate : Budget] = getBudgetDictionary()
     
     public static var budgets: [Budget] = getBudgets()
         
@@ -22,21 +22,21 @@ class BudgetStore {
     
     static let budgetURL = documentsDirectory.appendingPathComponent(budgetString)
 
-    static func getBudget(_ key: String) -> Budget? {
+    static func getBudget(_ key: BudgetDate) -> Budget? {
         return budgetDictionary[key]
     }
     
     static func addBudget(_ budget: Budget) {
-        if budgetDictionary[budget.dateString] != nil {
+        if budgetDictionary[budget.id] != nil {
             print("already have budget")
         } else {
-            budgetDictionary[budget.dateString] = budget
+            budgetDictionary[budget.id] = budget
         }
         update()
     }
     
     static func deleteBudget(_ budget: Budget) {
-        budgetDictionary.removeValue(forKey: budget.dateString)
+        budgetDictionary.removeValue(forKey: budget.id)
         update()
     }
     
@@ -58,7 +58,7 @@ class BudgetStore {
                 
             }
         } else {
-            BudgetStore.addBudget(Budget(date: transaction.budgetDate, items: LocalAccess.budgetItemStore.getBudgetItems()))
+            BudgetStore.addBudget(Budget(transaction.budgetDate))
             BudgetStore.addTransaction(transaction)
         }
         update()
@@ -96,18 +96,18 @@ class BudgetStore {
         return budgets.sorted(by: <)
     }
     
-    private static func getBudgetDictionary() -> [String: Budget] {
+    private static func getBudgetDictionary() -> [BudgetDate: Budget] {
         
         if LocalAccess.reset {
             let currentBudget = Budget(date: Budget.dateToString(Date()), items: LocalAccess.budgetItemStore.getBudgetItems())
-            update(data: [currentBudget.dateString : currentBudget])
-            return [currentBudget.dateString : currentBudget]
+            update(data: [currentBudget.id : currentBudget])
+            return [currentBudget.id : currentBudget]
         }
         
-        let temp = LocalAccess.getDictionary(saveable: Budget.self)
+        let temp = LocalAccess.getDictionary(key: BudgetDate.self, object: Budget.self)
         if temp.count == 0 {
-            let currentBudget = Budget(date: Budget.dateToString(Date()), items: LocalAccess.budgetItemStore.getBudgetItems())
-            return [currentBudget.dateString : currentBudget]
+            let currentBudget = Budget(BudgetDate())
+            return [currentBudget.id : currentBudget]
         } else {
             return temp
         }
@@ -117,7 +117,7 @@ class BudgetStore {
         update(data: budgetDictionary)
     }
     
-    fileprivate static func update(data: [String : Budget]) {
+    fileprivate static func update(data: [BudgetDate : Budget]) {
         LocalAccess.updateDictionary(data: data)
         
         budgetViewControllerNeedsUpdate = true
