@@ -27,7 +27,7 @@ class BudgetViewController: UIViewController {
         
         if Date().isInSameMonth(date: budgets[budgets.count - 1].date) {
             let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: Date())
-            BudgetStore.addBudget(Budget(date: Budget.dateToString(nextMonth!), items: LocalAccess.budgetItemStore.getBudgetItems()))
+            BudgetStore.addBudget(Budget(date: Budget.dateToString(nextMonth!)))
         }
         
         budgets = BudgetStore.budgets

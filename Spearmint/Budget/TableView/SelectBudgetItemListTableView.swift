@@ -80,14 +80,14 @@ class SelectBudgetItemListTableView: UITableView, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let budgetItem = getBudgetItem(indexPath: indexPath) else { return UITableViewCell() }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: SelectBudgetItemTableViewCell.reuseIdentifier, for: indexPath) as! SelectBudgetItemTableViewCell
         
-        let currentBudgetItem = currentBudget!.items[sections[indexPath.section].category]![indexPath.row]
-        
-        cell.textField.text = String(format: "%.2f", currentBudgetItem.planned - currentBudgetItem.actual)
+        cell.textField.text = String(format: "%.2f", budgetItem.planned - budgetItem.actual)
 
-        cell.budgetItemName.text = currentBudgetItem.name
-        cell.progressBar.progress = currentBudgetItem.actual / currentBudgetItem.planned
+        cell.budgetItemName.text = budgetItem.name
+        cell.progressBar.progress = budgetItem.actual / budgetItem.planned
         cell.textField.isEnabled = false
         cell.checkmarkImageView?.image = UIImage(named: "checkmark")
         cell.checkmarkImageView?.isHidden = true
@@ -110,8 +110,8 @@ class SelectBudgetItemListTableView: UITableView, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let budgetItem = getBudgetItem(indexPath: indexPath) else { return }
         let cell = tableView.cellForRow(at: indexPath) as! SelectBudgetItemTableViewCell
-        let budgetItem = (currentBudget?.items[sections[indexPath.section].category]![indexPath.row])!
         cell.checkmarkImageView?.isHidden = !cell.checkmarkImageView!.isHidden
         if cell.checkmarkImageView.isHidden {
             if let index = selectedBudgetItems.firstIndex(where: {(b) -> Bool in b == budgetItem}) {
@@ -134,6 +134,13 @@ class SelectBudgetItemListTableView: UITableView, UITableViewDelegate, UITableVi
      // Drawing code
      }
      */
+    
+    public func getBudgetItem(indexPath: IndexPath) -> BudgetItem? {
+        guard let budget = currentBudget else { return nil }
+        guard let budgetItemIDs = budget.items[sections[indexPath.section].category] else { return nil }
+        guard let budgetItem = LocalAccess.budgetItemStore.getBudgetItem(budgetItemIDs[indexPath.row]) else { return nil }
+        return budgetItem
+    }
     
 }
 

@@ -10,7 +10,7 @@ import Foundation
 
 class BudgetItemStore {
     fileprivate var budgetItemDictionary: [String: BudgetItem] = [:]
-    fileprivate var activeBudgetItems: [BudgetItemCategory : [BudgetItem]] = [:]
+    fileprivate var activeBudgetItems: [BudgetItemCategory : [BudgetItemID]] = [:]
     
     init() {
         let dictionary = getBudgetItemDictionary()
@@ -28,7 +28,7 @@ class BudgetItemStore {
         activeBudgetItems = getActiveBudgetItems()
     }
 
-    public func getBudgetItems() -> [BudgetItemCategory : [BudgetItem]] {
+    public func getBudgetItems() -> [BudgetItemCategory : [BudgetItemID]] {
         return activeBudgetItems
     }
     
@@ -53,13 +53,13 @@ class BudgetItemStore {
         return LocalAccess.getDictionary(key: String.self, object: BudgetItem.self)
     }
     
-    fileprivate func getActiveBudgetItems() -> [BudgetItemCategory : [BudgetItem]] {
+    fileprivate func getActiveBudgetItems() -> [BudgetItemCategory : [BudgetItemID]] {
         var active = createEmptyBudgetItemDictionary()
         
         for (_, budgetItem) in budgetItemDictionary {
             if budgetItem.isActive {
                 if var budgetItems = active[budgetItem.category] {
-                    budgetItems.append(budgetItem)
+                    budgetItems.append(budgetItem.id)
                 }
             }
         }
@@ -148,7 +148,7 @@ class BudgetItemStore {
         ]
     }
     
-    fileprivate func createEmptyBudgetItemDictionary() -> [BudgetItemCategory:[BudgetItem]] {
+    fileprivate func createEmptyBudgetItemDictionary() -> [BudgetItemCategory:[BudgetItemID]] {
         return [BudgetItemCategory.income : [],
                 BudgetItemCategory.housing : [],
                 BudgetItemCategory.transportation : [],

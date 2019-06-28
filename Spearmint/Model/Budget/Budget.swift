@@ -12,7 +12,7 @@ class Budget: Saveable {
     
     private var budgetDate: BudgetDate
     var transactions: [TransactionID]
-    var items: [BudgetItemCategory:[BudgetItem]]
+    var items: [BudgetItemCategory:[BudgetItemID]]
     
     init(date: String) {
         self.budgetDate = BudgetDate(date)
@@ -20,19 +20,19 @@ class Budget: Saveable {
         self.items = LocalAccess.budgetItemStore.getBudgetItems()
     }
     
-    init(date: String, items: [BudgetItemCategory:[BudgetItem]]) {
+    init(date: String, items: [BudgetItemCategory:[BudgetItemID]]) {
         self.budgetDate = BudgetDate(date)
         self.transactions = []
         self.items = items
     }
     
-    init(date: Date, items: [BudgetItemCategory:[BudgetItem]]) {
+    init(date: Date, items: [BudgetItemCategory:[BudgetItemID]]) {
         self.budgetDate = BudgetDate(date)
         self.transactions = []
         self.items = items
     }
     
-    init(_ date: BudgetDate, items: [BudgetItemCategory:[BudgetItem]]) {
+    init(_ date: BudgetDate, items: [BudgetItemCategory:[BudgetItemID]]) {
         self.budgetDate = date
         self.items = items
         self.transactions = []
@@ -45,7 +45,7 @@ class Budget: Saveable {
     }
     
     func addBudgetItem(budgetItem: BudgetItem) {
-        items[budgetItem.category]!.append(budgetItem)
+        items[budgetItem.category]!.append(budgetItem.id)
         BudgetStore.update()
     }
     
@@ -56,8 +56,10 @@ class Budget: Saveable {
     var totalIncome: Float {
         var total: Float = 0.0
         if let budgetItems = items[BudgetItemCategory.income] {
-            for item in budgetItems {
-                total += item.actual
+            for id in budgetItems {
+                if let budgetItem = LocalAccess.budgetItemStore.getBudgetItem(id){
+                    total += budgetItem.actual
+                }
             }
         }
         return Float(total)
@@ -70,8 +72,10 @@ class Budget: Saveable {
             if (key.category != BudgetItemCategory.income) {
                 var total: Float = 0.0
 
-                for item in items[key.category]! {
-                    total += item.actual
+                for id in items[key.category]! {
+                    if let item = LocalAccess.budgetItemStore.getBudgetItem(id) {
+                        total += item.actual
+                    }
                 }
                 
                 expenses[key.category] = total
@@ -82,10 +86,10 @@ class Budget: Saveable {
     }
     
     var mostExpensiveItemPerCategory: [BudgetItemCategory: Item] {
-        var items: [BudgetItemCategory: Item] = [:]
+        let items: [BudgetItemCategory: Item] = [:]
         
         for key in BudgetItemSectionStore.budgetItemSections {
-            let mostExpensiveItem: Item?
+            let _: Item?
             if (key.category != BudgetItemCategory.income) {
 //
 //                for item in self.items[key.category]! {
@@ -98,9 +102,9 @@ class Budget: Saveable {
 //                    }
 //                }
                 
-                if let temp = mostExpensiveItem {
-                    items[key.category] = temp
-                }
+//                if let temp = mostExpensiveItem {
+//                    items[key.category] = temp
+//                }
             }
         }
         

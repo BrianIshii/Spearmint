@@ -95,14 +95,18 @@ extension BudgetDataSource: UITableViewDataSource {
     }
 
     private func configure(cell: UITableViewCell, indexPath: IndexPath) {
+        guard let budgetItem = getBudgetItem(indexPath: indexPath) else { return }
+        
         if let cell = cell as? BudgetItemTableViewCell {
-            let object = currentBudget!.items[sections[indexPath.section].category]![indexPath.row]
-            cell.configure(object: object)
+            cell.configure(object: budgetItem)
         }
     }
     
-    public func getBudgetItem(indexPath: IndexPath) -> BudgetItem {
-        return currentBudget!.items[sections[indexPath.section].category]![indexPath.row]
+    public func getBudgetItem(indexPath: IndexPath) -> BudgetItem? {
+        guard let budget = currentBudget else { return nil }
+        guard let budgetItemIDs = budget.items[sections[indexPath.section].category] else { return nil }
+        guard let budgetItem = LocalAccess.budgetItemStore.getBudgetItem(budgetItemIDs[indexPath.row]) else { return nil }
+        return budgetItem
     }
     
 }
