@@ -44,19 +44,19 @@ class BudgetStore {
         if let budget = budgetDictionary[transaction.budgetDate] {
             budget.transactions.append(transaction.id)
             
-            for (_,v) in transaction.items {
-                if let category = budget.items[v[0].budgetItemCategory] {
-                    for i in category {
-                        if i.name == v[0].budgetItemName {
-                            for item in v {
-                                    i.addTransactionItem(transaction, item)
-                            }
-                            break
-                        }
-                    }
-                }
-                
-            }
+//            for (_,v) in transaction.items {
+//                if let category = budget.items[v[0].budgetItemCategory] {
+//                    for i in category {
+//                        if i.name == v[0].budgetItemName {
+//                            for item in v {
+//                                    i.addTransactionItem(transaction, item)
+//                            }
+//                            break
+//                        }
+//                    }
+//                }
+//
+//            }
         } else {
             BudgetStore.addBudget(Budget(transaction.budgetDate))
             BudgetStore.addTransaction(transaction)
@@ -70,18 +70,18 @@ class BudgetStore {
                 return t == transaction.id
                 })
             
-            for (_,v) in transaction.items {
-                if let categoryItems = budget.items[v[0].budgetItemCategory] {
-                    for i in categoryItems {
-                        if i.name == v[0].budgetItemName {
-                            for item in v {
-                                i.deleteTransactionItem(transaction, item)
-                            }
-                            break
-                        }
-                    }
-                }
-            }
+//            for (_,v) in transaction.items {
+//                if let categoryItems = budget.items[v[0].budgetItemCategory] {
+//                    for i in categoryItems {
+//                        if i.name == v[0].budgetItemName {
+//                            for item in v {
+//                                i.deleteTransactionItem(transaction, item)
+//                            }
+//                            break
+//                        }
+//                    }
+//                }
+//            }
         }
         update()
     }

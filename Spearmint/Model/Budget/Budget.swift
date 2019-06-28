@@ -85,18 +85,18 @@ class Budget: Saveable {
         var items: [BudgetItemCategory: Item] = [:]
         
         for key in BudgetItemSectionStore.budgetItemSections {
-            var mostExpensiveItem: Item?
+            let mostExpensiveItem: Item?
             if (key.category != BudgetItemCategory.income) {
-                
-                for item in self.items[key.category]! {
-                    if let current = item.mostExpensiveItem() {
-                        mostExpensiveItem = current
-                    } else if let currentExpensiveItem = mostExpensiveItem, let current = item.mostExpensiveItem() {
-                        if currentExpensiveItem.amount < current.amount {
-                            mostExpensiveItem = current
-                        }
-                    }
-                }
+//
+//                for item in self.items[key.category]! {
+//                    if let current = item.mostExpensiveItem() {
+//                        mostExpensiveItem = current
+//                    } else if let currentExpensiveItem = mostExpensiveItem, let current = item.mostExpensiveItem() {
+//                        if currentExpensiveItem.amount < current.amount {
+//                            mostExpensiveItem = current
+//                        }
+//                    }
+//                }
                 
                 if let temp = mostExpensiveItem {
                     items[key.category] = temp

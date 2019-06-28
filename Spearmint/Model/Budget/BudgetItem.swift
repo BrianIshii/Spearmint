@@ -15,7 +15,7 @@ class BudgetItem: Saveable, Hashable {
     var planned: Float
     var actual: Float
     var isActive: Bool
-    private var transactions: [TransactionID]
+    private var transactions: [BudgetDate: [TransactionID]]
     
     init(name: String, category: BudgetItemCategory, planned: Float) {
         self.id = BudgetItemID()
@@ -24,7 +24,7 @@ class BudgetItem: Saveable, Hashable {
         self.planned = planned
         self.actual = 0
         self.isActive = true
-        self.transactions = [TransactionID]()
+        self.transactions = [:]
     }
     
     init(name: String, category: BudgetItemCategory) {
@@ -34,72 +34,84 @@ class BudgetItem: Saveable, Hashable {
         self.planned = 100
         self.actual = 0
         self.isActive = true
-        self.transactions = [TransactionID]()
+        self.transactions = [:]
     }
     
     func addTransaction(_ transaction: Transaction) {
-        transactions.append(transaction.id)
-        for (k, v) in transaction.items {
-            if k == name {
-                for item in v {
-                    actual += item.amount
-                }
-            }
+        if var transactionIDs = transactions[transaction.budgetDate] {
+            transactionIDs.append(transaction.id)
+        } else {
+            transactions[transaction.budgetDate] = [transaction.id]
         }
+//        for (k, v) in transaction.items {
+//            if k == name {
+//                for item in v {
+//                    actual += item.amount
+//                }
+//            }
+//        }
     }
     
-    func addTransactionItem(_ transaction: Transaction, _ item: Item) {
-        if !transactions.contains(where: { $0.description() == transaction.id.description() }) {
-            transactions.append(transaction.id)
-        }
-        
-        if item.budgetItemName == name {
-            actual += item.amount
-        }
-    }
+//    func addTransactionItem(_ transaction: Transaction, _ item: Item) {
+//        if !transactions.contains(where: { $0.description() == transaction.id.description() }) {
+//            transactions.append(transaction.id)
+//        }
+//
+//        if item.budgetItemName == name {
+//            actual += item.amount
+//        }
+//    }
     
     func deleteTransaction(_ transaction: Transaction) {
-        transactions.removeAll(where: { (t) -> Bool in
-            return t == transaction.id
-        })
-        
-        for (k, v) in transaction.items {
-            if k == name {
-                for item in v {
-                    actual -= item.amount
+        if var transactionIDs = transactions[transaction.budgetDate] {
+            for (index, id) in transactionIDs.enumerated() {
+                if transaction.id == id {
+                    transactionIDs.remove(at: index)
+                    return
                 }
             }
         }
+//        transactions.removeAll(where: { (t) -> Bool in
+//            return t == transaction.id
+//        })
+//
+//        for (k, v) in transaction.items {
+//            if k == name {
+//                for item in v {
+//                    actual -= item.amount
+//                }
+//            }
+//        }
     }
     
-    func deleteTransactionItem(_ transaction: Transaction, _ item: Item) {
-        transactions.removeAll(where: { (t) -> Bool in
-            return t == transaction.id
-        })
-        
-        if item.budgetItemName == name {
-            actual -= item.amount
-        }
-    }
+//    func deleteTransactionItem(_ transaction: Transaction, _ item: Item) {
+//        transactions.removeAll(where: { (t) -> Bool in
+//            return t == transaction.id
+//        })
+//
+//        if item.budgetItemName == name {
+//            actual -= item.amount
+//        }
+//    }
     
-    func mostExpensiveItem() -> Item? {
-        var expensiveItem: Item?
-        for id in transactions {
-            if let transaction = TransactionStore.getTransaction(id) {
-                if let item = transaction.mostExpensiveItem(self) {
-                    if let currentExpensiveItem = expensiveItem{
-                        if currentExpensiveItem.amount < item.amount {
-                            expensiveItem = item
-                        }
-                    } else {
-                        expensiveItem = item
-                    }
-                }
-            }
-        }
-        
-        return expensiveItem
-    }
+//    func mostExpensiveItem() -> Item? {
+//        var expensiveItem: Item?
+//        for id in transactions {
+//            if let transaction = TransactionStore.getTransaction(id) {
+//                if let item = transaction.mostExpensiveItem(self) {
+//                    if let currentExpensiveItem = expensiveItem{
+//                        if currentExpensiveItem.amount < item.amount {
+//                            expensiveItem = item
+//                        }
+//                    } else {
+//                        expensiveItem = item
+//                    }
+//                }
+//            }
+//        }
+//        
+//        return expensiveItem
+//    }
     
     static func == (lhs: BudgetItem, rhs: BudgetItem) -> Bool {
         return lhs.id == rhs.id
