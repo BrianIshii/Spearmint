@@ -14,6 +14,12 @@ class Budget: Saveable {
     var transactions: [TransactionID]
     var items: [BudgetItemCategory:[BudgetItem]]
     
+    init(date: String) {
+        self.budgetDate = BudgetDate(date)
+        self.transactions = []
+        self.items = LocalAccess.budgetItemStore.getBudgetItems()
+    }
+    
     init(date: String, items: [BudgetItemCategory:[BudgetItem]]) {
         self.budgetDate = BudgetDate(date)
         self.transactions = []

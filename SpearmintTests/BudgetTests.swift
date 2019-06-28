@@ -19,20 +19,14 @@ class BudgetTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testBudgetDateString() {
-        let budget = Budget(date: "Jun 2019", items: BudgetItem.defaultBudgetItems())
-        
-        XCTAssert(budget.dateString == "Jun 2019")
-    }
-    
     func testBudgetMonth() {
-        let budget = Budget(date: "Jun 2019", items: BudgetItem.defaultBudgetItems())
+        let budget = Budget(date: "Jun 2019")
         
         XCTAssert(budget.month == "June")
     }
     
     func testBudgetYear() {
-        let budget = Budget(date: "Jun 2019", items: BudgetItem.defaultBudgetItems())
+        let budget = Budget(date: "Jun 2019")
         
         XCTAssert(budget.year == "2019")
     }
