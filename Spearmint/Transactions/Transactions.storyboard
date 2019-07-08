@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BpP-Mv-zuI">
-                                <rect key="frame" x="0.0" y="116" width="414" height="697"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ych-wy-2jV">
@@ -28,35 +28,22 @@
                                     <navigationItem title="Transactions" id="SdG-49-imA">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lRL-hz-TJX">
                                             <connections>
-                                                <segue destination="3jh-dW-Xvn" kind="presentation" identifier="addTransactionViewControllerSegue" id="do7-hA-FxN"/>
+                                                <segue destination="lWa-md-BBS" kind="presentation" modalPresentationStyle="overCurrentContext" id="4qp-Xw-kvT"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="utx-RV-yJF">
-                                <rect key="frame" x="0.0" y="88" width="414" height="29"/>
-                                <segments>
-                                    <segment title="Current Month"/>
-                                    <segment title="All"/>
-                                </segments>
-                                <connections>
-                                    <action selector="toggleTransactions:" destination="yV4-F7-YI9" eventType="valueChanged" id="mKJ-o1-AU7"/>
-                                </connections>
-                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="BpP-Mv-zuI" firstAttribute="width" secondItem="ksh-ws-LTY" secondAttribute="width" id="3oJ-4A-iej"/>
-                            <constraint firstItem="utx-RV-yJF" firstAttribute="width" secondItem="ksh-ws-LTY" secondAttribute="width" id="9Nd-yk-zqc"/>
                             <constraint firstItem="ych-wy-2jV" firstAttribute="width" secondItem="ksh-ws-LTY" secondAttribute="width" id="LEt-kN-mNJ"/>
                             <constraint firstItem="ych-wy-2jV" firstAttribute="centerX" secondItem="Wey-25-Rik" secondAttribute="centerX" id="LVL-K2-60i"/>
                             <constraint firstItem="Wey-25-Rik" firstAttribute="bottom" secondItem="BpP-Mv-zuI" secondAttribute="bottom" id="NpS-Zh-xUc"/>
-                            <constraint firstItem="BpP-Mv-zuI" firstAttribute="top" secondItem="utx-RV-yJF" secondAttribute="bottom" id="UBk-Ll-MRT"/>
                             <constraint firstItem="BpP-Mv-zuI" firstAttribute="centerX" secondItem="Wey-25-Rik" secondAttribute="centerX" id="Uko-8B-4oy"/>
                             <constraint firstItem="ych-wy-2jV" firstAttribute="top" secondItem="Wey-25-Rik" secondAttribute="top" id="Zey-lP-6VN"/>
-                            <constraint firstItem="utx-RV-yJF" firstAttribute="centerX" secondItem="Wey-25-Rik" secondAttribute="centerX" id="cfw-eO-ge1"/>
-                            <constraint firstItem="utx-RV-yJF" firstAttribute="top" secondItem="ych-wy-2jV" secondAttribute="bottom" id="xf5-df-BCR"/>
+                            <constraint firstItem="BpP-Mv-zuI" firstAttribute="top" secondItem="ych-wy-2jV" secondAttribute="bottom" id="yPv-MJ-vWv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wey-25-Rik"/>
                     </view>
@@ -64,13 +51,107 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="navigationBar" destination="ych-wy-2jV" id="Vbp-Tk-Qzj"/>
-                        <outlet property="segmentedControl" destination="utx-RV-yJF" id="gPJ-VS-t85"/>
                         <outlet property="transactionTableView" destination="BpP-Mv-zuI" id="3ot-Pk-J4P"/>
+                        <segue destination="VZj-oK-zym" kind="presentation" identifier="selectTransaction" modalPresentationStyle="overCurrentContext" id="Su1-GC-wnw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Dd-U0-pQV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-604" y="-856"/>
+        </scene>
+        <!--Temp View Controller-->
+        <scene sceneID="HK5-wr-ReX">
+            <objects>
+                <viewController id="lWa-md-BBS" customClass="TempViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P6y-UG-fRe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1R-68-UNx">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Add Transaction" id="j7Q-o8-jgA">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ZKy-KE-pvb">
+                                            <connections>
+                                                <action selector="canel:" destination="lWa-md-BBS" id="ymG-ll-tuq"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="85r-Hp-E8Q">
+                                            <connections>
+                                                <segue destination="5UL-6Z-otT" kind="unwind" unwindAction="unwindWithSender:" id="oVf-Hg-WsA"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WCQ-eg-1dD" customClass="TransactionView" customModule="Spearmint" customModuleProvider="target">
+                                <rect key="frame" x="10" y="98" width="394" height="754"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="WCQ-eg-1dD" firstAttribute="leading" secondItem="1x7-2q-LLh" secondAttribute="leading" constant="10" id="5ea-HW-NHN"/>
+                            <constraint firstItem="M1R-68-UNx" firstAttribute="centerX" secondItem="1x7-2q-LLh" secondAttribute="centerX" id="B9Y-5p-QBT"/>
+                            <constraint firstItem="1x7-2q-LLh" firstAttribute="trailing" secondItem="WCQ-eg-1dD" secondAttribute="trailing" constant="10" id="VQ5-8x-FaY"/>
+                            <constraint firstItem="M1R-68-UNx" firstAttribute="top" secondItem="1x7-2q-LLh" secondAttribute="top" id="bs3-JT-6ma"/>
+                            <constraint firstItem="M1R-68-UNx" firstAttribute="width" secondItem="P6y-UG-fRe" secondAttribute="width" id="thM-Lg-PW2"/>
+                            <constraint firstItem="WCQ-eg-1dD" firstAttribute="top" secondItem="M1R-68-UNx" secondAttribute="bottom" constant="10" id="uOj-ws-Scu"/>
+                            <constraint firstItem="1x7-2q-LLh" firstAttribute="bottom" secondItem="WCQ-eg-1dD" secondAttribute="bottom" constant="10" id="vas-Vq-xz7"/>
+                            <constraint firstItem="WCQ-eg-1dD" firstAttribute="centerX" secondItem="1x7-2q-LLh" secondAttribute="centerX" id="y0v-oF-g4m"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1x7-2q-LLh"/>
+                    </view>
+                    <connections>
+                        <outlet property="saveButton" destination="85r-Hp-E8Q" id="zvE-d6-m64"/>
+                        <outlet property="transactionView" destination="WCQ-eg-1dD" id="Ubv-aD-Mah"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cq2-4J-i4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="5UL-6Z-otT" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-604.34782608695662" y="-146.65178571428569"/>
+        </scene>
+        <!--Transaction View Controller-->
+        <scene sceneID="8os-c3-sta">
+            <objects>
+                <viewController id="VZj-oK-zym" customClass="TransactionViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="taS-jP-Lkf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LUR-pb-ugM" customClass="TransactionView" customModule="Spearmint" customModuleProvider="target">
+                                <rect key="frame" x="10" y="54" width="394" height="798"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="LUR-pb-ugM" firstAttribute="centerX" secondItem="KNp-6c-lMt" secondAttribute="centerX" id="7xZ-zq-MTo"/>
+                            <constraint firstItem="LUR-pb-ugM" firstAttribute="leading" secondItem="KNp-6c-lMt" secondAttribute="leading" constant="10" id="Daz-lG-FeT"/>
+                            <constraint firstItem="LUR-pb-ugM" firstAttribute="centerY" secondItem="KNp-6c-lMt" secondAttribute="centerY" id="Gco-x4-idQ"/>
+                            <constraint firstItem="LUR-pb-ugM" firstAttribute="top" secondItem="KNp-6c-lMt" secondAttribute="top" constant="10" id="ZZ6-rY-kjD"/>
+                            <constraint firstItem="KNp-6c-lMt" firstAttribute="bottom" secondItem="LUR-pb-ugM" secondAttribute="bottom" constant="10" id="cuK-r7-7sz"/>
+                            <constraint firstItem="KNp-6c-lMt" firstAttribute="trailing" secondItem="LUR-pb-ugM" secondAttribute="trailing" constant="10" id="mYE-Qo-ea3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KNp-6c-lMt"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="H6S-hg-2wx" appends="YES" id="u3B-49-cKj"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="transactionView" destination="LUR-pb-ugM" id="D3g-fT-JiP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qhV-2K-T5l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="down" id="H6S-hg-2wx">
+                    <connections>
+                        <action selector="swipeDown:" destination="VZj-oK-zym" id="bLg-tO-kSy"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="143" y="-856"/>
         </scene>
         <!--Add Transaction View Controller-->
         <scene sceneID="rkg-LU-JIr">
@@ -139,7 +220,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQC-cO-O2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="hJ0-Cn-e9D" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="357" y="-856"/>
+            <point key="canvasLocation" x="1190" y="-699"/>
         </scene>
         <!--Add Budget Items View Controller-->
         <scene sceneID="FWM-j1-OU8">
@@ -191,7 +272,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hlw-nW-fMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="qkK-h3-zLI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1335" y="-680"/>
+            <point key="canvasLocation" x="357" y="-75"/>
         </scene>
         <!--AddTransactionImage-->
         <scene sceneID="brG-ZR-Hi2">

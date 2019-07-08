@@ -10,8 +10,7 @@ import UIKit
 
 class TransactionDataSource: NSObject {
     fileprivate let tableView: UITableView
-    var transactions: [Transaction] = []
-    var viewedTransactions: [Transaction] = []
+    var transactions: [Transaction] = Array(TransactionStore.transactions.values).sorted(by: >)
     
     init(tableView: UITableView) {
         self.tableView = tableView
@@ -19,33 +18,11 @@ class TransactionDataSource: NSObject {
         
         tableView.dataSource = self
     }
-    
-    public func toggleCurrentAndAllTransactions(index: Int) {
-        if (index == 0) {
-            setListToCurrentMonthTransactions()
-        } else {
-            setListToAllTransactions()
-        }
-    }
-    
-    private func setListToCurrentMonthTransactions() {
-        let array = transactions.filter { (t) -> Bool in
-            t.isInCurrentMonth()
-        }
-        
-        viewedTransactions = array
-        tableView.reloadData()
-    }
-    
-    private func setListToAllTransactions() {
-        viewedTransactions = transactions
-        tableView.reloadData()
-    }
 }
 
 extension TransactionDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewedTransactions.count
+        return transactions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,12 +35,9 @@ extension TransactionDataSource: UITableViewDataSource {
     
     private func configure(cell: UITableViewCell, indexPath: IndexPath) {
         if let cell = cell as? TransactionTableViewCell {
-            let object = viewedTransactions[indexPath.row]
+            let object = transactions[indexPath.row]
             
             cell.configure(object: object)
         }
     }
-    
-    
-    
 }

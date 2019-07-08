@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectBudgetItemListTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
+class SelectBudgetItemListTableView: UITableView {
     
     var sections: [BudgetItemSection] = BudgetItemSectionStore.budgetItemSections
     var currentBudget: Budget?
@@ -50,50 +50,15 @@ class SelectBudgetItemListTableView: UITableView, UITableViewDelegate, UITableVi
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if sections[section].isExpanded {
-            return CGFloat(32)
-        } else {
-            return 0
-        }
-    }
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        if sections[section].isExpanded {
+//            return CGFloat(32)
+//        } else {
+//            return 0
+//        }
+//    }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        if let count = currentBudget?.items.keys.count {
-            return count
-        } else {
-            return 1
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if sections[section].isExpanded {
-            if let count = currentBudget?.items[sections[section].category]?.count {
-                return count
-            } else {
-                return 0
-            }
-        } else {
-            return 1
-        }
-        
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let budgetItem = getBudgetItem(indexPath: indexPath) else { return UITableViewCell() }
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: SelectBudgetItemTableViewCell.reuseIdentifier, for: indexPath) as! SelectBudgetItemTableViewCell
-        
-        cell.textField.text = String(format: "%.2f", budgetItem.planned - budgetItem.actual)
 
-        cell.budgetItemName.text = budgetItem.name
-        cell.progressBar.progress = budgetItem.actual / budgetItem.planned
-        cell.textField.isEnabled = false
-        cell.checkmarkImageView?.image = UIImage(named: "checkmark")
-        cell.checkmarkImageView?.isHidden = true
-        
-        return cell
-    }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return false
@@ -141,6 +106,40 @@ class SelectBudgetItemListTableView: UITableView, UITableViewDelegate, UITableVi
         guard let budgetItem = LocalAccess.budgetItemStore.getBudgetItem(budgetItemIDs[indexPath.row]) else { return nil }
         return budgetItem
     }
+}
+
+extension SelectBudgetItemListTableView: UITableViewDelegate {
     
 }
 
+extension SelectBudgetItemListTableView: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        guard let budget = currentBudget else { return 0 }
+        
+        return budget.items.keys.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let budget = currentBudget else { return 0 }
+        
+        let count = budget.items[sections[section].category]?.count ?? 0
+        return count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let budgetItem = getBudgetItem(indexPath: indexPath) else { return UITableViewCell() }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: SelectBudgetItemTableViewCell.reuseIdentifier, for: indexPath) as! SelectBudgetItemTableViewCell
+        
+        cell.textField.text = String(format: "%.2f", budgetItem.planned - budgetItem.actual)
+        
+        cell.budgetItemName.text = budgetItem.name
+        cell.progressBar.progress = budgetItem.actual / budgetItem.planned
+        cell.textField.isEnabled = false
+        cell.checkmarkImageView?.image = UIImage(named: "checkmark")
+        cell.checkmarkImageView?.isHidden = true
+        
+        return cell
+    }
+}

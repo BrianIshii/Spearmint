@@ -58,8 +58,8 @@ class BudgetItemStore {
         
         for (_, budgetItem) in budgetItemDictionary {
             if budgetItem.isActive {
-                if var budgetItems = active[budgetItem.category] {
-                    budgetItems.append(budgetItem.id)
+                if active[budgetItem.category] != nil {
+                    active[budgetItem.category]!.append(budgetItem.id)
                 }
             }
         }

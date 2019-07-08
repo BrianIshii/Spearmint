@@ -100,6 +100,7 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
                 cell.configure(object: t)
             }
             amountTextField = cell.textField
+            amountTextField.becomeFirstResponder()
         }
     }
     
@@ -207,6 +208,7 @@ class AddTransactionViewController: UIViewController, UITextFieldDelegate {
             ImageStore.saveImage(selectedImage.image!, transactionID: transaction!.id)
         }
     }
+    
     @IBAction func unwind(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? AddBudgetItemsViewController, let selectedBudgetItems = sourceViewController.selectedBudgetItems {
             updateItems(selectedBudgetItems)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MoneyTextField: UITextField, UITextFieldDelegate {
+class MoneyTextField: UITextField {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,18 +55,19 @@ class MoneyTextField: UITextField, UITextFieldDelegate {
         // Drawing code
     }
     */
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        
-        return true
-    }
-    
     @objc func doneButtonClicked(_ textField: UITextField) {
         let _ = textFieldShouldReturn(self)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         textField.text = Currency.currencyFormatter(textField.text!)
+    }
+}
+
+extension MoneyTextField: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
     }
 }

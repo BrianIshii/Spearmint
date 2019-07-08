@@ -19,6 +19,7 @@ class Transaction: Saveable {
     var date: String
     var location: String
     var hasImage: Bool
+    var tags: [String]
     var notes: String
     var budgetDate: BudgetDate
     var items: [String : [Item]]
@@ -34,6 +35,7 @@ class Transaction: Saveable {
         self.date = date
         self.location = location
         self.hasImage = image
+        self.tags = []
         self.notes = notes
         self.budgetDate = budgetDate
         self.items = items

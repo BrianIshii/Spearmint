@@ -73,6 +73,13 @@
 		76A2FA722284FEFC0066D594 /* TransactionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA712284FEFC0066D594 /* TransactionDate.swift */; };
 		76A2FA7422851B7D0066D594 /* DateFormatterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA7322851B7D0066D594 /* DateFormatterFactory.swift */; };
 		76A2FA7722851E730066D594 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA7622851E730066D594 /* DateExtension.swift */; };
+		76B0630722D06B0D007BBDD5 /* TempViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0630622D06B0D007BBDD5 /* TempViewController.swift */; };
+		76B0630922D06F79007BBDD5 /* DateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0630822D06F79007BBDD5 /* DateTextField.swift */; };
+		76B0630C22D17194007BBDD5 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0630B22D17194007BBDD5 /* TransactionView.swift */; };
+		76B0630E22D1736C007BBDD5 /* TransactionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76B0630D22D1736C007BBDD5 /* TransactionView.xib */; };
+		76B0631022D17776007BBDD5 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0630F22D17776007BBDD5 /* TransactionViewController.swift */; };
+		76B0631322D18D19007BBDD5 /* TransactionTypeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0631222D18D19007BBDD5 /* TransactionTypeSegmentedControl.swift */; };
+		76B0631522D19090007BBDD5 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0631422D19090007BBDD5 /* UIViewExtension.swift */; };
 		76B548BB22913069001B2FB1 /* CurrenyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BA22913069001B2FB1 /* CurrenyTests.swift */; };
 		76B548BD229135DE001B2FB1 /* LocalAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BC229135DE001B2FB1 /* LocalAccess.swift */; };
 		76B548C022913DB4001B2FB1 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */; };
@@ -115,6 +122,13 @@
 		76F4237222C49A1500E7B868 /* BudgetDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4237122C49A1500E7B868 /* BudgetDate.swift */; };
 		76F4237422C4A22D00E7B868 /* SaveableKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4237322C4A22D00E7B868 /* SaveableKey.swift */; };
 		76F4237622C4A5B000E7B868 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4237522C4A5B000E7B868 /* StringExtension.swift */; };
+		76F4237922C998FD00E7B868 /* AddTransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4237722C998FD00E7B868 /* AddTransactionTableViewCell.swift */; };
+		76F4237A22C998FD00E7B868 /* AddTransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F4237822C998FD00E7B868 /* AddTransactionTableViewCell.xib */; };
+		76F4237C22C99B6900E7B868 /* AddTransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4237B22C99B6900E7B868 /* AddTransactionTableViewController.swift */; };
+		76F4237E22C99B9000E7B868 /* AddTransactionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4237D22C99B9000E7B868 /* AddTransactionDataSource.swift */; };
+		76F4238022C99BC000E7B868 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4237F22C99BC000E7B868 /* DataSource.swift */; };
+		76F4238522C99E1300E7B868 /* AddTransactionFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4238322C99E1300E7B868 /* AddTransactionFieldTableViewCell.swift */; };
+		76F4238622C99E1300E7B868 /* AddTransactionFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76F4238422C99E1300E7B868 /* AddTransactionFieldTableViewCell.xib */; };
 		8C358F36EF8B95A59EFE86A9 /* libPods-Spearmint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5F0B3815F25922C7D10D61 /* libPods-Spearmint.a */; };
 		AD33E71841DF4F0E61F0F54B /* libPods-SpearmintTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E00FF3C8E9852A3C8405DF6 /* libPods-SpearmintTests.a */; };
 		E4382AD067BA2C794744425D /* libPods-SpearmintUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 545E6A7C20C3C5635D4B9DB5 /* libPods-SpearmintUITests.a */; };
@@ -217,6 +231,13 @@
 		76A2FA712284FEFC0066D594 /* TransactionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDate.swift; sourceTree = "<group>"; };
 		76A2FA7322851B7D0066D594 /* DateFormatterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterFactory.swift; sourceTree = "<group>"; };
 		76A2FA7622851E730066D594 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		76B0630622D06B0D007BBDD5 /* TempViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempViewController.swift; sourceTree = "<group>"; };
+		76B0630822D06F79007BBDD5 /* DateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextField.swift; sourceTree = "<group>"; };
+		76B0630B22D17194007BBDD5 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
+		76B0630D22D1736C007BBDD5 /* TransactionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionView.xib; sourceTree = "<group>"; };
+		76B0630F22D17776007BBDD5 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
+		76B0631222D18D19007BBDD5 /* TransactionTypeSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTypeSegmentedControl.swift; sourceTree = "<group>"; };
+		76B0631422D19090007BBDD5 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		76B548BA22913069001B2FB1 /* CurrenyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenyTests.swift; sourceTree = "<group>"; };
 		76B548BC229135DE001B2FB1 /* LocalAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAccess.swift; sourceTree = "<group>"; };
 		76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
@@ -259,6 +280,13 @@
 		76F4237122C49A1500E7B868 /* BudgetDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDate.swift; sourceTree = "<group>"; };
 		76F4237322C4A22D00E7B868 /* SaveableKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveableKey.swift; sourceTree = "<group>"; };
 		76F4237522C4A5B000E7B868 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		76F4237722C998FD00E7B868 /* AddTransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionTableViewCell.swift; sourceTree = "<group>"; };
+		76F4237822C998FD00E7B868 /* AddTransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTransactionTableViewCell.xib; sourceTree = "<group>"; };
+		76F4237B22C99B6900E7B868 /* AddTransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionTableViewController.swift; sourceTree = "<group>"; };
+		76F4237D22C99B9000E7B868 /* AddTransactionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionDataSource.swift; sourceTree = "<group>"; };
+		76F4237F22C99BC000E7B868 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		76F4238322C99E1300E7B868 /* AddTransactionFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionFieldTableViewCell.swift; sourceTree = "<group>"; };
+		76F4238422C99E1300E7B868 /* AddTransactionFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTransactionFieldTableViewCell.xib; sourceTree = "<group>"; };
 		C51C6518E66B1688FCEA119B /* Pods-Spearmint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spearmint.debug.xcconfig"; path = "Target Support Files/Pods-Spearmint/Pods-Spearmint.debug.xcconfig"; sourceTree = "<group>"; };
 		F06046302A5C5C32EB52D302 /* Pods-SpearmintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpearmintTests.debug.xcconfig"; path = "Target Support Files/Pods-SpearmintTests/Pods-SpearmintTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -340,6 +368,7 @@
 				7637A62D2287EE4D007DD20B /* MoneyTextField.swift */,
 				7632756C229F08930099532A /* VendorTextField.swift */,
 				76327574229F13FC0099532A /* SuggestionsView.swift */,
+				76B0630822D06F79007BBDD5 /* DateTextField.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -391,6 +420,7 @@
 		764AFD86226E7060007BFD90 /* Spearmint */ = {
 			isa = PBXGroup;
 			children = (
+				76B0631122D18CEA007BBDD5 /* Segemented Control */,
 				76F4235D22BA03E100E7B868 /* DataSource */,
 				76D22F7B229A27FE00C06567 /* Analysis */,
 				76B548E122952D95001B2FB1 /* Summary */,
@@ -406,7 +436,6 @@
 				764AFD89226E7060007BFD90 /* ViewController.swift */,
 				7637A6292287EB1E007DD20B /* Summary.storyboard */,
 				7637A60E22864DBF007DD20B /* Budget.storyboard */,
-				76A2FA632282229D0066D594 /* Transactions.storyboard */,
 				76D22F77229A0DF100C06567 /* Analysis.storyboard */,
 				76D22F79229A0E1900C06567 /* Account.storyboard */,
 				76EF345B2298D31E005A5C35 /* AddTransactionImage.storyboard */,
@@ -442,10 +471,12 @@
 		764AFDB5226EB1AE007BFD90 /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
+				76B0630A22D1716D007BBDD5 /* Views */,
 				76F4236222C03FFE00E7B868 /* TableViews */,
 				76F4235A22BA02A700E7B868 /* DataSource */,
 				76B548CB22915431001B2FB1 /* Cells */,
 				76B548CA22915381001B2FB1 /* ViewControllers */,
+				76A2FA632282229D0066D594 /* Transactions.storyboard */,
 				7637A6392288E48C007DD20B /* TransactionBudgetItemViewCell.xib */,
 			);
 			path = Transactions;
@@ -520,11 +551,30 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		76B0630A22D1716D007BBDD5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				76B0630B22D17194007BBDD5 /* TransactionView.swift */,
+				76B0630D22D1736C007BBDD5 /* TransactionView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		76B0631122D18CEA007BBDD5 /* Segemented Control */ = {
+			isa = PBXGroup;
+			children = (
+				76B0631222D18D19007BBDD5 /* TransactionTypeSegmentedControl.swift */,
+			);
+			path = "Segemented Control";
+			sourceTree = "<group>";
+		};
 		76B548BE22913D92001B2FB1 /* Protocols and Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */,
 				76B548C122913E8E001B2FB1 /* ReusableIdentifier.swift */,
+				76F4237F22C99BC000E7B868 /* DataSource.swift */,
+				76B0631422D19090007BBDD5 /* UIViewExtension.swift */,
 			);
 			path = "Protocols and Extensions";
 			sourceTree = "<group>";
@@ -604,12 +654,15 @@
 			isa = PBXGroup;
 			children = (
 				76A2FA452280B0740066D594 /* TransactionListViewController.swift */,
+				76B548D722916195001B2FB1 /* AddTransactionImageViewController.swift */,
 				7637A63D2288F0C9007DD20B /* AddBudgetItemsViewController.swift */,
 				76A2FA552281F8BE0066D594 /* AddTransactionViewController.swift */,
-				76B548D722916195001B2FB1 /* AddTransactionImageViewController.swift */,
 				76EF34592298D254005A5C35 /* AddImageViewController.swift */,
 				763275BE22A59FF20099532A /* ImageFrameView.swift */,
 				763275C222A5B9EE0099532A /* AddContentsFromImageViewController.swift */,
+				76F4237B22C99B6900E7B868 /* AddTransactionTableViewController.swift */,
+				76B0630622D06B0D007BBDD5 /* TempViewController.swift */,
+				76B0630F22D17776007BBDD5 /* TransactionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -617,6 +670,7 @@
 		76B548CB22915431001B2FB1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				76F4238722C99E1900E7B868 /* AddTransactionFieldTableViewCell */,
 				763275C922A837030099532A /* AddItemTableViewCell */,
 				76B548D622915D20001B2FB1 /* ImageViewTableViewCell */,
 				76B548D1229154C8001B2FB1 /* TransactionTableViewCell */,
@@ -625,6 +679,8 @@
 				76B548CE22915468001B2FB1 /* VendorTableViewCell */,
 				76B548CD2291544A001B2FB1 /* AmountTableViewCell */,
 				76B548CC2291543A001B2FB1 /* DateTableViewCell */,
+				76F4237722C998FD00E7B868 /* AddTransactionTableViewCell.swift */,
+				76F4237822C998FD00E7B868 /* AddTransactionTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -749,6 +805,7 @@
 			isa = PBXGroup;
 			children = (
 				76F4235B22BA02CE00E7B868 /* TransactionDataSource.swift */,
+				76F4237D22C99B9000E7B868 /* AddTransactionDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -783,6 +840,15 @@
 				76F4237322C4A22D00E7B868 /* SaveableKey.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		76F4238722C99E1900E7B868 /* AddTransactionFieldTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				76F4238322C99E1300E7B868 /* AddTransactionFieldTableViewCell.swift */,
+				76F4238422C99E1300E7B868 /* AddTransactionFieldTableViewCell.xib */,
+			);
+			path = AddTransactionFieldTableViewCell;
 			sourceTree = "<group>";
 		};
 		D692118312A1BE281EB3B7C6 /* Pods */ = {
@@ -913,12 +979,14 @@
 			files = (
 				7637A63A2288E48C007DD20B /* TransactionBudgetItemViewCell.xib in Resources */,
 				7637A63222889F31007DD20B /* BudgetSectionTableViewCell.xib in Resources */,
+				76F4237A22C998FD00E7B868 /* AddTransactionTableViewCell.xib in Resources */,
 				764AFD92226E7061007BFD90 /* LaunchScreen.storyboard in Resources */,
 				764AFD8F226E7061007BFD90 /* Assets.xcassets in Resources */,
 				7637A647228920BA007DD20B /* ItemTableViewCell.xib in Resources */,
 				7637A61C22868C6D007DD20B /* BudgetCollectionViewCell.xib in Resources */,
 				76D22F7A229A0E1900C06567 /* Account.storyboard in Resources */,
 				7637A61022864DBF007DD20B /* Budget.storyboard in Resources */,
+				76F4238622C99E1300E7B868 /* AddTransactionFieldTableViewCell.xib in Resources */,
 				7637A62B2287EB1E007DD20B /* Summary.storyboard in Resources */,
 				76A2FA5C2281FAE90066D594 /* VendorTableViewCell.xib in Resources */,
 				76A2FA4E2280B4520066D594 /* TransactionTableViewCell.xib in Resources */,
@@ -932,6 +1000,7 @@
 				7637A6422288FED8007DD20B /* SelectBudgetItemTableViewCell.xib in Resources */,
 				76B548D322915C7D001B2FB1 /* ImageViewTableViewCell.xib in Resources */,
 				76A2FA642282229D0066D594 /* Transactions.storyboard in Resources */,
+				76B0630E22D1736C007BBDD5 /* TransactionView.xib in Resources */,
 				763275C822A836FB0099532A /* AddItemTableViewCell.xib in Resources */,
 				7637A6232287ACEF007DD20B /* AddTransactionBudgetItemTableViewCell.xib in Resources */,
 			);
@@ -1059,11 +1128,14 @@
 				7689F71B2271874900AD4225 /* Item.swift in Sources */,
 				76F4237222C49A1500E7B868 /* BudgetDate.swift in Sources */,
 				76D22F82229A2A9E00C06567 /* AnalysisCollectionViewCell.swift in Sources */,
+				76B0630922D06F79007BBDD5 /* DateTextField.swift in Sources */,
 				76F4236722C05EF300E7B868 /* Vendor.swift in Sources */,
 				76D22F84229A324500C06567 /* PriceCheckViewController.swift in Sources */,
 				7689F7152270E39900AD4225 /* TransactionType.swift in Sources */,
+				76F4238022C99BC000E7B868 /* DataSource.swift in Sources */,
 				76F4236422C05BFD00E7B868 /* VendorStore.swift in Sources */,
 				76EF345422963BF1005A5C35 /* BudgetItemSectionStore.swift in Sources */,
+				76B0630722D06B0D007BBDD5 /* TempViewController.swift in Sources */,
 				763275C722A836FB0099532A /* AddItemTableViewCell.swift in Sources */,
 				763275BF22A59FF20099532A /* ImageFrameView.swift in Sources */,
 				76EF34602298F8AF005A5C35 /* AddBudgetItemViewController.swift in Sources */,
@@ -1075,11 +1147,14 @@
 				76B548D522915D14001B2FB1 /* ImageViewTableViewCell.swift in Sources */,
 				764AFD8A226E7060007BFD90 /* ViewController.swift in Sources */,
 				76B548E422952DBF001B2FB1 /* SummaryPieChartViewController.swift in Sources */,
+				76F4237C22C99B6900E7B868 /* AddTransactionTableViewController.swift in Sources */,
 				76B548DE2294F0E4001B2FB1 /* ViewTransactionSegue.swift in Sources */,
 				76B548D822916195001B2FB1 /* AddTransactionImageViewController.swift in Sources */,
+				76F4238522C99E1300E7B868 /* AddTransactionFieldTableViewCell.swift in Sources */,
 				76F4236C22C06CF100E7B868 /* Saveable.swift in Sources */,
 				7637A63E2288F0C9007DD20B /* AddBudgetItemsViewController.swift in Sources */,
 				7637A63C2288E74F007DD20B /* AddBudgetItemSegue.swift in Sources */,
+				76B0631322D18D19007BBDD5 /* TransactionTypeSegmentedControl.swift in Sources */,
 				76A2FA67228248220066D594 /* PaymentType.swift in Sources */,
 				76A2FA7422851B7D0066D594 /* DateFormatterFactory.swift in Sources */,
 				764AFDBE226EC42D007BFD90 /* AccountViewController.swift in Sources */,
@@ -1098,9 +1173,12 @@
 				76B548E02294F100001B2FB1 /* SegueIdentifier.swift in Sources */,
 				7637A6202286B3CB007DD20B /* BudgetItemCategory.swift in Sources */,
 				76A2FA462280B0740066D594 /* TransactionListViewController.swift in Sources */,
+				76B0631522D19090007BBDD5 /* UIViewExtension.swift in Sources */,
 				76A2FA602281FBDD0066D594 /* AmountTableViewCell.swift in Sources */,
 				76F4237422C4A22D00E7B868 /* SaveableKey.swift in Sources */,
 				7637A6442288FF26007DD20B /* SelectBudgetItemTableViewCell.swift in Sources */,
+				76B0630C22D17194007BBDD5 /* TransactionView.swift in Sources */,
+				76B0631022D17776007BBDD5 /* TransactionViewController.swift in Sources */,
 				76D22F7E229A281B00C06567 /* AnalysisViewController.swift in Sources */,
 				76F4237022C0ABF100E7B868 /* BudgetItemStore.swift in Sources */,
 				7637A61622864FC5007DD20B /* BudgetItemTableViewCell.swift in Sources */,
@@ -1116,8 +1194,10 @@
 				7689F7192270E6F600AD4225 /* BudgetItem.swift in Sources */,
 				76A2FA722284FEFC0066D594 /* TransactionDate.swift in Sources */,
 				76F4236922C05EFC00E7B868 /* VendorID.swift in Sources */,
+				76F4237E22C99B9000E7B868 /* AddTransactionDataSource.swift in Sources */,
 				7689F7132270E31A00AD4225 /* Budget.swift in Sources */,
 				7637A6382288AF75007DD20B /* BudgetItemListTableView.swift in Sources */,
+				76F4237922C998FD00E7B868 /* AddTransactionTableViewCell.swift in Sources */,
 				76327575229F13FC0099532A /* SuggestionsView.swift in Sources */,
 				76EF34652299E029005A5C35 /* AddBudgetItemSectionViewController.swift in Sources */,
 				76B548DC2294ECA9001B2FB1 /* ImageStore.swift in Sources */,

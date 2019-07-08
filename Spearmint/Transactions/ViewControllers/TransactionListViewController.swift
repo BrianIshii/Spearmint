@@ -11,19 +11,14 @@ import UIKit
 class TransactionListViewController: UIViewController {
     
     @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var transactionTableView: UITableView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    
+    @IBOutlet weak var transactionTableView: UITableView!    
     
     private var dataSource: TransactionDataSource?
-    var transactions: [Transaction] = []
-    var viewedTransactions: [Transaction] = []
     var currentDate: Date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        transactions = Array(TransactionStore.transactions.values).sorted(by: >)
         
         transactionTableView.delegate = self
         
@@ -34,27 +29,13 @@ class TransactionListViewController: UIViewController {
         
         dataSource = TransactionDataSource(tableView: transactionTableView)
         
-        guard let dataSource = dataSource else { return }
-        
-        dataSource.transactions = transactions
         transactionTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let dataSource = dataSource else { return }
-
         if TransactionStore.TransactionControllerNeedsUpdate {
             TransactionStore.TransactionControllerNeedsUpdate = false
-            transactions = Array(TransactionStore.transactions.values).sorted(by: >)
-            dataSource.toggleCurrentAndAllTransactions(index: 0)
-            segmentedControl.selectedSegmentIndex = 0
         }
-    }
-    
-    @IBAction func toggleTransactions(_ sender: UISegmentedControl) {
-        guard let dataSource = dataSource else { return }
-
-        dataSource.toggleCurrentAndAllTransactions(index: sender.selectedSegmentIndex)
     }
     
     @IBAction func unwind(sender: UIStoryboardSegue) {
@@ -62,12 +43,14 @@ class TransactionListViewController: UIViewController {
         
         if let sourceViewController = sender.source as? AddTransactionViewController, let transaction = sourceViewController.transaction {
             LocalAccess.addTransaction(transaction)
-            transactions.append(transaction)
-            transactions.sort(by: >)
-            
-            dataSource.toggleCurrentAndAllTransactions(index: segmentedControl.selectedSegmentIndex)
+            dataSource.transactions.append(transaction)
         }
         
+        if let sourceViewController = sender.source as? TempViewController, let transaction = sourceViewController.transaction {
+            LocalAccess.addTransaction(transaction)
+            dataSource.transactions.append(transaction)
+            transactionTableView.reloadData()
+        }
         if let selectedIndexPath = transactionTableView.indexPathForSelectedRow {
             transactionTableView.deselectRow(at: selectedIndexPath, animated: true)
         }
@@ -79,9 +62,18 @@ class TransactionListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        guard let dataSource = dataSource else { return }
+        
+        if segue.identifier == "selectTransaction" {
+            if let destination = segue.destination as? TransactionViewController {
+                let transaction = dataSource.transactions[transactionTableView.indexPathForSelectedRow!.row]
+                destination.transaction = transaction
+            }
+        }
+        
         if segue.identifier == ViewTransactionSegue.segueIdentifier {
             if let vc = segue.destination as? AddTransactionViewController {
-                let selectedTransaction = transactions[transactionTableView.indexPathForSelectedRow!.row]
+                let selectedTransaction = dataSource.transactions[transactionTableView.indexPathForSelectedRow!.row]
                 vc.transaction = selectedTransaction
             }
         }
@@ -93,14 +85,19 @@ extension TransactionListViewController: UITableViewDelegate {
         guard let dataSource = dataSource else { return }
         
         if editingStyle == .delete {
-            LocalAccess.deleteTransaction(transactions[indexPath.row])
-            transactions.remove(at: indexPath.row)
-            
-            dataSource.toggleCurrentAndAllTransactions(index: segmentedControl.selectedSegmentIndex)
+            LocalAccess.deleteTransaction(dataSource.transactions[indexPath.row])
+            dataSource.transactions.remove(at: indexPath.row)
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: ViewTransactionSegue.segueIdentifier, sender: nil)
+        performSegue(withIdentifier: "selectTransaction", sender: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // this will turn on `masksToBounds` just before showing the cell
+        cell.contentView.layer.masksToBounds = true
+        let radius = cell.contentView.layer.cornerRadius
+        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: radius).cgPath
     }
 }

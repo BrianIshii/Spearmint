@@ -19,6 +19,9 @@ class BudgetDataSource: NSObject {
         self.tableView = tableView
         super.init()
         
+        tableView.register(UINib.init(nibName: BudgetItemTableViewCell.xib, bundle: nil), forCellReuseIdentifier: BudgetItemTableViewCell.reuseIdentifier)
+        tableView.register(UINib.init(nibName: BudgetSectionTableViewCell.xib, bundle: nil), forCellReuseIdentifier: BudgetSectionTableViewCell.reuseIdentifier)
+        
         tableView.dataSource = self
     }
 }

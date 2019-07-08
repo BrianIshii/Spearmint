@@ -30,10 +30,11 @@ class VendorTextField: UITextField, UITextFieldDelegate {
     func setUp() {
         self.borderStyle = UITextField.BorderStyle.none
         self.placeholder = "vendor"
+        self.textAlignment = .center
         self.keyboardType = UIKeyboardType.default
         self.autocorrectionType = .no
         self.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        self.clearButtonMode = UITextField.ViewMode.whileEditing
+//        self.clearButtonMode = UITextField.ViewMode.whileEditing
 
         self.delegate = self
         
