@@ -11,26 +11,20 @@ import UIKit
 class TransactionViewController: UIViewController {
 
     var transaction: Transaction?
-    
     @IBOutlet weak var transactionView: TransactionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        transactionView.layer.cornerRadius = 10
-        
-        transactionView.disableUserInteraction()
-        guard let transaction = transaction else { return }
-        
-        transactionView.transactionTypeSegementedControl.selectedSegmentIndex = transaction.transactionType.rawValue
-        transactionView.moneyTextField.text = Currency.currencyFormatter(transaction.amount)
-        transactionView.vendorTextField.text = transaction.vendor
-        transactionView.dateTextField.text = transaction.date
-        transactionView.categoryButton.setTitle(transaction.items.keys.first, for: UIControl.State.normal)
-
         self.view.backgroundColor = .clear
         self.view.isOpaque = false
-
-        // Do any additional setup after loading the view.
+        transactionView.layer.cornerRadius = 10
+        transactionView.disableUserInteraction()
+        transactionView.delegate = self
+        
+        guard let transaction = transaction else { return }
+        
+        transactionView.transaction = transaction
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,4 +44,16 @@ class TransactionViewController: UIViewController {
     }
     */
 
+}
+
+extension TransactionViewController: TransactionViewDelegate {
+    func didSelectCategoryButton() {
+        UIStoryboardSegue.init(identifier: AddBudgetItemSegue.segueIdentifier, source: self, destination: AddBudgetItemsViewController())
+        
+        performSegue(withIdentifier: AddBudgetItemSegue.segueIdentifier, sender: nil)
+    }
+    
+    func dismiss() {
+        dismiss(animated: true, completion: nil)
+    }
 }

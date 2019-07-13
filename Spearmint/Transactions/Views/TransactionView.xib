@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="categoryButton" destination="YxY-VI-bpO" id="W52-ig-9eL"/>
                 <outlet property="dateTextField" destination="tQS-DL-Mxs" id="XhR-iK-TGO"/>
+                <outlet property="deleteTransactionButton" destination="8y8-oh-aiJ" id="R8u-AG-E2d"/>
                 <outlet property="moneyTextField" destination="AvA-DS-gHj" id="Kze-EL-nUC"/>
                 <outlet property="tagTextView" destination="TK5-bQ-d7m" id="pTz-V9-7F2"/>
                 <outlet property="transactionTypeSegementedControl" destination="m9U-D0-goz" id="Jbk-v1-O2N"/>
@@ -74,11 +75,23 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8y8-oh-aiJ">
+                    <rect key="frame" x="0.0" y="744" width="414" height="30"/>
+                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                    <state key="normal" title="Delete">
+                        <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="deleteTransaction:" destination="-1" eventType="touchUpInside" id="WRX-qp-syr"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Khv-Je-n3Z" firstAttribute="firstBaseline" secondItem="AvA-DS-gHj" secondAttribute="baseline" constant="36" symbolType="layoutAnchor" id="4Uj-LN-3VI"/>
+                <constraint firstItem="8y8-oh-aiJ" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="4jZ-I7-bJn"/>
                 <constraint firstItem="TK5-bQ-d7m" firstAttribute="top" secondItem="YxY-VI-bpO" secondAttribute="bottom" constant="43" id="4oX-IJ-cha"/>
+                <constraint firstItem="8y8-oh-aiJ" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Iy7-Sb-yZ9"/>
                 <constraint firstItem="Khv-Je-n3Z" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="O2j-0j-fqm"/>
                 <constraint firstItem="TK5-bQ-d7m" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="PMP-c1-yzV"/>
                 <constraint firstItem="YxY-VI-bpO" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="TvW-cA-09U"/>
@@ -94,6 +107,7 @@
                 <constraint firstItem="YxY-VI-bpO" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="kmP-Vv-V9f"/>
                 <constraint firstItem="tQS-DL-Mxs" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="m9a-4W-oeE"/>
                 <constraint firstItem="TK5-bQ-d7m" firstAttribute="top" secondItem="LHE-i0-va6" secondAttribute="bottom" constant="14" id="mVv-mT-76D"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="8y8-oh-aiJ" secondAttribute="bottom" id="oZX-6A-sSJ"/>
                 <constraint firstItem="tQS-DL-Mxs" firstAttribute="top" secondItem="Khv-Je-n3Z" secondAttribute="bottom" constant="30" id="roG-TJ-PEM"/>
                 <constraint firstItem="m9U-D0-goz" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="t5U-6G-Rg5"/>
             </constraints>

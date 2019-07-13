@@ -53,51 +53,55 @@ class TagTextView: UITextView {
         position.x = padding
         position.y = padding
         
-        //var tag: Int = 1
         for (index, tag) in tags.enumerated() {
-
-//            let width = tag.size(withAttributes: [NSAttributedString.Key.font: UIFont(name:"verdana", size: 13.0)!])
-//            let checkWholeWidth = CGFloat(xPos) + width.width + CGFloat(13.0) + CGFloat(25.5 )//13.0 is the width between lable and cross button and 25.5 is cross button width and gap to righht
-//            if checkWholeWidth > UIScreen.main.bounds.size.width - 30.0 {
-//                //we are exceeding size need to change xpos
-//                xPos = 15.0
-//                ypos = ypos + 29.0 + 8.0
-//            }
-            
             let tagView = createTagView(tag, index)
             self.addSubview(tagView)
         }
-        
     }
     
     func createTagView(_ text: String,_ tagNumber: Int) -> UIView {
         let size = text.size(withAttributes: [NSAttributedString.Key.font: UIFont(name:"verdana", size: 13.0)!])
-
-        let tagView = UIView(frame: CGRect(x: position.x, y: position.y, width: size.width + padding * 4 + size.height, height: size.height + padding * 2))
+        let width = padding + padding + size.width + padding + padding
+        let tagViewWidth = self.isEditable ? width + size.height + padding : width
+        let tagViewHeight =  padding + size.height + padding
+        let tagLabelWidth = padding + size.width + padding
+        let tagLabelHeight = size.height
+        let tagButtonWidth = size.height
+        let tagButtonHeight = size.height
+        
+        let tagView = UIView(frame: CGRect(x: position.x, y: position.y, width: tagViewWidth, height: tagViewHeight))
         tagView.layer.cornerRadius = 5
         tagView.backgroundColor = .black
         tagView.tag = tagNumber
         
-        let textLabel = UILabel(frame: CGRect(x: padding, y: padding, width: size.width + padding * 2, height: size.height))
+        let selectTag = UITapGestureRecognizer(target: self, action: #selector(selectTag(_:)))
+        let textLabel = UILabel(frame: CGRect(x: padding, y: padding, width: tagLabelWidth, height: tagLabelHeight))
         textLabel.font = UIFont(name: "verdana", size: 13.0)
         textLabel.text = text
         textLabel.textAlignment = .center
         textLabel.textColor = UIColor.white
         textLabel.layer.masksToBounds = true
         textLabel.layer.cornerRadius = 5
+        textLabel.isUserInteractionEnabled = true
+        textLabel.addGestureRecognizer(selectTag)
         tagView.addSubview(textLabel)
         
-        let button = UIButton(type: .custom)
-        button.frame = CGRect(x: padding + size.width + padding * 2, y: padding, width: size.height, height: size.height)
-        button.backgroundColor = UIColor.white
-        button.layer.cornerRadius = CGFloat(button.frame.size.width)/CGFloat(2.0)
-        button.tag = tagNumber
-        button.addTarget(self, action: #selector(removeTag(_:)), for: .touchUpInside)
-        tagView.addSubview(button)
-        //xPos = CGFloat(xPos) + CGFloat(width) + CGFloat(17.0) + CGFloat(43.0)
+        if self.isEditable {
+            let button = UIButton(type: .custom)
+            button.frame = CGRect(x: tagLabelWidth + padding, y: padding, width: tagButtonWidth, height: tagButtonHeight)
+            button.backgroundColor = UIColor.white
+            button.layer.cornerRadius = CGFloat(button.frame.size.width)/CGFloat(2.0)
+            button.tag = tagNumber
+            button.addTarget(self, action: #selector(removeTag(_:)), for: .touchUpInside)
+            tagView.addSubview(button)
+        }
         
-        position.x += size.width + padding * 4 + size.height + padding + padding
+        position.x += tagViewWidth + padding
         return tagView
+    }
+    
+    @objc func selectTag(_ sender: AnyObject) {
+        print("Select tag")
     }
     
     @objc func removeTag(_ sender: AnyObject) {

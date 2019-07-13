@@ -12,6 +12,7 @@ class TransactionStore {
     public static var TransactionControllerNeedsUpdate = false
     public static var analysisViewController = false
     public static var transactions: [String: Transaction] = getAllTransactions()
+    public static var observers: [TransactionObserver] = []
     
     static func addTransaction(_ transaction: Transaction) {
         transactions[transaction.id.description()] = transaction
@@ -37,6 +38,9 @@ class TransactionStore {
     
     static func update() {
         update(data: transactions)
+        for observer in observers {
+            observer.update()
+        }
     }
     
     fileprivate static func update(data: [String : Transaction]) {

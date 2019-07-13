@@ -40,6 +40,23 @@ class Transaction: Saveable {
         self.budgetDate = budgetDate
         self.items = items
     }
+    
+    init(name: String, transactionType: TransactionType, vendor: String, amount: Float,
+         date: String, location: String, image: Bool, tags: [String], notes: String, budgetDate: BudgetDate, items: [String : [Item]]) {
+        self.id = TransactionID()
+        self.name = name
+        self.transactionType = transactionType
+        self.paymentType = ""
+        self.vendor = vendor
+        self.amount = amount
+        self.date = date
+        self.location = location
+        self.hasImage = image
+        self.tags = tags
+        self.notes = notes
+        self.budgetDate = budgetDate
+        self.items = items
+    }
  
     func isInCurrentMonth() -> Bool {
         let currentDate = Date()

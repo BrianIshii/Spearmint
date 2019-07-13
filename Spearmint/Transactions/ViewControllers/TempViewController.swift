@@ -67,7 +67,8 @@ class TempViewController: UIViewController {
         
         var transactionItems: [String: [Item]] = [:]
         
-        transaction = Transaction(name: name, transactionType: transactionType, vendor: vendor, amount: Float(amount), date: date, location: "N/A", image: hasImage, notes: "notes", budgetDate: budgetKey, items: transactionItems)
+        let tags = transactionView.tagTextView.tags
+        transaction = Transaction(name: name, transactionType: transactionType, vendor: vendor, amount: Float(amount), date: date, location: "N/A", image: hasImage, tags: tags, notes: "notes", budgetDate: budgetKey, items: transactionItems)
     }
 }
 
@@ -76,5 +77,9 @@ extension TempViewController: TransactionViewDelegate {
         UIStoryboardSegue.init(identifier: AddBudgetItemSegue.segueIdentifier, source: self, destination: AddBudgetItemsViewController())
 
         performSegue(withIdentifier: AddBudgetItemSegue.segueIdentifier, sender: nil)
+    }
+    
+    func dismiss() {
+        dismiss(animated: true, completion: nil)
     }
 }

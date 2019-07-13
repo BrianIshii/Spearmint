@@ -43,13 +43,10 @@ class TransactionListViewController: UIViewController {
         
         if let sourceViewController = sender.source as? AddTransactionViewController, let transaction = sourceViewController.transaction {
             LocalAccess.addTransaction(transaction)
-            dataSource.transactions.append(transaction)
         }
         
         if let sourceViewController = sender.source as? TempViewController, let transaction = sourceViewController.transaction {
             LocalAccess.addTransaction(transaction)
-            dataSource.transactions.append(transaction)
-            transactionTableView.reloadData()
         }
         if let selectedIndexPath = transactionTableView.indexPathForSelectedRow {
             transactionTableView.deselectRow(at: selectedIndexPath, animated: true)

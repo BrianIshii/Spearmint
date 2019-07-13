@@ -17,6 +17,7 @@ class TransactionDataSource: NSObject {
         super.init()
         
         tableView.dataSource = self
+        TransactionStore.observers.append(self)
     }
 }
 
@@ -40,4 +41,13 @@ extension TransactionDataSource: UITableViewDataSource {
             cell.configure(object: object)
         }
     }
+}
+
+extension TransactionDataSource: TransactionObserver {
+    func update() {
+        transactions = Array(TransactionStore.transactions.values).sorted(by: >)
+        tableView.reloadData()
+    }
+    
+    
 }

@@ -83,6 +83,7 @@
 		76B0631822D314D6007BBDD5 /* TransactionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0631722D314D6007BBDD5 /* TransactionViewDelegate.swift */; };
 		76B0631C22D9B9E8007BBDD5 /* TagTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0631B22D9B9E8007BBDD5 /* TagTextView.swift */; };
 		76B0631E22D9CD31007BBDD5 /* SuggestionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0631D22D9CD31007BBDD5 /* SuggestionViewDelegate.swift */; };
+		76B0632022DA7EDC007BBDD5 /* TransactionObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0631F22DA7EDC007BBDD5 /* TransactionObserver.swift */; };
 		76B548BB22913069001B2FB1 /* CurrenyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BA22913069001B2FB1 /* CurrenyTests.swift */; };
 		76B548BD229135DE001B2FB1 /* LocalAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BC229135DE001B2FB1 /* LocalAccess.swift */; };
 		76B548C022913DB4001B2FB1 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */; };
@@ -244,6 +245,7 @@
 		76B0631722D314D6007BBDD5 /* TransactionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewDelegate.swift; sourceTree = "<group>"; };
 		76B0631B22D9B9E8007BBDD5 /* TagTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTextView.swift; sourceTree = "<group>"; };
 		76B0631D22D9CD31007BBDD5 /* SuggestionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionViewDelegate.swift; sourceTree = "<group>"; };
+		76B0631F22DA7EDC007BBDD5 /* TransactionObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionObserver.swift; sourceTree = "<group>"; };
 		76B548BA22913069001B2FB1 /* CurrenyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenyTests.swift; sourceTree = "<group>"; };
 		76B548BC229135DE001B2FB1 /* LocalAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAccess.swift; sourceTree = "<group>"; };
 		76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
@@ -608,6 +610,7 @@
 				76F4237F22C99BC000E7B868 /* DataSource.swift */,
 				76B0631422D19090007BBDD5 /* UIViewExtension.swift */,
 				76B0631D22D9CD31007BBDD5 /* SuggestionViewDelegate.swift */,
+				76B0631F22DA7EDC007BBDD5 /* TransactionObserver.swift */,
 			);
 			path = "Protocols and Extensions";
 			sourceTree = "<group>";
@@ -1170,6 +1173,7 @@
 				76F4236422C05BFD00E7B868 /* VendorStore.swift in Sources */,
 				76EF345422963BF1005A5C35 /* BudgetItemSectionStore.swift in Sources */,
 				76B0630722D06B0D007BBDD5 /* TempViewController.swift in Sources */,
+				76B0632022DA7EDC007BBDD5 /* TransactionObserver.swift in Sources */,
 				763275C722A836FB0099532A /* AddItemTableViewCell.swift in Sources */,
 				763275BF22A59FF20099532A /* ImageFrameView.swift in Sources */,
 				76EF34602298F8AF005A5C35 /* AddBudgetItemViewController.swift in Sources */,
