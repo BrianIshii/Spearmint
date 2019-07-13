@@ -35,7 +35,7 @@ class DateTableViewCell: UITableViewCell, ReusableIdentifier {
     }
     
     @objc func dateChanged(sender: UIDatePicker) {
-        textField.text = DateFormatterFactory.mediumFormatter.string(from: sender.date)
+        textField.text = DateFormatterFactory.MediumFormatter.string(from: sender.date)
     }
     
     @objc func doneButton(_ cell: UITableViewCell) {
@@ -48,7 +48,7 @@ class DateTableViewCell: UITableViewCell, ReusableIdentifier {
         // Configure the view for the selected state
     }
     @IBAction func datePickerChanged(_ sender: UIDatePicker) {
-        textField.text = DateFormatterFactory.mediumFormatter.string(from: sender.date)
+        textField.text = DateFormatterFactory.MediumFormatter.string(from: sender.date)
     }
     
 }
@@ -63,11 +63,11 @@ extension DateTableViewCell: UITextFieldDelegate {
 
 extension DateTableViewCell: ConfigurableCell {
     func configure(object: Transaction) {
-        textField.text = object.date
+        textField.text = object.date.medium
     }
     
     func configure() {
-        textField.text = TransactionDate.getCurrentDate()
+        textField.text = TransactionDate(Date()).medium
     }
     
 }

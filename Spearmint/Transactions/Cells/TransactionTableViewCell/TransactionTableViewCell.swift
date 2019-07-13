@@ -14,6 +14,7 @@ class TransactionTableViewCell: UITableViewCell {
     @IBOutlet weak var transactionAmountLabel: UILabel!
     @IBOutlet weak var transactionDateLabel: UILabel!
     @IBOutlet weak var transactionVendorLabel: UILabel!
+    @IBOutlet weak var tagTextView: TagTextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,7 +51,12 @@ extension TransactionTableViewCell: ConfigurableCell {
             transactionAmountLabel.textColor = UIColor.green
         }
         transactionVendorLabel.text = object.vendor
-        transactionDateLabel.text = TransactionDate.getMonthAndDay(date: object.date)
+        transactionDateLabel.text = object.date.month
+        
+        tagTextView.tags = object.tags
+        tagTextView.isEditable = false
+        tagTextView.isUserInteractionEnabled = false
+        tagTextView.createTagViews()
     }
     
     func configure() {

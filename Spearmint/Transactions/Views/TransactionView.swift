@@ -22,10 +22,11 @@ class TransactionView: UIView {
         didSet {
             
             guard let transaction = transaction else { return }
+            
             self.transactionTypeSegementedControl.selectedSegmentIndex = transaction.transactionType.rawValue
             self.moneyTextField.text = Currency.currencyFormatter(transaction.amount)
             self.vendorTextField.text = transaction.vendor
-            self.dateTextField.text = transaction.date
+            self.dateTextField.text = transaction.date.medium
             self.categoryButton.setTitle(transaction.items.keys.first, for: UIControl.State.normal)
             self.tagTextView.tags = transaction.tags
             self.tagTextView.createTagViews()

@@ -38,9 +38,7 @@ class TransactionListViewController: UIViewController {
         }
     }
     
-    @IBAction func unwind(sender: UIStoryboardSegue) {
-        guard let dataSource = dataSource else { return }
-        
+    @IBAction func unwind(sender: UIStoryboardSegue) {        
         if let sourceViewController = sender.source as? AddTransactionViewController, let transaction = sourceViewController.transaction {
             LocalAccess.addTransaction(transaction)
         }

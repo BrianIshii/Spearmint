@@ -119,7 +119,7 @@ extension TagTextView: SuggestionViewDelegate {
 
 extension TagTextView: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        print(textView.text)
+        print(textView.text ?? "")
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

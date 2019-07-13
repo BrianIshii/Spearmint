@@ -21,7 +21,7 @@ class TempViewController: UIViewController {
         
         transactionView.delegate = self
         transactionView.moneyTextField.becomeFirstResponder()
-        transactionView.dateTextField.text = DateFormatterFactory.mediumFormatter.string(from: Date())
+        transactionView.dateTextField.text = DateFormatterFactory.MediumFormatter.string(from: Date())
         // Do any additional setup after loading the view.
     }
     
@@ -61,20 +61,20 @@ class TempViewController: UIViewController {
         let vendor = transactionView.vendorTextField.text!
         let transactionType = transactionView.transactionTypeSegementedControl.selectedSegmentIndex == TransactionType.expense.rawValue ? TransactionType.expense : TransactionType.income
         let amount = Currency.currencyToFloat(transactionView.moneyTextField.text!)
-        let budgetKey = BudgetDate(DateFormatterFactory.mediumFormatter.date(from: date)!)
+        let budgetKey = BudgetDate(DateFormatterFactory.MediumFormatter.date(from: date)!)
         _ = BudgetStore.budgetDictionary[budgetKey]
         let hasImage = false
         
-        var transactionItems: [String: [Item]] = [:]
+        let transactionItems: [String: [Item]] = [:]
         
         let tags = transactionView.tagTextView.tags
-        transaction = Transaction(name: name, transactionType: transactionType, vendor: vendor, amount: Float(amount), date: date, location: "N/A", image: hasImage, tags: tags, notes: "notes", budgetDate: budgetKey, items: transactionItems)
+        transaction = Transaction(name: name, transactionType: transactionType, vendor: vendor, amount: Float(amount), date: TransactionDate(date), location: "N/A", image: hasImage, tags: tags, notes: "notes", budgetDate: budgetKey, items: transactionItems)
     }
 }
 
 extension TempViewController: TransactionViewDelegate {
     func didSelectCategoryButton() {
-        UIStoryboardSegue.init(identifier: AddBudgetItemSegue.segueIdentifier, source: self, destination: AddBudgetItemsViewController())
+        _ = UIStoryboardSegue.init(identifier: AddBudgetItemSegue.segueIdentifier, source: self, destination: AddBudgetItemsViewController())
 
         performSegue(withIdentifier: AddBudgetItemSegue.segueIdentifier, sender: nil)
     }

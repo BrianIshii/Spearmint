@@ -40,7 +40,7 @@ class DateTextField: UITextField {
     }
     
     @objc func dateChanged(sender: UIDatePicker) {
-        text = DateFormatterFactory.mediumFormatter.string(from: sender.date)
+        text = DateFormatterFactory.MediumFormatter.string(from: sender.date)
     }
     
     @objc func doneButton(_ cell: UITableViewCell) {

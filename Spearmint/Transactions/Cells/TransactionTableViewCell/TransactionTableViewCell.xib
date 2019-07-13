@@ -37,26 +37,40 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vendor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seK-Td-ZpQ">
-                        <rect key="frame" x="128.5" y="0.0" width="332" height="25.5"/>
+                        <rect key="frame" x="128.5" y="0.0" width="332" height="84"/>
                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MZv-K0-kxu" customClass="TagTextView" customModule="Spearmint" customModuleProvider="target">
+                        <rect key="frame" x="128.5" y="84" width="332" height="44"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="HTm-On-SoY"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="seK-Td-ZpQ" firstAttribute="leading" secondItem="R3d-ZR-w9Y" secondAttribute="trailing" id="5Eh-Se-n43"/>
+                    <constraint firstItem="MZv-K0-kxu" firstAttribute="top" secondItem="seK-Td-ZpQ" secondAttribute="bottom" id="8zz-8I-63k"/>
                     <constraint firstItem="kvV-ee-pyo" firstAttribute="leading" secondItem="seK-Td-ZpQ" secondAttribute="trailing" id="AWI-O7-2oL"/>
                     <constraint firstItem="R3d-ZR-w9Y" firstAttribute="height" secondItem="UjN-EJ-YJX" secondAttribute="height" id="H3J-j5-Pa3"/>
                     <constraint firstItem="kvV-ee-pyo" firstAttribute="top" secondItem="UjN-EJ-YJX" secondAttribute="top" id="HWl-w7-omF"/>
                     <constraint firstItem="seK-Td-ZpQ" firstAttribute="top" secondItem="UjN-EJ-YJX" secondAttribute="top" id="XB9-2V-Egb"/>
                     <constraint firstItem="kvV-ee-pyo" firstAttribute="height" secondItem="UjN-EJ-YJX" secondAttribute="height" id="YZf-Vn-oct"/>
                     <constraint firstItem="R3d-ZR-w9Y" firstAttribute="top" secondItem="UjN-EJ-YJX" secondAttribute="top" id="dpa-iJ-OMT"/>
+                    <constraint firstItem="kvV-ee-pyo" firstAttribute="leading" secondItem="MZv-K0-kxu" secondAttribute="trailing" id="gdW-kO-4Ch"/>
                     <constraint firstItem="R3d-ZR-w9Y" firstAttribute="leading" secondItem="UjN-EJ-YJX" secondAttribute="leading" id="h9G-iV-cMg"/>
                     <constraint firstAttribute="trailing" secondItem="kvV-ee-pyo" secondAttribute="trailing" id="jyN-5Q-Tse"/>
                     <constraint firstAttribute="bottom" secondItem="R3d-ZR-w9Y" secondAttribute="bottom" id="rXm-YM-Ti5"/>
+                    <constraint firstItem="MZv-K0-kxu" firstAttribute="leading" secondItem="R3d-ZR-w9Y" secondAttribute="trailing" id="xmE-5V-Nxn"/>
+                    <constraint firstAttribute="bottom" secondItem="MZv-K0-kxu" secondAttribute="bottom" constant="0.5" id="yc3-nC-l7Y"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="tagTextView" destination="MZv-K0-kxu" id="671-ko-feV"/>
                 <outlet property="transactionAmountLabel" destination="kvV-ee-pyo" id="rWd-vk-UaZ"/>
                 <outlet property="transactionDateLabel" destination="R3d-ZR-w9Y" id="ZEt-mR-Us6"/>
                 <outlet property="transactionVendorLabel" destination="seK-Td-ZpQ" id="DCY-xN-dS4"/>

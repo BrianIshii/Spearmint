@@ -50,7 +50,7 @@ class Budget: Saveable {
     }
     
     static func dateToString(_ date: Date) -> String {
-        return DateFormatterFactory.yearAndMonthFormatter.string(from: date)
+        return DateFormatterFactory.YearAndMonthFormatter.string(from: date)
     }
     
     var totalIncome: Float {

@@ -35,7 +35,7 @@ class BudgetViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        print(DateFormatterFactory.yearAndMonthFormatter.string(from: Date()))
+        print(DateFormatterFactory.YearAndMonthFormatter.string(from: Date()))
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout

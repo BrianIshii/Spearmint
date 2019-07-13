@@ -16,7 +16,7 @@ class Transaction: Saveable {
     var paymentType: String
     var vendor: String
     var amount: Float
-    var date: String
+    var date: TransactionDate
     var location: String
     var hasImage: Bool
     var tags: [String]
@@ -25,7 +25,7 @@ class Transaction: Saveable {
     var items: [String : [Item]]
     
     init(name: String, transactionType: TransactionType, vendor: String, amount: Float,
-         date: String, location: String, image: Bool, notes: String, budgetDate: BudgetDate, items: [String : [Item]]) {
+         date: TransactionDate, location: String, image: Bool, notes: String, budgetDate: BudgetDate, items: [String : [Item]]) {
         self.id = TransactionID()
         self.name = name
         self.transactionType = transactionType
@@ -42,7 +42,7 @@ class Transaction: Saveable {
     }
     
     init(name: String, transactionType: TransactionType, vendor: String, amount: Float,
-         date: String, location: String, image: Bool, tags: [String], notes: String, budgetDate: BudgetDate, items: [String : [Item]]) {
+         date: TransactionDate, location: String, image: Bool, tags: [String], notes: String, budgetDate: BudgetDate, items: [String : [Item]]) {
         self.id = TransactionID()
         self.name = name
         self.transactionType = transactionType
@@ -56,12 +56,6 @@ class Transaction: Saveable {
         self.notes = notes
         self.budgetDate = budgetDate
         self.items = items
-    }
- 
-    func isInCurrentMonth() -> Bool {
-        let currentDate = Date()
-        let transactionDate = DateFormatterFactory.mediumFormatter.date(from: date)!
-        return currentDate.isInSameMonth(date: transactionDate) && currentDate.isInSameYear(date: transactionDate)
     }
     
     func mostExpensiveItem(_ budgetItem: BudgetItem) -> Item? {
@@ -85,7 +79,6 @@ class Transaction: Saveable {
     }
     
     static func > (left: Transaction, right: Transaction) -> Bool {
-        return DateFormatterFactory.mediumFormatter.date(from: left.date)! > DateFormatterFactory.mediumFormatter.date(from: right.date)!
+        return left.date > right.date
     }
-    
 }

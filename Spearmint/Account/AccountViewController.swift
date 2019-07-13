@@ -18,12 +18,12 @@ class AccountViewController: UIViewController {
     
 
     @IBAction func addDemoTransactions(_ sender: Any) {
-        let dictionary = BudgetStore.budgetDictionary
-        
-        let budget = dictionary[BudgetDate(Date())]!
-        LocalAccess.addTransaction(Transaction(name: "transaction 1", transactionType: TransactionType.income, vendor: "Company 123", amount: 3000, date: "Jun 1, 2019", location: "", image: false, notes: "", budgetDate: budget.id, items: ["Paycheck 1" : [Item(name: "Paycheck", amount: 3000, budgetItem: "Paycheck 1", budgetItemCategory: BudgetItemCategory.income)]]))
-        
-        print("done")
+//        let dictionary = BudgetStore.budgetDictionary
+//        
+//        let budget = dictionary[BudgetDate(Date())]!
+//        LocalAccess.addTransaction(Transaction(name: "transaction 1", transactionType: TransactionType.income, vendor: "Company 123", amount: 3000, date: "Jun 1, 2019", location: "", image: false, notes: "", budgetDate: budget.id, items: ["Paycheck 1" : [Item(name: "Paycheck", amount: 3000, budgetItem: "Paycheck 1", budgetItemCategory: BudgetItemCategory.income)]]))
+//        
+//        print("done")
     }
     /*
     // MARK: - Navigation
