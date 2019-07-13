@@ -105,6 +105,7 @@
                     <connections>
                         <outlet property="saveButton" destination="85r-Hp-E8Q" id="zvE-d6-m64"/>
                         <outlet property="transactionView" destination="WCQ-eg-1dD" id="Ubv-aD-Mah"/>
+                        <segue destination="EaN-97-phR" kind="show" identifier="AddBudgetItemSegue" id="slM-Zx-hMh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cq2-4J-i4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -283,4 +284,7 @@
             <point key="canvasLocation" x="1335" y="-1366"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="slM-Zx-hMh"/>
+    </inferredMetricsTieBreakers>
 </document>

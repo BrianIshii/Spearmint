@@ -14,7 +14,7 @@ class SuggestionsView: UIView {
     @IBOutlet weak var middleItem: UIBarButtonItem!
     @IBOutlet weak var rightItem: UIBarButtonItem!
 
-    weak var textField: VendorTextField?
+    var textField: SuggestionViewDelegate?
     
     var suggestions: [String]
     
@@ -48,24 +48,21 @@ class SuggestionsView: UIView {
     }
     
     @objc func clickedLeftSuggestion() {
-        if let tf = textField {
-            tf.text = leftItem.title
-            let _ = tf.textFieldShouldReturn(tf)
-        }
+        guard let textField = textField else { return }
+        
+        textField.addSuggestion(leftItem.title ?? "")
     }
     
     @objc func clickedMiddleSuggestion() {
-        if let tf = textField {
-            tf.text = middleItem.title
-            let _ = tf.textFieldShouldReturn(tf)
-        }
+        guard let textField = textField else { return }
+
+        textField.addSuggestion(middleItem.title ?? "")
     }
     
     @objc func clickedRightSuggestion() {
-        if let tf = textField {
-            tf.text = rightItem.title
-            let _ =  tf.textFieldShouldReturn(tf)
-        }
+        guard let textField = textField else { return }
+
+        textField.addSuggestion(middleItem.title ?? "")
     }
     
     func addSuggestions(_ suggestions: [String]) {
@@ -80,16 +77,4 @@ class SuggestionsView: UIView {
         rightItem.title = suggestions[2]
         
     }
-    
-    func update() {
-        leftItem.title = "yooo"
-    }
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }

@@ -15,6 +15,7 @@
                 <outlet property="categoryButton" destination="YxY-VI-bpO" id="W52-ig-9eL"/>
                 <outlet property="dateTextField" destination="tQS-DL-Mxs" id="XhR-iK-TGO"/>
                 <outlet property="moneyTextField" destination="AvA-DS-gHj" id="Kze-EL-nUC"/>
+                <outlet property="tagTextView" destination="TK5-bQ-d7m" id="pTz-V9-7F2"/>
                 <outlet property="transactionTypeSegementedControl" destination="m9U-D0-goz" id="Jbk-v1-O2N"/>
                 <outlet property="vendorTextField" destination="Khv-Je-n3Z" id="CB1-SS-T99"/>
             </connections>
@@ -54,22 +55,45 @@
                     <state key="normal" title="Category">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="selectCategory:" destination="-1" eventType="touchUpInside" id="9t3-aS-1aF"/>
+                    </connections>
                 </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TK5-bQ-d7m" customClass="TagTextView" customModule="Spearmint" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="295" width="414" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="RqX-0N-bwR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHE-i0-va6">
+                    <rect key="frame" x="36" y="260" width="37" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Khv-Je-n3Z" firstAttribute="firstBaseline" secondItem="AvA-DS-gHj" secondAttribute="baseline" constant="36" symbolType="layoutAnchor" id="4Uj-LN-3VI"/>
+                <constraint firstItem="TK5-bQ-d7m" firstAttribute="top" secondItem="YxY-VI-bpO" secondAttribute="bottom" constant="43" id="4oX-IJ-cha"/>
                 <constraint firstItem="Khv-Je-n3Z" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="O2j-0j-fqm"/>
+                <constraint firstItem="TK5-bQ-d7m" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="PMP-c1-yzV"/>
                 <constraint firstItem="YxY-VI-bpO" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="TvW-cA-09U"/>
                 <constraint firstItem="Khv-Je-n3Z" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="UU4-CF-W3G"/>
                 <constraint firstItem="tQS-DL-Mxs" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="UU7-Vb-ms5"/>
                 <constraint firstItem="m9U-D0-goz" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="UVD-Do-dAl"/>
                 <constraint firstItem="YxY-VI-bpO" firstAttribute="top" secondItem="tQS-DL-Mxs" secondAttribute="bottom" constant="8" id="Vfc-UB-ASF"/>
                 <constraint firstItem="AvA-DS-gHj" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Vjh-4k-9WA"/>
+                <constraint firstItem="LHE-i0-va6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="bAr-G3-ebo"/>
+                <constraint firstItem="TK5-bQ-d7m" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="frN-J9-x3C"/>
                 <constraint firstItem="AvA-DS-gHj" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="iCY-Zc-fuW"/>
                 <constraint firstItem="AvA-DS-gHj" firstAttribute="top" secondItem="m9U-D0-goz" secondAttribute="bottom" constant="8" id="kVM-jh-c0R"/>
                 <constraint firstItem="YxY-VI-bpO" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="kmP-Vv-V9f"/>
                 <constraint firstItem="tQS-DL-Mxs" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="m9a-4W-oeE"/>
+                <constraint firstItem="TK5-bQ-d7m" firstAttribute="top" secondItem="LHE-i0-va6" secondAttribute="bottom" constant="14" id="mVv-mT-76D"/>
                 <constraint firstItem="tQS-DL-Mxs" firstAttribute="top" secondItem="Khv-Je-n3Z" secondAttribute="bottom" constant="30" id="roG-TJ-PEM"/>
                 <constraint firstItem="m9U-D0-goz" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="t5U-6G-Rg5"/>
             </constraints>
@@ -77,7 +101,7 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-99" y="-103"/>
+            <point key="canvasLocation" x="-100.00000000000001" y="-103.125"/>
         </view>
     </objects>
 </document>

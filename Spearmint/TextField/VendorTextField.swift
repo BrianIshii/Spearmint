@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class VendorTextField: UITextField, UITextFieldDelegate {
+class VendorTextField: UITextField {
     let locationManager = CLLocationManager()
 
     var view: SuggestionsView
@@ -45,26 +45,26 @@ class VendorTextField: UITextField, UITextFieldDelegate {
         configureLocationManager()
     }
     
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        resignFirstResponder()
-        return true
-    }
-    
     @objc func textFieldDidChange(_ textField: UITextField) {
         guard let text = textField.text else { return }
         
         findSuggestions()
         print(LocalAccess.vendorStore.query(text))
     }
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+}
 
+extension VendorTextField: SuggestionViewDelegate {
+    func addSuggestion(_ suggestion: String) {
+        self.text = suggestion
+        self.resignFirstResponder()
+    }
+}
+
+extension VendorTextField: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        resignFirstResponder()
+        return true
+    }
 }
 
 extension VendorTextField: CLLocationManagerDelegate {

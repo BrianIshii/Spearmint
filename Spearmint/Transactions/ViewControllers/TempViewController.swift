@@ -19,6 +19,7 @@ class TempViewController: UIViewController {
         self.view.backgroundColor = .clear
         self.view.isOpaque = false
         
+        transactionView.delegate = self
         transactionView.moneyTextField.becomeFirstResponder()
         transactionView.dateTextField.text = DateFormatterFactory.mediumFormatter.string(from: Date())
         // Do any additional setup after loading the view.
@@ -68,6 +69,12 @@ class TempViewController: UIViewController {
         
         transaction = Transaction(name: name, transactionType: transactionType, vendor: vendor, amount: Float(amount), date: date, location: "N/A", image: hasImage, notes: "notes", budgetDate: budgetKey, items: transactionItems)
     }
- 
+}
 
+extension TempViewController: TransactionViewDelegate {
+    func didSelectCategoryButton() {
+        UIStoryboardSegue.init(identifier: AddBudgetItemSegue.segueIdentifier, source: self, destination: AddBudgetItemsViewController())
+
+        performSegue(withIdentifier: AddBudgetItemSegue.segueIdentifier, sender: nil)
+    }
 }

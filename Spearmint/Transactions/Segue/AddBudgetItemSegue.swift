@@ -12,13 +12,13 @@ class AddBudgetItemSegue: UIStoryboardSegue, SegueIdentifier {
     
     override init(identifier: String?, source: UIViewController, destination: UIViewController) {
         if identifier != nil {
-            super.init(identifier: identifier, source: source, destination: destination)
+            super.init(identifier: AddBudgetItemSegue.segueIdentifier, source: source, destination: destination)
         } else {
             super.init(identifier: AddBudgetItemSegue.segueIdentifier, source: source, destination: destination)
         }
         setUp()
     }
-    
+
     func setUp() {
     }
 }

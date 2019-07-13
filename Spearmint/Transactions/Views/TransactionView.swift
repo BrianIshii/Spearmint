@@ -14,6 +14,10 @@ class TransactionView: UIView {
     @IBOutlet weak var vendorTextField: VendorTextField!
     @IBOutlet weak var dateTextField: DateTextField!
     @IBOutlet weak var categoryButton: UIButton!
+    @IBOutlet weak var tagTextView: TagTextView!
+    
+    var delegate: TransactionViewDelegate?
+    var tags: [String] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -57,8 +61,13 @@ class TransactionView: UIView {
         dateTextField.isUserInteractionEnabled = true
         categoryButton.isUserInteractionEnabled = true
     }
-//
-//
+    
+    @IBAction func selectCategory(_ sender: UIButton) {
+        guard let delegate = delegate else { return }
+        
+        delegate.didSelectCategoryButton()
+    }
+
 //    static func instanceFromNib() -> UIView {
 //        return UINib(nibName: "TransactionView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UIView
 //    }

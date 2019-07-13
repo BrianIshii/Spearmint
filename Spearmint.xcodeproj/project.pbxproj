@@ -80,6 +80,9 @@
 		76B0631022D17776007BBDD5 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0630F22D17776007BBDD5 /* TransactionViewController.swift */; };
 		76B0631322D18D19007BBDD5 /* TransactionTypeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0631222D18D19007BBDD5 /* TransactionTypeSegmentedControl.swift */; };
 		76B0631522D19090007BBDD5 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0631422D19090007BBDD5 /* UIViewExtension.swift */; };
+		76B0631822D314D6007BBDD5 /* TransactionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0631722D314D6007BBDD5 /* TransactionViewDelegate.swift */; };
+		76B0631C22D9B9E8007BBDD5 /* TagTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0631B22D9B9E8007BBDD5 /* TagTextView.swift */; };
+		76B0631E22D9CD31007BBDD5 /* SuggestionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0631D22D9CD31007BBDD5 /* SuggestionViewDelegate.swift */; };
 		76B548BB22913069001B2FB1 /* CurrenyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BA22913069001B2FB1 /* CurrenyTests.swift */; };
 		76B548BD229135DE001B2FB1 /* LocalAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BC229135DE001B2FB1 /* LocalAccess.swift */; };
 		76B548C022913DB4001B2FB1 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */; };
@@ -238,6 +241,9 @@
 		76B0630F22D17776007BBDD5 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
 		76B0631222D18D19007BBDD5 /* TransactionTypeSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTypeSegmentedControl.swift; sourceTree = "<group>"; };
 		76B0631422D19090007BBDD5 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		76B0631722D314D6007BBDD5 /* TransactionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewDelegate.swift; sourceTree = "<group>"; };
+		76B0631B22D9B9E8007BBDD5 /* TagTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTextView.swift; sourceTree = "<group>"; };
+		76B0631D22D9CD31007BBDD5 /* SuggestionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionViewDelegate.swift; sourceTree = "<group>"; };
 		76B548BA22913069001B2FB1 /* CurrenyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenyTests.swift; sourceTree = "<group>"; };
 		76B548BC229135DE001B2FB1 /* LocalAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAccess.swift; sourceTree = "<group>"; };
 		76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
@@ -471,6 +477,9 @@
 		764AFDB5226EB1AE007BFD90 /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
+				76B0631A22D9B9C8007BBDD5 /* TextView */,
+				76B0631922D315C8007BBDD5 /* Segue */,
+				76B0631622D314BD007BBDD5 /* Protocols */,
 				76B0630A22D1716D007BBDD5 /* Views */,
 				76F4236222C03FFE00E7B868 /* TableViews */,
 				76F4235A22BA02A700E7B868 /* DataSource */,
@@ -533,7 +542,6 @@
 			isa = PBXGroup;
 			children = (
 				76A2FA6922824CFE0066D594 /* AddTransactionSegue.swift */,
-				7637A63B2288E74F007DD20B /* AddBudgetItemSegue.swift */,
 				76B548DD2294F0E4001B2FB1 /* ViewTransactionSegue.swift */,
 				76B548DF2294F100001B2FB1 /* SegueIdentifier.swift */,
 				76B548E922953426001B2FB1 /* ViewBudgetItemSegue.swift */,
@@ -568,6 +576,30 @@
 			path = "Segemented Control";
 			sourceTree = "<group>";
 		};
+		76B0631622D314BD007BBDD5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				76B0631722D314D6007BBDD5 /* TransactionViewDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		76B0631922D315C8007BBDD5 /* Segue */ = {
+			isa = PBXGroup;
+			children = (
+				7637A63B2288E74F007DD20B /* AddBudgetItemSegue.swift */,
+			);
+			path = Segue;
+			sourceTree = "<group>";
+		};
+		76B0631A22D9B9C8007BBDD5 /* TextView */ = {
+			isa = PBXGroup;
+			children = (
+				76B0631B22D9B9E8007BBDD5 /* TagTextView.swift */,
+			);
+			path = TextView;
+			sourceTree = "<group>";
+		};
 		76B548BE22913D92001B2FB1 /* Protocols and Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -575,6 +607,7 @@
 				76B548C122913E8E001B2FB1 /* ReusableIdentifier.swift */,
 				76F4237F22C99BC000E7B868 /* DataSource.swift */,
 				76B0631422D19090007BBDD5 /* UIViewExtension.swift */,
+				76B0631D22D9CD31007BBDD5 /* SuggestionViewDelegate.swift */,
 			);
 			path = "Protocols and Extensions";
 			sourceTree = "<group>";
@@ -1120,6 +1153,7 @@
 				76B548E8229533F9001B2FB1 /* BudgetItemViewController.swift in Sources */,
 				76A2FA7722851E730066D594 /* DateExtension.swift in Sources */,
 				76F4237622C4A5B000E7B868 /* StringExtension.swift in Sources */,
+				76B0631822D314D6007BBDD5 /* TransactionViewDelegate.swift in Sources */,
 				7637A64922892196007DD20B /* ItemTableViewCell.swift in Sources */,
 				76B548C222913E8E001B2FB1 /* ReusableIdentifier.swift in Sources */,
 				7637A6402288FB5F007DD20B /* SelectBudgetItemListTableView.swift in Sources */,
@@ -1144,7 +1178,9 @@
 				7637A618228653E7007DD20B /* BudgetViewController.swift in Sources */,
 				7637A6302288997F007DD20B /* BudgetItemSection.swift in Sources */,
 				76A2FA6A22824CFE0066D594 /* AddTransactionSegue.swift in Sources */,
+				76B0631C22D9B9E8007BBDD5 /* TagTextView.swift in Sources */,
 				76B548D522915D14001B2FB1 /* ImageViewTableViewCell.swift in Sources */,
+				76B0631E22D9CD31007BBDD5 /* SuggestionViewDelegate.swift in Sources */,
 				764AFD8A226E7060007BFD90 /* ViewController.swift in Sources */,
 				76B548E422952DBF001B2FB1 /* SummaryPieChartViewController.swift in Sources */,
 				76F4237C22C99B6900E7B868 /* AddTransactionTableViewController.swift in Sources */,
