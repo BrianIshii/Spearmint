@@ -54,12 +54,21 @@
                     <connections>
                         <outlet property="budgetItemView" destination="Z8p-vY-fv7" id="z8I-ld-gI3"/>
                         <outlet property="saveButton" destination="PlH-Hx-X5f" id="jqs-cX-mIN"/>
+                        <segue destination="rMj-oW-jmU" kind="show" identifier="selectTransaction" id="8Uj-qX-e61"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7cp-8h-7jz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="cwk-hd-Mgd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1981" y="-109"/>
+        </scene>
+        <!--Transaction-->
+        <scene sceneID="1qh-kS-cfr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Transaction" id="rMj-oW-jmU" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iWT-J6-20s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2657" y="-236"/>
         </scene>
     </scenes>
 </document>

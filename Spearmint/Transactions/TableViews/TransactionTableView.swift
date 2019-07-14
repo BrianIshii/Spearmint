@@ -9,22 +9,29 @@
 import UIKit
 
 class TransactionTableView: UITableView {
-        
+    var transactionTableViewDelegate: TransactionTableViewDelegate?
+    
     override init(frame: CGRect, style: UITableView.Style) {
+        self.transactionTableViewDelegate = nil
         super.init(frame: frame, style: style)
         initialize()
     }
     
     required init?(coder aDecoder: NSCoder) {
+        self.transactionTableViewDelegate = nil
         super.init(coder: aDecoder)
         initialize()
     }
     
     fileprivate func initialize() {
-        delegate = self
+        self.delegate = self
     }
 }
 
 extension TransactionTableView: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let transactionTableViewDelegate = transactionTableViewDelegate else { return }
+        
+        transactionTableViewDelegate.performSegue(withIdentifier: "selectTransaction", sender: nil)
+    }
 }

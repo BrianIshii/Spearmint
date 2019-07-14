@@ -18,6 +18,8 @@ class AddBudgetItemViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        budgetItemView.transactionTableView.transactionTableViewDelegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -51,6 +53,7 @@ class AddBudgetItemViewController: UIViewController {
             budgetItem = BudgetItem(name: name, category: category, planned: plannedAmount)
         }
     }
- 
+}
 
+extension AddBudgetItemViewController: TransactionTableViewDelegate {
 }

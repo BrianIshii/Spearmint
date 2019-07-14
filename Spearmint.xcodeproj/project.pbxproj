@@ -106,6 +106,7 @@
 		76B0636122DBD5DE007BBDD5 /* BudgetItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76B0636022DBD5DE007BBDD5 /* BudgetItemView.xib */; };
 		76B0636522DBE45C007BBDD5 /* TransactionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0636422DBE45C007BBDD5 /* TransactionTableView.swift */; };
 		76B0636722DBE522007BBDD5 /* AddBudgetItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76B0636622DBE522007BBDD5 /* AddBudgetItem.storyboard */; };
+		76B0636922DBEAAC007BBDD5 /* TransactionTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0636822DBEAAC007BBDD5 /* TransactionTableViewDelegate.swift */; };
 		76B548BB22913069001B2FB1 /* CurrenyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BA22913069001B2FB1 /* CurrenyTests.swift */; };
 		76B548BD229135DE001B2FB1 /* LocalAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BC229135DE001B2FB1 /* LocalAccess.swift */; };
 		76B548C022913DB4001B2FB1 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */; };
@@ -290,6 +291,7 @@
 		76B0636022DBD5DE007BBDD5 /* BudgetItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BudgetItemView.xib; sourceTree = "<group>"; };
 		76B0636422DBE45C007BBDD5 /* TransactionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableView.swift; sourceTree = "<group>"; };
 		76B0636622DBE522007BBDD5 /* AddBudgetItem.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddBudgetItem.storyboard; path = Spearmint/Budget/ViewControllers/AddBudgetItem.storyboard; sourceTree = SOURCE_ROOT; };
+		76B0636822DBEAAC007BBDD5 /* TransactionTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewDelegate.swift; sourceTree = "<group>"; };
 		76B548BA22913069001B2FB1 /* CurrenyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenyTests.swift; sourceTree = "<group>"; };
 		76B548BC229135DE001B2FB1 /* LocalAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAccess.swift; sourceTree = "<group>"; };
 		76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 				76B0635322DB142F007BBDD5 /* BudgetItemTextViewDelegate.swift */,
 				76B0631722D314D6007BBDD5 /* TransactionViewDelegate.swift */,
 				76B0633D22DAD58E007BBDD5 /* TagTextViewDelegate.swift */,
+				76B0636822DBEAAC007BBDD5 /* TransactionTableViewDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1354,6 +1357,7 @@
 				7637A63C2288E74F007DD20B /* AddBudgetItemSegue.swift in Sources */,
 				76B0631322D18D19007BBDD5 /* TransactionTypeSegmentedControl.swift in Sources */,
 				76B0633222DACA58007BBDD5 /* TagViewController.swift in Sources */,
+				76B0636922DBEAAC007BBDD5 /* TransactionTableViewDelegate.swift in Sources */,
 				76A2FA67228248220066D594 /* PaymentType.swift in Sources */,
 				76A2FA7422851B7D0066D594 /* DateFormatterFactory.swift in Sources */,
 				764AFDBE226EC42D007BFD90 /* AccountViewController.swift in Sources */,
