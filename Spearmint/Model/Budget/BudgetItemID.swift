@@ -8,19 +8,12 @@
 
 import Foundation
 
-struct BudgetItemID: Codable {
-    private let id: String
+struct BudgetItemID: BaseID {
+    let id: String
     
     init() {
-        self.id = NSUUID().uuidString
-    }
-    
-    init(id: String) {
+        let id = BudgetItemID.newID()
         self.id = id
-    }
-    
-    func description() -> String {
-        return id
     }
     
     static func == (lhs: BudgetItemID, rhs: BudgetItemID) -> Bool {

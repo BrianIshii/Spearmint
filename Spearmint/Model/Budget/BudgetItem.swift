@@ -10,6 +10,9 @@ import Foundation
 
 class BudgetItem: Saveable, Hashable {
     var id: BudgetItemID
+    var ID: String {
+        return id.id
+    }
     var name: String
     var category: BudgetItemCategory
     var planned: Float
@@ -118,7 +121,7 @@ class BudgetItem: Saveable, Hashable {
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(id.description())
+        hasher.combine(id.id)
         hasher.combine(name)
         hasher.combine(category)
     }

@@ -13,6 +13,7 @@ class LocalAccess {
     public static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     
     public static let vendorStore: VendorStore = VendorStore()
+    public static let Tags: TagStore = TagStore()
     public static let budgetItemStore: BudgetItemStore = BudgetItemStore()
 
     public static func deleteTransaction(_ transaction: Transaction) {

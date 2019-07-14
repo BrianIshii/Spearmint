@@ -30,10 +30,10 @@
             </objects>
             <point key="canvasLocation" x="-1719" y="812"/>
         </scene>
-        <!--Transactions-->
+        <!--TransactionList-->
         <scene sceneID="KPw-Mq-Su7">
             <objects>
-                <viewControllerPlaceholder storyboardName="Transactions" id="UuI-j3-Mtt" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="TransactionList" id="UuI-j3-Mtt" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="rzD-x8-xbV"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3F9-oT-s7c" userLabel="First Responder" sceneMemberID="firstResponder"/>

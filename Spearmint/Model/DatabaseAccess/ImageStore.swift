@@ -15,7 +15,7 @@ class ImageStore {
     static func saveImage(_ image: UIImage, transactionID: TransactionID) {
         do {
             if let imageData = image.pngData() {
-                try imageData.write(to: documentsDirectory.appendingPathComponent(transactionID.description() + ".png"))
+                try imageData.write(to: documentsDirectory.appendingPathComponent(transactionID.id + ".png"))
             }
         } catch {
             print(error)
@@ -23,12 +23,12 @@ class ImageStore {
     }
     
     static func getImage(transactionID: TransactionID) -> UIImage? {
-        return UIImage(contentsOfFile: URL(fileURLWithPath: documentsDirectory.absoluteString).appendingPathComponent(transactionID.description() + ".png").path)
+        return UIImage(contentsOfFile: URL(fileURLWithPath: documentsDirectory.absoluteString).appendingPathComponent(transactionID.id + ".png").path)
     }
     
     static func deleteImage(_ transactionID: TransactionID) {
         do {
-            try FileManager().removeItem(atPath: URL(fileURLWithPath: documentsDirectory.absoluteString).appendingPathComponent(transactionID.description() + ".png").path)
+            try FileManager().removeItem(atPath: URL(fileURLWithPath: documentsDirectory.absoluteString).appendingPathComponent(transactionID.id + ".png").path)
         } catch  {
             print(error)
         }

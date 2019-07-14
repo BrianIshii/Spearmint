@@ -15,17 +15,17 @@ class TransactionStore {
     public static var observers: [TransactionObserver] = []
     
     static func addTransaction(_ transaction: Transaction) {
-        transactions[transaction.id.description()] = transaction
+        transactions[transaction.ID] = transaction
         update()
     }
     
     static func deleteTransaction(_ transaction: Transaction) {
-        transactions.removeValue(forKey: transaction.id.description())
+        transactions.removeValue(forKey: transaction.ID)
         update()
     }
     
     static func getTransaction(_ id: TransactionID) -> Transaction? {
-        return transactions[id.description()]
+        return transactions[id.id]
     }
     private static func getAllTransactions() -> [String: Transaction] {        
         if LocalAccess.reset {

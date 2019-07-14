@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Tag: Codable {
+class Tag: Saveable {
     var text: String
     var color: Color
     

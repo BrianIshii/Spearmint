@@ -19,7 +19,7 @@ class BudgetItemStore {
 
             var dictionary: [String: BudgetItem] = [:]
             for budgetItem in defaultBudgetItems() {
-                dictionary[budgetItem.id.description()] = budgetItem
+                dictionary[budgetItem.id.id] = budgetItem
             }
             budgetItemDictionary = dictionary
         } else {
@@ -33,19 +33,19 @@ class BudgetItemStore {
     }
     
     public func getBudgetItem(_ budgetItemID: BudgetItemID) -> BudgetItem? {
-        return budgetItemDictionary[budgetItemID.description()] ?? nil
+        return budgetItemDictionary[budgetItemID.id] ?? nil
     }
     
     public func setActive(_ budgetItem: BudgetItem) {
-        if let item = budgetItemDictionary[budgetItem.id.description()] {
+        if let item = budgetItemDictionary[budgetItem.id.id] {
             item.isActive = true
         } else {
-            budgetItemDictionary[budgetItem.id.description()] = budgetItem
+            budgetItemDictionary[budgetItem.id.id] = budgetItem
         }
     }
     
     public func setInactive(_ budgetItemID: BudgetItemID) {
-        guard let item = budgetItemDictionary[budgetItemID.description()] else { return }
+        guard let item = budgetItemDictionary[budgetItemID.id] else { return }
         item.isActive = false
     }
     

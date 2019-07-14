@@ -93,6 +93,10 @@
 		76B0633822DACC0F007BBDD5 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0633722DACC0F007BBDD5 /* Color.swift */; };
 		76B0633C22DACECC007BBDD5 /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0633B22DACECC007BBDD5 /* ColorTests.swift */; };
 		76B0633E22DAD58E007BBDD5 /* TagTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0633D22DAD58E007BBDD5 /* TagTextViewDelegate.swift */; };
+		76B0634222DADD85007BBDD5 /* Transaction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76B0634122DADD85007BBDD5 /* Transaction.storyboard */; };
+		76B0634522DADDC3007BBDD5 /* TransactionList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76B0634422DADDC3007BBDD5 /* TransactionList.storyboard */; };
+		76B0634722DAE247007BBDD5 /* BaseID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0634622DAE247007BBDD5 /* BaseID.swift */; };
+		76B0634B22DAE8CC007BBDD5 /* TagStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0634A22DAE8CC007BBDD5 /* TagStore.swift */; };
 		76B548BB22913069001B2FB1 /* CurrenyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BA22913069001B2FB1 /* CurrenyTests.swift */; };
 		76B548BD229135DE001B2FB1 /* LocalAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BC229135DE001B2FB1 /* LocalAccess.swift */; };
 		76B548C022913DB4001B2FB1 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */; };
@@ -264,6 +268,10 @@
 		76B0633722DACC0F007BBDD5 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		76B0633B22DACECC007BBDD5 /* ColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		76B0633D22DAD58E007BBDD5 /* TagTextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTextViewDelegate.swift; sourceTree = "<group>"; };
+		76B0634122DADD85007BBDD5 /* Transaction.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Transaction.storyboard; sourceTree = "<group>"; };
+		76B0634422DADDC3007BBDD5 /* TransactionList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TransactionList.storyboard; sourceTree = "<group>"; };
+		76B0634622DAE247007BBDD5 /* BaseID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseID.swift; sourceTree = "<group>"; };
+		76B0634A22DAE8CC007BBDD5 /* TagStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagStore.swift; sourceTree = "<group>"; };
 		76B548BA22913069001B2FB1 /* CurrenyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenyTests.swift; sourceTree = "<group>"; };
 		76B548BC229135DE001B2FB1 /* LocalAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAccess.swift; sourceTree = "<group>"; };
 		76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
@@ -458,12 +466,10 @@
 				76B548BE22913D92001B2FB1 /* Protocols and Extensions */,
 				7637A62C2287EE25007DD20B /* TextField */,
 				76A2FA6822824CAE0066D594 /* Segue */,
-				764AFDB8226EB2C9007BFD90 /* ViewControllers */,
 				764AFDB6226EB269007BFD90 /* Model */,
 				764AFD87226E7060007BFD90 /* AppDelegate.swift */,
 				764AFD89226E7060007BFD90 /* ViewController.swift */,
 				7637A6292287EB1E007DD20B /* Summary.storyboard */,
-				7637A60E22864DBF007DD20B /* Budget.storyboard */,
 				76D22F77229A0DF100C06567 /* Analysis.storyboard */,
 				76D22F79229A0E1900C06567 /* Account.storyboard */,
 				76EF345B2298D31E005A5C35 /* AddTransactionImage.storyboard */,
@@ -509,7 +515,6 @@
 				76B548CB22915431001B2FB1 /* Cells */,
 				76B548CA22915381001B2FB1 /* ViewControllers */,
 				76A2FA632282229D0066D594 /* Transactions.storyboard */,
-				76B0632A22DAB208007BBDD5 /* AddTransaction.storyboard */,
 				7637A6392288E48C007DD20B /* TransactionBudgetItemViewCell.xib */,
 			);
 			path = Transactions;
@@ -518,17 +523,14 @@
 		764AFDB6226EB269007BFD90 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				76F4236A22C05FA900E7B868 /* Protocols */,
 				76B0633622DACBF9007BBDD5 /* Utility */,
 				76B0633322DACB82007BBDD5 /* Tag */,
-				76F4236A22C05FA900E7B868 /* Protocols */,
 				76F4236522C05EE700E7B868 /* Vendor */,
 				7637A6352288AE88007DD20B /* Budget */,
 				7637A6212286B548007DD20B /* Transaction */,
 				76A2FA7522851E650066D594 /* Extensions */,
 				76A2FA652282465B0066D594 /* DatabaseAccess */,
-				76E3CBE7227FEEAC0010625A /* Currency.swift */,
-				76A2FA7322851B7D0066D594 /* DateFormatterFactory.swift */,
-				76B0632622DA8B29007BBDD5 /* BaseDate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -543,13 +545,6 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
-		764AFDB8226EB2C9007BFD90 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
 		76A2FA652282465B0066D594 /* DatabaseAccess */ = {
 			isa = PBXGroup;
 			children = (
@@ -560,6 +555,7 @@
 				76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */,
 				76F4236322C05BFD00E7B868 /* VendorStore.swift */,
 				76F4236F22C0ABF100E7B868 /* BudgetItemStore.swift */,
+				76B0634A22DAE8CC007BBDD5 /* TagStore.swift */,
 			);
 			path = DatabaseAccess;
 			sourceTree = "<group>";
@@ -647,7 +643,11 @@
 		76B0633622DACBF9007BBDD5 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				76E3CBE7227FEEAC0010625A /* Currency.swift */,
+				76A2FA7322851B7D0066D594 /* DateFormatterFactory.swift */,
+				76B0632622DA8B29007BBDD5 /* BaseDate.swift */,
 				76B0633722DACC0F007BBDD5 /* Color.swift */,
+				76B0634622DAE247007BBDD5 /* BaseID.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -668,6 +668,33 @@
 			path = ColorTests;
 			sourceTree = "<group>";
 		};
+		76B0633F22DADD25007BBDD5 /* AddTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				76B0632A22DAB208007BBDD5 /* AddTransaction.storyboard */,
+				76B0632C22DAB40A007BBDD5 /* AddTransactionViewController.swift */,
+			);
+			path = AddTransaction;
+			sourceTree = "<group>";
+		};
+		76B0634022DADD65007BBDD5 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				76B0634122DADD85007BBDD5 /* Transaction.storyboard */,
+				76B0630F22D17776007BBDD5 /* TransactionViewController.swift */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
+		76B0634322DADDAC007BBDD5 /* TransactionList */ = {
+			isa = PBXGroup;
+			children = (
+				76B0634422DADDC3007BBDD5 /* TransactionList.storyboard */,
+				76A2FA452280B0740066D594 /* TransactionListViewController.swift */,
+			);
+			path = TransactionList;
+			sourceTree = "<group>";
+		};
 		76B548BE22913D92001B2FB1 /* Protocols and Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -684,6 +711,7 @@
 		76B548C3229141B9001B2FB1 /* Budget */ = {
 			isa = PBXGroup;
 			children = (
+				7637A60E22864DBF007DD20B /* Budget.storyboard */,
 				76EF34612299DBA6005A5C35 /* Views */,
 				76B548ED2295366B001B2FB1 /* DataSource */,
 				7637A6362288AF46007DD20B /* TableView */,
@@ -755,8 +783,9 @@
 		76B548CA22915381001B2FB1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				76B0632C22DAB40A007BBDD5 /* AddTransactionViewController.swift */,
-				76A2FA452280B0740066D594 /* TransactionListViewController.swift */,
+				76B0634322DADDAC007BBDD5 /* TransactionList */,
+				76B0634022DADD65007BBDD5 /* Transaction */,
+				76B0633F22DADD25007BBDD5 /* AddTransaction */,
 				76B548D722916195001B2FB1 /* AddTransactionImageViewController.swift */,
 				7637A63D2288F0C9007DD20B /* AddBudgetItemsViewController.swift */,
 				76A2FA552281F8BE0066D594 /* AddTransactionViewControllerOld.swift */,
@@ -764,7 +793,6 @@
 				763275BE22A59FF20099532A /* ImageFrameView.swift */,
 				763275C222A5B9EE0099532A /* AddContentsFromImageViewController.swift */,
 				76F4237B22C99B6900E7B868 /* AddTransactionTableViewController.swift */,
-				76B0630F22D17776007BBDD5 /* TransactionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1081,6 +1109,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7637A63A2288E48C007DD20B /* TransactionBudgetItemViewCell.xib in Resources */,
+				76B0634222DADD85007BBDD5 /* Transaction.storyboard in Resources */,
 				7637A63222889F31007DD20B /* BudgetSectionTableViewCell.xib in Resources */,
 				76F4237A22C998FD00E7B868 /* AddTransactionTableViewCell.xib in Resources */,
 				764AFD92226E7061007BFD90 /* LaunchScreen.storyboard in Resources */,
@@ -1108,6 +1137,7 @@
 				76B0632B22DAB208007BBDD5 /* AddTransaction.storyboard in Resources */,
 				763275C822A836FB0099532A /* AddItemTableViewCell.xib in Resources */,
 				7637A6232287ACEF007DD20B /* AddTransactionBudgetItemTableViewCell.xib in Resources */,
+				76B0634522DADDC3007BBDD5 /* TransactionList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1292,6 +1322,7 @@
 				76F4237422C4A22D00E7B868 /* SaveableKey.swift in Sources */,
 				7637A6442288FF26007DD20B /* SelectBudgetItemTableViewCell.swift in Sources */,
 				76B0630C22D17194007BBDD5 /* TransactionView.swift in Sources */,
+				76B0634B22DAE8CC007BBDD5 /* TagStore.swift in Sources */,
 				76B0631022D17776007BBDD5 /* TransactionViewController.swift in Sources */,
 				76D22F7E229A281B00C06567 /* AnalysisViewController.swift in Sources */,
 				76F4237022C0ABF100E7B868 /* BudgetItemStore.swift in Sources */,
@@ -1316,6 +1347,7 @@
 				76EF34652299E029005A5C35 /* AddBudgetItemSectionViewController.swift in Sources */,
 				76B0633522DACB8D007BBDD5 /* Tag.swift in Sources */,
 				76B548DC2294ECA9001B2FB1 /* ImageStore.swift in Sources */,
+				76B0634722DAE247007BBDD5 /* BaseID.swift in Sources */,
 				764AFDBA226EC283007BFD90 /* SettingsTableViewController.swift in Sources */,
 				7637A61A22868C32007DD20B /* BudgetCollectionViewCell.swift in Sources */,
 			);

@@ -8,22 +8,15 @@
 
 import Foundation
 
-struct VendorID: Codable {
-    private let id: String
+struct VendorID: BaseID {
+    let id: String
     
     init() {
-        self.id = NSUUID().uuidString
-    }
-    
-    init(id: String) {
+        let id = VendorID.newID()
         self.id = id
     }
     
-    func description() -> String {
-        return id
-    }
-    
-    static func == (left: VendorID, right: VendorID) -> Bool {
-        return left.description() == right.description()
+    static func == (lhs: VendorID, rhs: VendorID) -> Bool {
+        return lhs.id == rhs.id
     }
 }

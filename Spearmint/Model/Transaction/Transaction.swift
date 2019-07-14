@@ -11,6 +11,9 @@ import Foundation
 class Transaction: Saveable {
     
     let id: TransactionID
+    var ID: String {
+        return id.id
+    }
     var name: String
     var transactionType: TransactionType
     var paymentType: String

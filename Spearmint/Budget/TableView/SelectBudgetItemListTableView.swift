@@ -50,16 +50,6 @@ class SelectBudgetItemListTableView: UITableView {
         }
     }
     
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        if sections[section].isExpanded {
-//            return CGFloat(32)
-//        } else {
-//            return 0
-//        }
-//    }
-    
-
-    
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return false
     }

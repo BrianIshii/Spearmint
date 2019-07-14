@@ -63,6 +63,11 @@ class TagTextView: UITextView {
     }
     
     func createTagView(_ text: String,_ tagNumber: Int) -> UIView {
+        var backgroundColor = UIColor.black        
+        if let tag = LocalAccess.Tags.getTag(text) {
+            backgroundColor = tag.color.uiColor
+        }
+        
         let size = text.size(withAttributes: [NSAttributedString.Key.font: UIFont(name:"verdana", size: 13.0)!])
         let width = padding + padding + size.width + padding + padding
         let tagViewWidth = self.isEditable ? width + size.height + padding : width
@@ -74,7 +79,7 @@ class TagTextView: UITextView {
         
         let tagView = UIView(frame: CGRect(x: position.x, y: position.y, width: tagViewWidth, height: tagViewHeight))
         tagView.layer.cornerRadius = 5
-        tagView.backgroundColor = .black
+        tagView.backgroundColor = backgroundColor
         tagView.tag = tagNumber
         
         let textLabel = UILabel(frame: CGRect(x: padding, y: padding, width: tagLabelWidth, height: tagLabelHeight))
