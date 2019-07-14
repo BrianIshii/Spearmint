@@ -28,7 +28,6 @@ class TransactionListViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         dataSource = TransactionDataSource(tableView: transactionTableView)
-        
         transactionTableView.reloadData()
     }
     

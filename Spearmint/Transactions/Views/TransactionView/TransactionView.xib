@@ -91,7 +91,6 @@
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="tQS-DL-Mxs" firstAttribute="top" secondItem="Khv-Je-n3Z" secondAttribute="bottom" id="077-as-k1d"/>
                         <constraint firstItem="naC-qe-yea" firstAttribute="width" secondItem="YE7-69-XKs" secondAttribute="width" id="0wX-rJ-PSu"/>

@@ -11,6 +11,7 @@ import UIKit
 class AddBudgetItemViewController: UIViewController {
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet var budgetItemView: BudgetItemView!
     
     var budgetItem: BudgetItem?
     weak var addBudgetItemSectionViewController: AddBudgetItemSectionViewController?

@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/brianishii/code/Spearmint/Spearmint/Budget/ViewControllers/AddBudgetItem.storyboard">
+   </FileRef>
+   <FileRef
       location = "group:Spearmint.xcodeproj">
    </FileRef>
    <FileRef

@@ -30,14 +30,12 @@ class TransactionView: UIView {
             self.moneyTextField.text = Currency.currencyFormatter(transaction.amount)
             self.vendorTextField.text = transaction.vendor
             self.dateTextField.text = transaction.date.medium
-            if let budgetItemID = transaction.items.keys.first {
-                let budgetItem = LocalAccess.budgetItemStore.getBudgetItem(budgetItemID)
-                self.categoryButton.setTitle(budgetItem?.name, for: UIControl.State.normal)
-            } else {
-                self.categoryButton.setTitle("Category", for: UIControl.State.normal)
-            }
+            self.categoryButton.setTitle("Category", for: UIControl.State.normal)
             self.tagTextView.tags = transaction.tags
             self.tagTextView.createTagViews()
+            
+            self.categoryTextView.budgetItems = Array(transaction.items.keys)
+            self.categoryTextView.createCategoryViews()
             self.deleteTransactionButton.isHidden = false
         }
     }
@@ -87,6 +85,8 @@ class TransactionView: UIView {
         categoryButton.isUserInteractionEnabled = false
         tagTextView.isUserInteractionEnabled = true
         tagTextView.isEditable = false
+        categoryTextView.isUserInteractionEnabled = true
+        categoryTextView.isEditable = false
     }
     
     func enableUserInteraction() {
@@ -97,6 +97,8 @@ class TransactionView: UIView {
         categoryButton.isUserInteractionEnabled = true
         tagTextView.isUserInteractionEnabled = true
         tagTextView.isEditable = true
+        categoryTextView.isUserInteractionEnabled = true
+        categoryTextView.isEditable = true
 
     }
     

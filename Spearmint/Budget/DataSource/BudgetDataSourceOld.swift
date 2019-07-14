@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BudgetDataSource: NSObject {
+class BudgetDataSourceOld: NSObject {
     fileprivate let tableView: UITableView
     var sections: [BudgetItemSection] = BudgetItemSectionStore.budgetItemSections
     var currentBudget: Budget?
@@ -26,7 +26,7 @@ class BudgetDataSource: NSObject {
     }
 }
 
-extension BudgetDataSource: UITableViewDataSource {
+extension BudgetDataSourceOld: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if canRearrangeSections {
             return ""

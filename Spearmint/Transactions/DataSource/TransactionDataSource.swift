@@ -48,6 +48,4 @@ extension TransactionDataSource: TransactionObserver {
         transactions = Array(TransactionStore.transactions.values).sorted(by: >)
         tableView.reloadData()
     }
-    
-    
 }

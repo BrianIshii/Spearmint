@@ -15,7 +15,7 @@ import UIKit
 class BudgetTableViewController: UITableViewController {
 
     //weak var delegate: BudgetTableViewProviderDelegate?
-    private var dataSource: BudgetDataSource?
+    private var dataSource: BudgetDataSourceOld?
     private var selectedBudgetItem: BudgetItem?
     private let budgetItemSegue = "BudgetItemSegue"
     override func viewDidLoad() {
@@ -31,7 +31,7 @@ class BudgetTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        dataSource = BudgetDataSource(tableView: tableView)
+        dataSource = BudgetDataSourceOld(tableView: tableView)
         
         if let ds = dataSource {
             ds.currentBudget = BudgetStore.getBudget(BudgetDate(Date()))

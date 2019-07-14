@@ -17,6 +17,7 @@ extension Identifiable {
         return String(describing: self)
     }
 }
+
 protocol NibLoadable: Identifiable {
     static var nibName: String { get }
 }
@@ -25,6 +26,7 @@ extension NibLoadable {
         return String(describing: self)
     }
 }
+
 extension UIView {
     static func loadFromNib<T: NibLoadable>(ofType _: T.Type) -> T {
         guard let nibViews = Bundle.main.loadNibNamed(T.nibName, owner: nil, options: nil) else {
