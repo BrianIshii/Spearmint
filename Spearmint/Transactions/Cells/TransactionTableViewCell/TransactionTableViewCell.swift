@@ -14,7 +14,7 @@ class TransactionTableViewCell: UITableViewCell {
     @IBOutlet weak var transactionAmountLabel: UILabel!
     @IBOutlet weak var transactionDateLabel: UILabel!
     @IBOutlet weak var transactionVendorLabel: UILabel!
-    @IBOutlet weak var tagTextView: TagTextView!
+    @IBOutlet weak var textView: BudgetItemAndTagTextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -53,10 +53,15 @@ extension TransactionTableViewCell: ConfigurableCell {
         transactionVendorLabel.text = object.vendor
         transactionDateLabel.text = object.date.month
         
-        tagTextView.tags = object.tags
-        tagTextView.isEditable = false
-        tagTextView.isUserInteractionEnabled = false
-        tagTextView.createTagViews()
+        textView.tags = object.tags
+        
+        for (k, _) in object.items {
+            textView.budgetItems.append(k)
+        }
+        
+        textView.isEditable = false
+        textView.isUserInteractionEnabled = false
+        textView.createViews()
     }
     
     func configure() {

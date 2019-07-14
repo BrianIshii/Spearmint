@@ -65,11 +65,11 @@ class TransactionView: UIView {
         self.subviews.first?.layer.shadowColor = UIColor.black.cgColor
         self.deleteTransactionButton.isHidden = true
         self.tagTextView.tagTextViewDelegate = self
-        tagTextViewHeight.constant = (tagTextView.padding +
-                                        tagTextView.padding +
+        tagTextViewHeight.constant = (TagTextView.padding +
+                                        TagTextView.padding +
             " ".size(withAttributes: [NSAttributedString.Key.font: UIFont(name:"verdana", size: 13.0)!]).height +
-                                        tagTextView.padding +
-                                        tagTextView.padding)
+                                        TagTextView.padding +
+                                        TagTextView.padding)
         
     }
     

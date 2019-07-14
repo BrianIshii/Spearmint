@@ -26,6 +26,7 @@ class BudgetItemStore {
             budgetItemDictionary = dictionary
         }
         activeBudgetItems = getActiveBudgetItems()
+        updateBudgetItemDictionary()
     }
 
     public func getBudgetItems() -> [BudgetItemCategory : [BudgetItemID]] {

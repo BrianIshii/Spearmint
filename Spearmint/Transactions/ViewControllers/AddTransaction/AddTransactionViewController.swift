@@ -13,7 +13,7 @@ class AddTransactionViewController: UIViewController {
     @IBOutlet weak var transactionView: TransactionView!
     
     var transaction: Transaction?
-    var budgetItem: BudgetItem?
+    var budgetItems: [BudgetItem]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ class AddTransactionViewController: UIViewController {
             //budgetItems.forEach({ (item) -> Void in print(item.name)})
 //            transactionView.categoryButton.setTitle(budgetItems.first?.name, for: UIControl.State.normal)
             
-            budgetItem = budgetItems.first
+            self.budgetItems = budgetItems
             transactionView.categoryTextView.budgetItems = budgetItems.map({ $0.id })
             transactionView.categoryTextView.createCategoryViews()
         }
@@ -72,8 +72,10 @@ class AddTransactionViewController: UIViewController {
         
         var transactionItems: [BudgetItemID: [Item]] = [:]
         
-        if let budgetItem = budgetItem {
-            transactionItems[budgetItem.id] = []
+        if let budgetItems = budgetItems {
+            for budgetItem in budgetItems {
+                transactionItems[budgetItem.id] = []
+            }
         }
         
         let tags = transactionView.tagTextView.tags

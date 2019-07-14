@@ -9,7 +9,7 @@
 import UIKit
 
 class TagTextView: UITextView {
-    let padding: CGFloat = CGFloat(4)
+    static let padding: CGFloat = CGFloat(4)
     
     var tags: [String] = []
     var position: CGPoint = CGPoint(x: 0, y: 0)
@@ -48,11 +48,14 @@ class TagTextView: UITextView {
             tempView.removeFromSuperview()
         }
         
+        let padding = TagTextView.padding
+        
         position.x = padding
         position.y = padding
         
         for (index, tag) in tags.enumerated() {
             let tagView = createTagView(tag, index)
+            //let tagView = TagView.createTagView(text: tag, tagNumber: index, position: position, isEditable: self.isEditable, selectTag: #selector(selectTag(_:)), removeTag: #selector(removeTag(_:)))
             self.addSubview(tagView)
         }
     }
@@ -63,6 +66,7 @@ class TagTextView: UITextView {
             backgroundColor = tag.color.uiColor
         }
         
+        let padding = TagTextView.padding
         let size = text.size(withAttributes: [NSAttributedString.Key.font: UIFont(name:"verdana", size: 13.0)!])
         let width = padding + padding + size.width + padding + padding
         let tagViewWidth = self.isEditable ? width + size.height + padding : width

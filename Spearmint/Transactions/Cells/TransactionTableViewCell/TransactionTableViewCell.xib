@@ -42,7 +42,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MZv-K0-kxu" customClass="TagTextView" customModule="Spearmint" customModuleProvider="target">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MZv-K0-kxu" customClass="BudgetItemAndTagTextView" customModule="Spearmint" customModuleProvider="target">
                         <rect key="frame" x="128.5" y="84" width="332" height="44"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -70,7 +70,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="tagTextView" destination="MZv-K0-kxu" id="671-ko-feV"/>
+                <outlet property="textView" destination="MZv-K0-kxu" id="671-ko-feV"/>
                 <outlet property="transactionAmountLabel" destination="kvV-ee-pyo" id="rWd-vk-UaZ"/>
                 <outlet property="transactionDateLabel" destination="R3d-ZR-w9Y" id="ZEt-mR-Us6"/>
                 <outlet property="transactionVendorLabel" destination="seK-Td-ZpQ" id="DCY-xN-dS4"/>

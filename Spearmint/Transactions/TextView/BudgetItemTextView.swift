@@ -46,37 +46,34 @@ class BudgetItemTextView: UITextView {
         
         for (index, budgetItemID) in budgetItems.enumerated() {
             if let budgetItem = LocalAccess.budgetItemStore.getBudgetItem(budgetItemID) {
-                let tagView = createCategoryView(budgetItem.name, index)
-                self.addSubview(tagView)
+                let budgetItemView = createBudgetItemView(budgetItem.name, index)
+                self.addSubview(budgetItemView)
             }
         }
     }
     
-    func createCategoryView(_ text: String,_ tagNumber: Int) -> UIView {
+    func createBudgetItemView(_ text: String,_ budgetItemNumber: Int) -> UIView {
         var backgroundColor = UIColor.black
-        if let tag = LocalAccess.Tags.getTag(text) {
-            backgroundColor = tag.color.uiColor
-        }
         
         let size = text.size(withAttributes: [NSAttributedString.Key.font: UIFont(name:"verdana", size: 13.0)!])
         let width = padding + padding + size.width + padding + padding
-        let tagViewWidth = self.isEditable ? width + size.height + padding : width
-        let tagViewHeight =  padding + size.height + padding
-        let tagLabelWidth = padding + size.width + padding
-        let tagLabelHeight = size.height
-        let tagButtonWidth = size.height
-        let tagButtonHeight = size.height
+        let budgetItemViewWidth = self.isEditable ? width + size.height + padding : width
+        let budgetItemViewHeight =  padding + size.height + padding
+        let budgetItemLabelWidth = padding + size.width + padding
+        let budgetItemLabelHeight = size.height
+        let budgetItemButtonWidth = size.height
+        let budgetItemButtonHeight = size.height
         
-        let tagView = UIView(frame: CGRect(x: position.x, y: position.y, width: tagViewWidth, height: tagViewHeight))
-        tagView.layer.cornerRadius = 5
-        tagView.backgroundColor = .white
-        tagView.layer.borderColor = backgroundColor.cgColor
-        tagView.layer.borderWidth = 2
-        tagView.tag = tagNumber
+        let budgetItemView = UIView(frame: CGRect(x: position.x, y: position.y, width: budgetItemViewWidth, height: budgetItemViewHeight))
+        budgetItemView.layer.cornerRadius = 5
+        budgetItemView.backgroundColor = .white
+        budgetItemView.layer.borderColor = backgroundColor.cgColor
+        budgetItemView.layer.borderWidth = 2
+        budgetItemView.tag = budgetItemNumber
         
-        let textLabel = UILabel(frame: CGRect(x: padding, y: padding, width: tagLabelWidth, height: tagLabelHeight))
-        let selectTag = UITapGestureRecognizer(target: self, action: #selector(selectBudgetItem(_:)))
-        selectTag.accessibilityLabel = text
+        let textLabel = UILabel(frame: CGRect(x: padding, y: padding, width: budgetItemLabelWidth, height: budgetItemLabelHeight))
+        let selectBudgetItem = UITapGestureRecognizer(target: self, action: #selector(selectBudgetItem(_:)))
+        selectBudgetItem.accessibilityLabel = text
         textLabel.font = UIFont(name: "verdana", size: 13.0)
         textLabel.text = text
         textLabel.textAlignment = .center
@@ -84,21 +81,21 @@ class BudgetItemTextView: UITextView {
         textLabel.layer.masksToBounds = true
         textLabel.layer.cornerRadius = 5
         textLabel.isUserInteractionEnabled = true
-        textLabel.addGestureRecognizer(selectTag)
-        tagView.addSubview(textLabel)
+        textLabel.addGestureRecognizer(selectBudgetItem)
+        budgetItemView.addSubview(textLabel)
         
         if self.isEditable {
             let button = UIButton(type: .custom)
-            button.frame = CGRect(x: tagLabelWidth + padding, y: padding, width: tagButtonWidth, height: tagButtonHeight)
+            button.frame = CGRect(x: budgetItemLabelWidth + padding, y: padding, width: budgetItemButtonWidth, height: budgetItemButtonHeight)
             button.backgroundColor = backgroundColor
             button.layer.cornerRadius = CGFloat(button.frame.size.width)/CGFloat(2.0)
-            button.tag = tagNumber
+            button.tag = budgetItemNumber
             button.addTarget(self, action: #selector(removeBudgetItem(_:)), for: .touchUpInside)
-            tagView.addSubview(button)
+            budgetItemView.addSubview(button)
         }
         
-        position.x += tagViewWidth + padding
-        return tagView
+        position.x += budgetItemViewWidth + padding
+        return budgetItemView
     }
     
     @objc func selectBudgetItem(_ sender: UIGestureRecognizer) {
