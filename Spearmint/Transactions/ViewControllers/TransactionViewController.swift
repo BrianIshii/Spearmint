@@ -50,7 +50,13 @@ extension TransactionViewController: TransactionViewDelegate {
     func didSelectCategoryButton() {
         let _ = UIStoryboardSegue.init(identifier: AddBudgetItemSegue.segueIdentifier, source: self, destination: AddBudgetItemsViewController())
         
-        performSegue(withIdentifier: AddBudgetItemSegue.segueIdentifier, sender: nil)
+        performSegue(withIdentifier: AddBudgetItemSegue.segueIdentifier, sender: self)
+    }
+    
+    func didSelectTag(text: String) {
+        let _ = UIStoryboardSegue.init(identifier: "selectTag", source: self, destination: TagViewController())
+        
+        performSegue(withIdentifier: "selectTag", sender: self)
     }
     
     func dismiss() {

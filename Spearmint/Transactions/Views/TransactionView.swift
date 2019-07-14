@@ -16,8 +16,10 @@ class TransactionView: UIView {
     @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var tagTextView: TagTextView!
     @IBOutlet weak var deleteTransactionButton: UIButton!
+    @IBOutlet weak var tagTextViewHeight: NSLayoutConstraint!
     
     var delegate: TransactionViewDelegate?
+    
     var transaction: Transaction? {
         didSet {
             
@@ -33,6 +35,7 @@ class TransactionView: UIView {
             self.deleteTransactionButton.isHidden = false
         }
     }
+    
     var tags: [String] = []
     
     override init(frame: CGRect) {
@@ -55,6 +58,15 @@ class TransactionView: UIView {
         self.subviews.first?.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.subviews.first?.layer.shadowColor = UIColor.black.cgColor
         self.deleteTransactionButton.isHidden = true
+        self.tagTextView.tagTextViewDelegate = self
+        self.tagTextView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+        self.tagTextView.layer.cornerRadius = 5
+        tagTextViewHeight.constant = (tagTextView.padding +
+                                        tagTextView.padding +
+            " ".size(withAttributes: [NSAttributedString.Key.font: UIFont(name:"verdana", size: 13.0)!]).height +
+                                        tagTextView.padding +
+                                        tagTextView.padding)
+        
     }
     
     override func awakeFromNib() {
@@ -99,15 +111,12 @@ class TransactionView: UIView {
         
         delegate.dismiss()
     }
-    //    static func instanceFromNib() -> UIView {
-//        return UINib(nibName: "TransactionView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! UIView
-//    }
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+}
 
+extension TransactionView: TagTextViewDelegate {
+    func presentTagView(tag: String) {
+        guard let delegate = delegate else { return }
+
+        delegate.didSelectTag(text: tag)
+    }
 }

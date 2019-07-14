@@ -10,10 +10,13 @@ import UIKit
 
 class TagTextView: UITextView {
     let padding: CGFloat = CGFloat(4)
+    
     var tags: [String] = []
     var position: CGPoint = CGPoint(x: 0, y: 0)
-    var view: SuggestionsView
     var tagCount: Int = 1
+    
+    var view: SuggestionsView
+    var tagTextViewDelegate: TagTextViewDelegate?
     
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         self.view = SuggestionsView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 45))
@@ -74,8 +77,9 @@ class TagTextView: UITextView {
         tagView.backgroundColor = .black
         tagView.tag = tagNumber
         
-        let selectTag = UITapGestureRecognizer(target: self, action: #selector(selectTag(_:)))
         let textLabel = UILabel(frame: CGRect(x: padding, y: padding, width: tagLabelWidth, height: tagLabelHeight))
+        let selectTag = UITapGestureRecognizer(target: self, action: #selector(selectTag(_:)))
+        selectTag.accessibilityLabel = text
         textLabel.font = UIFont(name: "verdana", size: 13.0)
         textLabel.text = text
         textLabel.textAlignment = .center
@@ -100,8 +104,11 @@ class TagTextView: UITextView {
         return tagView
     }
     
-    @objc func selectTag(_ sender: AnyObject) {
-        print("Select tag")
+    @objc func selectTag(_ sender: UIGestureRecognizer) {
+        guard let tagTextViewDelegate = tagTextViewDelegate else { return }
+        guard let text = sender.accessibilityLabel else { return }
+        
+        tagTextViewDelegate.presentTagView(tag: text)
     }
     
     @objc func removeTag(_ sender: AnyObject) {

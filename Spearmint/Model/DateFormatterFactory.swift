@@ -15,7 +15,7 @@ class DateFormatterFactory {
     static let MinuteFormatter = createFormatter("mm")
     static let HourFormatter = createFormatter("HH")
     static let DayFormatter = createFormatter("dd")
-    static let MonthFormatter = createFormatter("MM")
+    static let MonthFormatter = createFormatter("MMMMMMMMMMM")
     static let MonthThreeCharacterFormatter = createFormatter("MMM")
     static let YearFormatter = createFormatter("yyyy")
     static let YearTwoCharacterFormatter = createFormatter("yy")

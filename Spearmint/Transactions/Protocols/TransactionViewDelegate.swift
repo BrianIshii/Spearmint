@@ -10,5 +10,6 @@ import Foundation
 
 protocol TransactionViewDelegate {
     func didSelectCategoryButton()
+    func didSelectTag(text: String)
     func dismiss()
 }

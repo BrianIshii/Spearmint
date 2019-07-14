@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lWa-md-BBS">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add Transaction View Controller-->
+        <scene sceneID="HK5-wr-ReX">
+            <objects>
+                <viewController id="lWa-md-BBS" customClass="AddTransactionViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P6y-UG-fRe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1R-68-UNx">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Add Transaction" id="j7Q-o8-jgA">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ZKy-KE-pvb">
+                                            <connections>
+                                                <action selector="canel:" destination="lWa-md-BBS" id="ymG-ll-tuq"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="85r-Hp-E8Q">
+                                            <connections>
+                                                <segue destination="5UL-6Z-otT" kind="unwind" unwindAction="unwindWithSender:" id="oVf-Hg-WsA"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WCQ-eg-1dD" customClass="TransactionView" customModule="Spearmint" customModuleProvider="target">
+                                <rect key="frame" x="10" y="98" width="394" height="754"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="WCQ-eg-1dD" firstAttribute="leading" secondItem="1x7-2q-LLh" secondAttribute="leading" constant="10" id="5ea-HW-NHN"/>
+                            <constraint firstItem="M1R-68-UNx" firstAttribute="centerX" secondItem="1x7-2q-LLh" secondAttribute="centerX" id="B9Y-5p-QBT"/>
+                            <constraint firstItem="1x7-2q-LLh" firstAttribute="trailing" secondItem="WCQ-eg-1dD" secondAttribute="trailing" constant="10" id="VQ5-8x-FaY"/>
+                            <constraint firstItem="M1R-68-UNx" firstAttribute="top" secondItem="1x7-2q-LLh" secondAttribute="top" id="bs3-JT-6ma"/>
+                            <constraint firstItem="M1R-68-UNx" firstAttribute="width" secondItem="P6y-UG-fRe" secondAttribute="width" id="thM-Lg-PW2"/>
+                            <constraint firstItem="WCQ-eg-1dD" firstAttribute="top" secondItem="M1R-68-UNx" secondAttribute="bottom" constant="10" id="uOj-ws-Scu"/>
+                            <constraint firstItem="1x7-2q-LLh" firstAttribute="bottom" secondItem="WCQ-eg-1dD" secondAttribute="bottom" constant="10" id="vas-Vq-xz7"/>
+                            <constraint firstItem="WCQ-eg-1dD" firstAttribute="centerX" secondItem="1x7-2q-LLh" secondAttribute="centerX" id="y0v-oF-g4m"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1x7-2q-LLh"/>
+                    </view>
+                    <connections>
+                        <outlet property="saveButton" destination="85r-Hp-E8Q" id="zvE-d6-m64"/>
+                        <outlet property="transactionView" destination="WCQ-eg-1dD" id="Ubv-aD-Mah"/>
+                        <segue destination="3ej-kO-4lH" kind="show" identifier="AddBudgetItemSegue" id="cul-Zv-DOm"/>
+                        <segue destination="zZF-wb-iba" kind="show" identifier="selectTag" id="8uU-A1-l2M"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cq2-4J-i4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="5UL-6Z-otT" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-604.34782608695662" y="-146.65178571428569"/>
+        </scene>
+        <!--AddTransactionID-->
+        <scene sceneID="jUi-PB-VQN">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="AddTransactionID" storyboardName="Transactions" referencedIdentifier="AddTransactionID" id="3ej-kO-4lH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EYS-T2-OQL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="299" y="-147"/>
+        </scene>
+        <!--Tag-->
+        <scene sceneID="cH8-QZ-JLj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Tag" id="zZF-wb-iba" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tRD-rQ-D50" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="235" y="-100"/>
+        </scene>
+    </scenes>
+</document>

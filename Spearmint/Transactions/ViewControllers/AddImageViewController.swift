@@ -12,7 +12,7 @@ import FirebaseMLVision
 class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var textRecognizer: VisionTextRecognizer!
-    weak var previous: AddTransactionViewController?
+    weak var previous: AddTransactionViewControllerOld?
     weak var addContentsViewController: AddContentsFromImageViewController?
     var visionTextBlocks: [VisionTextBlock]?
 

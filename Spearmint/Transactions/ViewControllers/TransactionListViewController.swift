@@ -39,11 +39,11 @@ class TransactionListViewController: UIViewController {
     }
     
     @IBAction func unwind(sender: UIStoryboardSegue) {        
-        if let sourceViewController = sender.source as? AddTransactionViewController, let transaction = sourceViewController.transaction {
+        if let sourceViewController = sender.source as? AddTransactionViewControllerOld, let transaction = sourceViewController.transaction {
             LocalAccess.addTransaction(transaction)
         }
         
-        if let sourceViewController = sender.source as? TempViewController, let transaction = sourceViewController.transaction {
+        if let sourceViewController = sender.source as? AddTransactionViewController, let transaction = sourceViewController.transaction {
             LocalAccess.addTransaction(transaction)
         }
         if let selectedIndexPath = transactionTableView.indexPathForSelectedRow {
@@ -67,7 +67,7 @@ class TransactionListViewController: UIViewController {
         }
         
         if segue.identifier == ViewTransactionSegue.segueIdentifier {
-            if let vc = segue.destination as? AddTransactionViewController {
+            if let vc = segue.destination as? AddTransactionViewControllerOld {
                 let selectedTransaction = dataSource.transactions[transactionTableView.indexPathForSelectedRow!.row]
                 vc.transaction = selectedTransaction
             }

@@ -23,6 +23,7 @@ class AddBudgetItemsViewController: UIViewController {
         if let bd = budgetDate {
             tableView.currentBudget = BudgetStore.getBudget(bd)
         }
+        
         tableView.reloadData()
         tableView.enableSelection = true
     }
