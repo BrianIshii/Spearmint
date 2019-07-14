@@ -11,9 +11,6 @@ import Foundation
 class Transaction: Saveable {
     
     let id: TransactionID
-    var ID: String {
-        return id.id
-    }
     var name: String
     var transactionType: TransactionType
     var paymentType: String
@@ -25,10 +22,10 @@ class Transaction: Saveable {
     var tags: [String]
     var notes: String
     var budgetDate: BudgetDate
-    var items: [String : [Item]]
+    var items: [BudgetItemID : [Item]]
     
     init(name: String, transactionType: TransactionType, vendor: String, amount: Float,
-         date: TransactionDate, location: String, image: Bool, notes: String, budgetDate: BudgetDate, items: [String : [Item]]) {
+         date: TransactionDate, location: String, image: Bool, notes: String, budgetDate: BudgetDate, items: [BudgetItemID : [Item]]) {
         self.id = TransactionID()
         self.name = name
         self.transactionType = transactionType
@@ -45,7 +42,7 @@ class Transaction: Saveable {
     }
     
     init(name: String, transactionType: TransactionType, vendor: String, amount: Float,
-         date: TransactionDate, location: String, image: Bool, tags: [String], notes: String, budgetDate: BudgetDate, items: [String : [Item]]) {
+         date: TransactionDate, location: String, image: Bool, tags: [String], notes: String, budgetDate: BudgetDate, items: [BudgetItemID : [Item]]) {
         self.id = TransactionID()
         self.name = name
         self.transactionType = transactionType
@@ -79,6 +76,10 @@ class Transaction: Saveable {
         }
         
         return expensiveItem
+    }
+    
+    var ID: String {
+        return id.id
     }
     
     static func > (left: Transaction, right: Transaction) -> Bool {

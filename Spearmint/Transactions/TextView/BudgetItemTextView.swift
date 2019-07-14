@@ -1,5 +1,5 @@
 //
-//  TagTextView.swift
+//  CategoryTextView.swift
 //  Spearmint
 //
 //  Created by Brian Ishii on 7/13/19.
@@ -8,42 +8,35 @@
 
 import UIKit
 
-class TagTextView: UITextView {
+class BudgetItemTextView: UITextView {
     let padding: CGFloat = CGFloat(4)
-    
-    var tags: [String] = []
     var position: CGPoint = CGPoint(x: 0, y: 0)
-    var tagCount: Int = 1
+    var budgetItems: [BudgetItemID] = []
+    var budgetItemCount: Int = 1
     
-    var view: SuggestionsView
-    var tagTextViewDelegate: TagTextViewDelegate?
+    var budgetItemTextViewDelegate: BudgetItemTextViewDelegate?
     
     override init(frame: CGRect, textContainer: NSTextContainer?) {
-        self.view = SuggestionsView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 45))
         super.init(frame: frame, textContainer: textContainer)
         
         setUp()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.view = SuggestionsView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 45))
         super.init(coder: aDecoder)
         
         setUp()
     }
     
     private func setUp() {
-        self.delegate = self
         self.autocorrectionType = .no
         
-        view.textField = self
-        self.inputAccessoryView = view
         
         self.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
         self.layer.cornerRadius = 5
     }
     
-    func createTagViews() {
+    func createCategoryViews() {
         for tempView in subviews {
             tempView.removeFromSuperview()
         }
@@ -51,14 +44,16 @@ class TagTextView: UITextView {
         position.x = padding
         position.y = padding
         
-        for (index, tag) in tags.enumerated() {
-            let tagView = createTagView(tag, index)
-            self.addSubview(tagView)
+        for (index, budgetItemID) in budgetItems.enumerated() {
+            if let budgetItem = LocalAccess.budgetItemStore.getBudgetItem(budgetItemID) {
+                let tagView = createCategoryView(budgetItem.name, index)
+                self.addSubview(tagView)
+            }
         }
     }
     
-    func createTagView(_ text: String,_ tagNumber: Int) -> UIView {
-        var backgroundColor = UIColor.black        
+    func createCategoryView(_ text: String,_ tagNumber: Int) -> UIView {
+        var backgroundColor = UIColor.black
         if let tag = LocalAccess.Tags.getTag(text) {
             backgroundColor = tag.color.uiColor
         }
@@ -74,16 +69,18 @@ class TagTextView: UITextView {
         
         let tagView = UIView(frame: CGRect(x: position.x, y: position.y, width: tagViewWidth, height: tagViewHeight))
         tagView.layer.cornerRadius = 5
-        tagView.backgroundColor = backgroundColor
+        tagView.backgroundColor = .white
+        tagView.layer.borderColor = backgroundColor.cgColor
+        tagView.layer.borderWidth = 2
         tagView.tag = tagNumber
         
         let textLabel = UILabel(frame: CGRect(x: padding, y: padding, width: tagLabelWidth, height: tagLabelHeight))
-        let selectTag = UITapGestureRecognizer(target: self, action: #selector(selectTag(_:)))
+        let selectTag = UITapGestureRecognizer(target: self, action: #selector(selectBudgetItem(_:)))
         selectTag.accessibilityLabel = text
         textLabel.font = UIFont(name: "verdana", size: 13.0)
         textLabel.text = text
         textLabel.textAlignment = .center
-        textLabel.textColor = UIColor.white
+        textLabel.textColor = backgroundColor
         textLabel.layer.masksToBounds = true
         textLabel.layer.cornerRadius = 5
         textLabel.isUserInteractionEnabled = true
@@ -93,10 +90,10 @@ class TagTextView: UITextView {
         if self.isEditable {
             let button = UIButton(type: .custom)
             button.frame = CGRect(x: tagLabelWidth + padding, y: padding, width: tagButtonWidth, height: tagButtonHeight)
-            button.backgroundColor = UIColor.white
+            button.backgroundColor = backgroundColor
             button.layer.cornerRadius = CGFloat(button.frame.size.width)/CGFloat(2.0)
             button.tag = tagNumber
-            button.addTarget(self, action: #selector(removeTag(_:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(removeBudgetItem(_:)), for: .touchUpInside)
             tagView.addSubview(button)
         }
         
@@ -104,56 +101,15 @@ class TagTextView: UITextView {
         return tagView
     }
     
-    @objc func selectTag(_ sender: UIGestureRecognizer) {
-        guard let tagTextViewDelegate = tagTextViewDelegate else { return }
+    @objc func selectBudgetItem(_ sender: UIGestureRecognizer) {
+        guard let categoryTextViewDelegate = budgetItemTextViewDelegate else { return }
         guard let text = sender.accessibilityLabel else { return }
         
-        tagTextViewDelegate.presentTagView(tag: text)
+        categoryTextViewDelegate.presentCategory()
     }
     
-    @objc func removeTag(_ sender: AnyObject) {
-        tags.remove(at: sender.tag)
-        tagCount -= 1
-        createTagViews()
-    }
-}
-
-extension TagTextView: SuggestionViewDelegate {
-    func addSuggestion(_ suggestion: String) {
-        return
-    }
-}
-
-extension TagTextView: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
-        print(textView.text ?? "")
-    }
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
-        if tagCount < 1 {
-            tagCount = 1
-        }
-        
-        while self.tags.count < tagCount {
-            self.tags.append(self.text)
-        }
-        
-        if text == "\n" {
-            self.resignFirstResponder()
-            return false
-        }
-        
-        if text == " " {
-            self.tags.append(self.text)
-            self.text = ""
-            createTagViews()
-            tagCount += 1
-            return false
-        }
-        
-        self.tags[tagCount - 1] += text
-        createTagViews()
-        return false
+    @objc func removeBudgetItem(_ sender: AnyObject) {
+        budgetItems.remove(at: sender.tag)
+        createCategoryViews()
     }
 }

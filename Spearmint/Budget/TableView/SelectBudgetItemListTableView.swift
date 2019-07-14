@@ -32,6 +32,13 @@ class SelectBudgetItemListTableView: UITableView {
         delegate = self
         dataSource = self
         
+        let budget = BudgetStore.getBudget(BudgetDate())
+        
+        if budget == nil {
+            let b = Budget(BudgetDate(), items: LocalAccess.budgetItemStore.getBudgetItems())
+            BudgetStore.addBudget(b)
+            currentBudget = b
+        }
         reloadData()
     }
     
@@ -105,7 +112,7 @@ extension SelectBudgetItemListTableView: UITableViewDelegate {
 extension SelectBudgetItemListTableView: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        guard let budget = currentBudget else { return 0 }
+        guard let budget = currentBudget else { return 1 }
         
         return budget.items.keys.count
     }

@@ -21,8 +21,8 @@ class VendorStore {
     }
     
     public func addVendor(vendor: Vendor) {
-        vendorDictionary[vendor.vendorID.description()] = vendor
-        vendorKeys[vendor.name] = vendor.vendorID.description()
+        vendorDictionary[vendor.ID] = vendor
+        vendorKeys[vendor.name] = vendor.ID
         updateVendorDictionary()
     }
     

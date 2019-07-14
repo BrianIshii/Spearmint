@@ -20,3 +20,9 @@ struct BudgetItemID: BaseID {
         return lhs.id == rhs.id
     }
 }
+
+extension BudgetItemID: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}

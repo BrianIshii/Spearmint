@@ -14,6 +14,7 @@ class TransactionView: UIView {
     @IBOutlet weak var vendorTextField: VendorTextField!
     @IBOutlet weak var dateTextField: DateTextField!
     @IBOutlet weak var categoryButton: UIButton!
+    @IBOutlet weak var categoryTextView: BudgetItemTextView!
     @IBOutlet weak var tagTextView: TagTextView!
     @IBOutlet weak var deleteTransactionButton: UIButton!
     @IBOutlet weak var tagTextViewHeight: NSLayoutConstraint!
@@ -29,7 +30,12 @@ class TransactionView: UIView {
             self.moneyTextField.text = Currency.currencyFormatter(transaction.amount)
             self.vendorTextField.text = transaction.vendor
             self.dateTextField.text = transaction.date.medium
-            self.categoryButton.setTitle(transaction.items.keys.first, for: UIControl.State.normal)
+            if let budgetItemID = transaction.items.keys.first {
+                let budgetItem = LocalAccess.budgetItemStore.getBudgetItem(budgetItemID)
+                self.categoryButton.setTitle(budgetItem?.name, for: UIControl.State.normal)
+            } else {
+                self.categoryButton.setTitle("Category", for: UIControl.State.normal)
+            }
             self.tagTextView.tags = transaction.tags
             self.tagTextView.createTagViews()
             self.deleteTransactionButton.isHidden = false
@@ -59,8 +65,6 @@ class TransactionView: UIView {
         self.subviews.first?.layer.shadowColor = UIColor.black.cgColor
         self.deleteTransactionButton.isHidden = true
         self.tagTextView.tagTextViewDelegate = self
-        self.tagTextView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
-        self.tagTextView.layer.cornerRadius = 5
         tagTextViewHeight.constant = (tagTextView.padding +
                                         tagTextView.padding +
             " ".size(withAttributes: [NSAttributedString.Key.font: UIFont(name:"verdana", size: 13.0)!]).height +

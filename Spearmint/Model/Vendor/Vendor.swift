@@ -10,7 +10,10 @@ import Foundation
 
 class Vendor: Saveable {
     let vendorID: VendorID
+    
     var name: String
+    var budgetCategory: BudgetItemCategory?
+    var budgetItemName: String?
     var transactionIDs: [TransactionID]
     
     init(name: String) {
@@ -21,5 +24,9 @@ class Vendor: Saveable {
     
     func addTransaction(_ transaction: Transaction) {
         transactionIDs.append(transaction.id)
+    }
+    
+    var ID: String {
+        return vendorID.id
     }
 }

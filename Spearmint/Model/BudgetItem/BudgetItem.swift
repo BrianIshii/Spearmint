@@ -10,9 +10,6 @@ import Foundation
 
 class BudgetItem: Saveable, Hashable {
     var id: BudgetItemID
-    var ID: String {
-        return id.id
-    }
     var name: String
     var category: BudgetItemCategory
     var planned: Float
@@ -115,6 +112,10 @@ class BudgetItem: Saveable, Hashable {
 //        
 //        return expensiveItem
 //    }
+    
+    var ID: String {
+        return id.id
+    }
     
     static func == (lhs: BudgetItem, rhs: BudgetItem) -> Bool {
         return lhs.id == rhs.id
