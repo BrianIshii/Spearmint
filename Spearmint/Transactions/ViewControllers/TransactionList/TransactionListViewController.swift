@@ -58,7 +58,7 @@ class TransactionListViewController: UIViewController {
         // Pass the selected object to the new view controller.
         guard let dataSource = dataSource else { return }
         
-        if segue.identifier == "selectTransaction" {
+        if segue.identifier == TransactionSegue.segueIdentifier {
             if let destination = segue.destination as? TransactionViewController {
                 let transaction = dataSource.transactions[transactionTableView.indexPathForSelectedRow!.row]
                 destination.transaction = transaction
@@ -85,7 +85,7 @@ extension TransactionListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "selectTransaction", sender: nil)
+        performSegue(withIdentifier: TransactionSegue.segueIdentifier, sender: nil)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

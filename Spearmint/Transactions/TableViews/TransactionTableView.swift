@@ -32,6 +32,6 @@ extension TransactionTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let transactionTableViewDelegate = transactionTableViewDelegate else { return }
         
-        transactionTableViewDelegate.performSegue(withIdentifier: "selectTransaction", sender: nil)
+        transactionTableViewDelegate.performSegue(withIdentifier: TransactionSegue.segueIdentifier, sender: nil)
     }
 }

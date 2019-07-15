@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddTransactionSegue: UIStoryboardSegue, SegueIdentifier {
+class AddTransactionSegueOld: UIStoryboardSegue, SegueIdentifier {
 
     override init(identifier: String?, source: UIViewController, destination: UIViewController) {
         if identifier != nil {

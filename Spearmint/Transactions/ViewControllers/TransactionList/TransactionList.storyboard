@@ -28,7 +28,7 @@
                                     <navigationItem title="Transactions" id="SdG-49-imA">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lRL-hz-TJX">
                                             <connections>
-                                                <segue destination="HFl-Hy-Huk" kind="presentation" modalPresentationStyle="overCurrentContext" id="4qp-Xw-kvT"/>
+                                                <segue destination="HFl-Hy-Huk" kind="presentation" identifier="AddTransactionSegue" modalPresentationStyle="overCurrentContext" id="4qp-Xw-kvT"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -52,7 +52,7 @@
                     <connections>
                         <outlet property="navigationBar" destination="ych-wy-2jV" id="Vbp-Tk-Qzj"/>
                         <outlet property="transactionTableView" destination="BpP-Mv-zuI" id="3ot-Pk-J4P"/>
-                        <segue destination="YtV-gh-2Jk" kind="presentation" identifier="selectTransaction" modalPresentationStyle="overCurrentContext" id="Su1-GC-wnw"/>
+                        <segue destination="YtV-gh-2Jk" kind="presentation" identifier="TransactionSegue" modalPresentationStyle="overCurrentContext" id="Su1-GC-wnw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Dd-U0-pQV" userLabel="First Responder" sceneMemberID="firstResponder"/>

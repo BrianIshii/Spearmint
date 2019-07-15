@@ -54,7 +54,7 @@
                     <connections>
                         <outlet property="budgetItemView" destination="Z8p-vY-fv7" id="z8I-ld-gI3"/>
                         <outlet property="saveButton" destination="PlH-Hx-X5f" id="jqs-cX-mIN"/>
-                        <segue destination="rMj-oW-jmU" kind="show" identifier="selectTransaction" id="8Uj-qX-e61"/>
+                        <segue destination="rMj-oW-jmU" kind="show" identifier="TransactionSegue" id="8Uj-qX-e61"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7cp-8h-7jz" userLabel="First Responder" sceneMemberID="firstResponder"/>
