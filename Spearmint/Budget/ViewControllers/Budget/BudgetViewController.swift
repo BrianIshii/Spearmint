@@ -14,8 +14,10 @@ class BudgetViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var budgetButton: UIButton!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    fileprivate var budgetTableViewContoller: BudgetTableViewController?
-    
+    @IBOutlet weak var budgetItemTableView: BudgetItemTableView!
+    //fileprivate var budgetTableViewContoller: BudgetTableViewController?
+    private var dataSource: BudgetDataSource?
+
     var budgets: [Budget] = []
     
     override func viewDidLoad() {
@@ -35,6 +37,9 @@ class BudgetViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        dataSource = BudgetDataSource(tableView: budgetItemTableView)
+        budgetItemTableView.reloadData()
+
         print(DateFormatterFactory.YearAndMonthFormatter.string(from: Date()))
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -48,12 +53,12 @@ class BudgetViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        if let viewController = budgetTableViewContoller, BudgetStore.budgetViewControllerNeedsUpdate {
-            budgets = BudgetStore.budgets
-            collectionView.reloadData()
-            viewController.tableView.reloadData()
-            BudgetStore.budgetViewControllerNeedsUpdate = false
-        }
+//        if let viewController = budgetTableViewContoller, BudgetStore.budgetViewControllerNeedsUpdate {
+//            budgets = BudgetStore.budgets
+//            collectionView.reloadData()
+//            //viewController.tableView.reloadData()
+//            BudgetStore.budgetViewControllerNeedsUpdate = false
+//        }
     }
     
 
@@ -66,9 +71,9 @@ class BudgetViewController: UIViewController {
         // Pass the selected object to the new view controller.
         let destination = segue.destination
         
-        if let vc = destination as? BudgetTableViewController {
-            budgetTableViewContoller = vc
-        }
+//        if let vc = destination as? BudgetTableViewController {
+//            budgetTableViewContoller = vc
+//        }
     }
     
     @IBAction func toggleSelectBudget(_ sender: UIButton) {
@@ -76,24 +81,24 @@ class BudgetViewController: UIViewController {
     }
     
     @IBAction func rearrangeButtonPressed(_ sender: UIBarButtonItem) {
-        if let budgetTableView = budgetTableViewContoller {
-            if sender.title == "Rearrange" {
-                sender.title = "Done"
-                budgetButton.isEnabled = false
-            } else {
-                sender.title = "Rearrange"
-                budgetTableView.updateBudgetItemSections()
-                budgetButton.isEnabled = true
-            }
-            
-            budgetTableView.toggleRearrangingSections()
-        }
+//        if let budgetTableView = budgetTableViewContoller {
+//            if sender.title == "Rearrange" {
+//                sender.title = "Done"
+//                budgetButton.isEnabled = false
+//            } else {
+//                sender.title = "Rearrange"
+//                budgetTableView.updateBudgetItemSections()
+//                budgetButton.isEnabled = true
+//            }
+//
+//            budgetTableView.toggleRearrangingSections()
+//        }
     }
     
     @IBAction func unwindToBudgetItems(sender: UIStoryboardSegue) {
-        if let source = sender.source as? AddBudgetItemViewController, let budgetItem = source.budgetItem {
-            budgetTableViewContoller!.addBudgetItem(budgetItem)
-        }
+//        if let source = sender.source as? AddBudgetItemViewController, let budgetItem = source.budgetItem {
+//            //budgetTableViewContoller!.addBudgetItem(budgetItem)
+//        }
     }
 }
 
@@ -123,11 +128,11 @@ extension BudgetViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let budgetTableView = budgetTableViewContoller {
-            budgetTableView.updateBudget(budget: budgets[indexPath.row])
-            
-        }
-        collectionView.isHidden = true
-        budgetButton.setTitle(budgets[indexPath.row].month, for: .normal)
+//        if let budgetTableView = budgetTableViewContoller {
+//            budgetTableView.updateBudget(budget: budgets[indexPath.row])
+//            
+//        }
+//        collectionView.isHidden = true
+//        budgetButton.setTitle(budgets[indexPath.row].month, for: .normal)
     }
 }

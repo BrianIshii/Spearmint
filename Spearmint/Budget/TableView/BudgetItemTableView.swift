@@ -10,12 +10,25 @@ import UIKit
 
 class BudgetItemTableView: UITableView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    var budgetItemTableViewDelegate: BudgetItemTableViewDelegate?
+    
+    override init(frame: CGRect, style: UITableView.Style) {
+        self.budgetItemTableViewDelegate = nil
+        super.init(frame: frame, style: style)
+        initialize()
     }
-    */
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.budgetItemTableViewDelegate = nil
+        super.init(coder: aDecoder)
+        initialize()
+    }
+    
+    fileprivate func initialize() {
+        self.delegate = self
+    }
+}
 
+extension BudgetItemTableView: UITableViewDelegate {
+    
 }

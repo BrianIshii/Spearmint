@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ksr-wo-JLa">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Budgets-->
+        <scene sceneID="juM-ll-cBP">
+            <objects>
+                <viewController id="ksr-wo-JLa" customClass="BudgetViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yap-Ap-xvU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qAT-89-MqW">
+                                <rect key="frame" x="0.0" y="88" width="414" height="29"/>
+                                <segments>
+                                    <segment title="Planned"/>
+                                    <segment title="Current"/>
+                                </segments>
+                            </segmentedControl>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdj-RZ-s11">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem id="HY0-A2-Pa6">
+                                        <nil key="title"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Rearrange" id="ayA-KO-U0p">
+                                            <connections>
+                                                <action selector="rearrangeButtonPressed:" destination="ksr-wo-JLa" id="j4a-xW-AjX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eoD-cT-7lw">
+                                            <rect key="frame" x="124.5" y="7" width="165" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Month"/>
+                                            <connections>
+                                                <action selector="toggleSelectBudget:" destination="ksr-wo-JLa" eventType="touchUpInside" id="pKk-oM-Ok1"/>
+                                            </connections>
+                                        </button>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="K1v-zn-U2r">
+                                            <connections>
+                                                <segue destination="e86-m2-cLc" kind="presentation" id="hJc-Mb-1wq"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ATC-2c-Ire">
+                                <rect key="frame" x="0.0" y="86" width="414" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="GbB-2S-0W0"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="noE-Qe-GmP">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HPJ-FS-ZT4" customClass="BudgetItemTableView" customModule="Spearmint" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="84" width="414" height="729"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ATC-2c-Ire" firstAttribute="width" secondItem="voc-Te-H7N" secondAttribute="width" id="8QV-9a-n7f"/>
+                            <constraint firstItem="vdj-RZ-s11" firstAttribute="top" secondItem="voc-Te-H7N" secondAttribute="top" id="8x5-H1-UON"/>
+                            <constraint firstItem="HPJ-FS-ZT4" firstAttribute="top" secondItem="vdj-RZ-s11" secondAttribute="bottom" constant="-4" id="BlY-il-HKF"/>
+                            <constraint firstItem="ATC-2c-Ire" firstAttribute="leading" secondItem="voc-Te-H7N" secondAttribute="trailing" constant="-414" id="GBa-Ec-buB"/>
+                            <constraint firstItem="qAT-89-MqW" firstAttribute="width" secondItem="yap-Ap-xvU" secondAttribute="width" id="Ioz-3H-A25"/>
+                            <constraint firstItem="HPJ-FS-ZT4" firstAttribute="centerX" secondItem="voc-Te-H7N" secondAttribute="centerX" id="J8f-yc-MGW"/>
+                            <constraint firstItem="vdj-RZ-s11" firstAttribute="width" secondItem="yap-Ap-xvU" secondAttribute="width" id="SnT-Hk-yAG"/>
+                            <constraint firstItem="ATC-2c-Ire" firstAttribute="top" secondItem="vdj-RZ-s11" secondAttribute="bottom" constant="-2" id="Xsz-or-16A"/>
+                            <constraint firstItem="vdj-RZ-s11" firstAttribute="centerX" secondItem="voc-Te-H7N" secondAttribute="centerX" id="dV2-Jb-cIS"/>
+                            <constraint firstItem="qAT-89-MqW" firstAttribute="centerX" secondItem="voc-Te-H7N" secondAttribute="centerX" id="edx-Vp-cZL"/>
+                            <constraint firstItem="HPJ-FS-ZT4" firstAttribute="width" secondItem="yap-Ap-xvU" secondAttribute="width" id="j68-sl-Shc"/>
+                            <constraint firstItem="voc-Te-H7N" firstAttribute="bottom" secondItem="HPJ-FS-ZT4" secondAttribute="bottom" id="lJS-1n-8Ll"/>
+                            <constraint firstItem="qAT-89-MqW" firstAttribute="top" secondItem="vdj-RZ-s11" secondAttribute="bottom" id="ycr-bE-bao"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="voc-Te-H7N"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Budgets" id="o24-QX-onU"/>
+                    <navigationItem key="navigationItem" id="NGZ-YZ-16b">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="cpf-0W-7Gg"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="ck4-LU-mIr"/>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="budgetButton" destination="eoD-cT-7lw" id="hrp-KO-hGL"/>
+                        <outlet property="budgetItemTableView" destination="HPJ-FS-ZT4" id="AjV-N7-wVh"/>
+                        <outlet property="collectionView" destination="ATC-2c-Ire" id="dMt-PI-h9x"/>
+                        <outlet property="segmentedControl" destination="qAT-89-MqW" id="SKn-I7-Voz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tCA-S9-1q7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1167" y="-109"/>
+        </scene>
+        <!--AddBudgetItem-->
+        <scene sceneID="xpz-zW-kHN">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddBudgetItem" id="e86-m2-cLc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3ci-f6-Oje" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1981" y="-109"/>
+        </scene>
+        <!--UITableViewController-UwO-hn-kn1-->
+        <scene sceneID="IbZ-p0-oJ4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Budget" referencedIdentifier="UITableViewController-UwO-hn-kn1" id="8rB-7d-dIR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vd7-Zy-QHj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1983" y="-714"/>
+        </scene>
+    </scenes>
+</document>

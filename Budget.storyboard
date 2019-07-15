@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ksr-wo-JLa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,109 +10,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Budgets-->
-        <scene sceneID="juM-ll-cBP">
-            <objects>
-                <viewController id="ksr-wo-JLa" customClass="BudgetViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="yap-Ap-xvU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qAT-89-MqW">
-                                <rect key="frame" x="0.0" y="88" width="414" height="29"/>
-                                <segments>
-                                    <segment title="Planned"/>
-                                    <segment title="Current"/>
-                                </segments>
-                            </segmentedControl>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdj-RZ-s11">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <items>
-                                    <navigationItem id="HY0-A2-Pa6">
-                                        <nil key="title"/>
-                                        <barButtonItem key="leftBarButtonItem" title="Rearrange" id="ayA-KO-U0p">
-                                            <connections>
-                                                <action selector="rearrangeButtonPressed:" destination="ksr-wo-JLa" id="j4a-xW-AjX"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eoD-cT-7lw">
-                                            <rect key="frame" x="124.5" y="7" width="165" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Month"/>
-                                            <connections>
-                                                <action selector="toggleSelectBudget:" destination="ksr-wo-JLa" eventType="touchUpInside" id="pKk-oM-Ok1"/>
-                                            </connections>
-                                        </button>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="K1v-zn-U2r">
-                                            <connections>
-                                                <segue destination="e86-m2-cLc" kind="presentation" id="hJc-Mb-1wq"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N4a-kd-Lue">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <connections>
-                                    <segue destination="UwO-hn-kn1" kind="embed" id="kwQ-6z-4j2"/>
-                                </connections>
-                            </containerView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ATC-2c-Ire">
-                                <rect key="frame" x="0.0" y="86" width="414" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="GbB-2S-0W0"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="noE-Qe-GmP">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="N4a-kd-Lue" firstAttribute="width" secondItem="yap-Ap-xvU" secondAttribute="width" id="0Qc-Ic-4uZ"/>
-                            <constraint firstItem="N4a-kd-Lue" firstAttribute="top" secondItem="vdj-RZ-s11" secondAttribute="bottom" id="1hI-Yi-UOs"/>
-                            <constraint firstItem="ATC-2c-Ire" firstAttribute="width" secondItem="voc-Te-H7N" secondAttribute="width" id="8QV-9a-n7f"/>
-                            <constraint firstItem="vdj-RZ-s11" firstAttribute="top" secondItem="voc-Te-H7N" secondAttribute="top" id="8x5-H1-UON"/>
-                            <constraint firstItem="voc-Te-H7N" firstAttribute="bottom" secondItem="N4a-kd-Lue" secondAttribute="bottom" id="CXG-Yy-6ij"/>
-                            <constraint firstItem="ATC-2c-Ire" firstAttribute="leading" secondItem="voc-Te-H7N" secondAttribute="trailing" constant="-414" id="GBa-Ec-buB"/>
-                            <constraint firstItem="qAT-89-MqW" firstAttribute="width" secondItem="yap-Ap-xvU" secondAttribute="width" id="Ioz-3H-A25"/>
-                            <constraint firstItem="vdj-RZ-s11" firstAttribute="width" secondItem="yap-Ap-xvU" secondAttribute="width" id="SnT-Hk-yAG"/>
-                            <constraint firstItem="ATC-2c-Ire" firstAttribute="top" secondItem="vdj-RZ-s11" secondAttribute="bottom" constant="-2" id="Xsz-or-16A"/>
-                            <constraint firstItem="vdj-RZ-s11" firstAttribute="centerX" secondItem="voc-Te-H7N" secondAttribute="centerX" id="dV2-Jb-cIS"/>
-                            <constraint firstItem="N4a-kd-Lue" firstAttribute="centerX" secondItem="voc-Te-H7N" secondAttribute="centerX" id="e6m-6N-1cE"/>
-                            <constraint firstItem="qAT-89-MqW" firstAttribute="centerX" secondItem="voc-Te-H7N" secondAttribute="centerX" id="edx-Vp-cZL"/>
-                            <constraint firstItem="qAT-89-MqW" firstAttribute="top" secondItem="vdj-RZ-s11" secondAttribute="bottom" id="ycr-bE-bao"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="voc-Te-H7N"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Budgets" id="o24-QX-onU"/>
-                    <navigationItem key="navigationItem" id="NGZ-YZ-16b">
-                        <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="cpf-0W-7Gg"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="ck4-LU-mIr"/>
-                    </navigationItem>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="budgetButton" destination="eoD-cT-7lw" id="hrp-KO-hGL"/>
-                        <outlet property="collectionView" destination="ATC-2c-Ire" id="dMt-PI-h9x"/>
-                        <outlet property="segmentedControl" destination="qAT-89-MqW" id="SKn-I7-Voz"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tCA-S9-1q7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1167" y="-109"/>
-        </scene>
         <!--Budget Item View Controller-->
         <scene sceneID="mNw-oG-IZm">
             <objects>
                 <viewController id="tsT-m5-R9F" customClass="BudgetItemViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xEr-aU-xHe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7h-Lo-Kh7">
@@ -133,7 +36,7 @@
                                 </items>
                             </navigationBar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Jm-aq-PWm">
-                                <rect key="frame" x="0.0" y="88" width="414" height="603"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <connections>
                                     <segue destination="9Fi-TT-rsW" kind="embed" id="0Be-7r-Wbj"/>
                                 </connections>
@@ -163,9 +66,9 @@
         <!--Budget Table View Controller-->
         <scene sceneID="1TN-yf-MdS">
             <objects>
-                <tableViewController id="UwO-hn-kn1" customClass="BudgetTableViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="UITableViewController-UwO-hn-kn1" id="UwO-hn-kn1" customClass="BudgetTableViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CCL-v5-c0i" customClass="BudgetItemListTableView" customModule="Spearmint" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -196,7 +99,7 @@
             <objects>
                 <viewController id="9Fi-TT-rsW" customClass="AddBudgetItemSectionViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w8D-Gt-0gW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bov-4m-cn2">

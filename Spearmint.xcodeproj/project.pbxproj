@@ -15,7 +15,7 @@
 		763275C822A836FB0099532A /* AddItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763275C622A836FB0099532A /* AddItemTableViewCell.xib */; };
 		76330A1222AD8E6100F68952 /* SummaryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76330A1122AD8E6100F68952 /* SummaryPickerViewController.swift */; };
 		7637A60D22862B6B007DD20B /* BudgetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637A60C22862B6B007DD20B /* BudgetStore.swift */; };
-		7637A61022864DBF007DD20B /* Budget.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7637A60E22864DBF007DD20B /* Budget.storyboard */; };
+		7637A61022864DBF007DD20B /* BudgetOld.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7637A60E22864DBF007DD20B /* BudgetOld.storyboard */; };
 		7637A61422864F23007DD20B /* BudgetItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7637A61322864F23007DD20B /* BudgetItemTableViewCell.xib */; };
 		7637A61622864FC5007DD20B /* BudgetItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637A61522864FC5007DD20B /* BudgetItemTableViewCell.swift */; };
 		7637A618228653E7007DD20B /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637A617228653E7007DD20B /* BudgetViewController.swift */; };
@@ -101,7 +101,7 @@
 		76B0635422DB142F007BBDD5 /* BudgetItemTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0635322DB142F007BBDD5 /* BudgetItemTextViewDelegate.swift */; };
 		76B0635922DB24AA007BBDD5 /* BudgetItemAndTagTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0635822DB24AA007BBDD5 /* BudgetItemAndTagTextView.swift */; };
 		76B0635B22DBCD13007BBDD5 /* BudgetItemTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0635A22DBCD13007BBDD5 /* BudgetItemTableView.swift */; };
-		76B0635D22DBCDA6007BBDD5 /* BudgetDateSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0635C22DBCDA6007BBDD5 /* BudgetDateSource.swift */; };
+		76B0635D22DBCDA6007BBDD5 /* BudgetDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0635C22DBCDA6007BBDD5 /* BudgetDataSource.swift */; };
 		76B0635F22DBD5CC007BBDD5 /* BudgetItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0635E22DBD5CC007BBDD5 /* BudgetItemView.swift */; };
 		76B0636122DBD5DE007BBDD5 /* BudgetItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76B0636022DBD5DE007BBDD5 /* BudgetItemView.xib */; };
 		76B0636522DBE45C007BBDD5 /* TransactionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0636422DBE45C007BBDD5 /* TransactionTableView.swift */; };
@@ -109,6 +109,9 @@
 		76B0636922DBEAAC007BBDD5 /* TransactionTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0636822DBEAAC007BBDD5 /* TransactionTableViewDelegate.swift */; };
 		76B0636B22DBF06F007BBDD5 /* TransactionSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0636A22DBF06F007BBDD5 /* TransactionSegue.swift */; };
 		76B0636D22DC58C6007BBDD5 /* AddTransactionSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0636C22DC58C6007BBDD5 /* AddTransactionSegue.swift */; };
+		76B0637022DC5B76007BBDD5 /* BudgetItemTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0636F22DC5B76007BBDD5 /* BudgetItemTableViewDelegate.swift */; };
+		76B0637422DC5D92007BBDD5 /* Budget.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76B0637322DC5D91007BBDD5 /* Budget.storyboard */; };
+		76B0637622DC5DB9007BBDD5 /* BudgetNew.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76B0637522DC5DB9007BBDD5 /* BudgetNew.storyboard */; };
 		76B548BB22913069001B2FB1 /* CurrenyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BA22913069001B2FB1 /* CurrenyTests.swift */; };
 		76B548BD229135DE001B2FB1 /* LocalAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BC229135DE001B2FB1 /* LocalAccess.swift */; };
 		76B548C022913DB4001B2FB1 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */; };
@@ -196,7 +199,7 @@
 		763275C622A836FB0099532A /* AddItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddItemTableViewCell.xib; sourceTree = "<group>"; };
 		76330A1122AD8E6100F68952 /* SummaryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPickerViewController.swift; sourceTree = "<group>"; };
 		7637A60C22862B6B007DD20B /* BudgetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetStore.swift; sourceTree = "<group>"; };
-		7637A60F22864DBF007DD20B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Spearmint/Base.lproj/Budget.storyboard; sourceTree = "<group>"; };
+		7637A60F22864DBF007DD20B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Spearmint/Base.lproj/BudgetOld.storyboard; sourceTree = "<group>"; };
 		7637A61322864F23007DD20B /* BudgetItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BudgetItemTableViewCell.xib; sourceTree = "<group>"; };
 		7637A61522864FC5007DD20B /* BudgetItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemTableViewCell.swift; sourceTree = "<group>"; };
 		7637A617228653E7007DD20B /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
@@ -288,7 +291,7 @@
 		76B0635322DB142F007BBDD5 /* BudgetItemTextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetItemTextViewDelegate.swift; sourceTree = "<group>"; };
 		76B0635822DB24AA007BBDD5 /* BudgetItemAndTagTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemAndTagTextView.swift; sourceTree = "<group>"; };
 		76B0635A22DBCD13007BBDD5 /* BudgetItemTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemTableView.swift; sourceTree = "<group>"; };
-		76B0635C22DBCDA6007BBDD5 /* BudgetDateSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDateSource.swift; sourceTree = "<group>"; };
+		76B0635C22DBCDA6007BBDD5 /* BudgetDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDataSource.swift; sourceTree = "<group>"; };
 		76B0635E22DBD5CC007BBDD5 /* BudgetItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemView.swift; sourceTree = "<group>"; };
 		76B0636022DBD5DE007BBDD5 /* BudgetItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BudgetItemView.xib; sourceTree = "<group>"; };
 		76B0636422DBE45C007BBDD5 /* TransactionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableView.swift; sourceTree = "<group>"; };
@@ -296,6 +299,9 @@
 		76B0636822DBEAAC007BBDD5 /* TransactionTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewDelegate.swift; sourceTree = "<group>"; };
 		76B0636A22DBF06F007BBDD5 /* TransactionSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSegue.swift; sourceTree = "<group>"; };
 		76B0636C22DC58C6007BBDD5 /* AddTransactionSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionSegue.swift; sourceTree = "<group>"; };
+		76B0636F22DC5B76007BBDD5 /* BudgetItemTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemTableViewDelegate.swift; sourceTree = "<group>"; };
+		76B0637322DC5D91007BBDD5 /* Budget.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Budget.storyboard; sourceTree = SOURCE_ROOT; };
+		76B0637522DC5DB9007BBDD5 /* BudgetNew.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BudgetNew.storyboard; sourceTree = "<group>"; };
 		76B548BA22913069001B2FB1 /* CurrenyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenyTests.swift; sourceTree = "<group>"; };
 		76B548BC229135DE001B2FB1 /* LocalAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAccess.swift; sourceTree = "<group>"; };
 		76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
@@ -751,6 +757,24 @@
 			path = AddBudgetItem;
 			sourceTree = "<group>";
 		};
+		76B0636E22DC5B58007BBDD5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				76B0636F22DC5B76007BBDD5 /* BudgetItemTableViewDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		76B0637222DC5C73007BBDD5 /* Budget */ = {
+			isa = PBXGroup;
+			children = (
+				76B0637322DC5D91007BBDD5 /* Budget.storyboard */,
+				76B0637522DC5DB9007BBDD5 /* BudgetNew.storyboard */,
+				7637A617228653E7007DD20B /* BudgetViewController.swift */,
+			);
+			path = Budget;
+			sourceTree = "<group>";
+		};
 		76B548BE22913D92001B2FB1 /* Protocols and Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -767,7 +791,8 @@
 		76B548C3229141B9001B2FB1 /* Budget */ = {
 			isa = PBXGroup;
 			children = (
-				7637A60E22864DBF007DD20B /* Budget.storyboard */,
+				76B0636E22DC5B58007BBDD5 /* Protocols */,
+				7637A60E22864DBF007DD20B /* BudgetOld.storyboard */,
 				76EF34612299DBA6005A5C35 /* Views */,
 				76B548ED2295366B001B2FB1 /* DataSource */,
 				7637A6362288AF46007DD20B /* TableView */,
@@ -780,8 +805,8 @@
 		76B548C4229141C3001B2FB1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				76B0637222DC5C73007BBDD5 /* Budget */,
 				76B0636322DBE01D007BBDD5 /* AddBudgetItem */,
-				7637A617228653E7007DD20B /* BudgetViewController.swift */,
 				76B548E7229533F9001B2FB1 /* BudgetItemViewController.swift */,
 				76B548EB229535F0001B2FB1 /* BudgetTableViewController.swift */,
 				76EF34642299E029005A5C35 /* AddBudgetItemSectionViewController.swift */,
@@ -957,7 +982,7 @@
 			isa = PBXGroup;
 			children = (
 				76B548EE22953685001B2FB1 /* BudgetDataSourceOld.swift */,
-				76B0635C22DBCDA6007BBDD5 /* BudgetDateSource.swift */,
+				76B0635C22DBCDA6007BBDD5 /* BudgetDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -1177,10 +1202,11 @@
 				764AFD8F226E7061007BFD90 /* Assets.xcassets in Resources */,
 				76B0633022DACA2B007BBDD5 /* Tag.storyboard in Resources */,
 				76B0636122DBD5DE007BBDD5 /* BudgetItemView.xib in Resources */,
+				76B0637422DC5D92007BBDD5 /* Budget.storyboard in Resources */,
 				7637A647228920BA007DD20B /* ItemTableViewCell.xib in Resources */,
 				7637A61C22868C6D007DD20B /* BudgetCollectionViewCell.xib in Resources */,
 				76D22F7A229A0E1900C06567 /* Account.storyboard in Resources */,
-				7637A61022864DBF007DD20B /* Budget.storyboard in Resources */,
+				7637A61022864DBF007DD20B /* BudgetOld.storyboard in Resources */,
 				76F4238622C99E1300E7B868 /* AddTransactionFieldTableViewCell.xib in Resources */,
 				7637A62B2287EB1E007DD20B /* Summary.storyboard in Resources */,
 				76A2FA5C2281FAE90066D594 /* VendorTableViewCell.xib in Resources */,
@@ -1189,6 +1215,7 @@
 				76EF345C2298D31E005A5C35 /* AddTransactionImage.storyboard in Resources */,
 				76EF345622986CD8005A5C35 /* GoogleService-Info.plist in Resources */,
 				764AFD8D226E7060007BFD90 /* Main.storyboard in Resources */,
+				76B0637622DC5DB9007BBDD5 /* BudgetNew.storyboard in Resources */,
 				76D22F78229A0DF100C06567 /* Analysis.storyboard in Resources */,
 				76A2FA582281F94E0066D594 /* DateTableViewCell.xib in Resources */,
 				76A2FA5A2281FA430066D594 /* AmountTableViewCell.xib in Resources */,
@@ -1343,7 +1370,7 @@
 				76B0632022DA7EDC007BBDD5 /* TransactionObserver.swift in Sources */,
 				763275C722A836FB0099532A /* AddItemTableViewCell.swift in Sources */,
 				763275BF22A59FF20099532A /* ImageFrameView.swift in Sources */,
-				76B0635D22DBCDA6007BBDD5 /* BudgetDateSource.swift in Sources */,
+				76B0635D22DBCDA6007BBDD5 /* BudgetDataSource.swift in Sources */,
 				76EF34602298F8AF005A5C35 /* AddBudgetItemViewController.swift in Sources */,
 				76B548C022913DB4001B2FB1 /* ConfigurableCell.swift in Sources */,
 				7637A62E2287EE4D007DD20B /* MoneyTextField.swift in Sources */,
@@ -1378,6 +1405,7 @@
 				7632756D229F08930099532A /* VendorTextField.swift in Sources */,
 				764AFD88226E7060007BFD90 /* AppDelegate.swift in Sources */,
 				76A2FA4C2280B4300066D594 /* TransactionTableViewCell.swift in Sources */,
+				76B0637022DC5B76007BBDD5 /* BudgetItemTableViewDelegate.swift in Sources */,
 				76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */,
 				76B0635922DB24AA007BBDD5 /* BudgetItemAndTagTextView.swift in Sources */,
 				7637A60D22862B6B007DD20B /* BudgetStore.swift in Sources */,
@@ -1460,12 +1488,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7637A60E22864DBF007DD20B /* Budget.storyboard */ = {
+		7637A60E22864DBF007DD20B /* BudgetOld.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				7637A60F22864DBF007DD20B /* Base */,
 			);
-			name = Budget.storyboard;
+			name = BudgetOld.storyboard;
 			sourceTree = "<group>";
 		};
 		7637A6292287EB1E007DD20B /* Summary.storyboard */ = {

@@ -40,10 +40,10 @@
             </objects>
             <point key="canvasLocation" x="-896" y="715"/>
         </scene>
-        <!--Budget-->
+        <!--BudgetNew-->
         <scene sceneID="8o7-hm-GDX">
             <objects>
-                <viewControllerPlaceholder storyboardName="Budget" id="gqB-TF-H7b" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="BudgetNew" id="gqB-TF-H7b" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="X8l-KS-ODb"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sWJ-nx-POz" userLabel="First Responder" sceneMemberID="firstResponder"/>
