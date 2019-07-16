@@ -156,6 +156,20 @@ extension TagTextView: UITextViewDelegate {
             return false
         }
         
+        if text == "" {
+            if self.tags[tagCount - 1].count == 0 {
+                self.tags.remove(at: tagCount - 1)
+                tagCount -= 1
+                createTagViews()
+                return false
+            }
+            
+            let string = self.tags[tagCount - 1].prefix(self.tags[tagCount - 1].count - 1)
+            self.tags[tagCount - 1] = String(string)
+            createTagViews()
+            return false
+        }
+        
         self.tags[tagCount - 1] += text
         createTagViews()
         return false
