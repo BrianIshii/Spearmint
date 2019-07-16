@@ -30,5 +30,9 @@ class BudgetItemTableView: UITableView {
 }
 
 extension BudgetItemTableView: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let budgetItemTableViewDelegate = budgetItemTableViewDelegate else { return }
+        
+        budgetItemTableViewDelegate.performSegue(withIdentifier: BudgetItemSegue.SegueIdentifier, sender: nil)
+    }
 }

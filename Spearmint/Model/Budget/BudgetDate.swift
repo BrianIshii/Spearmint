@@ -10,10 +10,11 @@ import Foundation
 
 class BudgetDate: BaseDate, SaveableKey {
     static func == (lhs: BudgetDate, rhs: BudgetDate) -> Bool {
-        return lhs.dateString == rhs.dateString
+        return lhs.month == rhs.month && lhs.year == rhs.year
     }
 
     func hash(into hasher: inout Hasher) {
-        hasher.combine(dateString)
+        hasher.combine(month)
+        hasher.combine(year)
     }
 }

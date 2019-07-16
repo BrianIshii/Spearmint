@@ -9,11 +9,11 @@
 import Foundation
 
 protocol SegueIdentifier: class {
-    static var segueIdentifier: String { get }
+    static var SegueIdentifier: String { get }
 }
 
 extension SegueIdentifier {
-    static var segueIdentifier: String {
+    static var SegueIdentifier: String {
         return "\(self)"
     }
 }

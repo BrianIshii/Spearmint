@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Budget Item View Controller-->
+        <!--Budget Item View Controller Old-->
         <scene sceneID="mNw-oG-IZm">
             <objects>
-                <viewController id="tsT-m5-R9F" customClass="BudgetItemViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tsT-m5-R9F" customClass="BudgetItemViewControllerOld" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xEr-aU-xHe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

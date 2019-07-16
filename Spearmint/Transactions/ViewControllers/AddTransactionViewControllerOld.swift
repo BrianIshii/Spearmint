@@ -152,7 +152,7 @@ class AddTransactionViewControllerOld: UIViewController, UITextFieldDelegate {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         switch segue.identifier {
-        case AddBudgetItemSegue.segueIdentifier:
+        case AddBudgetItemSegue.SegueIdentifier:
             let date = dateTextField.text!
             
             if let vc = segue.destination as? AddBudgetItemsViewController {
@@ -303,7 +303,7 @@ extension AddTransactionViewControllerOld : UITableViewDelegate {
             switch indexPath.row {
             case rows.items.rawValue:
                 if (canAddItems) {
-                    performSegue(withIdentifier: AddBudgetItemSegue.segueIdentifier, sender: nil)
+                    performSegue(withIdentifier: AddBudgetItemSegue.SegueIdentifier, sender: nil)
                 }
             case rows.image.rawValue:
                 performSegue(withIdentifier: addImageViewSegueIdentifier, sender: self)

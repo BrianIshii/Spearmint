@@ -14,7 +14,7 @@ class ViewTransactionSegue: UIStoryboardSegue, SegueIdentifier {
         if let _ = identifier {
             super.init(identifier: identifier, source: source, destination: destination)
         } else {
-            super.init(identifier: ViewTransactionSegue.segueIdentifier, source: source, destination: destination)
+            super.init(identifier: ViewTransactionSegue.SegueIdentifier, source: source, destination: destination)
         }
         setUp()
     }

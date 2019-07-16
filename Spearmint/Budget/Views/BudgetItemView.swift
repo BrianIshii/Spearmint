@@ -35,6 +35,13 @@ class BudgetItemView: UIView {
         dataSource = TransactionDataSource(tableView: transactionTableView)
         transactionTableView.reloadData()
     }
+    
+    func addTransactions(transactions: [Transaction]) {
+        guard let dataSource = dataSource as? TransactionDataSource else { return }
+        
+        dataSource.transactions = transactions
+        transactionTableView.reloadData()
+    }
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

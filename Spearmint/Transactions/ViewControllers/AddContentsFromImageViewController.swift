@@ -107,7 +107,7 @@ class AddContentsFromImageViewController: UIViewController, UITextFieldDelegate 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if segue.identifier == AddBudgetItemSegue.segueIdentifier{
+        if segue.identifier == AddBudgetItemSegue.SegueIdentifier{
             if let vc = segue.destination as? AddBudgetItemsViewController {
                 vc.budgetDate = BudgetDate(Date())
             }
@@ -216,7 +216,7 @@ extension AddContentsFromImageViewController: UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             if (canAddItems) {
-                previousVC!.performSegue(withIdentifier: AddBudgetItemSegue.segueIdentifier, sender: nil)
+                previousVC!.performSegue(withIdentifier: AddBudgetItemSegue.SegueIdentifier, sender: nil)
             }
         } else {
             if let previous = previousIndexPath {

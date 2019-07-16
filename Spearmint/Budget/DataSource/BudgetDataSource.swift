@@ -27,6 +27,8 @@ class BudgetDataSource: NSObject {
             let b = Budget(BudgetDate(), items: LocalAccess.budgetItemStore.getBudgetItems())
             BudgetStore.addBudget(b)
             currentBudget = b
+        } else {
+            currentBudget = budget
         }
         
         tableView.reloadData()

@@ -13,7 +13,7 @@ class ViewBudgetItemSegue: UIStoryboardSegue, SegueIdentifier {
         if let _ = identifier {
             super.init(identifier: identifier, source: source, destination: destination)
         } else {
-            super.init(identifier: ViewBudgetItemSegue.segueIdentifier, source: source, destination: destination)
+            super.init(identifier: ViewBudgetItemSegue.SegueIdentifier, source: source, destination: destination)
         }
         setUp()
     }

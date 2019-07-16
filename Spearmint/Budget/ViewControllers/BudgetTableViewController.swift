@@ -147,7 +147,7 @@ class BudgetTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if let destination = segue.destination as? BudgetItemViewController {
+        if let destination = segue.destination as? BudgetItemViewControllerOld {
             destination.budgetItem = selectedBudgetItem!
             destination.tableView = self
         }

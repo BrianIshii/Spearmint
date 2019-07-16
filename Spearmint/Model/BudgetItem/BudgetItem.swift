@@ -15,7 +15,7 @@ class BudgetItem: Saveable, Hashable {
     var planned: Float
     var actual: Float
     var isActive: Bool
-    private var transactions: [BudgetDate: [TransactionID]]
+    var transactions: [BudgetDate: [TransactionID]]
     
     init(name: String, category: BudgetItemCategory, planned: Float) {
         self.id = BudgetItemID()

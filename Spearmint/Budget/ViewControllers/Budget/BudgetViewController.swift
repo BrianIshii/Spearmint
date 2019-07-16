@@ -38,6 +38,7 @@ class BudgetViewController: UIViewController {
         collectionView.dataSource = self
         
         dataSource = BudgetDataSource(tableView: budgetItemTableView)
+        budgetItemTableView.budgetItemTableViewDelegate = self
         budgetItemTableView.reloadData()
 
         print(DateFormatterFactory.YearAndMonthFormatter.string(from: Date()))
@@ -69,6 +70,11 @@ class BudgetViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if let destinationViewController = segue.destination as? BudgetItemViewController, let indexPath = budgetItemTableView.indexPathForSelectedRow {
+            let budgetItem = dataSource?.getBudgetItem(indexPath: indexPath)
+            destinationViewController.budgetItem = budgetItem
+        }
+        
         let destination = segue.destination
         
 //        if let vc = destination as? BudgetTableViewController {
@@ -100,6 +106,9 @@ class BudgetViewController: UIViewController {
 //            //budgetTableViewContoller!.addBudgetItem(budgetItem)
 //        }
     }
+}
+
+extension BudgetViewController: BudgetItemTableViewDelegate {
 }
 
 extension BudgetViewController: UICollectionViewDataSource, UICollectionViewDelegate {

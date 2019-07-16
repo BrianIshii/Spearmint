@@ -100,12 +100,27 @@
                         <outlet property="budgetItemTableView" destination="HPJ-FS-ZT4" id="AjV-N7-wVh"/>
                         <outlet property="collectionView" destination="ATC-2c-Ire" id="dMt-PI-h9x"/>
                         <outlet property="segmentedControl" destination="qAT-89-MqW" id="SKn-I7-Voz"/>
-                        <segue destination="m6T-4w-2Zt" kind="show" identifier="BudgetItemSegue" id="eDr-8f-1N4"/>
+                        <segue destination="EUU-gM-pg0" kind="show" id="eDr-8f-1N4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCA-S9-1q7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1167" y="-109"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="dUe-OA-qTi">
+            <objects>
+                <viewController id="EUU-gM-pg0" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G89-fk-NhW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="vhu-YE-IgS"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u1R-AF-cOY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2169" y="-94"/>
         </scene>
         <!--AddBudgetItem-->
         <scene sceneID="xpz-zW-kHN">
@@ -113,7 +128,7 @@
                 <viewControllerPlaceholder storyboardName="AddBudgetItem" id="e86-m2-cLc" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ci-f6-Oje" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2169" y="-127"/>
+            <point key="canvasLocation" x="1981" y="-109"/>
         </scene>
         <!--UITableViewController-UwO-hn-kn1-->
         <scene sceneID="IbZ-p0-oJ4">
@@ -122,14 +137,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vd7-Zy-QHj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1983" y="-714"/>
-        </scene>
-        <!--BudgetItem-->
-        <scene sceneID="2Ix-dN-ltE">
-            <objects>
-                <viewControllerPlaceholder storyboardName="BudgetItem" id="m6T-4w-2Zt" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pkr-y6-TyF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2169" y="-94"/>
         </scene>
     </scenes>
 </document>

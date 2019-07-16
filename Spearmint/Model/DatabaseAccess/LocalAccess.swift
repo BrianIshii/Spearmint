@@ -25,6 +25,11 @@ class LocalAccess {
     public static func addTransaction(_ transaction: Transaction) {
         TransactionStore.addTransaction(transaction)
         BudgetStore.addTransaction(transaction)
+        for key in transaction.items.keys {
+            if let budgetItem = budgetItemStore.getBudgetItem(key) {
+                budgetItem.addTransaction(transaction)
+            }
+        }
         vendorStore.addVendor(vendor: Vendor(name: transaction.vendor))
         print("added transaction")
     }

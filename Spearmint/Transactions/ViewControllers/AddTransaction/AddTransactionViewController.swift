@@ -66,7 +66,8 @@ class AddTransactionViewController: UIViewController {
         let vendor = transactionView.vendorTextField.text!
         let transactionType = transactionView.transactionTypeSegementedControl.selectedSegmentIndex == TransactionType.expense.rawValue ? TransactionType.expense : TransactionType.income
         let amount = Currency.currencyToFloat(transactionView.moneyTextField.text!)
-        let budgetKey = BudgetDate(DateFormatterFactory.MediumFormatter.date(from: date)!)
+        BudgetStore.addBudget(Budget(BudgetDate(), items: LocalAccess.budgetItemStore.getBudgetItems()))
+        let budgetKey = BudgetDate()
         _ = BudgetStore.budgetDictionary[budgetKey]
         let hasImage = false
         
@@ -89,9 +90,9 @@ class AddTransactionViewController: UIViewController {
 
 extension AddTransactionViewController: TransactionViewDelegate {
     func didSelectCategoryButton() {
-        _ = UIStoryboardSegue.init(identifier: AddBudgetItemSegue.segueIdentifier, source: self, destination: AddBudgetItemsViewController())
+        _ = UIStoryboardSegue.init(identifier: AddBudgetItemSegue.SegueIdentifier, source: self, destination: AddBudgetItemsViewController())
 
-        performSegue(withIdentifier: AddBudgetItemSegue.segueIdentifier, sender: nil)
+        performSegue(withIdentifier: AddBudgetItemSegue.SegueIdentifier, sender: nil)
     }
     
     func didSelectTag(text: String) {

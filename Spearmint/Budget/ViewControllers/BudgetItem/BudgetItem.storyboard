@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EUU-gM-pg0">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Budget Item View Controller-->
+        <scene sceneID="dUe-OA-qTi">
+            <objects>
+                <viewController id="EUU-gM-pg0" customClass="BudgetItemViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G89-fk-NhW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ghq-8E-T69">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="B6G-nW-Cr4">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="erP-P3-yNq">
+                                            <connections>
+                                                <action selector="dismissTemp:" destination="EUU-gM-pg0" id="PAO-wW-Fvh"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ad-Fw-33H" customClass="BudgetItemView" customModule="Spearmint" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vhu-YE-IgS" firstAttribute="bottom" secondItem="4Ad-Fw-33H" secondAttribute="bottom" id="01c-zc-q7O"/>
+                            <constraint firstItem="4Ad-Fw-33H" firstAttribute="top" secondItem="Ghq-8E-T69" secondAttribute="bottom" id="H88-XX-rqD"/>
+                            <constraint firstItem="4Ad-Fw-33H" firstAttribute="width" secondItem="G89-fk-NhW" secondAttribute="width" id="JRO-gO-vS4"/>
+                            <constraint firstItem="Ghq-8E-T69" firstAttribute="centerX" secondItem="vhu-YE-IgS" secondAttribute="centerX" id="LUH-v1-plx"/>
+                            <constraint firstItem="4Ad-Fw-33H" firstAttribute="centerX" secondItem="vhu-YE-IgS" secondAttribute="centerX" id="awN-va-nbw"/>
+                            <constraint firstItem="Ghq-8E-T69" firstAttribute="top" secondItem="vhu-YE-IgS" secondAttribute="top" id="f0B-XF-id3"/>
+                            <constraint firstItem="Ghq-8E-T69" firstAttribute="width" secondItem="G89-fk-NhW" secondAttribute="width" id="vjs-y4-eDZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vhu-YE-IgS"/>
+                    </view>
+                    <connections>
+                        <outlet property="budgetItemView" destination="4Ad-Fw-33H" id="Atl-K4-i0c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u1R-AF-cOY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2169" y="-94"/>
+        </scene>
+    </scenes>
+</document>

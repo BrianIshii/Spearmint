@@ -14,7 +14,7 @@ class AddTransactionSegueOld: UIStoryboardSegue, SegueIdentifier {
         if identifier != nil {
             super.init(identifier: identifier, source: source, destination: destination)
         } else {
-            super.init(identifier: AddTransactionSegue.segueIdentifier, source: source, destination: destination)
+            super.init(identifier: AddTransactionSegue.SegueIdentifier, source: source, destination: destination)
         }
     }
 }

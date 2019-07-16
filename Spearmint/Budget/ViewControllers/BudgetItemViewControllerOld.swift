@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BudgetItemViewController: UIViewController {
+class BudgetItemViewControllerOld: UIViewController {
 
     var budgetItem: BudgetItem?
     @IBOutlet weak var navBar: UINavigationBar!
