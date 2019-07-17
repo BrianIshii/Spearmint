@@ -45,6 +45,15 @@ class BudgetItemStore {
         }
     }
     
+    public func addTransaction(_ transaction: Transaction) {
+        for key in transaction.items.keys {
+            if let budgetItem = getBudgetItem(key) {
+                budgetItem.addTransaction(transaction)
+            }
+        }
+        updateBudgetItemDictionary()
+    }
+    
     public func setInactive(_ budgetItemID: BudgetItemID) {
         guard let item = budgetItemDictionary[budgetItemID.id] else { return }
         item.isActive = false
@@ -67,7 +76,7 @@ class BudgetItemStore {
         return active
     }
     
-    fileprivate func updateBudgetItemDictionary() {
+    func updateBudgetItemDictionary() {
         LocalAccess.updateDictionary(data: budgetItemDictionary)
     }
     

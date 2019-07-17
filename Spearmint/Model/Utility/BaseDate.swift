@@ -45,6 +45,10 @@ class BaseDate: Codable {
         return DateFormatterFactory.MonthFormatter.string(from: date)
     }
     
+    var threeCharacterMonth: String {
+        return DateFormatterFactory.MonthThreeCharacterFormatter.string(from: date)
+    }
+    
     var year: String {
         return DateFormatterFactory.YearFormatter.string(from: date)
     }

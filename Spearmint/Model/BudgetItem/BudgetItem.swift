@@ -40,16 +40,10 @@ class BudgetItem: Saveable, Hashable {
     func addTransaction(_ transaction: Transaction) {
         if var transactionIDs = transactions[transaction.budgetDate] {
             transactionIDs.append(transaction.id)
+            transactions[transaction.budgetDate] = transactionIDs
         } else {
             transactions[transaction.budgetDate] = [transaction.id]
         }
-//        for (k, v) in transaction.items {
-//            if k == name {
-//                for item in v {
-//                    actual += item.amount
-//                }
-//            }
-//        }
     }
     
 //    func addTransactionItem(_ transaction: Transaction, _ item: Item) {

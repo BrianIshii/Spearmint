@@ -51,7 +51,7 @@ extension TransactionTableViewCell: ConfigurableCell {
             transactionAmountLabel.textColor = UIColor.green
         }
         transactionVendorLabel.text = object.vendor
-        transactionDateLabel.text = object.date.month
+        transactionDateLabel.text = object.date.threeCharacterMonth
         
         textView.tags = object.tags
         

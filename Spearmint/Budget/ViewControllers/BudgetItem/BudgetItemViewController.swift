@@ -18,14 +18,15 @@ class BudgetItemViewController: UIViewController {
 
         guard let budgetItem = budgetItem else { return }
         
-        guard let transactionIDs = budgetItem.transactions[BudgetDate()] else { return }
-        
-        var transactions: [Transaction] = []
-        for id in transactionIDs {
-            transactions.append(TransactionStore.getTransaction(id)!)
+        if let transactionIDs = budgetItem.transactions[BudgetDate()] {
+            var transactions: [Transaction] = []
+            for id in transactionIDs {
+                transactions.append(TransactionStore.getTransaction(id)!)
+            }
+            budgetItemView.addTransactions(transactions: transactions)
+        } else {
+            budgetItemView.addTransactions(transactions: [])
         }
-        budgetItemView.addTransactions(transactions: transactions)
-
         // Do any additional setup after loading the view.
     }
     
