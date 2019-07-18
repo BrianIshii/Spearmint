@@ -11,6 +11,7 @@ import UIKit
 class BudgetItemView: UIView {
     @IBOutlet weak var transactionTableView: TransactionTableView!
     
+    @IBOutlet weak var label: UILabel!
     private var dataSource: TransactionDataSource?
     
     var budgetItem: BudgetItem? {

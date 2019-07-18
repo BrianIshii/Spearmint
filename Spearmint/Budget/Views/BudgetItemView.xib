@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BudgetItemView" customModule="Spearmint" customModuleProvider="target">
             <connections>
+                <outlet property="label" destination="VPF-zh-m7T" id="Gb2-aZ-b9a"/>
                 <outlet property="transactionTableView" destination="mJi-2h-Myw" id="8Wh-lB-iig"/>
             </connections>
         </placeholder>
@@ -35,15 +36,23 @@
                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPF-zh-m7T">
+                            <rect key="frame" x="166" y="159" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="eTE-MR-63H" firstAttribute="width" secondItem="fht-2T-Mau" secondAttribute="width" id="5qc-1Z-Ahx"/>
+                        <constraint firstItem="VPF-zh-m7T" firstAttribute="top" secondItem="7rg-Xa-wbw" secondAttribute="bottom" constant="43" id="7aM-Nr-qEa"/>
                         <constraint firstItem="7rg-Xa-wbw" firstAttribute="top" secondItem="eTE-MR-63H" secondAttribute="bottom" constant="16" id="EV6-8l-2Ve"/>
                         <constraint firstItem="eTE-MR-63H" firstAttribute="top" secondItem="fht-2T-Mau" secondAttribute="top" constant="8" id="FKp-2U-sfm"/>
                         <constraint firstItem="7rg-Xa-wbw" firstAttribute="width" secondItem="fht-2T-Mau" secondAttribute="width" id="GB3-Wr-LM7"/>
                         <constraint firstItem="7rg-Xa-wbw" firstAttribute="centerX" secondItem="fht-2T-Mau" secondAttribute="centerX" id="JOl-ZM-6M6"/>
                         <constraint firstAttribute="height" constant="223" id="Mg6-f1-Pb6"/>
+                        <constraint firstItem="VPF-zh-m7T" firstAttribute="centerX" secondItem="fht-2T-Mau" secondAttribute="centerX" id="Nqj-OT-77q"/>
                         <constraint firstItem="eTE-MR-63H" firstAttribute="centerX" secondItem="fht-2T-Mau" secondAttribute="centerX" id="Qg3-a2-BqH"/>
                     </constraints>
                 </view>

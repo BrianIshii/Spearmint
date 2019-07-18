@@ -20,10 +20,15 @@ class BudgetItemViewController: UIViewController {
         
         if let transactionIDs = budgetItem.transactions[BudgetDate()] {
             var transactions: [Transaction] = []
+            var total = Float(0)
             for id in transactionIDs {
-                transactions.append(TransactionStore.getTransaction(id)!)
+                if let transaction = TransactionStore.getTransaction(id) {
+                    transactions.append(transaction)
+                    total += transaction.amount
+                }
             }
             budgetItemView.addTransactions(transactions: transactions)
+            budgetItemView.label.text = "total spent: \(total)"
         } else {
             budgetItemView.addTransactions(transactions: [])
         }
