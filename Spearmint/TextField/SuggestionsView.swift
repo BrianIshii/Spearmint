@@ -75,6 +75,12 @@ class SuggestionsView: UIView {
         leftItem.title = suggestions[0]
         middleItem.title = suggestions[1]
         rightItem.title = suggestions[2]
-        
+    }
+    
+    func clearSuggestions() {
+        suggestions = []
+        leftItem.title = ""
+        middleItem.title = ""
+        rightItem.title = ""
     }
 }

@@ -10,14 +10,14 @@ import UIKit
 
 class TransactionDataSource: NSObject {
     fileprivate let tableView: UITableView
-    var transactions: [Transaction] = Array(TransactionStore.transactions.values).sorted(by: >)
+    var transactions: [Transaction] = Array(LocalAccess.Transactions.transactions.values).sorted(by: >)
     
     init(tableView: UITableView) {
         self.tableView = tableView
         super.init()
         
         tableView.dataSource = self
-        TransactionStore.observers.append(self)
+        LocalAccess.Transactions.observers.append(self)
     }
 }
 
@@ -45,7 +45,7 @@ extension TransactionDataSource: UITableViewDataSource {
 
 extension TransactionDataSource: TransactionObserver {
     func update() {
-        transactions = Array(TransactionStore.transactions.values).sorted(by: >)
+        transactions = Array(LocalAccess.Transactions.transactions.values).sorted(by: >)
         tableView.reloadData()
     }
 }

@@ -34,8 +34,8 @@ class AnalysisCollectionViewController: UICollectionViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if TransactionStore.analysisViewController {
-            TransactionStore.analysisViewController = false
+        if LocalAccess.Transactions.analysisViewController {
+            LocalAccess.Transactions.analysisViewController = false
         
             let budget = BudgetStore.getBudget(BudgetDate(Date()))
 

@@ -32,8 +32,8 @@ class TransactionListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if TransactionStore.TransactionControllerNeedsUpdate {
-            TransactionStore.TransactionControllerNeedsUpdate = false
+        if LocalAccess.Transactions.TransactionControllerNeedsUpdate {
+            LocalAccess.Transactions.TransactionControllerNeedsUpdate = false
         }
     }
     

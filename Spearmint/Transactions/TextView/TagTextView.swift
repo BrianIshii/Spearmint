@@ -35,7 +35,7 @@ class TagTextView: UITextView {
     private func setUp() {
         self.delegate = self
         self.autocorrectionType = .no
-        
+
         view.textField = self
         self.inputAccessoryView = view
         
@@ -62,7 +62,7 @@ class TagTextView: UITextView {
     
     func createTagView(_ text: String,_ tagNumber: Int) -> UIView {
         var backgroundColor = UIColor.black        
-        if let tag = LocalAccess.Tags.getTag(text) {
+        if let tag = LocalAccess.getTag(text) {
             backgroundColor = tag.color.uiColor
         }
         
@@ -124,7 +124,14 @@ class TagTextView: UITextView {
 
 extension TagTextView: SuggestionViewDelegate {
     func addSuggestion(_ suggestion: String) {
-        return
+        if suggestion.count > 0 {
+            self.tags[tagCount - 1] = suggestion
+            createTagViews()
+            view.clearSuggestions()
+            self.tags.append(self.text)
+            self.text = ""
+            tagCount += 1
+        }
     }
 }
 
@@ -151,12 +158,8 @@ extension TagTextView: UITextViewDelegate {
         if text == " " {
             self.tags.append(self.text)
             self.text = ""
-            createTagViews()
             tagCount += 1
-            return false
-        }
-        
-        if text == "" {
+        } else if text == "" {
             if self.tags[tagCount - 1].count == 0 {
                 self.tags.remove(at: tagCount - 1)
                 tagCount -= 1
@@ -166,11 +169,15 @@ extension TagTextView: UITextViewDelegate {
             
             let string = self.tags[tagCount - 1].prefix(self.tags[tagCount - 1].count - 1)
             self.tags[tagCount - 1] = String(string)
-            createTagViews()
-            return false
+        } else {
+            self.tags[tagCount - 1] += text
         }
         
-        self.tags[tagCount - 1] += text
+        if self.tags.count > 0 {
+            let suggestions = LocalAccess.queryTags(self.tags[self.tags.count - 1])
+            view.addSuggestions(suggestions.map({ $0.text }))
+        }
+        
         createTagViews()
         return false
     }

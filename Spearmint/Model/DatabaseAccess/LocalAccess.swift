@@ -12,22 +12,39 @@ class LocalAccess {
     public static let reset: Bool = false
     public static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     
-    public static let vendorStore: VendorStore = VendorStore()
-    public static let Tags: TagStore = TagStore()
+    private static let vendors: VendorStore = VendorStore()
+    private static let Tags: TagStore = TagStore()
     public static let budgetItemStore: BudgetItemStore = BudgetItemStore()
-
+    public static let Transactions: TransactionStore = TransactionStore()
+    
     public static func deleteTransaction(_ transaction: Transaction) {
-        TransactionStore.deleteTransaction(transaction)
+        Transactions.deleteTransaction(transaction)
         BudgetStore.deleteTransaction(transaction)
         ImageStore.deleteImage(transaction.id)
     }
     
     public static func addTransaction(_ transaction: Transaction) {
-        TransactionStore.addTransaction(transaction)
+        Transactions.addTransaction(transaction)
         BudgetStore.addTransaction(transaction)
         budgetItemStore.addTransaction(transaction)
-        vendorStore.addVendor(vendor: Vendor(name: transaction.vendor))
+        vendors.addVendor(vendor: Vendor(name: transaction.vendor))
         print("added transaction")
+    }
+    
+    public static func queryVendors(_ substring: String) -> [(String, String)] {
+        return vendors.query(substring)
+    }
+    
+    public static func queryTags(_ substring: String) -> [Tag] {
+        return Tags.query(substring)
+    }
+    
+    public static func addTag(_ tag: Tag) {
+        Tags.addTag(tag)
+    }
+    
+    public static func getTag(_ text: String) -> Tag? {
+        return Tags.getTag(text)
     }
     
     public static func getDictionary

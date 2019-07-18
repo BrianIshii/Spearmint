@@ -49,7 +49,7 @@ class VendorTextField: UITextField {
         guard let text = textField.text else { return }
         
         findSuggestions()
-        print(LocalAccess.vendorStore.query(text))
+        //print(LocalAccess.vendorStore.query(text))
     }
 }
 

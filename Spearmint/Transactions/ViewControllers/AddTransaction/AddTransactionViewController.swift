@@ -81,7 +81,7 @@ class AddTransactionViewController: UIViewController {
         
         let tags = transactionView.tagTextView.tags
         for tag in tags {
-            LocalAccess.Tags.addTag(Tag(text: tag, color: Color(red: 255, green: 0, blue: 0, alpha: 1)))
+            LocalAccess.addTag(Tag(text: tag, color: Color(red: 255, green: 0, blue: 0, alpha: 1)))
         }
         
         transaction = Transaction(name: name, transactionType: transactionType, vendor: vendor, amount: Float(amount), date: TransactionDate(date), location: "N/A", image: hasImage, tags: tags, notes: "notes", budgetDate: budgetKey, items: transactionItems)

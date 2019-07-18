@@ -38,7 +38,7 @@ class BudgetItemAndTagTextView: UITextView {
     
     func createTagView(_ text: String,_ tagNumber: Int) -> UIView {
         var backgroundColor = UIColor.black
-        if let tag = LocalAccess.Tags.getTag(text) {
+        if let tag = LocalAccess.getTag(text) {
             backgroundColor = tag.color.uiColor
         }
         

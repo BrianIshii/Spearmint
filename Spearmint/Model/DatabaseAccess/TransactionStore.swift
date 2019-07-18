@@ -9,25 +9,30 @@
 import Foundation
 
 class TransactionStore {
-    public static var TransactionControllerNeedsUpdate = false
-    public static var analysisViewController = false
-    public static var transactions: [String: Transaction] = getAllTransactions()
-    public static var observers: [TransactionObserver] = []
+    public var TransactionControllerNeedsUpdate = false
+    public var analysisViewController = false
+    public var transactions: [String: Transaction] = [:]
+    public var observers: [TransactionObserver] = []
     
-    static func addTransaction(_ transaction: Transaction) {
+    init() {
+        self.transactions = self.getAllTransactions()
+    }
+    
+    func addTransaction(_ transaction: Transaction) {
         transactions[transaction.ID] = transaction
         update()
     }
     
-    static func deleteTransaction(_ transaction: Transaction) {
+    func deleteTransaction(_ transaction: Transaction) {
         transactions.removeValue(forKey: transaction.ID)
         update()
     }
     
-    static func getTransaction(_ id: TransactionID) -> Transaction? {
+    func getTransaction(_ id: TransactionID) -> Transaction? {
         return transactions[id.id]
     }
-    private static func getAllTransactions() -> [String: Transaction] {        
+    
+    private func getAllTransactions() -> [String: Transaction] {
         if LocalAccess.reset {
             update(data: [String: Transaction]())
             return [String: Transaction]()
@@ -36,20 +41,20 @@ class TransactionStore {
         return LocalAccess.getDictionary(key: String.self, object: Transaction.self)
     }
     
-    static func update() {
+    func update() {
         update(data: transactions)
         for observer in observers {
             observer.update()
         }
     }
     
-    fileprivate static func update(data: [String : Transaction]) {
+    fileprivate func update(data: [String : Transaction]) {
         LocalAccess.updateDictionary(data: transactions)
         
         TransactionControllerNeedsUpdate = true
         analysisViewController = true
     }
     
-    static let dummyTransaction =
+    let dummyTransaction =
         Transaction(name: "test1", transactionType: TransactionType.income, vendor: "Apple", amount: 10.00, date: TransactionDate(), location: "N/A", image: false, notes: "notes", budgetDate: BudgetDate(Date()), items: [:])
 }
