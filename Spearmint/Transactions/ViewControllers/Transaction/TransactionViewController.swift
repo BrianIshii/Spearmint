@@ -9,9 +9,10 @@
 import UIKit
 
 class TransactionViewController: UIViewController {
-
-    var transaction: Transaction?
     @IBOutlet weak var transactionView: TransactionView!
+    
+    var transaction: Transaction?
+    var selectedTag: Tag?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,15 +35,18 @@ class TransactionViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if let destionationViewController = segue.destination as? TagViewController {
+            destionationViewController.tag = selectedTag
+        }
     }
-    */
+ 
 
 }
 
@@ -55,7 +59,7 @@ extension TransactionViewController: TransactionViewDelegate {
     
     func didSelectTag(text: String) {
         let _ = UIStoryboardSegue.init(identifier: "selectTag", source: self, destination: TagViewController())
-        
+        selectedTag = LocalAccess.getTag(text)
         performSegue(withIdentifier: "selectTag", sender: self)
     }
     

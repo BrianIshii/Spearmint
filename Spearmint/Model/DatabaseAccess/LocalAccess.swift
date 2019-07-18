@@ -27,6 +27,13 @@ class LocalAccess {
         Transactions.addTransaction(transaction)
         BudgetStore.addTransaction(transaction)
         budgetItemStore.addTransaction(transaction)
+        for text in transaction.tags {
+            if let tag = Tags.getTag(text) {
+                tag.transactionIDs.append(transaction.id)
+            } else {
+                Tags.addTag(Tag(text: text, color: Color(red: 255, green: 0, blue: 0, alpha: 1), transactionIDs: [transaction.id]))
+            }
+        }
         vendors.addVendor(vendor: Vendor(name: transaction.vendor))
         print("added transaction")
     }

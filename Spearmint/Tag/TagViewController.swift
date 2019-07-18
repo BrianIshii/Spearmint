@@ -9,13 +9,23 @@
 import UIKit
 
 class TagViewController: UIViewController {
-
+    @IBOutlet weak var transactionTableView: TransactionTableView!
+    
     var tag: Tag?
+    var dataSource: TransactionDataSource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        guard let tag = tag else { return }
+        
+        let transactions = tag.transactionIDs.map({ LocalAccess.Transactions.getTransaction($0)! })
+        dataSource = TransactionDataSource(tableView: transactionTableView)
+        
+        guard let dataSource = dataSource else { return }
+        
+        dataSource.transactions = transactions
+        transactionTableView.reloadData()
     }
     
     @IBAction func tempDismiss(_ sender: Any) {

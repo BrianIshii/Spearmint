@@ -18,14 +18,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag View Controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3FL-Og-66p">
-                                <rect key="frame" x="132.5" y="442.5" width="149" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FRj-RZ-54s" customClass="TransactionTableView" customModule="Spearmint" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="351" width="414" height="511"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPN-n2-Jvd">
+                                <rect key="frame" x="20" y="44" width="374" height="286"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="286" id="C4o-3Q-Hvv"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvp-MX-gOp">
-                                <rect key="frame" x="180" y="306" width="54" height="30"/>
+                                <rect key="frame" x="180" y="68" width="54" height="30"/>
                                 <state key="normal" title="Dismiss"/>
                                 <connections>
                                     <action selector="tempDismiss:" destination="zih-02-Jkn" eventType="touchUpInside" id="WFW-Bo-g7h"/>
@@ -34,13 +39,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="3FL-Og-66p" firstAttribute="centerX" secondItem="RYG-3A-IOD" secondAttribute="centerX" id="3Xo-eN-r2T"/>
-                            <constraint firstItem="Bvp-MX-gOp" firstAttribute="top" secondItem="RYG-3A-IOD" secondAttribute="top" constant="262" id="YOk-Yi-891"/>
-                            <constraint firstItem="Bvp-MX-gOp" firstAttribute="centerX" secondItem="RYG-3A-IOD" secondAttribute="centerX" id="ef2-Mw-REz"/>
-                            <constraint firstItem="3FL-Og-66p" firstAttribute="centerY" secondItem="RYG-3A-IOD" secondAttribute="centerY" id="jH4-xf-i38"/>
+                            <constraint firstItem="FRj-RZ-54s" firstAttribute="width" secondItem="nfF-9f-YC1" secondAttribute="width" id="Bbe-Ek-zVw"/>
+                            <constraint firstItem="BPN-n2-Jvd" firstAttribute="leading" secondItem="RYG-3A-IOD" secondAttribute="leading" constant="20" id="CQl-6a-yPe"/>
+                            <constraint firstItem="BPN-n2-Jvd" firstAttribute="top" secondItem="Bvp-MX-gOp" secondAttribute="bottom" constant="-54" id="DQ8-8Z-okX"/>
+                            <constraint firstItem="FRj-RZ-54s" firstAttribute="top" secondItem="BPN-n2-Jvd" secondAttribute="bottom" constant="21" id="KM8-Cb-5VU"/>
+                            <constraint firstItem="BPN-n2-Jvd" firstAttribute="centerX" secondItem="RYG-3A-IOD" secondAttribute="centerX" id="caf-BS-glq"/>
+                            <constraint firstItem="RYG-3A-IOD" firstAttribute="bottom" secondItem="FRj-RZ-54s" secondAttribute="bottom" id="g3K-Lp-Hsq"/>
+                            <constraint firstItem="FRj-RZ-54s" firstAttribute="centerX" secondItem="RYG-3A-IOD" secondAttribute="centerX" id="g5O-lW-AS6"/>
+                            <constraint firstItem="BPN-n2-Jvd" firstAttribute="top" secondItem="RYG-3A-IOD" secondAttribute="top" id="mhH-Dp-xek"/>
+                            <constraint firstItem="Bvp-MX-gOp" firstAttribute="centerX" secondItem="BPN-n2-Jvd" secondAttribute="centerX" id="zKN-qk-4aC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RYG-3A-IOD"/>
                     </view>
+                    <connections>
+                        <outlet property="transactionTableView" destination="FRj-RZ-54s" id="6kp-dK-M40"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UFe-Uu-J5u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
