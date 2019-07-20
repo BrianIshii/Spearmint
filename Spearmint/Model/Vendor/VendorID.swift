@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct VendorID: BaseID {
+struct VendorID: BaseID, SaveableKey {
     let id: String
     
     init() {

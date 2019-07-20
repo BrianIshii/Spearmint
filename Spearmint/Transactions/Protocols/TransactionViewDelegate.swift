@@ -11,5 +11,6 @@ import Foundation
 protocol TransactionViewDelegate {
     func didSelectCategoryButton()
     func didSelectTag(text: String)
+    func didSelectVendor(_ vendorID: VendorID)
     func dismiss()
 }

@@ -40,7 +40,8 @@
                     </view>
                     <connections>
                         <outlet property="transactionView" destination="LUR-pb-ugM" id="D3g-fT-JiP"/>
-                        <segue destination="lpS-aM-5C0" kind="show" identifier="selectTag" id="1uD-8R-Wlq"/>
+                        <segue destination="lpS-aM-5C0" kind="show" identifier="TagSegue" id="1uD-8R-Wlq"/>
+                        <segue destination="7hE-OY-Qix" kind="show" identifier="VendorSegue" id="1ap-4X-X6k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhV-2K-T5l" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -51,6 +52,14 @@
                 </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="143" y="-856"/>
+        </scene>
+        <!--Vendor-->
+        <scene sceneID="Qft-0m-7Ck">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Vendor" id="7hE-OY-Qix" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HIa-IJ-bnZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="732" y="-898"/>
         </scene>
         <!--Tag-->
         <scene sceneID="tC9-eL-fj3">

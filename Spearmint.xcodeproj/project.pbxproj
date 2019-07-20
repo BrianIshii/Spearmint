@@ -115,6 +115,10 @@
 		76B0637922DDA5FF007BBDD5 /* BudgetItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0637822DDA5FF007BBDD5 /* BudgetItemViewController.swift */; };
 		76B0637B22DDA655007BBDD5 /* BudgetItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76B0637A22DDA655007BBDD5 /* BudgetItem.storyboard */; };
 		76B0637D22DDA6A1007BBDD5 /* BudgetItemSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0637C22DDA6A1007BBDD5 /* BudgetItemSegue.swift */; };
+		76B0638122E2B55B007BBDD5 /* Vendor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76B0638022E2B55B007BBDD5 /* Vendor.storyboard */; };
+		76B0638322E2B583007BBDD5 /* VendorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0638222E2B583007BBDD5 /* VendorViewController.swift */; };
+		76B0638522E2B617007BBDD5 /* VendorSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0638422E2B617007BBDD5 /* VendorSegue.swift */; };
+		76B0638722E2B647007BBDD5 /* TagSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0638622E2B647007BBDD5 /* TagSegue.swift */; };
 		76B548BB22913069001B2FB1 /* CurrenyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BA22913069001B2FB1 /* CurrenyTests.swift */; };
 		76B548BD229135DE001B2FB1 /* LocalAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BC229135DE001B2FB1 /* LocalAccess.swift */; };
 		76B548C022913DB4001B2FB1 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */; };
@@ -308,6 +312,10 @@
 		76B0637822DDA5FF007BBDD5 /* BudgetItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemViewController.swift; sourceTree = "<group>"; };
 		76B0637A22DDA655007BBDD5 /* BudgetItem.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BudgetItem.storyboard; sourceTree = "<group>"; };
 		76B0637C22DDA6A1007BBDD5 /* BudgetItemSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemSegue.swift; sourceTree = "<group>"; };
+		76B0638022E2B55B007BBDD5 /* Vendor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Vendor.storyboard; sourceTree = "<group>"; };
+		76B0638222E2B583007BBDD5 /* VendorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorViewController.swift; sourceTree = "<group>"; };
+		76B0638422E2B617007BBDD5 /* VendorSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorSegue.swift; sourceTree = "<group>"; };
+		76B0638622E2B647007BBDD5 /* TagSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSegue.swift; sourceTree = "<group>"; };
 		76B548BA22913069001B2FB1 /* CurrenyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenyTests.swift; sourceTree = "<group>"; };
 		76B548BC229135DE001B2FB1 /* LocalAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAccess.swift; sourceTree = "<group>"; };
 		76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
@@ -490,6 +498,7 @@
 		764AFD86226E7060007BFD90 /* Spearmint */ = {
 			isa = PBXGroup;
 			children = (
+				76B0637E22E2B515007BBDD5 /* Vendor */,
 				76B0632E22DAC9F0007BBDD5 /* Tag */,
 				76B0631122D18CEA007BBDD5 /* Segemented Control */,
 				76F4235D22BA03E100E7B868 /* DataSource */,
@@ -667,6 +676,7 @@
 			children = (
 				76B0632F22DACA2B007BBDD5 /* Tag.storyboard */,
 				76B0633122DACA58007BBDD5 /* TagViewController.swift */,
+				76B0638622E2B647007BBDD5 /* TagSegue.swift */,
 			);
 			path = Tag;
 			sourceTree = "<group>";
@@ -789,6 +799,16 @@
 				76B0637C22DDA6A1007BBDD5 /* BudgetItemSegue.swift */,
 			);
 			path = BudgetItem;
+			sourceTree = "<group>";
+		};
+		76B0637E22E2B515007BBDD5 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				76B0638022E2B55B007BBDD5 /* Vendor.storyboard */,
+				76B0638222E2B583007BBDD5 /* VendorViewController.swift */,
+				76B0638422E2B617007BBDD5 /* VendorSegue.swift */,
+			);
+			path = Vendor;
 			sourceTree = "<group>";
 		};
 		76B548BE22913D92001B2FB1 /* Protocols and Extensions */ = {
@@ -1224,6 +1244,7 @@
 				7637A61C22868C6D007DD20B /* BudgetCollectionViewCell.xib in Resources */,
 				76D22F7A229A0E1900C06567 /* Account.storyboard in Resources */,
 				7637A61022864DBF007DD20B /* BudgetOld.storyboard in Resources */,
+				76B0638122E2B55B007BBDD5 /* Vendor.storyboard in Resources */,
 				76F4238622C99E1300E7B868 /* AddTransactionFieldTableViewCell.xib in Resources */,
 				7637A62B2287EB1E007DD20B /* Summary.storyboard in Resources */,
 				76A2FA5C2281FAE90066D594 /* VendorTableViewCell.xib in Resources */,
@@ -1434,13 +1455,16 @@
 				7637A6202286B3CB007DD20B /* BudgetItemCategory.swift in Sources */,
 				76A2FA462280B0740066D594 /* TransactionListViewController.swift in Sources */,
 				76B0631522D19090007BBDD5 /* UIViewExtension.swift in Sources */,
+				76B0638522E2B617007BBDD5 /* VendorSegue.swift in Sources */,
 				76A2FA602281FBDD0066D594 /* AmountTableViewCell.swift in Sources */,
 				76B0635222DB13F4007BBDD5 /* BudgetItemTextView.swift in Sources */,
 				76F4237422C4A22D00E7B868 /* SaveableKey.swift in Sources */,
 				7637A6442288FF26007DD20B /* SelectBudgetItemTableViewCell.swift in Sources */,
 				76B0635422DB142F007BBDD5 /* BudgetItemTextViewDelegate.swift in Sources */,
 				76B0630C22D17194007BBDD5 /* TransactionView.swift in Sources */,
+				76B0638722E2B647007BBDD5 /* TagSegue.swift in Sources */,
 				76B0634B22DAE8CC007BBDD5 /* TagStore.swift in Sources */,
+				76B0638322E2B583007BBDD5 /* VendorViewController.swift in Sources */,
 				76B0631022D17776007BBDD5 /* TransactionViewController.swift in Sources */,
 				76D22F7E229A281B00C06567 /* AnalysisViewController.swift in Sources */,
 				76F4237022C0ABF100E7B868 /* BudgetItemStore.swift in Sources */,

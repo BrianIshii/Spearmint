@@ -202,7 +202,7 @@ class AddTransactionViewControllerOld: UIViewController, UITextFieldDelegate {
             transactionItems[budgetItems[section].id] = items
         }
         
-        transaction = Transaction(name: name, transactionType: transactionType, vendor: vendor, amount: Float(amount), date: TransactionDate(date), location: "N/A", image: hasImage, notes: "notes", budgetDate: budgetKey, items: transactionItems)
+//        transaction = Transaction(name: name, transactionType: transactionType, vendor: vendor, amount: Float(amount), date: TransactionDate(date), location: "N/A", image: hasImage, notes: "notes", budgetDate: budgetKey, items: transactionItems)
                 
         if hasImage {
             ImageStore.saveImage(selectedImage.image!, transactionID: transaction!.id)

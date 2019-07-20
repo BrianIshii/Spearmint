@@ -58,9 +58,12 @@ extension TransactionViewController: TransactionViewDelegate {
     }
     
     func didSelectTag(text: String) {
-        let _ = UIStoryboardSegue.init(identifier: "selectTag", source: self, destination: TagViewController())
         selectedTag = LocalAccess.getTag(text)
-        performSegue(withIdentifier: "selectTag", sender: self)
+        performSegue(withIdentifier: TagSegue.SegueIdentifier, sender: self)
+    }
+    
+    func didSelectVendor(_ vendorID: VendorID) {
+        performSegue(withIdentifier: VendorSegue.SegueIdentifier, sender: self)
     }
     
     func dismiss() {

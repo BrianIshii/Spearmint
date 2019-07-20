@@ -34,11 +34,23 @@ class LocalAccess {
                 Tags.addTag(Tag(text: text, color: Color(red: 255, green: 0, blue: 0, alpha: 1), transactionIDs: [transaction.id]))
             }
         }
-        vendors.addVendor(vendor: Vendor(name: transaction.vendor))
+//        vendors.addVendor(vendor: Vendor(name: transaction.vendor))
         print("added transaction")
     }
     
-    public static func queryVendors(_ substring: String) -> [(String, String)] {
+    public static func hasVendor(_ name: String) -> Bool {
+        return vendors.hasVendor(name)
+    }
+    
+    public static func getVendor(_ name: String) -> Vendor? {
+        return vendors.getVendor(name)
+    }
+    
+    public static func getVendor(_ vendorID: VendorID) -> Vendor? {
+        return vendors.getVendor(vendorID)
+    }
+    
+    public static func queryVendors(_ substring: String) -> [(String, VendorID)] {
         return vendors.query(substring)
     }
     

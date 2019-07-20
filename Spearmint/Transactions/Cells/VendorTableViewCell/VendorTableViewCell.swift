@@ -27,7 +27,6 @@ class VendorTableViewCell: UITableViewCell, ReusableIdentifier {
 
 extension VendorTableViewCell: ConfigurableCell {
     func configure(object: Transaction) {
-        textField.text = Currency.currencyFormatter(object.vendor)
     }
     
     func configure() {

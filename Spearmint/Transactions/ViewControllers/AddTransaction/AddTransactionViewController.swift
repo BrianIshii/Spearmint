@@ -64,7 +64,7 @@ class AddTransactionViewController: UIViewController {
         let name = ""
         let dateString = transactionView.dateTextField.text!
         let date = DateFormatterFactory.MediumFormatter.date(from: dateString) ?? Date()
-        let vendor = transactionView.vendorTextField.text!
+        let vendorString = transactionView.vendorTextField.text!
         let transactionType = transactionView.transactionTypeSegementedControl.selectedSegmentIndex == TransactionType.expense.rawValue ? TransactionType.expense : TransactionType.income
         let amount = Currency.currencyToFloat(transactionView.moneyTextField.text!)
         BudgetStore.addBudget(Budget(BudgetDate(), items: LocalAccess.budgetItemStore.getBudgetItems()))
@@ -80,9 +80,17 @@ class AddTransactionViewController: UIViewController {
             }
         }
         
+        let vendor: Vendor
+        
+        if LocalAccess.hasVendor(vendorString) {
+            vendor = LocalAccess.getVendor(vendorString)!
+        } else {
+            vendor = Vendor(name: vendorString)
+        }
+        
         let tags = transactionView.tagTextView.tags
         
-        transaction = Transaction(name: name, transactionType: transactionType, vendor: vendor, amount: Float(amount), date: TransactionDate(date), location: "N/A", image: hasImage, tags: tags, notes: "notes", budgetDate: budgetKey, items: transactionItems)
+        transaction = Transaction(name: name, transactionType: transactionType, vendor: vendor.vendorID, amount: Float(amount), date: TransactionDate(date), location: "N/A", image: hasImage, tags: tags, notes: "notes", budgetDate: budgetKey, items: transactionItems)
     }
 }
 
@@ -97,6 +105,10 @@ extension AddTransactionViewController: TransactionViewDelegate {
         let _ = UIStoryboardSegue.init(identifier: "selectTag", source: self, destination: TagViewController())
         
         performSegue(withIdentifier: "selectTag", sender: self)
+    }
+    
+    func didSelectVendor(_ vendorID: VendorID) {
+        print("hi")
     }
     
     func dismiss() {

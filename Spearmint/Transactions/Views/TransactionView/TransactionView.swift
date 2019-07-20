@@ -28,7 +28,7 @@ class TransactionView: UIView {
             
             self.transactionTypeSegementedControl.selectedSegmentIndex = transaction.transactionType.rawValue
             self.moneyTextField.text = Currency.currencyFormatter(transaction.amount)
-            self.vendorTextField.text = transaction.vendor
+            self.vendorTextField.text = LocalAccess.getVendor(transaction.vendor)?.name ?? "hi"
             self.dateTextField.text = transaction.date.medium
             self.categoryButton.setTitle("Category", for: UIControl.State.normal)
             self.tagTextView.tags = transaction.tags
