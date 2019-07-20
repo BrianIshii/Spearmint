@@ -62,7 +62,8 @@ class AddTransactionViewController: UIViewController {
     
     fileprivate func addTransaction() {
         let name = ""
-        let date = transactionView.dateTextField.text!
+        let dateString = transactionView.dateTextField.text!
+        let date = DateFormatterFactory.MediumFormatter.date(from: dateString) ?? Date()
         let vendor = transactionView.vendorTextField.text!
         let transactionType = transactionView.transactionTypeSegementedControl.selectedSegmentIndex == TransactionType.expense.rawValue ? TransactionType.expense : TransactionType.income
         let amount = Currency.currencyToFloat(transactionView.moneyTextField.text!)
