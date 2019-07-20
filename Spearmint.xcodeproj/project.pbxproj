@@ -567,6 +567,7 @@
 		764AFDB6226EB269007BFD90 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				76B0638822E2CAAB007BBDD5 /* New Group */,
 				76F4236A22C05FA900E7B868 /* Protocols */,
 				76B0633622DACBF9007BBDD5 /* Utility */,
 				76B0633322DACB82007BBDD5 /* Tag */,
@@ -809,6 +810,13 @@
 				76B0638422E2B617007BBDD5 /* VendorSegue.swift */,
 			);
 			path = Vendor;
+			sourceTree = "<group>";
+		};
+		76B0638822E2CAAB007BBDD5 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		76B548BE22913D92001B2FB1 /* Protocols and Extensions */ = {

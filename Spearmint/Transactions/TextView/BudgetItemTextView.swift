@@ -102,7 +102,7 @@ class BudgetItemTextView: UITextView {
         guard let categoryTextViewDelegate = budgetItemTextViewDelegate else { return }
         guard let text = sender.accessibilityLabel else { return }
         
-        categoryTextViewDelegate.presentCategory()
+        categoryTextViewDelegate.presentBudgetItem()
     }
     
     @objc func removeBudgetItem(_ sender: AnyObject) {

@@ -8,5 +8,5 @@
 
 import Foundation
 protocol BudgetItemTextViewDelegate {
-    func presentCategory()
+    func presentBudgetItem()
 }

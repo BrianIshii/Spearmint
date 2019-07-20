@@ -28,6 +28,10 @@ class TransactionListViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         dataSource = TransactionDataSource(tableView: transactionTableView)
+        
+        guard let dataSource = dataSource else { return }
+        
+        dataSource.transactions = Array(LocalAccess.Transactions.transactions.values).sorted(by: >)
         transactionTableView.reloadData()
     }
     

@@ -38,6 +38,9 @@ class LocalAccess {
         print("added transaction")
     }
     
+    public static func addVendor(_ vendor: Vendor) {
+        vendors.addVendor(vendor: vendor)
+    }
     public static func hasVendor(_ name: String) -> Bool {
         return vendors.hasVendor(name)
     }

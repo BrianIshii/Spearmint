@@ -86,6 +86,7 @@ class AddTransactionViewController: UIViewController {
             vendor = LocalAccess.getVendor(vendorString)!
         } else {
             vendor = Vendor(name: vendorString)
+            LocalAccess.addVendor(vendor)
         }
         
         let tags = transactionView.tagTextView.tags

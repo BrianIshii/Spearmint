@@ -10,7 +10,7 @@ import UIKit
 
 class TransactionDataSource: NSObject {
     fileprivate let tableView: UITableView
-    var transactions: [Transaction] = Array(LocalAccess.Transactions.transactions.values).sorted(by: >)
+    var transactions: [Transaction] = []
     
     init(tableView: UITableView) {
         self.tableView = tableView

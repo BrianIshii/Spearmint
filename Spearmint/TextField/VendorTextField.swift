@@ -95,7 +95,8 @@ extension VendorTextField: CLLocationManagerDelegate {
     
     func findSuggestions() {
         let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = self.text
+        guard let text = self.text else { return }
+        request.naturalLanguageQuery = text
         if let region = mapRegion {
             request.region = region
             print(region.center)
@@ -110,6 +111,10 @@ extension VendorTextField: CLLocationManagerDelegate {
                         return
                     }
                     
+                    for item in LocalAccess.queryVendors(text) {
+                        temp.append(item.0)
+                    }
+
                     for item in response.mapItems {
                         if let name = item.name {
                             temp.append(name)
