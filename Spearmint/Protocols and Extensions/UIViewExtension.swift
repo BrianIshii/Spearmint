@@ -12,6 +12,7 @@ import UIKit
 protocol Identifiable {
     static var identifier: String { get }
 }
+
 extension Identifiable {
     static var identifier: String {
         return String(describing: self)
@@ -21,6 +22,7 @@ extension Identifiable {
 protocol NibLoadable: Identifiable {
     static var nibName: String { get }
 }
+
 extension NibLoadable {
     @nonobjc static var nibName: String {
         return String(describing: self)

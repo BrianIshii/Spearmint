@@ -11,6 +11,7 @@ import UIKit
 class AddTransactionViewController: UIViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var transactionView: TransactionView!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     var transaction: Transaction?
     var budgetItems: [BudgetItem]?
@@ -23,7 +24,13 @@ class AddTransactionViewController: UIViewController {
         transactionView.delegate = self
         transactionView.moneyTextField.becomeFirstResponder()
         transactionView.dateTextField.text = DateFormatterFactory.MediumFormatter.string(from: Date())
+        
+        navigationBar.isHidden = true
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        navigationBar.isHidden = false
     }
     
     @IBAction func canel(_ sender: UIBarButtonItem) {

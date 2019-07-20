@@ -54,6 +54,7 @@
                         <viewLayoutGuide key="safeArea" id="1x7-2q-LLh"/>
                     </view>
                     <connections>
+                        <outlet property="navigationBar" destination="M1R-68-UNx" id="YNH-e5-Yq8"/>
                         <outlet property="saveButton" destination="85r-Hp-E8Q" id="zvE-d6-m64"/>
                         <outlet property="transactionView" destination="WCQ-eg-1dD" id="Ubv-aD-Mah"/>
                         <segue destination="3ej-kO-4lH" kind="show" identifier="AddBudgetItemSegue" id="cul-Zv-DOm"/>

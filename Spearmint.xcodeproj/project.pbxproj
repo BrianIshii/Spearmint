@@ -498,6 +498,7 @@
 		764AFD86226E7060007BFD90 /* Spearmint */ = {
 			isa = PBXGroup;
 			children = (
+				76A2FA7522851E650066D594 /* Extensions */,
 				76B0637E22E2B515007BBDD5 /* Vendor */,
 				76B0632E22DAC9F0007BBDD5 /* Tag */,
 				76B0631122D18CEA007BBDD5 /* Segemented Control */,
@@ -567,15 +568,9 @@
 		764AFDB6226EB269007BFD90 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				76B0638822E2CAAB007BBDD5 /* New Group */,
 				76F4236A22C05FA900E7B868 /* Protocols */,
+				76B0638822E2CAAB007BBDD5 /* Entities */,
 				76B0633622DACBF9007BBDD5 /* Utility */,
-				76B0633322DACB82007BBDD5 /* Tag */,
-				76F4236522C05EE700E7B868 /* Vendor */,
-				7637A6352288AE88007DD20B /* Budget */,
-				76B0634C22DB01C9007BBDD5 /* BudgetItem */,
-				7637A6212286B548007DD20B /* Transaction */,
-				76A2FA7522851E650066D594 /* Extensions */,
 				76A2FA652282465B0066D594 /* DatabaseAccess */,
 			);
 			path = Model;
@@ -594,6 +589,7 @@
 		76A2FA652282465B0066D594 /* DatabaseAccess */ = {
 			isa = PBXGroup;
 			children = (
+				76B0638922E2CB38007BBDD5 /* Protocols */,
 				76A2FA6F228377080066D594 /* TransactionStore.swift */,
 				7637A60C22862B6B007DD20B /* BudgetStore.swift */,
 				76B548BC229135DE001B2FB1 /* LocalAccess.swift */,
@@ -812,11 +808,24 @@
 			path = Vendor;
 			sourceTree = "<group>";
 		};
-		76B0638822E2CAAB007BBDD5 /* New Group */ = {
+		76B0638822E2CAAB007BBDD5 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				76B0633322DACB82007BBDD5 /* Tag */,
+				76F4236522C05EE700E7B868 /* Vendor */,
+				76B0634C22DB01C9007BBDD5 /* BudgetItem */,
+				7637A6352288AE88007DD20B /* Budget */,
+				7637A6212286B548007DD20B /* Transaction */,
 			);
-			path = "New Group";
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		76B0638922E2CB38007BBDD5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				76B0631F22DA7EDC007BBDD5 /* TransactionObserver.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		76B548BE22913D92001B2FB1 /* Protocols and Extensions */ = {
@@ -827,7 +836,6 @@
 				76F4237F22C99BC000E7B868 /* DataSource.swift */,
 				76B0631422D19090007BBDD5 /* UIViewExtension.swift */,
 				76B0631D22D9CD31007BBDD5 /* SuggestionViewDelegate.swift */,
-				76B0631F22DA7EDC007BBDD5 /* TransactionObserver.swift */,
 			);
 			path = "Protocols and Extensions";
 			sourceTree = "<group>";
