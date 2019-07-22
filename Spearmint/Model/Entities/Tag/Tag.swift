@@ -9,17 +9,20 @@
 import Foundation
 
 class Tag: Saveable {
+    let id: TagID
     var text: String
     var color: Color
     var transactionIDs: [TransactionID]
     
     init(text: String, color: Color) {
+        self.id = TagID()
         self.text = text
         self.color = color
         self.transactionIDs = []
     }
     
     init(text: String, color: Color, transactionIDs: [TransactionID]) {
+        self.id = TagID()
         self.text = text
         self.color = color
         self.transactionIDs = transactionIDs

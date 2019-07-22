@@ -56,5 +56,5 @@ class TransactionStore {
     }
     
     let dummyTransaction =
-        Transaction(name: "test1", transactionType: TransactionType.income, vendor: Vendor(name: "APPLE").vendorID, amount: 10.00, date: TransactionDate(), location: "N/A", image: false, notes: "notes", budgetDate: BudgetDate(Date()), items: [:])
+        Transaction(name: "test1", transactionType: TransactionType.income, vendor: Vendor(name: "APPLE").id, amount: 10.00, date: TransactionDate(), location: "N/A", image: false, notes: "notes", budgetDate: BudgetDate(Date()), items: [:])
 }

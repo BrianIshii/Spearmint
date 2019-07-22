@@ -9,7 +9,7 @@
 import Foundation
 
 class Vendor: Saveable {
-    let vendorID: VendorID
+    let id: VendorID
     
     var name: String
     var budgetCategory: BudgetItemCategory?
@@ -17,7 +17,7 @@ class Vendor: Saveable {
     var transactionIDs: [TransactionID]
     
     init(name: String) {
-        self.vendorID = VendorID()
+        self.id = VendorID()
         self.name = name
         self.transactionIDs = []
     }
@@ -27,6 +27,6 @@ class Vendor: Saveable {
     }
     
     var ID: String {
-        return vendorID.id
+        return id.id
     }
 }

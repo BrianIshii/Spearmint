@@ -40,6 +40,8 @@
 		7637A6442288FF26007DD20B /* SelectBudgetItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637A6432288FF26007DD20B /* SelectBudgetItemTableViewCell.swift */; };
 		7637A647228920BA007DD20B /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7637A646228920BA007DD20B /* ItemTableViewCell.xib */; };
 		7637A64922892196007DD20B /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637A64822892196007DD20B /* ItemTableViewCell.swift */; };
+		763AE25B22E59F8C00139810 /* TagID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763AE25A22E59F8C00139810 /* TagID.swift */; };
+		763AE25D22E5A03C00139810 /* BudgetSectionID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763AE25C22E5A03C00139810 /* BudgetSectionID.swift */; };
 		764AFD88226E7060007BFD90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764AFD87226E7060007BFD90 /* AppDelegate.swift */; };
 		764AFD8A226E7060007BFD90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764AFD89226E7060007BFD90 /* ViewController.swift */; };
 		764AFD8D226E7060007BFD90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 764AFD8B226E7060007BFD90 /* Main.storyboard */; };
@@ -119,6 +121,11 @@
 		76B0638322E2B583007BBDD5 /* VendorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0638222E2B583007BBDD5 /* VendorViewController.swift */; };
 		76B0638522E2B617007BBDD5 /* VendorSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0638422E2B617007BBDD5 /* VendorSegue.swift */; };
 		76B0638722E2B647007BBDD5 /* TagSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0638622E2B647007BBDD5 /* TagSegue.swift */; };
+		76B0638B22E518E1007BBDD5 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0638A22E518E1007BBDD5 /* Store.swift */; };
+		76B0638D22E51C4C007BBDD5 /* Queryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0638C22E51C4C007BBDD5 /* Queryable.swift */; };
+		76B0638F22E51CA0007BBDD5 /* BaseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0638E22E51CA0007BBDD5 /* BaseStore.swift */; };
+		76B0639222E52820007BBDD5 /* LocalPersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0639122E52820007BBDD5 /* LocalPersistanceService.swift */; };
+		76B0639422E52A59007BBDD5 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0639322E52A59007BBDD5 /* Observer.swift */; };
 		76B548BB22913069001B2FB1 /* CurrenyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BA22913069001B2FB1 /* CurrenyTests.swift */; };
 		76B548BD229135DE001B2FB1 /* LocalAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BC229135DE001B2FB1 /* LocalAccess.swift */; };
 		76B548C022913DB4001B2FB1 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */; };
@@ -231,6 +238,8 @@
 		7637A6432288FF26007DD20B /* SelectBudgetItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBudgetItemTableViewCell.swift; sourceTree = "<group>"; };
 		7637A646228920BA007DD20B /* ItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
 		7637A64822892196007DD20B /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		763AE25A22E59F8C00139810 /* TagID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagID.swift; sourceTree = "<group>"; };
+		763AE25C22E5A03C00139810 /* BudgetSectionID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetSectionID.swift; sourceTree = "<group>"; };
 		764AFD84226E7060007BFD90 /* Spearmint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spearmint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		764AFD87226E7060007BFD90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		764AFD89226E7060007BFD90 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -316,6 +325,11 @@
 		76B0638222E2B583007BBDD5 /* VendorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorViewController.swift; sourceTree = "<group>"; };
 		76B0638422E2B617007BBDD5 /* VendorSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorSegue.swift; sourceTree = "<group>"; };
 		76B0638622E2B647007BBDD5 /* TagSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSegue.swift; sourceTree = "<group>"; };
+		76B0638A22E518E1007BBDD5 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		76B0638C22E51C4C007BBDD5 /* Queryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queryable.swift; sourceTree = "<group>"; };
+		76B0638E22E51CA0007BBDD5 /* BaseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStore.swift; sourceTree = "<group>"; };
+		76B0639122E52820007BBDD5 /* LocalPersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPersistanceService.swift; sourceTree = "<group>"; };
+		76B0639322E52A59007BBDD5 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		76B548BA22913069001B2FB1 /* CurrenyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenyTests.swift; sourceTree = "<group>"; };
 		76B548BC229135DE001B2FB1 /* LocalAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAccess.swift; sourceTree = "<group>"; };
 		76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
@@ -459,6 +473,7 @@
 				76F4237122C49A1500E7B868 /* BudgetDate.swift */,
 				7637A62F2288997F007DD20B /* BudgetItemSection.swift */,
 				7637A61F2286B3CB007DD20B /* BudgetItemCategory.swift */,
+				763AE25C22E5A03C00139810 /* BudgetSectionID.swift */,
 			);
 			path = Budget;
 			sourceTree = "<group>";
@@ -589,7 +604,9 @@
 		76A2FA652282465B0066D594 /* DatabaseAccess */ = {
 			isa = PBXGroup;
 			children = (
+				76B0639022E52810007BBDD5 /* Service */,
 				76B0638922E2CB38007BBDD5 /* Protocols */,
+				76B0638E22E51CA0007BBDD5 /* BaseStore.swift */,
 				76A2FA6F228377080066D594 /* TransactionStore.swift */,
 				7637A60C22862B6B007DD20B /* BudgetStore.swift */,
 				76B548BC229135DE001B2FB1 /* LocalAccess.swift */,
@@ -682,6 +699,7 @@
 			isa = PBXGroup;
 			children = (
 				76B0633422DACB8D007BBDD5 /* Tag.swift */,
+				763AE25A22E59F8C00139810 /* TagID.swift */,
 			);
 			path = Tag;
 			sourceTree = "<group>";
@@ -823,9 +841,22 @@
 		76B0638922E2CB38007BBDD5 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				76F4236B22C06CF100E7B868 /* Saveable.swift */,
+				76F4237322C4A22D00E7B868 /* SaveableKey.swift */,
 				76B0631F22DA7EDC007BBDD5 /* TransactionObserver.swift */,
+				76B0638A22E518E1007BBDD5 /* Store.swift */,
+				76B0638C22E51C4C007BBDD5 /* Queryable.swift */,
+				76B0639322E52A59007BBDD5 /* Observer.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		76B0639022E52810007BBDD5 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				76B0639122E52820007BBDD5 /* LocalPersistanceService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		76B548BE22913D92001B2FB1 /* Protocols and Extensions */ = {
@@ -1104,8 +1135,6 @@
 		76F4236A22C05FA900E7B868 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				76F4236B22C06CF100E7B868 /* Saveable.swift */,
-				76F4237322C4A22D00E7B868 /* SaveableKey.swift */,
 				76B0632122DA88F4007BBDD5 /* SaveableDate.swift */,
 			);
 			path = Protocols;
@@ -1399,6 +1428,7 @@
 				76A2FA5E2281FB700066D594 /* DateTableViewCell.swift in Sources */,
 				7637A61E2286B1E1007DD20B /* BudgetItemID.swift in Sources */,
 				76B548E8229533F9001B2FB1 /* BudgetItemViewControllerOld.swift in Sources */,
+				763AE25B22E59F8C00139810 /* TagID.swift in Sources */,
 				76A2FA7722851E730066D594 /* DateExtension.swift in Sources */,
 				76F4237622C4A5B000E7B868 /* StringExtension.swift in Sources */,
 				76B0631822D314D6007BBDD5 /* TransactionViewDelegate.swift in Sources */,
@@ -1408,9 +1438,11 @@
 				76B548C222913E8E001B2FB1 /* ReusableIdentifier.swift in Sources */,
 				7637A6402288FB5F007DD20B /* SelectBudgetItemListTableView.swift in Sources */,
 				76B0632922DA8E12007BBDD5 /* TransactionDate.swift in Sources */,
+				76B0638B22E518E1007BBDD5 /* Store.swift in Sources */,
 				76B548EA22953426001B2FB1 /* ViewBudgetItemSegue.swift in Sources */,
 				76EF345E2298E049005A5C35 /* UIImageExtension.swift in Sources */,
 				7689F71B2271874900AD4225 /* Item.swift in Sources */,
+				76B0638D22E51C4C007BBDD5 /* Queryable.swift in Sources */,
 				76F4237222C49A1500E7B868 /* BudgetDate.swift in Sources */,
 				76D22F82229A2A9E00C06567 /* AnalysisCollectionViewCell.swift in Sources */,
 				76B0632222DA88F4007BBDD5 /* SaveableDate.swift in Sources */,
@@ -1427,6 +1459,7 @@
 				76B0632022DA7EDC007BBDD5 /* TransactionObserver.swift in Sources */,
 				763275C722A836FB0099532A /* AddItemTableViewCell.swift in Sources */,
 				763275BF22A59FF20099532A /* ImageFrameView.swift in Sources */,
+				76B0638F22E51CA0007BBDD5 /* BaseStore.swift in Sources */,
 				76B0635D22DBCDA6007BBDD5 /* BudgetDataSource.swift in Sources */,
 				76EF34602298F8AF005A5C35 /* AddBudgetItemViewController.swift in Sources */,
 				76B548C022913DB4001B2FB1 /* ConfigurableCell.swift in Sources */,
@@ -1466,6 +1499,7 @@
 				76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */,
 				76B0635922DB24AA007BBDD5 /* BudgetItemAndTagTextView.swift in Sources */,
 				7637A60D22862B6B007DD20B /* BudgetStore.swift in Sources */,
+				76B0639222E52820007BBDD5 /* LocalPersistanceService.swift in Sources */,
 				76A2FA622281FBE60066D594 /* VendorTableViewCell.swift in Sources */,
 				76B548E02294F100001B2FB1 /* SegueIdentifier.swift in Sources */,
 				7637A6202286B3CB007DD20B /* BudgetItemCategory.swift in Sources */,
@@ -1497,6 +1531,7 @@
 				76B0632D22DAB40A007BBDD5 /* AddTransactionViewController.swift in Sources */,
 				7637A63422889F8D007DD20B /* BudgetSectionTableViewCell.swift in Sources */,
 				7689F7192270E6F600AD4225 /* BudgetItem.swift in Sources */,
+				76B0639422E52A59007BBDD5 /* Observer.swift in Sources */,
 				76F4236922C05EFC00E7B868 /* VendorID.swift in Sources */,
 				76F4237E22C99B9000E7B868 /* AddTransactionDataSource.swift in Sources */,
 				7689F7132270E31A00AD4225 /* Budget.swift in Sources */,
@@ -1506,6 +1541,7 @@
 				76EF34652299E029005A5C35 /* AddBudgetItemSectionViewController.swift in Sources */,
 				76B0633522DACB8D007BBDD5 /* Tag.swift in Sources */,
 				76B548DC2294ECA9001B2FB1 /* ImageStore.swift in Sources */,
+				763AE25D22E5A03C00139810 /* BudgetSectionID.swift in Sources */,
 				76B0634722DAE247007BBDD5 /* BaseID.swift in Sources */,
 				76B0636522DBE45C007BBDD5 /* TransactionTableView.swift in Sources */,
 				764AFDBA226EC283007BFD90 /* SettingsTableViewController.swift in Sources */,

@@ -11,6 +11,7 @@ import Foundation
 class Budget: Saveable {
     
     private var budgetDate: BudgetDate
+
     var transactions: [TransactionID]
     var items: [BudgetItemCategory:[BudgetItemID]]
     

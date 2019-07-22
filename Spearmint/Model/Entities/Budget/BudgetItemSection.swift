@@ -9,10 +9,12 @@
 import Foundation
 
 class BudgetItemSection: Saveable {
+    var id: BudgetSectionID
     var category: BudgetItemCategory
     var isExpanded: Bool
 
     init(category: BudgetItemCategory) {
+        self.id = BudgetSectionID()
         self.category = category
         self.isExpanded = true
     }

@@ -9,6 +9,7 @@
 import Foundation
 
 class BudgetItem: Saveable, Hashable {
+    typealias Key = BudgetItemID
     var id: BudgetItemID
     var name: String
     var category: BudgetItemCategory

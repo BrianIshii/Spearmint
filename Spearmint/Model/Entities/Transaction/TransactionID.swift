@@ -20,3 +20,6 @@ struct TransactionID: BaseID {
         return left.id == right.id
     }
 }
+
+extension TransactionID: SaveableKey {
+}

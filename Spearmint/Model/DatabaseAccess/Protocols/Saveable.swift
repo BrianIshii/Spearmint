@@ -9,6 +9,8 @@
 import Foundation
 
 protocol Saveable: class, Codable {
+    associatedtype Key: SaveableKey
+    var id: Key { get }
     static var urlString: String { get }
 }
 

@@ -21,7 +21,7 @@ struct BudgetItemID: BaseID {
     }
 }
 
-extension BudgetItemID: Hashable {
+extension BudgetItemID: SaveableKey {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }

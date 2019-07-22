@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct VendorID: BaseID, SaveableKey {
+struct VendorID: BaseID {
     let id: String
     
     init() {
@@ -19,4 +19,7 @@ struct VendorID: BaseID, SaveableKey {
     static func == (lhs: VendorID, rhs: VendorID) -> Bool {
         return lhs.id == rhs.id
     }
+}
+
+extension VendorID: SaveableKey {
 }

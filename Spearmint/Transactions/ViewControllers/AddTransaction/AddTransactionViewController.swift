@@ -98,7 +98,7 @@ class AddTransactionViewController: UIViewController {
         
         let tags = transactionView.tagTextView.tags
         
-        transaction = Transaction(name: name, transactionType: transactionType, vendor: vendor.vendorID, amount: Float(amount), date: TransactionDate(date), location: "N/A", image: hasImage, tags: tags, notes: "notes", budgetDate: budgetKey, items: transactionItems)
+        transaction = Transaction(name: name, transactionType: transactionType, vendor: vendor.id, amount: Float(amount), date: TransactionDate(date), location: "N/A", image: hasImage, tags: tags, notes: "notes", budgetDate: budgetKey, items: transactionItems)
     }
 }
 

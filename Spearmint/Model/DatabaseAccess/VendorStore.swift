@@ -15,14 +15,14 @@ class VendorStore {
     init() {
         let dictionary = getVendorDictionary()
         for (k,v) in dictionary {
-            vendorKeys[v.name] = v.vendorID
+            vendorKeys[v.name] = v.id
         }
         self.vendorDictionary = getVendorDictionary()
     }
     
     public func addVendor(vendor: Vendor) {
-        vendorDictionary[vendor.vendorID] = vendor
-        vendorKeys[vendor.name] = vendor.vendorID
+        vendorDictionary[vendor.id] = vendor
+        vendorKeys[vendor.name] = vendor.id
         updateVendorDictionary()
     }
     

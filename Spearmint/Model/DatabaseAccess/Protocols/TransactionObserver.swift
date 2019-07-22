@@ -8,6 +8,5 @@
 
 import Foundation
 
-protocol TransactionObserver: class {
-    func update()
+protocol TransactionObserver: Observer {
 }
