@@ -92,7 +92,11 @@ class AddTransactionViewController: UIViewController {
         if LocalAccess.hasVendor(vendorString) {
             vendor = LocalAccess.getVendor(vendorString)!
         } else {
-            vendor = Vendor(name: vendorString)
+            if let budgetItems = budgetItems, let budgetItem = budgetItems.first {
+                vendor = Vendor(name: vendorString, budgetCategory: budgetItem.category, budgetItemID: budgetItem.id)
+            } else {
+                vendor = Vendor(name: vendorString)
+            }
             LocalAccess.addVendor(vendor)
         }
         

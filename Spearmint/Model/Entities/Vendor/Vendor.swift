@@ -13,12 +13,20 @@ class Vendor: Saveable {
     
     var name: String
     var budgetCategory: BudgetItemCategory?
-    var budgetItemName: String?
+    var budgetItemID: BudgetItemID?
     var transactionIDs: [TransactionID]
     
     init(name: String) {
         self.id = VendorID()
         self.name = name
+        self.transactionIDs = []
+    }
+    
+    init(name: String, budgetCategory: BudgetItemCategory, budgetItemID: BudgetItemID) {
+        self.id = VendorID()
+        self.name = name
+        self.budgetCategory = budgetCategory
+        self.budgetItemID = budgetItemID
         self.transactionIDs = []
     }
     

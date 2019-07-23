@@ -14,9 +14,9 @@ class SuggestionsView: UIView {
     @IBOutlet weak var middleItem: UIBarButtonItem!
     @IBOutlet weak var rightItem: UIBarButtonItem!
 
-    var textField: SuggestionViewDelegate?
+    var delegate: SuggestionViewDelegate?
     
-    var suggestions: [String]
+    var suggestions: [Suggestion]
     
     override init(frame: CGRect) {
         suggestions = []
@@ -48,33 +48,42 @@ class SuggestionsView: UIView {
     }
     
     @objc func clickedLeftSuggestion() {
-        guard let textField = textField else { return }
+        guard let delegate = delegate else { return }
         
-        textField.addSuggestion(leftItem.title ?? "")
+        delegate.addSuggestion(leftItem.title ?? "")
     }
     
     @objc func clickedMiddleSuggestion() {
-        guard let textField = textField else { return }
+        guard let delegate = delegate else { return }
 
-        textField.addSuggestion(middleItem.title ?? "")
+        delegate.addSuggestion(middleItem.title ?? "")
     }
     
     @objc func clickedRightSuggestion() {
-        guard let textField = textField else { return }
+        guard let delegate = delegate else { return }
 
-        textField.addSuggestion(middleItem.title ?? "")
+        delegate.addSuggestion(middleItem.title ?? "")
     }
     
-    func addSuggestions(_ suggestions: [String]) {
+    func addSuggestions(_ suggestions: [Suggestion]) {
         var suggestions = suggestions
         
         while suggestions.count < 3 {
-            suggestions.append("")
+            suggestions.append(Suggestion(text: ""))
         }
         
-        leftItem.title = suggestions[0]
-        middleItem.title = suggestions[1]
-        rightItem.title = suggestions[2]
+        self.suggestions = suggestions
+        
+        setItem(item: leftItem, suggestion: suggestions[0])
+        setItem(item: middleItem, suggestion: suggestions[1])
+        setItem(item: rightItem, suggestion: suggestions[2])
+    }
+    
+    func setItem(item: UIBarButtonItem, suggestion: Suggestion) {
+        item.title = suggestion.text
+        if let textColor = suggestion.textColor {
+            item.tintColor = textColor
+        }
     }
     
     func clearSuggestions() {

@@ -15,7 +15,7 @@ class LocalAccess {
     private static let vendors: VendorStore = VendorStore()
     private static let Tags: TagStore = TagStore()
     public static let budgetItemStore: BudgetItemStore = BudgetItemStore()
-    public static let Transactions: TransactionStore = TransactionStore()
+    public static let Transactions: TransactionStoreOld = TransactionStoreOld()
     
     public static func deleteTransaction(_ transaction: Transaction) {
         Transactions.deleteTransaction(transaction)

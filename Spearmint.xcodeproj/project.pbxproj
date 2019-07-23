@@ -42,6 +42,10 @@
 		7637A64922892196007DD20B /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637A64822892196007DD20B /* ItemTableViewCell.swift */; };
 		763AE25B22E59F8C00139810 /* TagID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763AE25A22E59F8C00139810 /* TagID.swift */; };
 		763AE25D22E5A03C00139810 /* BudgetSectionID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763AE25C22E5A03C00139810 /* BudgetSectionID.swift */; };
+		763AE25F22E5A31600139810 /* LocalPersistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763AE25E22E5A31600139810 /* LocalPersistance.swift */; };
+		764AEE1622E6D982007C817D /* TransactionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764AEE1522E6D982007C817D /* TransactionStore.swift */; };
+		764AEE1822E6DA3C007C817D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764AEE1722E6DA3C007C817D /* Observable.swift */; };
+		764AEE1A22E6E5E7007C817D /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764AEE1922E6E5E7007C817D /* Suggestion.swift */; };
 		764AFD88226E7060007BFD90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764AFD87226E7060007BFD90 /* AppDelegate.swift */; };
 		764AFD8A226E7060007BFD90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764AFD89226E7060007BFD90 /* ViewController.swift */; };
 		764AFD8D226E7060007BFD90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 764AFD8B226E7060007BFD90 /* Main.storyboard */; };
@@ -71,7 +75,7 @@
 		76A2FA67228248220066D594 /* PaymentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA66228248220066D594 /* PaymentType.swift */; };
 		76A2FA6A22824CFE0066D594 /* AddTransactionSegueold.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA6922824CFE0066D594 /* AddTransactionSegueold.swift */; };
 		76A2FA6E228375970066D594 /* TransactionID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA6D228375970066D594 /* TransactionID.swift */; };
-		76A2FA70228377080066D594 /* TransactionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA6F228377080066D594 /* TransactionStore.swift */; };
+		76A2FA70228377080066D594 /* TransactionStoreOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA6F228377080066D594 /* TransactionStoreOld.swift */; };
 		76A2FA7422851B7D0066D594 /* DateFormatterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA7322851B7D0066D594 /* DateFormatterFactory.swift */; };
 		76A2FA7722851E730066D594 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA7622851E730066D594 /* DateExtension.swift */; };
 		76B0630922D06F79007BBDD5 /* DateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0630822D06F79007BBDD5 /* DateTextField.swift */; };
@@ -240,6 +244,10 @@
 		7637A64822892196007DD20B /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		763AE25A22E59F8C00139810 /* TagID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagID.swift; sourceTree = "<group>"; };
 		763AE25C22E5A03C00139810 /* BudgetSectionID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetSectionID.swift; sourceTree = "<group>"; };
+		763AE25E22E5A31600139810 /* LocalPersistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPersistance.swift; sourceTree = "<group>"; };
+		764AEE1522E6D982007C817D /* TransactionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStore.swift; sourceTree = "<group>"; };
+		764AEE1722E6DA3C007C817D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		764AEE1922E6E5E7007C817D /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
 		764AFD84226E7060007BFD90 /* Spearmint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spearmint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		764AFD87226E7060007BFD90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		764AFD89226E7060007BFD90 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -275,7 +283,7 @@
 		76A2FA66228248220066D594 /* PaymentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentType.swift; sourceTree = "<group>"; };
 		76A2FA6922824CFE0066D594 /* AddTransactionSegueold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionSegueold.swift; sourceTree = "<group>"; };
 		76A2FA6D228375970066D594 /* TransactionID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionID.swift; sourceTree = "<group>"; };
-		76A2FA6F228377080066D594 /* TransactionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStore.swift; sourceTree = "<group>"; };
+		76A2FA6F228377080066D594 /* TransactionStoreOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStoreOld.swift; sourceTree = "<group>"; };
 		76A2FA7322851B7D0066D594 /* DateFormatterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterFactory.swift; sourceTree = "<group>"; };
 		76A2FA7622851E730066D594 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		76B0630822D06F79007BBDD5 /* DateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextField.swift; sourceTree = "<group>"; };
@@ -462,6 +470,7 @@
 				7632756C229F08930099532A /* VendorTextField.swift */,
 				76327574229F13FC0099532A /* SuggestionsView.swift */,
 				76B0630822D06F79007BBDD5 /* DateTextField.swift */,
+				764AEE1922E6E5E7007C817D /* Suggestion.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -607,7 +616,8 @@
 				76B0639022E52810007BBDD5 /* Service */,
 				76B0638922E2CB38007BBDD5 /* Protocols */,
 				76B0638E22E51CA0007BBDD5 /* BaseStore.swift */,
-				76A2FA6F228377080066D594 /* TransactionStore.swift */,
+				764AEE1522E6D982007C817D /* TransactionStore.swift */,
+				76A2FA6F228377080066D594 /* TransactionStoreOld.swift */,
 				7637A60C22862B6B007DD20B /* BudgetStore.swift */,
 				76B548BC229135DE001B2FB1 /* LocalAccess.swift */,
 				76B548DB2294ECA9001B2FB1 /* ImageStore.swift */,
@@ -615,6 +625,7 @@
 				76F4236322C05BFD00E7B868 /* VendorStore.swift */,
 				76F4236F22C0ABF100E7B868 /* BudgetItemStore.swift */,
 				76B0634A22DAE8CC007BBDD5 /* TagStore.swift */,
+				763AE25E22E5A31600139810 /* LocalPersistance.swift */,
 			);
 			path = DatabaseAccess;
 			sourceTree = "<group>";
@@ -847,6 +858,7 @@
 				76B0638A22E518E1007BBDD5 /* Store.swift */,
 				76B0638C22E51C4C007BBDD5 /* Queryable.swift */,
 				76B0639322E52A59007BBDD5 /* Observer.swift */,
+				764AEE1722E6DA3C007C817D /* Observable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1450,6 +1462,7 @@
 				76F4236722C05EF300E7B868 /* Vendor.swift in Sources */,
 				76D22F84229A324500C06567 /* PriceCheckViewController.swift in Sources */,
 				76B0635B22DBCD13007BBDD5 /* BudgetItemTableView.swift in Sources */,
+				764AEE1A22E6E5E7007C817D /* Suggestion.swift in Sources */,
 				76B0637D22DDA6A1007BBDD5 /* BudgetItemSegue.swift in Sources */,
 				7689F7152270E39900AD4225 /* TransactionType.swift in Sources */,
 				76F4238022C99BC000E7B868 /* DataSource.swift in Sources */,
@@ -1498,6 +1511,7 @@
 				76B0637022DC5B76007BBDD5 /* BudgetItemTableViewDelegate.swift in Sources */,
 				76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */,
 				76B0635922DB24AA007BBDD5 /* BudgetItemAndTagTextView.swift in Sources */,
+				763AE25F22E5A31600139810 /* LocalPersistance.swift in Sources */,
 				7637A60D22862B6B007DD20B /* BudgetStore.swift in Sources */,
 				76B0639222E52820007BBDD5 /* LocalPersistanceService.swift in Sources */,
 				76A2FA622281FBE60066D594 /* VendorTableViewCell.swift in Sources */,
@@ -1526,12 +1540,13 @@
 				7637A6282287EAB4007DD20B /* PieChartView.swift in Sources */,
 				76B548E622952EEE001B2FB1 /* MasterSummaryViewController.swift in Sources */,
 				764AFDBC226EC377007BFD90 /* SettingsTableViewCell.swift in Sources */,
-				76A2FA70228377080066D594 /* TransactionStore.swift in Sources */,
+				76A2FA70228377080066D594 /* TransactionStoreOld.swift in Sources */,
 				76D22F80229A29C500C06567 /* AnalysisCollectionViewController.swift in Sources */,
 				76B0632D22DAB40A007BBDD5 /* AddTransactionViewController.swift in Sources */,
 				7637A63422889F8D007DD20B /* BudgetSectionTableViewCell.swift in Sources */,
 				7689F7192270E6F600AD4225 /* BudgetItem.swift in Sources */,
 				76B0639422E52A59007BBDD5 /* Observer.swift in Sources */,
+				764AEE1822E6DA3C007C817D /* Observable.swift in Sources */,
 				76F4236922C05EFC00E7B868 /* VendorID.swift in Sources */,
 				76F4237E22C99B9000E7B868 /* AddTransactionDataSource.swift in Sources */,
 				7689F7132270E31A00AD4225 /* Budget.swift in Sources */,
@@ -1546,6 +1561,7 @@
 				76B0636522DBE45C007BBDD5 /* TransactionTableView.swift in Sources */,
 				764AFDBA226EC283007BFD90 /* SettingsTableViewController.swift in Sources */,
 				7637A61A22868C32007DD20B /* BudgetCollectionViewCell.swift in Sources */,
+				764AEE1622E6D982007C817D /* TransactionStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

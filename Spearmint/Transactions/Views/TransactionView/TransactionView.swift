@@ -61,6 +61,9 @@ class TransactionView: UIView {
         self.subviews.first?.layer.shadowRadius = 4
         self.subviews.first?.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.subviews.first?.layer.shadowColor = UIColor.black.cgColor
+        
+        self.vendorTextField.suggestionViewDelegate = self
+        
         self.deleteTransactionButton.isHidden = true
         self.tagTextView.tagTextViewDelegate = self
         tagTextViewHeight.constant = (TagTextView.padding +
@@ -124,5 +127,18 @@ extension TransactionView: TagTextViewDelegate {
         guard let delegate = delegate else { return }
 
         delegate.didSelectTag(text: tag)
+    }
+}
+
+extension TransactionView: SuggestionViewDelegate {
+    func addSuggestion(_ suggestion: String) {
+        
+        vendorTextField.text = suggestion
+        vendorTextField.resignFirstResponder()
+        
+        guard let vendor = LocalAccess.getVendor(suggestion) else { return }
+        guard let budgetItemID = vendor.budgetItemID else { return }
+        categoryTextView.budgetItems.append(budgetItemID)
+        categoryTextView.createCategoryViews()
     }
 }

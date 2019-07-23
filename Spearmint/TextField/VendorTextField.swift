@@ -13,6 +13,13 @@ class VendorTextField: UITextField {
     let locationManager = CLLocationManager()
 
     var view: SuggestionsView
+    var suggestionViewDelegate: SuggestionViewDelegate? {
+        didSet {
+            guard let suggestionViewDelegate = suggestionViewDelegate else { return }
+            
+            view.delegate = suggestionViewDelegate
+        }
+    }
     var mapRegion: MKCoordinateRegion?
     
     override init(frame: CGRect) {
@@ -39,7 +46,6 @@ class VendorTextField: UITextField {
         self.delegate = self
         
         view.frame.size.width = self.frame.width
-        view.textField = self
         self.inputAccessoryView = view
 
         configureLocationManager()
@@ -105,24 +111,23 @@ extension VendorTextField: CLLocationManagerDelegate {
         let search = MKLocalSearch(request: request)
         search.start(completionHandler:
             { localSearchResponse, error in
-                var temp: [String] = []
+                var temp: [Suggestion] = []
                 if error == nil {
                     guard let response = localSearchResponse else {
                         return
                     }
                     
                     for item in LocalAccess.queryVendors(text) {
-                        temp.append(item.0)
+                        temp.append(Suggestion(text: item.0, textColor: .black, backgroundColor: .gray))
                     }
 
                     for item in response.mapItems {
                         if let name = item.name {
-                            temp.append(name)
+                            temp.append(Suggestion(text: name))
                         }
                     }
                     
                     DispatchQueue.main.async {
-                        self.view.suggestions = temp
                         self.view.addSuggestions(temp)
                     }
                 }

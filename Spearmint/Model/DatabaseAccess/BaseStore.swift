@@ -8,14 +8,14 @@
 
 import Foundation
 
-class BaseStore<V: Saveable, O: Observer>: Store {
+class BaseStore<V: Saveable>: Store {
     var items: [Key : Item] = [:]
-    var observers: [ItemObserver] = []
+    //var observers: [ItemObserver] = []
     var localPersistanceService: LocalPersistanceService
     
     typealias Key = V.Key
     typealias Item = V
-    typealias ItemObserver = O
+    //typealias ItemObserver = O
     
     init(localPersistanceService: LocalPersistanceService) {
         self.localPersistanceService = localPersistanceService
@@ -24,6 +24,7 @@ class BaseStore<V: Saveable, O: Observer>: Store {
     
     func append(_ item: Item) {
         items[item.id] = item
+        update()
     }
     
     func remove(_ key: Key) {
@@ -33,6 +34,10 @@ class BaseStore<V: Saveable, O: Observer>: Store {
     
     func get(_ key: Key) -> Item? {
         return items[key]
+    }
+    
+    func getAll() -> [Item] {
+        return items.values.map({ $0 })
     }
     
     func update() {

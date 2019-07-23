@@ -11,12 +11,13 @@ import Foundation
 protocol Store {
     associatedtype Key: SaveableKey
     associatedtype Item: Saveable
-    associatedtype ItemObserver: Observer
+    //associatedtype ItemObserver: Observer
 
     var items: [Key: Item] { get set }
-    var observers: [ItemObserver] { get set }
+    //var observers: [ItemObserver] { get set }
 
     func append(_ item: Item)
     func remove(_ key: Key)
     func get(_ key: Key) -> Item?
+    func getAll() -> [Item]
 }

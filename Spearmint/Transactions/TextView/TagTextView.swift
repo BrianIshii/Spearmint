@@ -36,7 +36,7 @@ class TagTextView: UITextView {
         self.delegate = self
         self.autocorrectionType = .no
 
-        view.textField = self
+        view.delegate = self
         self.inputAccessoryView = view
         
         self.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
@@ -175,7 +175,7 @@ extension TagTextView: UITextViewDelegate {
         
         if self.tags.count > 0 {
             let suggestions = LocalAccess.queryTags(self.tags[self.tags.count - 1])
-            view.addSuggestions(suggestions.map({ $0.text }))
+            view.addSuggestions(suggestions.map({ Suggestion(text: $0.text) }))
         }
         
         createTagViews()
