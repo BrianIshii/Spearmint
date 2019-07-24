@@ -25,7 +25,7 @@
 		7637A6202286B3CB007DD20B /* BudgetItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637A61F2286B3CB007DD20B /* BudgetItemCategory.swift */; };
 		7637A6232287ACEF007DD20B /* AddTransactionBudgetItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7637A6222287ACEF007DD20B /* AddTransactionBudgetItemTableViewCell.xib */; };
 		7637A6252287AE00007DD20B /* AddTransactionBudgetItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637A6242287AE00007DD20B /* AddTransactionBudgetItemTableViewCell.swift */; };
-		7637A6282287EAB4007DD20B /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637A6272287EAB4007DD20B /* PieChartView.swift */; };
+		7637A6282287EAB4007DD20B /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637A6272287EAB4007DD20B /* PieChart.swift */; };
 		7637A62B2287EB1E007DD20B /* Summary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7637A6292287EB1E007DD20B /* Summary.storyboard */; };
 		7637A62E2287EE4D007DD20B /* MoneyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637A62D2287EE4D007DD20B /* MoneyTextField.swift */; };
 		7637A6302288997F007DD20B /* BudgetItemSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637A62F2288997F007DD20B /* BudgetItemSection.swift */; };
@@ -152,6 +152,10 @@
 		76D22F80229A29C500C06567 /* AnalysisCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D22F7F229A29C500C06567 /* AnalysisCollectionViewController.swift */; };
 		76D22F82229A2A9E00C06567 /* AnalysisCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D22F81229A2A9E00C06567 /* AnalysisCollectionViewCell.swift */; };
 		76D22F84229A324500C06567 /* PriceCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D22F83229A324500C06567 /* PriceCheckViewController.swift */; };
+		76D4742B22E808CF0053A095 /* PieChartSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4742A22E808CF0053A095 /* PieChartSegment.swift */; };
+		76D4742D22E808EA0053A095 /* PieChartDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4742C22E808EA0053A095 /* PieChartDataSource.swift */; };
+		76D4742F22E81E790053A095 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4742E22E81E790053A095 /* PieChartView.swift */; };
+		76D4743122E829110053A095 /* CGVectorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4743022E829110053A095 /* CGVectorExtension.swift */; };
 		76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3CBE7227FEEAC0010625A /* Currency.swift */; };
 		76EF345422963BF1005A5C35 /* BudgetItemSectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */; };
 		76EF345622986CD8005A5C35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76EF345522986CD8005A5C35 /* GoogleService-Info.plist */; };
@@ -227,7 +231,7 @@
 		7637A61F2286B3CB007DD20B /* BudgetItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemCategory.swift; sourceTree = "<group>"; };
 		7637A6222287ACEF007DD20B /* AddTransactionBudgetItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTransactionBudgetItemTableViewCell.xib; sourceTree = "<group>"; };
 		7637A6242287AE00007DD20B /* AddTransactionBudgetItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionBudgetItemTableViewCell.swift; sourceTree = "<group>"; };
-		7637A6272287EAB4007DD20B /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
+		7637A6272287EAB4007DD20B /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		7637A62A2287EB1E007DD20B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Spearmint/Base.lproj/Summary.storyboard; sourceTree = "<group>"; };
 		7637A62D2287EE4D007DD20B /* MoneyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTextField.swift; sourceTree = "<group>"; };
 		7637A62F2288997F007DD20B /* BudgetItemSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemSection.swift; sourceTree = "<group>"; };
@@ -360,6 +364,10 @@
 		76D22F7F229A29C500C06567 /* AnalysisCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisCollectionViewController.swift; sourceTree = "<group>"; };
 		76D22F81229A2A9E00C06567 /* AnalysisCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisCollectionViewCell.swift; sourceTree = "<group>"; };
 		76D22F83229A324500C06567 /* PriceCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCheckViewController.swift; sourceTree = "<group>"; };
+		76D4742A22E808CF0053A095 /* PieChartSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartSegment.swift; sourceTree = "<group>"; };
+		76D4742C22E808EA0053A095 /* PieChartDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartDataSource.swift; sourceTree = "<group>"; };
+		76D4742E22E81E790053A095 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
+		76D4743022E829110053A095 /* CGVectorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGVectorExtension.swift; sourceTree = "<group>"; };
 		76E3CBE7227FEEAC0010625A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemSectionStore.swift; sourceTree = "<group>"; };
 		76EF345522986CD8005A5C35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -458,7 +466,8 @@
 		7637A6262287EA62007DD20B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7637A6272287EAB4007DD20B /* PieChartView.swift */,
+				7637A6272287EAB4007DD20B /* PieChart.swift */,
+				76D4742E22E81E790053A095 /* PieChartView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -522,6 +531,7 @@
 		764AFD86226E7060007BFD90 /* Spearmint */ = {
 			isa = PBXGroup;
 			children = (
+				76D4742922E808B00053A095 /* PieChart */,
 				76A2FA7522851E650066D594 /* Extensions */,
 				76B0637E22E2B515007BBDD5 /* Vendor */,
 				76B0632E22DAC9F0007BBDD5 /* Tag */,
@@ -647,6 +657,7 @@
 				76A2FA7622851E730066D594 /* DateExtension.swift */,
 				76EF345D2298E049005A5C35 /* UIImageExtension.swift */,
 				76F4237522C4A5B000E7B868 /* StringExtension.swift */,
+				76D4743022E829110053A095 /* CGVectorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1058,7 +1069,6 @@
 		76B548E122952D95001B2FB1 /* Summary */ = {
 			isa = PBXGroup;
 			children = (
-				7637A6262287EA62007DD20B /* Views */,
 				76B548E222952DA7001B2FB1 /* ViewControllers */,
 			);
 			path = Summary;
@@ -1100,6 +1110,16 @@
 				76D22F83229A324500C06567 /* PriceCheckViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		76D4742922E808B00053A095 /* PieChart */ = {
+			isa = PBXGroup;
+			children = (
+				7637A6262287EA62007DD20B /* Views */,
+				76D4742A22E808CF0053A095 /* PieChartSegment.swift */,
+				76D4742C22E808EA0053A095 /* PieChartDataSource.swift */,
+			);
+			path = PieChart;
 			sourceTree = "<group>";
 		};
 		76EF34612299DBA6005A5C35 /* Views */ = {
@@ -1481,10 +1501,13 @@
 				7637A6302288997F007DD20B /* BudgetItemSection.swift in Sources */,
 				76A2FA6A22824CFE0066D594 /* AddTransactionSegueold.swift in Sources */,
 				76B0633822DACC0F007BBDD5 /* Color.swift in Sources */,
+				76D4742F22E81E790053A095 /* PieChartView.swift in Sources */,
 				76B0631C22D9B9E8007BBDD5 /* TagTextView.swift in Sources */,
+				76D4742B22E808CF0053A095 /* PieChartSegment.swift in Sources */,
 				76B548D522915D14001B2FB1 /* ImageViewTableViewCell.swift in Sources */,
 				76B0631E22D9CD31007BBDD5 /* SuggestionViewDelegate.swift in Sources */,
 				764AFD8A226E7060007BFD90 /* ViewController.swift in Sources */,
+				76D4743122E829110053A095 /* CGVectorExtension.swift in Sources */,
 				76B548E422952DBF001B2FB1 /* SummaryPieChartViewController.swift in Sources */,
 				76F4237C22C99B6900E7B868 /* AddTransactionTableViewController.swift in Sources */,
 				76B548DE2294F0E4001B2FB1 /* ViewTransactionSegue.swift in Sources */,
@@ -1537,7 +1560,7 @@
 				7637A6252287AE00007DD20B /* AddTransactionBudgetItemTableViewCell.swift in Sources */,
 				76F4235C22BA02CE00E7B868 /* TransactionDataSource.swift in Sources */,
 				763275C322A5B9EE0099532A /* AddContentsFromImageViewController.swift in Sources */,
-				7637A6282287EAB4007DD20B /* PieChartView.swift in Sources */,
+				7637A6282287EAB4007DD20B /* PieChart.swift in Sources */,
 				76B548E622952EEE001B2FB1 /* MasterSummaryViewController.swift in Sources */,
 				764AFDBC226EC377007BFD90 /* SettingsTableViewCell.swift in Sources */,
 				76A2FA70228377080066D594 /* TransactionStoreOld.swift in Sources */,
@@ -1553,6 +1576,7 @@
 				7637A6382288AF75007DD20B /* BudgetItemListTableView.swift in Sources */,
 				76F4237922C998FD00E7B868 /* AddTransactionTableViewCell.swift in Sources */,
 				76327575229F13FC0099532A /* SuggestionsView.swift in Sources */,
+				76D4742D22E808EA0053A095 /* PieChartDataSource.swift in Sources */,
 				76EF34652299E029005A5C35 /* AddBudgetItemSectionViewController.swift in Sources */,
 				76B0633522DACB8D007BBDD5 /* Tag.swift in Sources */,
 				76B548DC2294ECA9001B2FB1 /* ImageStore.swift in Sources */,
