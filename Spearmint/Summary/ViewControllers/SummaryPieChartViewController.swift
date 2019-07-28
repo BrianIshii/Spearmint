@@ -15,15 +15,15 @@ class SummaryPieChartViewController: UIViewController {
     @IBOutlet weak var bottomLabel: UILabel!
     var budgetSections: [BudgetItemSection] = BudgetItemSectionStore.budgetItemSections
     var totalExpenses = Float(0.0)
-    var pieChartDataSource: PieChartDataSource?
+    var pieChartDataSource: PieChartViewDataSource?
     var budget: Budget?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let pieChart = pieChartView.pieChart else { return }
+        guard let pieChartView = pieChartView else { return }
 
-        pieChartDataSource = PieChartDataSource(pieChart)
+        pieChartDataSource = PieChartViewDataSource(pieChartView)
 //        update()
         //pieChartView.setNeedsDisplay()
     }
@@ -76,7 +76,7 @@ class SummaryPieChartViewController: UIViewController {
     
     func changeSection(_ index: Int) {
         guard let pieChartDataSource = pieChartDataSource else { return }
-        pieChartDataSource.selectedSegment = index
+        pieChartDataSource.selectSegment(index)
 //        if index < 1 {
 //            if let b = budget {
 //                bottomLabel.text = Currency.currencyFormatter(b.totalIncome - totalExpenses) + " left"

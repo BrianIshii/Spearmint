@@ -10,7 +10,15 @@ import UIKit
 
 class PieChartView: UIView {
     var pieChart: PieChart?
-    var angle: CGFloat = 0 {
+    var dataSource: PieChartViewDataSource? {
+        didSet {
+            guard let pieChart = pieChart else { return }
+            
+            pieChart.dataSource = dataSource
+        }
+    }
+    
+    var angle: CGFloat = CGFloat.pi * 3 / 2 {
         didSet {
             if angle > CGFloat(2 * CGFloat.pi) {
                 self.angle = angle.truncatingRemainder(dividingBy: CGFloat(2 * CGFloat.pi))
@@ -18,7 +26,9 @@ class PieChartView: UIView {
                 self.angle = angle + CGFloat(2 * CGFloat.pi)
             }
             guard let pieChart = pieChart else { return }
-            pieChart.transform = CGAffineTransform(rotationAngle: angle)
+            UIView.animate(withDuration: 0.1, animations: {
+                pieChart.transform = CGAffineTransform(rotationAngle: self.angle)})
+            
         }
     }
     var previousTouch: CGPoint?
@@ -37,6 +47,7 @@ class PieChartView: UIView {
     
     func setUp() {
         guard let pieChart = pieChart else { return }
+        pieChart.transform = CGAffineTransform(rotationAngle: angle)
         self.addSubview(pieChart)
     }
     
@@ -44,7 +55,7 @@ class PieChartView: UIView {
         let touch = touches.first
         if let touch = touch {
             let beginPoint = touch.location(in: self)
-            print("x: \(beginPoint.x),y: \(beginPoint.y)")
+            //print("x: \(beginPoint.x),y: \(beginPoint.y)")
             previousTouch = beginPoint
         }
     }
@@ -53,7 +64,7 @@ class PieChartView: UIView {
         let touch = touches.first
         if let touch = touch {
             let beginPoint = touch.location(in: self)
-            print("x: \(beginPoint.x),y: \(beginPoint.y)")
+            //print("x: \(beginPoint.x),y: \(beginPoint.y)")
             
             guard let previousTouch = previousTouch else { return }
             
@@ -66,8 +77,25 @@ class PieChartView: UIView {
                 } else {
                     angle -= delta
                 }
-                print(angle)
+                //print(angle)
                 self.previousTouch = beginPoint
+                
+                
+                guard let pieChart = pieChart else { return }
+
+                let tranformedAngle = pieChartViewAngleToPieChartAngle(angle)
+                
+                var index = 0
+                var difference = CGFloat(CGFloat.pi * 2)
+                for (i, tick) in pieChart.ticks.enumerated() {
+                    var delta = tick - tranformedAngle
+                    if delta < difference {
+                        index = i
+                    }
+                }
+                if let dataSource = dataSource {
+                    dataSource.selectedSegment = index
+                }
             }
             
 
@@ -79,14 +107,20 @@ class PieChartView: UIView {
         if let touch = touch {
             let beginPoint = touch.location(in: self)
             print("x: \(beginPoint.x),y: \(beginPoint.y)")
-            
+            print(angle)
             guard let pieChart = pieChart else { return }
             
+            let tranformedAngle = pieChartViewAngleToPieChartAngle(angle)
+            
             var index = 0
+            var actualDelta = CGFloat(0)
             var difference = CGFloat(CGFloat.pi * 2)
             for (i, tick) in pieChart.ticks.enumerated() {
-                var delta = tick - angle
+                //var radius = CGFloat(frame.width / 2 * 3 / 4)
+                //var sectionVector = CGVector(dx: center.x, dy: <#T##CGFloat#>)
+                var delta = tick - tranformedAngle
                 if delta < difference {
+                    actualDelta = delta
                     if delta < 0 {
                         delta *= -1
                     }
@@ -94,10 +128,37 @@ class PieChartView: UIView {
                     index = i
                 }
             }
-            print(index)
-            
-            angle = pieChart.ticks[0] - pieChart.ticks[index]
+            print("\(tranformedAngle) \(index) \(pieChart.ticks[index]) \(difference)")
+//
+//            angle = pieChart.ticks[0] - pieChart.ticks[index]
+            angle -= actualDelta
+            if let dataSource = dataSource {
+                dataSource.selectedSegment = index
+            }
+
         }
         previousTouch = nil
+    }
+    
+//    func pieChartAngleToPieChartViewAngle(_ angle: CGFloat) -> CGFloat {
+//        var tranformedAngle = -(angle + CGFloat.pi / 2)
+//        if tranformedAngle > CGFloat(2 * CGFloat.pi) {
+//            tranformedAngle = tranformedAngle.truncatingRemainder(dividingBy: CGFloat(2 * CGFloat.pi))
+//        } else if tranformedAngle < CGFloat(0) {
+//            tranformedAngle = tranformedAngle + CGFloat(2 * CGFloat.pi)
+//        }
+//
+//        return tranformedAngle
+//    }
+    
+    func pieChartViewAngleToPieChartAngle(_ angle: CGFloat) -> CGFloat {
+        var tranformedAngle = -(angle + CGFloat.pi / 2)
+        if tranformedAngle > CGFloat(2 * CGFloat.pi) {
+            tranformedAngle = tranformedAngle.truncatingRemainder(dividingBy: CGFloat(2 * CGFloat.pi))
+        } else if tranformedAngle < CGFloat(0) {
+            tranformedAngle = tranformedAngle + CGFloat(2 * CGFloat.pi)
+        }
+        
+        return tranformedAngle
     }
 }

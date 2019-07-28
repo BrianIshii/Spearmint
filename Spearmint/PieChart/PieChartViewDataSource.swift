@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
-class PieChartDataSource: NSObject {
-    fileprivate let pieChart: PieChart
-    var segments: [PieChartSegment] = PieChartDataSource.temp
+class PieChartViewDataSource: NSObject {
+    fileprivate let pieChartView: PieChartView
+    var segments: [PieChartSegment] = PieChartViewDataSource.temp
     var selectedSegment: Int? {
         didSet {
             guard let selectedSegment = selectedSegment else { return }
@@ -18,17 +19,24 @@ class PieChartDataSource: NSObject {
             if selectedSegment >= segments.count {
                 self.selectedSegment = nil
             }
-            pieChart.drawPieChart()
+            
+            if selectedSegment != oldValue {
+                guard let pieChart = pieChartView.pieChart else { return }
+                
+                pieChart.drawPieChart()
+            }
+
         }
     }
+    
     var total: Double? = 100
     
-    init(_ pieChart: PieChart) {
-        self.pieChart = pieChart
+    init(_ pieChartView: PieChartView) {
+        self.pieChartView = pieChartView
         super.init()
         
-        pieChart.dataSource = self
-        pieChart.drawPieChart()
+        pieChartView.dataSource = self
+                pieChartView.pieChart?.drawPieChart()
     }
     
     func getPieChartData() -> [(segment: PieChartSegment, percentage: Double)] {
@@ -40,6 +48,16 @@ class PieChartDataSource: NSObject {
         }
         
         return data
+    }
+    
+    func selectSegment(_ index: Int) {
+        selectedSegment = index
+        
+        guard let selectedSegment = selectedSegment else { return }
+        guard let pieChart = pieChartView.pieChart else { return }
+
+        var tranformedAngle = pieChartView.pieChartViewAngleToPieChartAngle(pieChart.ticks[selectedSegment])
+        pieChartView.angle = tranformedAngle
     }
     
     func calculateTotal() -> Double {

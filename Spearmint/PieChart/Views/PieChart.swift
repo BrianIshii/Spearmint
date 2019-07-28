@@ -11,7 +11,8 @@ import UIKit
 class PieChart: UIView {
     var CApaths: [CAShapeLayer] = []
     var ticks: [CGFloat] = []
-    var dataSource: PieChartDataSource?
+    var radius: CGFloat = 0
+    var dataSource: PieChartViewDataSource?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,43 +25,44 @@ class PieChart: UIView {
     }
     
     func setUp() {
+        radius = CGFloat(frame.width / 2 * 3 / 4)
     }
     
     func drawPieChart() {
         guard let dataSource = dataSource else { return }
 
         ticks = []
-        let center = CGPoint(x: frame.width / 2, y: frame.height / 2)
-        let radius = CGFloat(frame.width / 2 * 3 / 4)
-        var start = CGFloat.pi * 3 / 2
+        var start = CGFloat(0)
     
         let data = dataSource.getPieChartData()
         
         if data.last?.percentage == 1.0 {
-            let _ = drawPath(center: center, radius: radius, start: 0, end: CGFloat.pi * 2, color: UIColor.lightGray, lineWidth: frame.width / 75, index: 0)
+            let _ = drawPath(radius: radius, start: 0, end: CGFloat.pi * 2, color: UIColor.lightGray, lineWidth: frame.width / 75, index: 0)
             return
         }
             
         for i in 0..<(data.count) {
             let end = CGFloat(start + CGFloat(data[i].percentage) * 2 * CGFloat.pi)
-            drawPath(center: center, radius: radius, start: start, end: end, color: data[i].segment.color, lineWidth: frame.width / 25, index: i)
+            drawPath(radius: radius, start: start, end: end, color: data[i].segment.color, lineWidth: frame.width / 25, index: i)
         
             start = end
         }
     
-        if  start != (CGFloat.pi * 3 / 2) {
-            drawPath(center: center, radius: radius, start: start, end: CGFloat.pi * 3 / 2, color: UIColor.lightGray, lineWidth: defaultLineWidth, index: data.count)
+        if  start != (CGFloat.pi * 2) {
+            drawPath(radius: radius, start: start, end: CGFloat.pi * 2, color: UIColor.lightGray, lineWidth: defaultLineWidth, index: data.count)
         }
     }
     
-    func drawPath(center: CGPoint, radius: CGFloat, start: CGFloat, end: CGFloat, color: UIColor, lineWidth: CGFloat, index: Int) {
+    func drawPath(radius: CGFloat, start: CGFloat, end: CGFloat, color: UIColor, lineWidth: CGFloat, index: Int) {
         let path = UIBezierPath()
         color.setStroke()
         path.addArc(withCenter: center, radius: radius, startAngle: start, endAngle: end, clockwise: true)
         path.lineWidth = lineWidth
 
         var nextPathLayer: CAShapeLayer
-        ticks.append(start)
+        
+        ticks.append(start + (end - start) / 2)
+        
         if index <= CApaths.count - 1 {
             nextPathLayer = CApaths[index]
         } else {
