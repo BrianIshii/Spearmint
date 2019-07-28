@@ -9,11 +9,11 @@
 import UIKit
 
 class PieChartView: UIView {
-    var pieChart: PieChart?
+    var pieChart: PieChart!
+    var title: UILabel!
+    var subTitle: UILabel!
     var dataSource: PieChartViewDataSource? {
         didSet {
-            guard let pieChart = pieChart else { return }
-            
             pieChart.dataSource = dataSource
         }
     }
@@ -34,21 +34,61 @@ class PieChartView: UIView {
     var previousTouch: CGPoint?
     
     override init(frame: CGRect) {
-        self.pieChart = PieChart(frame: frame)
         super.init(frame: frame)
         setUp()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.pieChart = PieChart(frame: frame)
         setUp()
     }
     
     func setUp() {
-        guard let pieChart = pieChart else { return }
-        pieChart.transform = CGAffineTransform(rotationAngle: angle)
+        self.pieChart = PieChart(frame: frame)
+        self.pieChart.transform = CGAffineTransform(rotationAngle: angle)
         self.addSubview(pieChart)
+        
+        title = UILabel()
+        title.textAlignment = .center
+        title.text = "Title"
+        title.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        subTitle = UILabel()
+        subTitle.textAlignment = .center
+        subTitle.text = "sub title"
+        subTitle.translatesAutoresizingMaskIntoConstraints = false
+
+        
+
+        setConstraints()
+    }
+    
+    func setConstraints() {
+        let centerView = UIView(frame: frame)
+        centerView.backgroundColor = .gray
+        centerView.center = self.center
+        centerView.translatesAutoresizingMaskIntoConstraints = false
+
+        centerView.addSubview(title)
+        centerView.addSubview(subTitle)
+        
+        centerView.addConstraints([
+            NSLayoutConstraint(item: title, attribute: .centerX, relatedBy: .equal, toItem: centerView, attribute: .centerX, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: title, attribute: .top, relatedBy: .equal, toItem: centerView, attribute: .top, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: subTitle, attribute: .centerX, relatedBy: .equal, toItem: centerView, attribute: .centerX, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: subTitle, attribute: .top, relatedBy: .equal, toItem: title, attribute: .bottom, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: subTitle, attribute: .bottom, relatedBy: .equal, toItem: centerView, attribute: .bottom, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: title, attribute: .height, relatedBy: .equal, toItem: subTitle, attribute: .height, multiplier: 1, constant: 0),
+            ])
+        self.addSubview(centerView)
+        
+        self.addConstraints([
+            NSLayoutConstraint(item: centerView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: centerView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: centerView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 200),
+            NSLayoutConstraint(item: centerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100),
+            ])
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -90,11 +130,20 @@ class PieChartView: UIView {
                 for (i, tick) in pieChart.ticks.enumerated() {
                     var delta = tick - tranformedAngle
                     if delta < difference {
+                        if delta < 0 {
+                            delta *= -1
+                        }
+                        difference = delta
                         index = i
                     }
                 }
+                
                 if let dataSource = dataSource {
                     dataSource.selectedSegment = index
+                    
+                    if index < dataSource.segments.count {
+                        title.text = dataSource.segments[index].text
+                    }
                 }
             }
             
@@ -134,6 +183,10 @@ class PieChartView: UIView {
             angle -= actualDelta
             if let dataSource = dataSource {
                 dataSource.selectedSegment = index
+                
+                if index < dataSource.segments.count {
+                    title.text = dataSource.segments[index].text
+                }
             }
 
         }
