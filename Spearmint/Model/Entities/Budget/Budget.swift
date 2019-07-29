@@ -11,7 +11,6 @@ import Foundation
 class Budget: Saveable {
     
     private var budgetDate: BudgetDate
-
     var transactions: [TransactionID]
     var items: [BudgetItemCategory:[BudgetItemID]]
     
@@ -75,7 +74,7 @@ class Budget: Saveable {
 
                 for id in items[key.category]! {
                     if let item = LocalAccess.budgetItemStore.getBudgetItem(id) {
-                        total += item.actual
+                        total += item.getMonthlyTotal(self.budgetDate)
                     }
                 }
                 

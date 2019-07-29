@@ -11,7 +11,7 @@ import UIKit
 
 class PieChartViewDataSource: NSObject {
     fileprivate let pieChartView: PieChartView
-    var segments: [PieChartSegment] = PieChartViewDataSource.temp
+    var segments: [PieChartSegment] = []
     var selectedSegment: Int? {
         didSet {
             guard let selectedSegment = selectedSegment else { return }
@@ -29,7 +29,7 @@ class PieChartViewDataSource: NSObject {
         }
     }
     
-    var total: Double? = 100
+    var total: Double?
     
     init(_ pieChartView: PieChartView) {
         self.pieChartView = pieChartView
@@ -72,6 +72,20 @@ class PieChartViewDataSource: NSObject {
         }
         
         return total
+    }
+
+    func addSegment(_ segment: PieChartSegment) {
+        self.segments.append(segment)
+        guard let pieChart = pieChartView.pieChart else { return }
+        
+        pieChart.drawPieChart()
+    }
+    
+    func setSegments(_ segments: [PieChartSegment]) {
+        self.segments = segments
+        guard let pieChart = pieChartView.pieChart else { return }
+        
+        pieChart.drawPieChart()
     }
     
     static var temp: [PieChartSegment] {

@@ -124,11 +124,11 @@ class PieChartView: UIView {
                 guard let pieChart = pieChart else { return }
 
                 let tranformedAngle = pieChartViewAngleToPieChartAngle(angle)
-                
+                //print("\(tranformedAngle) \(angle)")
                 var index = 0
                 var difference = CGFloat(CGFloat.pi * 2)
                 for (i, tick) in pieChart.ticks.enumerated() {
-                    var delta = tick - tranformedAngle
+                    var delta = min(tick - tranformedAngle, tick + tranformedAngle)
                     if delta < difference {
                         if delta < 0 {
                             delta *= -1
@@ -139,10 +139,12 @@ class PieChartView: UIView {
                 }
                 
                 if let dataSource = dataSource {
-                    dataSource.selectedSegment = index
-                    
-                    if index < dataSource.segments.count {
-                        title.text = dataSource.segments[index].text
+                    if dataSource.selectedSegment != index {
+                        dataSource.selectedSegment = index
+                        
+                        if index < dataSource.segments.count {
+                            title.text = dataSource.segments[index].text
+                        }
                     }
                 }
             }
@@ -167,7 +169,8 @@ class PieChartView: UIView {
             for (i, tick) in pieChart.ticks.enumerated() {
                 //var radius = CGFloat(frame.width / 2 * 3 / 4)
                 //var sectionVector = CGVector(dx: center.x, dy: <#T##CGFloat#>)
-                var delta = tick - tranformedAngle
+                var delta = min(tick - tranformedAngle, tick + tranformedAngle)
+
                 if delta < difference {
                     actualDelta = delta
                     if delta < 0 {
@@ -177,7 +180,7 @@ class PieChartView: UIView {
                     index = i
                 }
             }
-            print("\(tranformedAngle) \(index) \(pieChart.ticks[index]) \(difference)")
+            //print("\(tranformedAngle) \(index) \(pieChart.ticks[index]) \(difference)")
 //
 //            angle = pieChart.ticks[0] - pieChart.ticks[index]
             angle -= actualDelta
@@ -186,6 +189,7 @@ class PieChartView: UIView {
                 
                 if index < dataSource.segments.count {
                     title.text = dataSource.segments[index].text
+                    subTitle.text = Currency.currencyFormatter(Float(dataSource.segments[index].value))
                 }
             }
 
@@ -206,9 +210,12 @@ class PieChartView: UIView {
     
     func pieChartViewAngleToPieChartAngle(_ angle: CGFloat) -> CGFloat {
         var tranformedAngle = -(angle + CGFloat.pi / 2)
-        if tranformedAngle > CGFloat(2 * CGFloat.pi) {
+        
+        while tranformedAngle > CGFloat(2 * CGFloat.pi) {
             tranformedAngle = tranformedAngle.truncatingRemainder(dividingBy: CGFloat(2 * CGFloat.pi))
-        } else if tranformedAngle < CGFloat(0) {
+        }
+        
+        while tranformedAngle < CGFloat(0) {
             tranformedAngle = tranformedAngle + CGFloat(2 * CGFloat.pi)
         }
         

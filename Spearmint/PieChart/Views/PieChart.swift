@@ -12,6 +12,9 @@ class PieChart: UIView {
     var CApaths: [CAShapeLayer] = []
     var ticks: [CGFloat] = []
     var radius: CGFloat = 0
+    var defaultLineWidth: CGFloat = 0
+    var segmentLineWidth: CGFloat = 0
+    var selectedSegementLineWidth: CGFloat = 0
     var dataSource: PieChartViewDataSource?
 
     override init(frame: CGRect) {
@@ -26,6 +29,9 @@ class PieChart: UIView {
     
     func setUp() {
         radius = CGFloat(frame.width / 2 * 3 / 4)
+        defaultLineWidth = frame.width / 75
+        segmentLineWidth = frame.width / 25
+        selectedSegementLineWidth = segmentLineWidth * 2
     }
     
     func drawPieChart() {
@@ -43,7 +49,7 @@ class PieChart: UIView {
             
         for i in 0..<(data.count) {
             let end = CGFloat(start + CGFloat(data[i].percentage) * 2 * CGFloat.pi)
-            drawPath(radius: radius, start: start, end: end, color: data[i].segment.color, lineWidth: frame.width / 25, index: i)
+            drawPath(radius: radius, start: start, end: end, color: data[i].segment.color, lineWidth: segmentLineWidth, index: i)
         
             start = end
         }
@@ -55,7 +61,6 @@ class PieChart: UIView {
     
     func drawPath(radius: CGFloat, start: CGFloat, end: CGFloat, color: UIColor, lineWidth: CGFloat, index: Int) {
         let path = UIBezierPath()
-        color.setStroke()
         path.addArc(withCenter: center, radius: radius, startAngle: start, endAngle: end, clockwise: true)
         path.lineWidth = lineWidth
 
@@ -86,16 +91,5 @@ class PieChart: UIView {
             self.layer.addSublayer(nextPathLayer)
         }
         
-    }
-    
-    fileprivate var defaultLineWidth: CGFloat {
-        return frame.width / 75
-    }
-    
-    fileprivate var segmentLineWidth: CGFloat {
-        return frame.width / 25
-    }
-    fileprivate var selectedSegementLineWidth: CGFloat {
-        return segmentLineWidth * 2
     }
 }

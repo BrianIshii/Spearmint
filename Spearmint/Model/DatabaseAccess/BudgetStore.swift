@@ -26,6 +26,16 @@ class BudgetStore {
         return budgetDictionary[key]
     }
     
+    static func getCurrentBudget() -> Budget {
+        if let budget = budgetDictionary[BudgetDate()] {
+            return budget
+        } else {
+            let budget = Budget(BudgetDate())
+            addBudget(budget)
+            return budget
+        }
+    }
+    
     static func addBudget(_ budget: Budget) {
         if budgetDictionary[budget.id] != nil {
             print("already have budget")

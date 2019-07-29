@@ -24,18 +24,59 @@ class SummaryPieChartViewController: UIViewController {
         guard let pieChartView = pieChartView else { return }
 
         pieChartDataSource = PieChartViewDataSource(pieChartView)
-//        update()
+        update()
+        LocalAccess.Transactions.observers.append(self)
         //pieChartView.setNeedsDisplay()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        update()
         //pieChartView.setNeedsDisplay()
     }
 
-    private func update() {
+    private func getColor(_ budgetItemCategory: BudgetItemCategory) -> UIColor {
+        switch budgetItemCategory {
+        case .income:
+            return UIColor.green
+        case .giving:
+            return UIColor.red
+        case .savings:
+            return UIColor.orange
+        case .housing:
+            return UIColor.blue
+        case .transportation:
+            return UIColor.purple
+        case .food:
+            return UIColor.magenta
+        case .personal:
+            return UIColor.yellow
+        case .lifestyle:
+            return UIColor.cyan
+        case .health:
+            return UIColor.brown
+        case .insurance:
+            return UIColor.black
+        case .debt:
+            return UIColor.lightGray
+        case .other:
+            return UIColor.darkGray
+        }
+    }
+    
+//    private func update() {
+//        guard let pieChartDataSource = pieChartDataSource else { return }
+//        let budget = BudgetStore.getCurrentBudget()
+//        let totalExpenses = budget.totalExpenses
+//        for category in budgetSections {
+//            if let expenses = totalExpenses[category.category] {
+//                if expenses > 0 {
+//                    pieChartDataSource.addSegment(PieChartSegment(text: category.category.rawValue, color: getColor(category.category), value: Double(expenses)))
+//                }
+//            }
+//
+//        }
+
         // Do any additional setup after loading the view.
 //        if let b = BudgetStore.getBudget(BudgetDate(Date())) {
 //            let totalIncome = b.totalIncome
@@ -72,7 +113,7 @@ class SummaryPieChartViewController: UIViewController {
 //            topLabel.text = "Income"
 //            pieChartView.segments = temp
 //        }
-    }
+//    }
     
     func changeSection(_ index: Int) {
         guard let pieChartDataSource = pieChartDataSource else { return }
@@ -110,4 +151,23 @@ class SummaryPieChartViewController: UIViewController {
     }
     */
 
+}
+
+extension SummaryPieChartViewController: TransactionObserver {
+    func update() {
+        guard let pieChartDataSource = pieChartDataSource else { return }
+        let budget = BudgetStore.getCurrentBudget()
+        let totalExpenses = budget.totalExpenses
+        var segments: [PieChartSegment] = []
+
+        for category in budgetSections {
+            if let expenses = totalExpenses[category.category] {
+                if expenses > 0 {
+                    segments.append(PieChartSegment(text: category.category.rawValue, color: getColor(category.category), value: Double(expenses)))
+                }
+            }
+        }
+        
+        pieChartDataSource.setSegments(segments)
+    }
 }

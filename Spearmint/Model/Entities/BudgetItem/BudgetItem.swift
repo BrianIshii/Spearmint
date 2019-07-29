@@ -56,6 +56,19 @@ class BudgetItem: Saveable, Hashable {
 //            actual += item.amount
 //        }
 //    }
+    func getMonthlyTotal(_ budgetDate: BudgetDate) -> Float {
+        var total = Float(0)
+
+        if let transactionIDs = transactions[budgetDate] {
+            for id in transactionIDs {
+                if let transaction = LocalAccess.Transactions.getTransaction(id) {
+                    total += transaction.amount
+                }
+            }
+        }
+        
+        return total
+    }
     
     func deleteTransaction(_ transaction: Transaction) {
         if var transactionIDs = transactions[transaction.budgetDate] {
@@ -66,6 +79,8 @@ class BudgetItem: Saveable, Hashable {
                 }
             }
         }
+        
+
 //        transactions.removeAll(where: { (t) -> Bool in
 //            return t == transaction.id
 //        })
