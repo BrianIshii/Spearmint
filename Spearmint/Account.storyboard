@@ -90,12 +90,27 @@
                                     <action selector="addDemoTransactions:" destination="xmb-TB-H1U" eventType="touchUpInside" id="HOq-rT-HZX"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSH-ny-zU9">
+                                <rect key="frame" x="142.5" y="502" width="129" height="30"/>
+                                <state key="normal" title="Store Transactions"/>
+                                <connections>
+                                    <action selector="addTransaction:" destination="xmb-TB-H1U" eventType="touchUpInside" id="wby-lu-OF2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1DK-p6-NCB">
+                                <rect key="frame" x="152.5" y="591" width="109" height="30"/>
+                                <state key="normal" title="Get Transaction"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="VLQ-7k-ebq" firstAttribute="centerX" secondItem="5Tl-Bb-lag" secondAttribute="centerX" id="1qD-wJ-E07"/>
+                            <constraint firstItem="oSH-ny-zU9" firstAttribute="top" secondItem="VLQ-7k-ebq" secondAttribute="bottom" constant="80" id="4ee-Q5-K99"/>
                             <constraint firstItem="mxd-Zi-OKl" firstAttribute="centerX" secondItem="5Tl-Bb-lag" secondAttribute="centerX" id="C6v-nL-Fqp"/>
+                            <constraint firstItem="oSH-ny-zU9" firstAttribute="centerX" secondItem="5Tl-Bb-lag" secondAttribute="centerX" id="E6W-w2-kEW"/>
+                            <constraint firstItem="1DK-p6-NCB" firstAttribute="top" secondItem="oSH-ny-zU9" secondAttribute="bottom" constant="59" id="K6P-2C-BUI"/>
                             <constraint firstItem="mxd-Zi-OKl" firstAttribute="top" secondItem="5Tl-Bb-lag" secondAttribute="top" constant="214" id="Yno-ci-nmT"/>
+                            <constraint firstItem="1DK-p6-NCB" firstAttribute="centerX" secondItem="5Tl-Bb-lag" secondAttribute="centerX" id="hoj-eK-Irg"/>
                             <constraint firstItem="VLQ-7k-ebq" firstAttribute="top" secondItem="mxd-Zi-OKl" secondAttribute="bottom" constant="60" id="vyt-st-j2P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5Tl-Bb-lag"/>
