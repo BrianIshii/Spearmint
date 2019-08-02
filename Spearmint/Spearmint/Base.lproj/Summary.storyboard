@@ -67,41 +67,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o8c-9M-OVC" customClass="PieChartView" customModule="Spearmint" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fuX-Sd-V6k">
-                                        <rect key="frame" x="115.5" y="168.5" width="183" height="77"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gb0-op-TtI">
-                                                <rect key="frame" x="0.0" y="0.0" width="183" height="33.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spent" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ba9-tO-yvN">
-                                                <rect key="frame" x="0.0" y="43.5" width="183" height="33.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="gb0-op-TtI" firstAttribute="width" secondItem="fuX-Sd-V6k" secondAttribute="width" id="GFe-0n-lGW"/>
-                                            <constraint firstAttribute="bottom" secondItem="Ba9-tO-yvN" secondAttribute="bottom" id="O9P-qh-yZO"/>
-                                            <constraint firstItem="gb0-op-TtI" firstAttribute="centerX" secondItem="fuX-Sd-V6k" secondAttribute="centerX" id="ita-0P-oGI"/>
-                                            <constraint firstItem="Ba9-tO-yvN" firstAttribute="centerX" secondItem="fuX-Sd-V6k" secondAttribute="centerX" id="mnD-AC-RJo"/>
-                                            <constraint firstAttribute="width" constant="183" id="pTl-W0-ppM"/>
-                                            <constraint firstItem="Ba9-tO-yvN" firstAttribute="top" secondItem="gb0-op-TtI" secondAttribute="bottom" constant="10" id="pq4-HZ-ysA"/>
-                                            <constraint firstItem="gb0-op-TtI" firstAttribute="top" secondItem="fuX-Sd-V6k" secondAttribute="top" id="uRI-k8-L3n"/>
-                                            <constraint firstItem="Ba9-tO-yvN" firstAttribute="width" secondItem="fuX-Sd-V6k" secondAttribute="width" id="vg7-qI-PaW"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="fuX-Sd-V6k" firstAttribute="centerX" secondItem="o8c-9M-OVC" secondAttribute="centerX" id="SHd-Te-4A8"/>
-                                    <constraint firstItem="fuX-Sd-V6k" firstAttribute="centerY" secondItem="o8c-9M-OVC" secondAttribute="centerY" id="dfd-zH-JJO"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -114,9 +80,7 @@
                         <viewLayoutGuide key="safeArea" id="ps4-6g-ZV5"/>
                     </view>
                     <connections>
-                        <outlet property="bottomLabel" destination="Ba9-tO-yvN" id="g5a-ko-8mY"/>
                         <outlet property="pieChartView" destination="o8c-9M-OVC" id="NAI-vQ-QRj"/>
-                        <outlet property="topLabel" destination="gb0-op-TtI" id="CnU-dh-MDI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ppv-Az-n5d" userLabel="First Responder" sceneMemberID="firstResponder"/>

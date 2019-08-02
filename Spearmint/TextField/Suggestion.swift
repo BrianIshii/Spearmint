@@ -16,8 +16,8 @@ struct Suggestion {
     
     init(text: String) {
         self.text = text
-        self.textColor = nil
-        self.backgroundColor = nil
+        self.textColor = .white
+        self.backgroundColor = .black
     }
     
     init(text: String, textColor: UIColor, backgroundColor: UIColor) {

@@ -12,12 +12,12 @@ import MapKit
 class VendorTextField: UITextField {
     let locationManager = CLLocationManager()
 
-    var view: SuggestionsView
+    var view: SuggestionsView?
     var suggestionViewDelegate: SuggestionViewDelegate? {
         didSet {
             guard let suggestionViewDelegate = suggestionViewDelegate else { return }
             
-            view.delegate = suggestionViewDelegate
+            view?.delegate = suggestionViewDelegate
         }
     }
     var mapRegion: MKCoordinateRegion?
@@ -29,8 +29,9 @@ class VendorTextField: UITextField {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        view = SuggestionsView(frame: CGRect(x: 0, y: 0, width: 0, height: 45))
         super.init(coder: aDecoder)
+        view = SuggestionsView(frame: CGRect(x: 0, y: 0, width: frame.width, height: 45))
+
         setUp()
     }
     
@@ -45,6 +46,9 @@ class VendorTextField: UITextField {
 
         self.delegate = self
         
+        let view = SuggestionsView(frame: CGRect(x: 0, y: 0, width: frame.width, height: 100))
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .gray
         view.frame.size.width = self.frame.width
         self.inputAccessoryView = view
 
@@ -118,7 +122,7 @@ extension VendorTextField: CLLocationManagerDelegate {
                     }
                     
                     for item in LocalAccess.queryVendors(text) {
-                        temp.append(Suggestion(text: item.0, textColor: .black, backgroundColor: .gray))
+                        temp.append(Suggestion(text: item.0, textColor: .blue, backgroundColor: .black))
                     }
 
                     for item in response.mapItems {
@@ -128,7 +132,7 @@ extension VendorTextField: CLLocationManagerDelegate {
                     }
                     
                     DispatchQueue.main.async {
-                        self.view.addSuggestions(temp)
+                        self.view?.addSuggestions(temp)
                     }
                 }
         })

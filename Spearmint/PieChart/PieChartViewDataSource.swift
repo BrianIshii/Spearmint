@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AudioToolbox.AudioServices
 
 class PieChartViewDataSource: NSObject {
     fileprivate let pieChartView: PieChartView
@@ -22,6 +23,10 @@ class PieChartViewDataSource: NSObject {
             
             if selectedSegment != oldValue {
                 guard let pieChart = pieChartView.pieChart else { return }
+                
+                AudioServicesPlaySystemSoundWithCompletion(1157, nil)
+                let generator = UIImpactFeedbackGenerator(style: .medium)
+                generator.impactOccurred()
                 
                 pieChart.drawPieChart()
             }
@@ -56,7 +61,9 @@ class PieChartViewDataSource: NSObject {
         guard let selectedSegment = selectedSegment else { return }
         guard let pieChart = pieChartView.pieChart else { return }
 
-        var tranformedAngle = pieChartView.pieChartViewAngleToPieChartAngle(pieChart.ticks[selectedSegment])
+        let tick = pieChart.ticks[selectedSegment]
+        let centerOfSegment = tick.start + (tick.end - tick.start) / 2
+        var tranformedAngle = pieChartView.pieChartViewAngleToPieChartAngle(centerOfSegment)
         pieChartView.angle = tranformedAngle
     }
     

@@ -25,6 +25,7 @@ class SummaryPieChartViewController: UIViewController {
 
         pieChartDataSource = PieChartViewDataSource(pieChartView)
         update()
+        
         LocalAccess.Transactions.observers.append(self)
         //pieChartView.setNeedsDisplay()
     }

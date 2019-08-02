@@ -46,8 +46,6 @@ class TransactionViewController: UIViewController {
             destionationViewController.tag = selectedTag
         }
     }
- 
-
 }
 
 extension TransactionViewController: TransactionViewDelegate {

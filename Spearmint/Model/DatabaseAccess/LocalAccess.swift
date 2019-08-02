@@ -24,7 +24,6 @@ class LocalAccess {
     }
     
     public static func addTransaction(_ transaction: Transaction) {
-        Transactions.addTransaction(transaction)
         BudgetStore.addTransaction(transaction)
         budgetItemStore.addTransaction(transaction)
         for text in transaction.tags {
@@ -35,6 +34,8 @@ class LocalAccess {
             }
         }
 //        vendors.addVendor(vendor: Vendor(name: transaction.vendor))
+        Transactions.addTransaction(transaction)
+
         print("added transaction")
     }
     

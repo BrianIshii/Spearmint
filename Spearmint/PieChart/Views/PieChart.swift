@@ -10,7 +10,7 @@ import UIKit
 
 class PieChart: UIView {
     var CApaths: [CAShapeLayer] = []
-    var ticks: [CGFloat] = []
+    var ticks: [(start: CGFloat, end: CGFloat)] = []
     var radius: CGFloat = 0
     var defaultLineWidth: CGFloat = 0
     var segmentLineWidth: CGFloat = 0
@@ -54,7 +54,7 @@ class PieChart: UIView {
             start = end
         }
     
-        if  start != (CGFloat.pi * 2) {
+        if start < (CGFloat.pi * 2) {
             drawPath(radius: radius, start: start, end: CGFloat.pi * 2, color: UIColor.lightGray, lineWidth: defaultLineWidth, index: data.count)
         }
     }
@@ -66,7 +66,7 @@ class PieChart: UIView {
 
         var nextPathLayer: CAShapeLayer
         
-        ticks.append(start + (end - start) / 2)
+        ticks.append((start, end))
         
         if index <= CApaths.count - 1 {
             nextPathLayer = CApaths[index]
@@ -80,7 +80,6 @@ class PieChart: UIView {
         
         if let dataSource = dataSource, let selectedSegment = dataSource.selectedSegment {
             if selectedSegment == index {
-                print("changed width")
                 nextPathLayer.lineWidth = selectedSegementLineWidth
             }
         }

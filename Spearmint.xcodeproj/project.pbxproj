@@ -156,6 +156,8 @@
 		76D4742D22E808EA0053A095 /* PieChartViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4742C22E808EA0053A095 /* PieChartViewDataSource.swift */; };
 		76D4742F22E81E790053A095 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4742E22E81E790053A095 /* PieChartView.swift */; };
 		76D4743122E829110053A095 /* CGVectorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4743022E829110053A095 /* CGVectorExtension.swift */; };
+		76D4743322EED1480053A095 /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4743222EED1480053A095 /* CGFloatExtension.swift */; };
+		76D4743822F28E880053A095 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D4743722F28E880053A095 /* CloudKit.framework */; };
 		76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3CBE7227FEEAC0010625A /* Currency.swift */; };
 		76EF345422963BF1005A5C35 /* BudgetItemSectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */; };
 		76EF345622986CD8005A5C35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76EF345522986CD8005A5C35 /* GoogleService-Info.plist */; };
@@ -368,6 +370,9 @@
 		76D4742C22E808EA0053A095 /* PieChartViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartViewDataSource.swift; sourceTree = "<group>"; };
 		76D4742E22E81E790053A095 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		76D4743022E829110053A095 /* CGVectorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGVectorExtension.swift; sourceTree = "<group>"; };
+		76D4743222EED1480053A095 /* CGFloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatExtension.swift; sourceTree = "<group>"; };
+		76D4743622F2875C0053A095 /* Spearmint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Spearmint.entitlements; sourceTree = "<group>"; };
+		76D4743722F28E880053A095 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		76E3CBE7227FEEAC0010625A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemSectionStore.swift; sourceTree = "<group>"; };
 		76EF345522986CD8005A5C35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -405,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76F4236122BC9EC000E7B868 /* WebKit.framework in Frameworks */,
+				76D4743822F28E880053A095 /* CloudKit.framework in Frameworks */,
 				76EF34672299FCD7005A5C35 /* MapKit.framework in Frameworks */,
 				8C358F36EF8B95A59EFE86A9 /* libPods-Spearmint.a in Frameworks */,
 			);
@@ -432,6 +438,7 @@
 		3D1703AEC6B0CB76EA6FFCB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				76D4743722F28E880053A095 /* CloudKit.framework */,
 				76F4236022BC9EC000E7B868 /* WebKit.framework */,
 				76EF34662299FCD7005A5C35 /* MapKit.framework */,
 				0E5F0B3815F25922C7D10D61 /* libPods-Spearmint.a */,
@@ -531,6 +538,7 @@
 		764AFD86226E7060007BFD90 /* Spearmint */ = {
 			isa = PBXGroup;
 			children = (
+				76D4743622F2875C0053A095 /* Spearmint.entitlements */,
 				76D4742922E808B00053A095 /* PieChart */,
 				76A2FA7522851E650066D594 /* Extensions */,
 				76B0637E22E2B515007BBDD5 /* Vendor */,
@@ -658,6 +666,7 @@
 				76EF345D2298E049005A5C35 /* UIImageExtension.swift */,
 				76F4237522C4A5B000E7B868 /* StringExtension.swift */,
 				76D4743022E829110053A095 /* CGVectorExtension.swift */,
+				76D4743222EED1480053A095 /* CGFloatExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1270,6 +1279,12 @@
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
 						};
 					};
 					764AFD97226E7061007BFD90 = {
@@ -1509,6 +1524,7 @@
 				764AFD8A226E7060007BFD90 /* ViewController.swift in Sources */,
 				76D4743122E829110053A095 /* CGVectorExtension.swift in Sources */,
 				76B548E422952DBF001B2FB1 /* SummaryPieChartViewController.swift in Sources */,
+				76D4743322EED1480053A095 /* CGFloatExtension.swift in Sources */,
 				76F4237C22C99B6900E7B868 /* AddTransactionTableViewController.swift in Sources */,
 				76B548DE2294F0E4001B2FB1 /* ViewTransactionSegue.swift in Sources */,
 				76B548D822916195001B2FB1 /* AddTransactionImageViewController.swift in Sources */,
@@ -1780,14 +1796,15 @@
 			baseConfigurationReference = C51C6518E66B1688FCEA119B /* Pods-Spearmint.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Spearmint/Spearmint.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9EA4LQDY4N;
+				DEVELOPMENT_TEAM = W42K8U3V83;
 				INFOPLIST_FILE = Spearmint/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = brianishii.Spearmint;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brianishii.Spearmint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1799,14 +1816,15 @@
 			baseConfigurationReference = 305620DD9AB50D65E585919C /* Pods-Spearmint.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Spearmint/Spearmint.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9EA4LQDY4N;
+				DEVELOPMENT_TEAM = W42K8U3V83;
 				INFOPLIST_FILE = Spearmint/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = brianishii.Spearmint;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brianishii.Spearmint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
