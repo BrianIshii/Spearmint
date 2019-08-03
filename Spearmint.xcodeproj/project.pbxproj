@@ -75,7 +75,6 @@
 		76A2FA67228248220066D594 /* PaymentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA66228248220066D594 /* PaymentType.swift */; };
 		76A2FA6A22824CFE0066D594 /* AddTransactionSegueold.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA6922824CFE0066D594 /* AddTransactionSegueold.swift */; };
 		76A2FA6E228375970066D594 /* TransactionID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA6D228375970066D594 /* TransactionID.swift */; };
-		76A2FA70228377080066D594 /* TransactionStoreOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA6F228377080066D594 /* TransactionStoreOld.swift */; };
 		76A2FA7422851B7D0066D594 /* DateFormatterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA7322851B7D0066D594 /* DateFormatterFactory.swift */; };
 		76A2FA7722851E730066D594 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A2FA7622851E730066D594 /* DateExtension.swift */; };
 		76B0630922D06F79007BBDD5 /* DateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0630822D06F79007BBDD5 /* DateTextField.swift */; };
@@ -291,7 +290,6 @@
 		76A2FA66228248220066D594 /* PaymentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentType.swift; sourceTree = "<group>"; };
 		76A2FA6922824CFE0066D594 /* AddTransactionSegueold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionSegueold.swift; sourceTree = "<group>"; };
 		76A2FA6D228375970066D594 /* TransactionID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionID.swift; sourceTree = "<group>"; };
-		76A2FA6F228377080066D594 /* TransactionStoreOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStoreOld.swift; sourceTree = "<group>"; };
 		76A2FA7322851B7D0066D594 /* DateFormatterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterFactory.swift; sourceTree = "<group>"; };
 		76A2FA7622851E730066D594 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		76B0630822D06F79007BBDD5 /* DateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextField.swift; sourceTree = "<group>"; };
@@ -640,7 +638,6 @@
 				76B0638922E2CB38007BBDD5 /* Protocols */,
 				76B0638E22E51CA0007BBDD5 /* BaseStore.swift */,
 				764AEE1522E6D982007C817D /* TransactionStore.swift */,
-				76A2FA6F228377080066D594 /* TransactionStoreOld.swift */,
 				7637A60C22862B6B007DD20B /* BudgetStore.swift */,
 				76B548BC229135DE001B2FB1 /* LocalAccess.swift */,
 				76B548DB2294ECA9001B2FB1 /* ImageStore.swift */,
@@ -1587,7 +1584,6 @@
 				7637A6282287EAB4007DD20B /* PieChart.swift in Sources */,
 				76B548E622952EEE001B2FB1 /* MasterSummaryViewController.swift in Sources */,
 				764AFDBC226EC377007BFD90 /* SettingsTableViewCell.swift in Sources */,
-				76A2FA70228377080066D594 /* TransactionStoreOld.swift in Sources */,
 				76D22F80229A29C500C06567 /* AnalysisCollectionViewController.swift in Sources */,
 				76B0632D22DAB40A007BBDD5 /* AddTransactionViewController.swift in Sources */,
 				7637A63422889F8D007DD20B /* BudgetSectionTableViewCell.swift in Sources */,
