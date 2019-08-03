@@ -34,19 +34,19 @@ class AnalysisCollectionViewController: UICollectionViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if LocalAccess.Transactions.analysisViewController {
-            LocalAccess.Transactions.analysisViewController = false
-        
-            let budget = BudgetStore.getBudget(BudgetDate(Date()))
-
-            let mostExpensiveItems = budget!.mostExpensiveItemPerCategory
-            
-            for (_,v) in mostExpensiveItems {
-                items.append(v)
-            }
-            
-            self.reloadInputViews()
-        }
+//        if LocalAccess.Transactions.analysisViewController {
+//            LocalAccess.Transactions.analysisViewController = false
+//        
+//            let budget = BudgetStore.getBudget(BudgetDate(Date()))
+//
+//            let mostExpensiveItems = budget!.mostExpensiveItemPerCategory
+//            
+//            for (_,v) in mostExpensiveItems {
+//                items.append(v)
+//            }
+//            
+//            self.reloadInputViews()
+//        }
     }
 
     

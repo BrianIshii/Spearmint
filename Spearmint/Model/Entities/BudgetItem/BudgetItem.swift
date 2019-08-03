@@ -61,7 +61,7 @@ class BudgetItem: Saveable, Hashable {
 
         if let transactionIDs = transactions[budgetDate] {
             for id in transactionIDs {
-                if let transaction = LocalAccess.Transactions.getTransaction(id) {
+                if let transaction = LocalAccess.Transactions.get(id) {
                     total += transaction.amount
                 }
             }

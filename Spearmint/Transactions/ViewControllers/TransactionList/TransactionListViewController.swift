@@ -31,14 +31,12 @@ class TransactionListViewController: UIViewController {
         
         guard let dataSource = dataSource else { return }
         
-        dataSource.transactions = Array(LocalAccess.Transactions.transactions.values).sorted(by: >)
+        dataSource.transactions = Array(LocalAccess.Transactions.getAll()).sorted(by: >)
         transactionTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if LocalAccess.Transactions.TransactionControllerNeedsUpdate {
-            LocalAccess.Transactions.TransactionControllerNeedsUpdate = false
-        }
+
     }
     
     @IBAction func unwind(sender: UIStoryboardSegue) {        

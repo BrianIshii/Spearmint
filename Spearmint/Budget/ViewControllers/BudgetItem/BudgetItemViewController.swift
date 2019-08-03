@@ -22,7 +22,7 @@ class BudgetItemViewController: UIViewController {
             var transactions: [Transaction] = []
             var total = Float(0)
             for id in transactionIDs {
-                if let transaction = LocalAccess.Transactions.getTransaction(id) {
+                if let transaction = LocalAccess.Transactions.get(id) {
                     transactions.append(transaction)
                     total += transaction.amount
                 }

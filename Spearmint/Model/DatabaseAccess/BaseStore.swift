@@ -10,12 +10,10 @@ import Foundation
 
 class BaseStore<V: Saveable>: Store {
     var items: [Key : Item] = [:]
-    //var observers: [ItemObserver] = []
     var localPersistanceService: LocalPersistanceService
     
     typealias Key = V.Key
     typealias Item = V
-    //typealias ItemObserver = O
     
     init(localPersistanceService: LocalPersistanceService) {
         self.localPersistanceService = localPersistanceService
@@ -42,8 +40,5 @@ class BaseStore<V: Saveable>: Store {
     
     func update() {
         localPersistanceService.updateDictionary(data: items)
-//        for observer in observers {
-//            observer.update()
-//        }
     }
 }

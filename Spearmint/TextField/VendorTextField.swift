@@ -46,12 +46,13 @@ class VendorTextField: UITextField {
 
         self.delegate = self
         
-        let view = SuggestionsView(frame: CGRect(x: 0, y: 0, width: frame.width, height: 100))
+        let view = SuggestionsView(frame: CGRect(x: 0, y: 0, width: frame.width, height: 45))
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .gray
         view.frame.size.width = self.frame.width
+        view.delegate = self
         self.inputAccessoryView = view
-
+        self.view = view
         configureLocationManager()
     }
     
@@ -116,7 +117,12 @@ extension VendorTextField: CLLocationManagerDelegate {
         search.start(completionHandler:
             { localSearchResponse, error in
                 var temp: [Suggestion] = []
-                if error == nil {
+
+                if let error = error {
+                    for item in LocalAccess.queryVendors(text) {
+                        temp.append(Suggestion(text: item.0, textColor: .blue, backgroundColor: .black))
+                    }
+                } else {
                     guard let response = localSearchResponse else {
                         return
                     }
@@ -131,9 +137,10 @@ extension VendorTextField: CLLocationManagerDelegate {
                         }
                     }
                     
-                    DispatchQueue.main.async {
-                        self.view?.addSuggestions(temp)
-                    }
+
+                }
+                DispatchQueue.main.async {
+                    self.view?.addSuggestions(temp)
                 }
         })
     }

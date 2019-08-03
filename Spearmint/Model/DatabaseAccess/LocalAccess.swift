@@ -15,10 +15,10 @@ class LocalAccess {
     private static let vendors: VendorStore = VendorStore()
     private static let Tags: TagStore = TagStore()
     public static let budgetItemStore: BudgetItemStore = BudgetItemStore()
-    public static let Transactions: TransactionStoreOld = TransactionStoreOld()
+    public static let Transactions: TransactionStore = TransactionStore(localPersistanceService: LocalPersistanceService())
     
     public static func deleteTransaction(_ transaction: Transaction) {
-        Transactions.deleteTransaction(transaction)
+        Transactions.remove(transaction.id)
         BudgetStore.deleteTransaction(transaction)
         ImageStore.deleteImage(transaction.id)
     }
@@ -34,7 +34,7 @@ class LocalAccess {
             }
         }
 //        vendors.addVendor(vendor: Vendor(name: transaction.vendor))
-        Transactions.addTransaction(transaction)
+        Transactions.append(transaction)
 
         print("added transaction")
     }

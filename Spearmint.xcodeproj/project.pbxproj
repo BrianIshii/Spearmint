@@ -158,6 +158,8 @@
 		76D4743122E829110053A095 /* CGVectorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4743022E829110053A095 /* CGVectorExtension.swift */; };
 		76D4743322EED1480053A095 /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4743222EED1480053A095 /* CGFloatExtension.swift */; };
 		76D4743822F28E880053A095 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D4743722F28E880053A095 /* CloudKit.framework */; };
+		76D4743A22F5E30C0053A095 /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4743922F5E30C0053A095 /* CloudKitService.swift */; };
+		76D4743C22F615540053A095 /* TransactionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4743B22F615540053A095 /* TransactionExtensions.swift */; };
 		76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3CBE7227FEEAC0010625A /* Currency.swift */; };
 		76EF345422963BF1005A5C35 /* BudgetItemSectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */; };
 		76EF345622986CD8005A5C35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76EF345522986CD8005A5C35 /* GoogleService-Info.plist */; };
@@ -373,6 +375,8 @@
 		76D4743222EED1480053A095 /* CGFloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatExtension.swift; sourceTree = "<group>"; };
 		76D4743622F2875C0053A095 /* Spearmint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Spearmint.entitlements; sourceTree = "<group>"; };
 		76D4743722F28E880053A095 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		76D4743922F5E30C0053A095 /* CloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitService.swift; sourceTree = "<group>"; };
+		76D4743B22F615540053A095 /* TransactionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionExtensions.swift; sourceTree = "<group>"; };
 		76E3CBE7227FEEAC0010625A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemSectionStore.swift; sourceTree = "<group>"; };
 		76EF345522986CD8005A5C35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -466,6 +470,7 @@
 				76A2FA66228248220066D594 /* PaymentType.swift */,
 				76A2FA6D228375970066D594 /* TransactionID.swift */,
 				7689F71A2271874900AD4225 /* Item.swift */,
+				76D4743B22F615540053A095 /* TransactionExtensions.swift */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -887,6 +892,7 @@
 			isa = PBXGroup;
 			children = (
 				76B0639122E52820007BBDD5 /* LocalPersistanceService.swift */,
+				76D4743922F5E30C0053A095 /* CloudKitService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1531,6 +1537,7 @@
 				76F4238522C99E1300E7B868 /* AddTransactionFieldTableViewCell.swift in Sources */,
 				76F4236C22C06CF100E7B868 /* Saveable.swift in Sources */,
 				7637A63E2288F0C9007DD20B /* AddBudgetItemsViewController.swift in Sources */,
+				76D4743A22F5E30C0053A095 /* CloudKitService.swift in Sources */,
 				7637A63C2288E74F007DD20B /* AddBudgetItemSegue.swift in Sources */,
 				76B0631322D18D19007BBDD5 /* TransactionTypeSegmentedControl.swift in Sources */,
 				76B0633222DACA58007BBDD5 /* TagViewController.swift in Sources */,
@@ -1559,6 +1566,7 @@
 				76A2FA462280B0740066D594 /* TransactionListViewController.swift in Sources */,
 				76B0631522D19090007BBDD5 /* UIViewExtension.swift in Sources */,
 				76B0638522E2B617007BBDD5 /* VendorSegue.swift in Sources */,
+				76D4743C22F615540053A095 /* TransactionExtensions.swift in Sources */,
 				76A2FA602281FBDD0066D594 /* AmountTableViewCell.swift in Sources */,
 				76B0635222DB13F4007BBDD5 /* BudgetItemTextView.swift in Sources */,
 				76F4237422C4A22D00E7B868 /* SaveableKey.swift in Sources */,

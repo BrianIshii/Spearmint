@@ -45,7 +45,7 @@ extension TransactionDataSource: UITableViewDataSource {
 
 extension TransactionDataSource: TransactionObserver {
     func update() {
-        transactions = Array(LocalAccess.Transactions.transactions.values).sorted(by: >)
+        transactions = Array(LocalAccess.Transactions.getAll()).sorted(by: >)
         tableView.reloadData()
     }
 }

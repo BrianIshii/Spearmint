@@ -31,17 +31,17 @@ class SuggestionsView: UIView {
     
     func setUp() {
         
-        leftItem = UIButton()
+        leftItem = UIButton(type: .custom)
         leftItem.addTarget(self, action: #selector(self.clickedLeftSuggestion), for: UIControl.Event.touchUpInside)
-        leftItem.backgroundColor = .blue
+        //leftItem.backgroundColor = .blue
         
-        middleItem = UIButton()
+        middleItem = UIButton(type: .custom)
         middleItem.addTarget(self, action: #selector(self.clickedMiddleSuggestion), for: UIControl.Event.touchUpInside)
-        middleItem.backgroundColor = .red
+        //middleItem.backgroundColor = .red
 
-        rightItem = UIButton()
+        rightItem = UIButton(type: .custom)
         rightItem.addTarget(self, action: #selector(self.clickedRightSuggestion), for: UIControl.Event.touchUpInside)
-        rightItem.backgroundColor = .white
+        //rightItem.backgroundColor = .white
 
         self.addSubview(leftItem)
         leftItem.translatesAutoresizingMaskIntoConstraints = false
@@ -72,20 +72,20 @@ class SuggestionsView: UIView {
     
     @objc func clickedLeftSuggestion() {
         guard let delegate = delegate else { return }
-        
-        delegate.addSuggestion(leftItem.titleLabel?.text ?? "")
+
+        delegate.addSuggestion(leftItem.currentTitle ?? "")
     }
     
-    @objc func clickedMiddleSuggestion() {
+    @objc func clickedMiddleSuggestion(_ aaasender: UIButton) {
         guard let delegate = delegate else { return }
 
-        delegate.addSuggestion(middleItem.titleLabel?.text ?? "")
+        delegate.addSuggestion(middleItem.currentTitle ?? "")
     }
     
     @objc func clickedRightSuggestion() {
         guard let delegate = delegate else { return }
 
-        delegate.addSuggestion(middleItem.titleLabel?.text ?? "")
+        delegate.addSuggestion(middleItem.currentTitle ?? "")
     }
     
     func addSuggestions(_ suggestions: [Suggestion]) {
@@ -96,19 +96,18 @@ class SuggestionsView: UIView {
         }
         
         self.suggestions = suggestions
-        
         setItem(item: leftItem, suggestion: suggestions[0])
         setItem(item: middleItem, suggestion: suggestions[1])
         setItem(item: rightItem, suggestion: suggestions[2])
     }
     
     func setItem(item: UIButton, suggestion: Suggestion) {
-        item.titleLabel?.text = suggestion.text
+        item.setTitle(suggestion.text, for: .normal)
         if let textColor = suggestion.textColor {
-            item.tintColor = textColor
+           // item.tintColor = textColor
         }
         if let backgroundColor = suggestion.backgroundColor {
-            item.backgroundColor = backgroundColor
+            //item.backgroundColor = backgroundColor
         }
     }
     
