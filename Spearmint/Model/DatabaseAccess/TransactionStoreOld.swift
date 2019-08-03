@@ -32,11 +32,11 @@ class TransactionStoreOld {
         return transactions[id.id]
     }
     
-    private func getAllTransactions() -> [String: Transaction] {
-        if LocalAccess.reset {
-            update(data: [String: Transaction]())
-            return [String: Transaction]()
-        }
+    func getAllTransactions() -> [String: Transaction] {
+//        if LocalAccess.reset {
+//            update(data: [String: Transaction]())
+//            return [String: Transaction]()
+//        }
         
         return LocalAccess.getDictionary(key: String.self, object: Transaction.self)
     }

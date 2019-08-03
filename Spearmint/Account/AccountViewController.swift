@@ -36,8 +36,83 @@ class AccountViewController: UIViewController {
     }
     */
     @IBAction func addTransaction(_ sender: Any) {
-        let transaction = Transaction(name: "name", transactionType: TransactionType.expense, vendor: VendorID(), amount: 10.00, date: TransactionDate(), location: "location", image: false, notes: "notes", budgetDate: BudgetDate(), items: [BudgetItemID():[]])
+        let transactions = LocalAccess.Transactions.getAllTransactions()
+        for (k, transaction) in transactions {
+            saveTransaction(transaction)
+        }
+    }
+    
+    @IBAction func getTransactions(_ sender: Any) {
+        let myContainer = CKContainer.default()
         
+        let privateDatabase = myContainer.privateCloudDatabase
+        
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Transaction", predicate: predicate)
+        
+        privateDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            
+            var transactions: [String: Transaction] = [:]
+            if let records = records {
+                for record: CKRecord in records {
+                    var id: String
+                    if let temp = record.recordID.recordName as? String {
+                        id = temp
+                    } else {
+                        id = ""
+                    }
+                    
+                    var name = ""
+                    if let temp = record.value(forKeyPath: "name") as? String {
+                        name = temp
+                    }
+                    
+                    var transactionType = TransactionType.expense
+                    if let temp = record.value(forKeyPath: "transactionType") as? Int {
+                        switch temp {
+                        case 0:
+                            transactionType = TransactionType.expense
+                        default:
+                            transactionType = TransactionType.income
+                        }
+                    }
+                    
+                    var vendorID: VendorID
+                    if let temp = record.value(forKeyPath: "vendorID") as? String {
+                        vendorID = VendorID(temp)
+                    } else {
+                        vendorID = VendorID()
+                    }
+                    
+                    var amount: Float
+                    if let temp = record.value(forKeyPath: "amount") as? Float {
+                        amount = temp
+                    } else {
+                        amount = 0.0
+                    }
+                    
+                    var transactionDate: TransactionDate
+                    var budgetDate: BudgetDate
+                    if let temp = record.value(forKeyPath: "date") as? Date {
+                        transactionDate = TransactionDate(temp)
+                        budgetDate = BudgetDate(temp)
+                    } else {
+                        transactionDate = TransactionDate(Date())
+                        budgetDate = BudgetDate(Date())
+                    }
+                    
+                    let transaction = Transaction(id: TransactionID(id), name: name, transactionType: transactionType, vendor: vendorID, amount: amount, date: transactionDate, location: "", image: false, notes: "", budgetDate: budgetDate, items: [:])
+                    
+                    transactions[id] = transaction
+                }
+                
+                LocalAccess.Transactions.transactions = transactions
+                LocalAccess.Transactions.update()
+            }
+        }
+    }
+    
+    func saveTransaction(_ transaction: Transaction) {
         let myContainer = CKContainer.default()
         
         let privateDatabase = myContainer.privateCloudDatabase
@@ -71,7 +146,7 @@ class AccountViewController: UIViewController {
         if items.count > 0 {
             transactionRecord["items"] = items as NSArray
         }
-
+        
         privateDatabase.save(transactionRecord) {
             (record, error) in
             if let error = error {
@@ -84,5 +159,4 @@ class AccountViewController: UIViewController {
             // Insert successfully saved record code
         }
     }
-    
 }

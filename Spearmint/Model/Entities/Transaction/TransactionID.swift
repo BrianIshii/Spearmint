@@ -16,6 +16,10 @@ struct TransactionID: BaseID {
         self.id = id
     }
     
+    init(_ id: String) {
+        self.id = id
+    }
+    
     static func == (left: TransactionID, right: TransactionID) -> Bool {
         return left.id == right.id
     }
