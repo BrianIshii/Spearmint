@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BudgetStore {
+class BudgetStoreOld {
     public static var budgetViewControllerNeedsUpdate = false
     public static var SummaryViewControllerNeedsUpdate = false
 
@@ -68,8 +68,8 @@ class BudgetStore {
 //
 //            }
         } else {
-            BudgetStore.addBudget(Budget(transaction.budgetDate))
-            BudgetStore.addTransaction(transaction)
+            BudgetStoreOld.addBudget(Budget(transaction.budgetDate))
+            BudgetStoreOld.addTransaction(transaction)
         }
         update()
     }

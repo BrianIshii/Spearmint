@@ -21,11 +21,11 @@ class BudgetDataSource: NSObject {
         tableView.register(UINib.init(nibName: SelectBudgetItemTableViewCell.xib, bundle: nil), forCellReuseIdentifier: SelectBudgetItemTableViewCell.reuseIdentifier)
         tableView.dataSource = self
 
-        let budget = BudgetStore.getBudget(BudgetDate())
+        let budget = BudgetStoreOld.getBudget(BudgetDate())
         
         if budget == nil {
             let b = Budget(BudgetDate(), items: LocalAccess.budgetItemStore.getBudgetItems())
-            BudgetStore.addBudget(b)
+            BudgetStoreOld.addBudget(b)
             currentBudget = b
         } else {
             currentBudget = budget

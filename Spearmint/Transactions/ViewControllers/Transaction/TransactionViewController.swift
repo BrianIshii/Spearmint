@@ -56,7 +56,7 @@ extension TransactionViewController: TransactionViewDelegate {
     }
     
     func didSelectTag(text: String) {
-        selectedTag = LocalAccess.getTag(text)
+        selectedTag = LocalAccess.Tags.get(TagID(text))
         performSegue(withIdentifier: TagSegue.SegueIdentifier, sender: self)
     }
     

@@ -62,7 +62,7 @@ class TagTextView: UITextView {
     
     func createTagView(_ text: String,_ tagNumber: Int) -> UIView {
         var backgroundColor = UIColor.black        
-        if let tag = LocalAccess.getTag(text) {
+        if let tag = LocalAccess.Tags.get(TagID(text)) {
             backgroundColor = tag.color.uiColor
         }
         

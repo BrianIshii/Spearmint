@@ -11,8 +11,7 @@ import Foundation
 struct TagID: BaseID {
     let id: String
     
-    init() {
-        let id = TagID.newID()
+    init(_ id: String) {
         self.id = id
     }
     

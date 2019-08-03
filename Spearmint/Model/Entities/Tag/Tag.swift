@@ -15,14 +15,14 @@ class Tag: Saveable {
     var transactionIDs: [TransactionID]
     
     init(text: String, color: Color) {
-        self.id = TagID()
+        self.id = TagID(text)
         self.text = text
         self.color = color
         self.transactionIDs = []
     }
     
     init(text: String, color: Color, transactionIDs: [TransactionID]) {
-        self.id = TagID()
+        self.id = TagID(text)
         self.text = text
         self.color = color
         self.transactionIDs = transactionIDs

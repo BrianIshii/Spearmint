@@ -12,30 +12,47 @@ class LocalAccess {
     public static let reset: Bool = false
     public static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     
+    private static let cloudKitService = CloudKitService()
+    private static let localPersistanceService = LocalPersistanceService()
+
     private static let vendors: VendorStore = VendorStore()
-    private static let Tags: TagStore = TagStore()
+    public static let Tags: TagStore = TagStore(localPersistanceService: localPersistanceService)
     public static let budgetItemStore: BudgetItemStore = BudgetItemStore()
-    public static let Transactions: TransactionStore = TransactionStore(localPersistanceService: LocalPersistanceService())
+    public static let Transactions: TransactionStore = TransactionStore(localPersistanceService: localPersistanceService)
+    public static let Budgets: BudgetStoreOld = BudgetStoreOld()
     
     public static func deleteTransaction(_ transaction: Transaction) {
         Transactions.remove(transaction.id)
-        BudgetStore.deleteTransaction(transaction)
+        BudgetStoreOld.deleteTransaction(transaction)
         ImageStore.deleteImage(transaction.id)
     }
     
     public static func addTransaction(_ transaction: Transaction) {
-        BudgetStore.addTransaction(transaction)
-        budgetItemStore.addTransaction(transaction)
-        for text in transaction.tags {
-            if let tag = Tags.getTag(text) {
-                tag.transactionIDs.append(transaction.id)
-            } else {
-                Tags.addTag(Tag(text: text, color: Color(red: 255, green: 0, blue: 0, alpha: 1), transactionIDs: [transaction.id]))
+        if let budget = BudgetStoreOld.getBudget(transaction.budgetDate) {
+            budget.transactions.append(transaction.id)
+            BudgetStoreOld.update()
+        }
+        
+        for (budgetItemID, v) in transaction.items {
+            if let budgetItem = budgetItemStore.getBudgetItem(budgetItemID) {
+                budgetItem.addTransaction(transaction)
             }
         }
-//        vendors.addVendor(vendor: Vendor(name: transaction.vendor))
-        Transactions.append(transaction)
+        
+        for text in transaction.tags {
+            if let tag = Tags.get(TagID(text)) {
+                tag.transactionIDs.append(transaction.id)
+            } else {
+                Tags.append(Tag(text: text, color: Color(red: 255, green: 0, blue: 0, alpha: 1), transactionIDs: [transaction.id]))
+            }
+        }
+        
+        if let vendor = vendors.getVendor(transaction.vendor) {
+            vendor.addTransaction(transaction)
+        }
 
+        Transactions.append(transaction)
+        cloudKitService.saveRecord(transaction.createRecord())
         print("added transaction")
     }
     
@@ -60,14 +77,6 @@ class LocalAccess {
     
     public static func queryTags(_ substring: String) -> [Tag] {
         return Tags.query(substring)
-    }
-    
-    public static func addTag(_ tag: Tag) {
-        Tags.addTag(tag)
-    }
-    
-    public static func getTag(_ text: String) -> Tag? {
-        return Tags.getTag(text)
     }
     
     public static func getDictionary
