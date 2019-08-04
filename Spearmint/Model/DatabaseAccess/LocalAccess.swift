@@ -19,29 +19,34 @@ class LocalAccess {
     public static let Tags: TagStore = TagStore(localPersistanceService: localPersistanceService)
     public static let budgetItemStore: BudgetItemStore = BudgetItemStore()
     public static let Transactions: TransactionStore = TransactionStore(localPersistanceService: localPersistanceService)
-    public static let Budgets: BudgetStoreOld = BudgetStoreOld()
+    public static let Budgets: BudgetStore = BudgetStore(localPersistanceService: localPersistanceService)
     
     public static func deleteTransaction(_ transaction: Transaction) {
         Transactions.remove(transaction.id)
-        BudgetStoreOld.deleteTransaction(transaction)
+        if let budget = Budgets.get(transaction.budgetDate) {
+            budget.transactions.removeAll(where: {transaction.id == $0})
+            Budgets.update()
+        }
         ImageStore.deleteImage(transaction.id)
     }
     
     public static func addTransaction(_ transaction: Transaction) {
-        if let budget = BudgetStoreOld.getBudget(transaction.budgetDate) {
+        if let budget = Budgets.get(transaction.budgetDate) {
             budget.transactions.append(transaction.id)
-            BudgetStoreOld.update()
+            Budgets.update()
         }
         
         for (budgetItemID, v) in transaction.items {
             if let budgetItem = budgetItemStore.getBudgetItem(budgetItemID) {
                 budgetItem.addTransaction(transaction)
+                budgetItemStore.updateBudgetItemDictionary()
             }
         }
         
         for text in transaction.tags {
             if let tag = Tags.get(TagID(text)) {
                 tag.transactionIDs.append(transaction.id)
+                Tags.update()
             } else {
                 Tags.append(Tag(text: text, color: Color(red: 255, green: 0, blue: 0, alpha: 1), transactionIDs: [transaction.id]))
             }

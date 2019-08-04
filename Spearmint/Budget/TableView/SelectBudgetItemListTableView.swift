@@ -32,11 +32,11 @@ class SelectBudgetItemListTableView: UITableView {
         delegate = self
         dataSource = self
         
-        let budget = BudgetStoreOld.getBudget(BudgetDate())
+        let budget = LocalAccess.Budgets.get(BudgetDate())
         
         if budget == nil {
             let b = Budget(BudgetDate(), items: LocalAccess.budgetItemStore.getBudgetItems())
-            BudgetStoreOld.addBudget(b)
+            LocalAccess.Budgets.append(b)
             currentBudget = b
         }
         reloadData()

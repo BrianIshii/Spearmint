@@ -17,7 +17,7 @@ class AnalysisCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let budget = BudgetStoreOld.getBudget(BudgetDate(Date()))
+        let budget = LocalAccess.Budgets.get(BudgetDate(Date()))
         
         let mostExpensiveItems = budget!.mostExpensiveItemPerCategory
         

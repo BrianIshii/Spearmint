@@ -183,7 +183,7 @@ class AddTransactionViewControllerOld: UIViewController, UITextFieldDelegate {
         let amount = Currency.currencyToFloat(amountTextField.text!)
         
         let budgetKey = BudgetDate(DateFormatterFactory.MediumFormatter.date(from: date)!)
-        _ = BudgetStoreOld.budgetDictionary[budgetKey]
+        //_ = LocalAccess.Budgets.budgetDictionary[budgetKey]
         let hasImage = ((selectedImage.image?.isEqualTo(UIImage(imageLiteralResourceName: "default")))!) ? false : true
         
         var transactionItems: [BudgetItemID: [Item]] = [:]

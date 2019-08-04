@@ -74,9 +74,9 @@ class AddTransactionViewController: UIViewController {
         let vendorString = transactionView.vendorTextField.text!
         let transactionType = transactionView.transactionTypeSegementedControl.selectedSegmentIndex == TransactionType.expense.rawValue ? TransactionType.expense : TransactionType.income
         let amount = Currency.currencyToFloat(transactionView.moneyTextField.text!)
-        BudgetStoreOld.addBudget(Budget(BudgetDate(), items: LocalAccess.budgetItemStore.getBudgetItems()))
+        LocalAccess.Budgets.append(Budget(BudgetDate(), items: LocalAccess.budgetItemStore.getBudgetItems()))
         let budgetKey = BudgetDate()
-        _ = BudgetStoreOld.budgetDictionary[budgetKey]
+        //_ = LocalAccess.Budgets.budgetDictionary[budgetKey]
         let hasImage = false
         
         var transactionItems: [BudgetItemID: [Item]] = [:]

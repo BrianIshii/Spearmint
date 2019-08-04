@@ -19,10 +19,6 @@ class MasterSummaryViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if BudgetStoreOld.budgetViewControllerNeedsUpdate {
-            summaryPieChartViewController?.budget = BudgetStoreOld.getBudget(BudgetDate(Date()))
-        }
-        
     }
     
 
@@ -37,7 +33,7 @@ class MasterSummaryViewController: UIViewController {
         let destination = segue.destination
         
         if let vc = destination as? SummaryPieChartViewController {
-            vc.budget = BudgetStoreOld.getBudget(BudgetDate(Date()))
+            vc.budget = LocalAccess.Budgets.get(BudgetDate(Date()))
             summaryPieChartViewController = vc
         }
         

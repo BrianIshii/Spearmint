@@ -25,14 +25,14 @@ class BudgetViewController: UIViewController {
 
         collectionView.isHidden = true
         
-        budgets = BudgetStoreOld.budgets
+        budgets = LocalAccess.Budgets.getAll()
         
         if Date().isInSameMonth(date: budgets[budgets.count - 1].date) {
             let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: Date())
-            BudgetStoreOld.addBudget(Budget(date: Budget.dateToString(nextMonth!)))
+            LocalAccess.Budgets.append(Budget(date: Budget.dateToString(nextMonth!)))
         }
         
-        budgets = BudgetStoreOld.budgets
+        budgets = LocalAccess.Budgets.getAll()
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -49,7 +49,7 @@ class BudgetViewController: UIViewController {
         
         collectionView.accessibilityScroll(UIAccessibilityScrollDirection.right)
         
-        budgetButton.setTitle(BudgetStoreOld.getBudget(BudgetDate(Date()))?.month, for: .normal)
+        budgetButton.setTitle(LocalAccess.Budgets.get(BudgetDate(Date()))?.month, for: .normal)
     }
     
     override func viewDidAppear(_ animated: Bool) {

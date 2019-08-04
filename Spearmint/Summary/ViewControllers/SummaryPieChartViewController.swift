@@ -157,8 +157,13 @@ class SummaryPieChartViewController: UIViewController {
 extension SummaryPieChartViewController: TransactionObserver {
     func update() {
         guard let pieChartDataSource = pieChartDataSource else { return }
-        let budget = BudgetStoreOld.getCurrentBudget()
-        let totalExpenses = budget.totalExpenses
+        let totalExpenses: [BudgetItemCategory: Float]
+        if let budget = LocalAccess.Budgets.get(BudgetDate()) {
+            totalExpenses = budget.totalExpenses
+        } else {
+            totalExpenses = [:]
+        }
+        
         var segments: [PieChartSegment] = []
 
         for category in budgetSections {

@@ -51,7 +51,7 @@ class BudgetItemViewControllerOld: UIViewController {
     
     @IBAction func back(_ sender: UIBarButtonItem) {
         if let destination = tableView {
-            BudgetStoreOld.update()
+            LocalAccess.Budgets.update()
             destination.tableView.reloadData()
         }
         dismiss(animated: true, completion: nil)

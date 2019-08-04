@@ -46,7 +46,7 @@ class Budget: Saveable {
     
     func addBudgetItem(budgetItem: BudgetItem) {
         items[budgetItem.category]!.append(budgetItem.id)
-        BudgetStoreOld.update()
+        LocalAccess.Budgets.update()
     }
     
     static func dateToString(_ date: Date) -> String {

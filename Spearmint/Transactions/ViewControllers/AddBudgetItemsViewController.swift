@@ -21,7 +21,7 @@ class AddBudgetItemsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         if let bd = budgetDate {
-            tableView.currentBudget = BudgetStoreOld.getBudget(bd)
+            tableView.currentBudget = LocalAccess.Budgets.get(bd)
         }
         
         tableView.reloadData()

@@ -159,7 +159,7 @@
 		76D4743A22F5E30C0053A095 /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4743922F5E30C0053A095 /* CloudKitService.swift */; };
 		76D4743C22F615540053A095 /* TransactionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4743B22F615540053A095 /* TransactionExtensions.swift */; };
 		76D4743E22F623CD0053A095 /* TagStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4743D22F623CD0053A095 /* TagStore.swift */; };
-		76D4744022F62F080053A095 /* BudgetStoreOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4743F22F62F070053A095 /* BudgetStoreOld.swift */; };
+		76D4744222F62F390053A095 /* BudgetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4744122F62F390053A095 /* BudgetStore.swift */; };
 		76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3CBE7227FEEAC0010625A /* Currency.swift */; };
 		76EF345422963BF1005A5C35 /* BudgetItemSectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */; };
 		76EF345622986CD8005A5C35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76EF345522986CD8005A5C35 /* GoogleService-Info.plist */; };
@@ -376,7 +376,7 @@
 		76D4743922F5E30C0053A095 /* CloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitService.swift; sourceTree = "<group>"; };
 		76D4743B22F615540053A095 /* TransactionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionExtensions.swift; sourceTree = "<group>"; };
 		76D4743D22F623CD0053A095 /* TagStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagStore.swift; sourceTree = "<group>"; };
-		76D4743F22F62F070053A095 /* BudgetStoreOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetStoreOld.swift; sourceTree = "<group>"; };
+		76D4744122F62F390053A095 /* BudgetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetStore.swift; sourceTree = "<group>"; };
 		76E3CBE7227FEEAC0010625A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemSectionStore.swift; sourceTree = "<group>"; };
 		76EF345522986CD8005A5C35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -641,7 +641,6 @@
 				76B0638E22E51CA0007BBDD5 /* BaseStore.swift */,
 				764AEE1522E6D982007C817D /* TransactionStore.swift */,
 				76B548BC229135DE001B2FB1 /* LocalAccess.swift */,
-				76D4743F22F62F070053A095 /* BudgetStoreOld.swift */,
 				76B548DB2294ECA9001B2FB1 /* ImageStore.swift */,
 				76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */,
 				76F4236322C05BFD00E7B868 /* VendorStore.swift */,
@@ -649,6 +648,7 @@
 				76B0634A22DAE8CC007BBDD5 /* TagStoreOld.swift */,
 				763AE25E22E5A31600139810 /* LocalPersistance.swift */,
 				76D4743D22F623CD0053A095 /* TagStore.swift */,
+				76D4744122F62F390053A095 /* BudgetStore.swift */,
 			);
 			path = DatabaseAccess;
 			sourceTree = "<group>";
@@ -1477,6 +1477,7 @@
 				76EF345A2298D254005A5C35 /* AddImageViewController.swift in Sources */,
 				76B548EC229535F0001B2FB1 /* BudgetTableViewController.swift in Sources */,
 				76B0632722DA8B29007BBDD5 /* BaseDate.swift in Sources */,
+				76D4744222F62F390053A095 /* BudgetStore.swift in Sources */,
 				76B0633E22DAD58E007BBDD5 /* TagTextViewDelegate.swift in Sources */,
 				76A2FA5E2281FB700066D594 /* DateTableViewCell.swift in Sources */,
 				7637A61E2286B1E1007DD20B /* BudgetItemID.swift in Sources */,
@@ -1592,7 +1593,6 @@
 				7637A63422889F8D007DD20B /* BudgetSectionTableViewCell.swift in Sources */,
 				7689F7192270E6F600AD4225 /* BudgetItem.swift in Sources */,
 				76B0639422E52A59007BBDD5 /* Observer.swift in Sources */,
-				76D4744022F62F080053A095 /* BudgetStoreOld.swift in Sources */,
 				764AEE1822E6DA3C007C817D /* Observable.swift in Sources */,
 				76F4236922C05EFC00E7B868 /* VendorID.swift in Sources */,
 				76F4237E22C99B9000E7B868 /* AddTransactionDataSource.swift in Sources */,
