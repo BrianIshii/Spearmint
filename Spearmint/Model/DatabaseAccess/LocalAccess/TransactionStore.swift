@@ -11,6 +11,10 @@ import Foundation
 class TransactionStore: BaseStore<Transaction> {
     var observers: [Observer] = []
 
+    override init(localPersistanceService: LocalPersistanceService) {
+        super.init(localPersistanceService: localPersistanceService)
+    }
+    
     override func update() {
         super.update()
         updateObservers()

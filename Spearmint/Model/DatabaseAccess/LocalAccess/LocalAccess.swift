@@ -57,7 +57,7 @@ class LocalAccess {
         }
 
         Transactions.append(transaction)
-        cloudKitService.saveRecord(transaction.createRecord())
+        cloudKitService.saveRecord(CloudAccess.instance.transactionCloudStore.createRecord(transaction))
         print("added transaction")
     }
     

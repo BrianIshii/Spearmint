@@ -160,6 +160,13 @@
 		76D4743C22F615540053A095 /* TransactionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4743B22F615540053A095 /* TransactionExtensions.swift */; };
 		76D4743E22F623CD0053A095 /* TagStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4743D22F623CD0053A095 /* TagStore.swift */; };
 		76D4744222F62F390053A095 /* BudgetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4744122F62F390053A095 /* BudgetStore.swift */; };
+		76D4744422F690240053A095 /* BudgetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4744322F690240053A095 /* BudgetExtension.swift */; };
+		76D4744622F692490053A095 /* CloudStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4744522F692490053A095 /* CloudStore.swift */; };
+		76D4744B22F6B5810053A095 /* TransactionCloudStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4744A22F6B5810053A095 /* TransactionCloudStore.swift */; };
+		76D4744F22F6BA830053A095 /* CloudAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4744E22F6BA830053A095 /* CloudAccess.swift */; };
+		76D4745122F6BFF80053A095 /* BudgetCloudStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4745022F6BFF80053A095 /* BudgetCloudStore.swift */; };
+		76D4745322F6CFD10053A095 /* TagCloudStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4745222F6CFD10053A095 /* TagCloudStore.swift */; };
+		76D4745522F82EDE0053A095 /* VendorCloudStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4745422F82EDE0053A095 /* VendorCloudStore.swift */; };
 		76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3CBE7227FEEAC0010625A /* Currency.swift */; };
 		76EF345422963BF1005A5C35 /* BudgetItemSectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */; };
 		76EF345622986CD8005A5C35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76EF345522986CD8005A5C35 /* GoogleService-Info.plist */; };
@@ -377,6 +384,13 @@
 		76D4743B22F615540053A095 /* TransactionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionExtensions.swift; sourceTree = "<group>"; };
 		76D4743D22F623CD0053A095 /* TagStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagStore.swift; sourceTree = "<group>"; };
 		76D4744122F62F390053A095 /* BudgetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetStore.swift; sourceTree = "<group>"; };
+		76D4744322F690240053A095 /* BudgetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetExtension.swift; sourceTree = "<group>"; };
+		76D4744522F692490053A095 /* CloudStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStore.swift; sourceTree = "<group>"; };
+		76D4744A22F6B5810053A095 /* TransactionCloudStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCloudStore.swift; sourceTree = "<group>"; };
+		76D4744E22F6BA830053A095 /* CloudAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudAccess.swift; sourceTree = "<group>"; };
+		76D4745022F6BFF80053A095 /* BudgetCloudStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCloudStore.swift; sourceTree = "<group>"; };
+		76D4745222F6CFD10053A095 /* TagCloudStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCloudStore.swift; sourceTree = "<group>"; };
+		76D4745422F82EDE0053A095 /* VendorCloudStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorCloudStore.swift; sourceTree = "<group>"; };
 		76E3CBE7227FEEAC0010625A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemSectionStore.swift; sourceTree = "<group>"; };
 		76EF345522986CD8005A5C35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -504,6 +518,7 @@
 				7637A62F2288997F007DD20B /* BudgetItemSection.swift */,
 				7637A61F2286B3CB007DD20B /* BudgetItemCategory.swift */,
 				763AE25C22E5A03C00139810 /* BudgetSectionID.swift */,
+				76D4744322F690240053A095 /* BudgetExtension.swift */,
 			);
 			path = Budget;
 			sourceTree = "<group>";
@@ -636,19 +651,9 @@
 		76A2FA652282465B0066D594 /* DatabaseAccess */ = {
 			isa = PBXGroup;
 			children = (
-				76B0639022E52810007BBDD5 /* Service */,
 				76B0638922E2CB38007BBDD5 /* Protocols */,
-				76B0638E22E51CA0007BBDD5 /* BaseStore.swift */,
-				764AEE1522E6D982007C817D /* TransactionStore.swift */,
-				76B548BC229135DE001B2FB1 /* LocalAccess.swift */,
-				76B548DB2294ECA9001B2FB1 /* ImageStore.swift */,
-				76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */,
-				76F4236322C05BFD00E7B868 /* VendorStore.swift */,
-				76F4236F22C0ABF100E7B868 /* BudgetItemStore.swift */,
-				76B0634A22DAE8CC007BBDD5 /* TagStoreOld.swift */,
-				763AE25E22E5A31600139810 /* LocalPersistance.swift */,
-				76D4743D22F623CD0053A095 /* TagStore.swift */,
-				76D4744122F62F390053A095 /* BudgetStore.swift */,
+				76D4744922F6B3840053A095 /* LocalAccess */,
+				76D4744722F6B2C80053A095 /* ICloudAccess */,
 			);
 			path = DatabaseAccess;
 			sourceTree = "<group>";
@@ -892,7 +897,6 @@
 			isa = PBXGroup;
 			children = (
 				76B0639122E52820007BBDD5 /* LocalPersistanceService.swift */,
-				76D4743922F5E30C0053A095 /* CloudKitService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1135,6 +1139,47 @@
 				76D4742C22E808EA0053A095 /* PieChartViewDataSource.swift */,
 			);
 			path = PieChart;
+			sourceTree = "<group>";
+		};
+		76D4744722F6B2C80053A095 /* ICloudAccess */ = {
+			isa = PBXGroup;
+			children = (
+				76D4744522F692490053A095 /* CloudStore.swift */,
+				76D4744822F6B2FF0053A095 /* Services */,
+				76D4744A22F6B5810053A095 /* TransactionCloudStore.swift */,
+				76D4744E22F6BA830053A095 /* CloudAccess.swift */,
+				76D4745022F6BFF80053A095 /* BudgetCloudStore.swift */,
+				76D4745222F6CFD10053A095 /* TagCloudStore.swift */,
+			);
+			path = ICloudAccess;
+			sourceTree = "<group>";
+		};
+		76D4744822F6B2FF0053A095 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				76D4743922F5E30C0053A095 /* CloudKitService.swift */,
+				76D4745422F82EDE0053A095 /* VendorCloudStore.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		76D4744922F6B3840053A095 /* LocalAccess */ = {
+			isa = PBXGroup;
+			children = (
+				76B548BC229135DE001B2FB1 /* LocalAccess.swift */,
+				76B0638E22E51CA0007BBDD5 /* BaseStore.swift */,
+				764AEE1522E6D982007C817D /* TransactionStore.swift */,
+				76B548DB2294ECA9001B2FB1 /* ImageStore.swift */,
+				76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */,
+				76F4236322C05BFD00E7B868 /* VendorStore.swift */,
+				76F4236F22C0ABF100E7B868 /* BudgetItemStore.swift */,
+				76B0634A22DAE8CC007BBDD5 /* TagStoreOld.swift */,
+				763AE25E22E5A31600139810 /* LocalPersistance.swift */,
+				76D4743D22F623CD0053A095 /* TagStore.swift */,
+				76D4744122F62F390053A095 /* BudgetStore.swift */,
+				76B0639022E52810007BBDD5 /* Service */,
+			);
+			path = LocalAccess;
 			sourceTree = "<group>";
 		};
 		76EF34612299DBA6005A5C35 /* Views */ = {
@@ -1502,6 +1547,8 @@
 				76B0632222DA88F4007BBDD5 /* SaveableDate.swift in Sources */,
 				76B0630922D06F79007BBDD5 /* DateTextField.swift in Sources */,
 				76F4236722C05EF300E7B868 /* Vendor.swift in Sources */,
+				76D4745122F6BFF80053A095 /* BudgetCloudStore.swift in Sources */,
+				76D4744B22F6B5810053A095 /* TransactionCloudStore.swift in Sources */,
 				76D22F84229A324500C06567 /* PriceCheckViewController.swift in Sources */,
 				76B0635B22DBCD13007BBDD5 /* BudgetItemTableView.swift in Sources */,
 				764AEE1A22E6E5E7007C817D /* Suggestion.swift in Sources */,
@@ -1562,7 +1609,9 @@
 				763AE25F22E5A31600139810 /* LocalPersistance.swift in Sources */,
 				76B0639222E52820007BBDD5 /* LocalPersistanceService.swift in Sources */,
 				76A2FA622281FBE60066D594 /* VendorTableViewCell.swift in Sources */,
+				76D4744F22F6BA830053A095 /* CloudAccess.swift in Sources */,
 				76B548E02294F100001B2FB1 /* SegueIdentifier.swift in Sources */,
+				76D4744622F692490053A095 /* CloudStore.swift in Sources */,
 				7637A6202286B3CB007DD20B /* BudgetItemCategory.swift in Sources */,
 				76A2FA462280B0740066D594 /* TransactionListViewController.swift in Sources */,
 				76B0631522D19090007BBDD5 /* UIViewExtension.swift in Sources */,
@@ -1570,6 +1619,7 @@
 				76D4743C22F615540053A095 /* TransactionExtensions.swift in Sources */,
 				76A2FA602281FBDD0066D594 /* AmountTableViewCell.swift in Sources */,
 				76B0635222DB13F4007BBDD5 /* BudgetItemTextView.swift in Sources */,
+				76D4745522F82EDE0053A095 /* VendorCloudStore.swift in Sources */,
 				76F4237422C4A22D00E7B868 /* SaveableKey.swift in Sources */,
 				7637A6442288FF26007DD20B /* SelectBudgetItemTableViewCell.swift in Sources */,
 				76B0635422DB142F007BBDD5 /* BudgetItemTextViewDelegate.swift in Sources */,
@@ -1592,6 +1642,7 @@
 				76B0632D22DAB40A007BBDD5 /* AddTransactionViewController.swift in Sources */,
 				7637A63422889F8D007DD20B /* BudgetSectionTableViewCell.swift in Sources */,
 				7689F7192270E6F600AD4225 /* BudgetItem.swift in Sources */,
+				76D4745322F6CFD10053A095 /* TagCloudStore.swift in Sources */,
 				76B0639422E52A59007BBDD5 /* Observer.swift in Sources */,
 				764AEE1822E6DA3C007C817D /* Observable.swift in Sources */,
 				76F4236922C05EFC00E7B868 /* VendorID.swift in Sources */,
@@ -1604,6 +1655,7 @@
 				76EF34652299E029005A5C35 /* AddBudgetItemSectionViewController.swift in Sources */,
 				76B0633522DACB8D007BBDD5 /* Tag.swift in Sources */,
 				76B548DC2294ECA9001B2FB1 /* ImageStore.swift in Sources */,
+				76D4744422F690240053A095 /* BudgetExtension.swift in Sources */,
 				763AE25D22E5A03C00139810 /* BudgetSectionID.swift in Sources */,
 				76B0634722DAE247007BBDD5 /* BaseID.swift in Sources */,
 				76B0636522DBE45C007BBDD5 /* TransactionTableView.swift in Sources */,

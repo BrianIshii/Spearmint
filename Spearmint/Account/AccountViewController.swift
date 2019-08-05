@@ -36,9 +36,45 @@ class AccountViewController: UIViewController {
     }
     */
     @IBAction func addTransaction(_ sender: Any) {
+        let myContainer = CKContainer.default()
+        
+        let privateDatabase = myContainer.privateCloudDatabase
+        
         let transactions = LocalAccess.Transactions.getAll()
         for transaction in transactions {
             saveTransaction(transaction)
+        }
+        if let budget = LocalAccess.Budgets.get(BudgetDate()) {
+
+            let records = BudgetCloudStore().createRecords(budget)
+            
+            for record in records {
+                privateDatabase.save(record) {
+                    (record, error) in
+                    if let error = error {
+                        // Insert error handling
+                        print("failed to save budget: \(error)")
+                        return
+                    }
+                    print("success budget")
+                    // Insert successfully saved record code
+                }
+            }
+        }
+        
+        for tag in LocalAccess.Tags.getAll() {
+            let record = TagCloudStore().createRecord(tag)
+            
+            privateDatabase.save(record) {
+                (record, error) in
+                if let error = error {
+                    // Insert error handling
+                    print("failed to save tag: \(error)")
+                    return
+                }
+                print("success tag")
+                // Insert successfully saved record code
+            }
         }
     }
     
@@ -54,11 +90,26 @@ class AccountViewController: UIViewController {
             
             if let records = records {
                 for record: CKRecord in records {
-                    let transaction = Transaction(record)
+                    let transaction = CloudAccess.instance.transactionCloudStore.createItem(from: record)
                     LocalAccess.Transactions.append(transaction)
                 }
             }
         }
+        
+        
+        let tagPredicate = NSPredicate(value: true)
+        let tagQuery = CKQuery(recordType: "Tag", predicate: tagPredicate)
+        
+        privateDatabase.perform(tagQuery, inZoneWith: nil) { (records, error) in
+            
+            if let records = records {
+                for record: CKRecord in records {
+                    let tag = TagCloudStore().createItem(from: record)
+                    LocalAccess.Tags.append(tag)
+                }
+            }
+        }
+        
     }
     
     func saveTransaction(_ transaction: Transaction) {
@@ -66,7 +117,7 @@ class AccountViewController: UIViewController {
         
         let privateDatabase = myContainer.privateCloudDatabase
         
-        let transactionRecord = transaction.createRecord()
+        let transactionRecord = CloudAccess.instance.transactionCloudStore.createRecord(transaction)
         
         privateDatabase.save(transactionRecord) {
             (record, error) in

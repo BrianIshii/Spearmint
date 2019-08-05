@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import CloudKit
 
 class BaseStore<V: Saveable>: Store {
     var items: [Key : Item] = [:]
+    
     var localPersistanceService: LocalPersistanceService
     
     typealias Key = V.Key

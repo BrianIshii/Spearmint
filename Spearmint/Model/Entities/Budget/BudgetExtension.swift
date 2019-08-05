@@ -1,5 +1,5 @@
 //
-//  TransactionExtensions.swift
+//  BudgetExtension.swift
 //  Spearmint
 //
 //  Created by Brian Ishii on 8/3/19.
@@ -8,5 +8,6 @@
 
 import Foundation
 
-extension Transaction {
+extension Budget {
+    
 }

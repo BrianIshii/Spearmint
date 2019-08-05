@@ -14,11 +14,11 @@ class Tag: Saveable {
     var color: Color
     var transactionIDs: [TransactionID]
     
-    init(text: String, color: Color) {
+    init(id: TagID, text: String, color: Color, transactionIDs: [TransactionID]) {
         self.id = TagID(text)
         self.text = text
         self.color = color
-        self.transactionIDs = []
+        self.transactionIDs = transactionIDs
     }
     
     init(text: String, color: Color, transactionIDs: [TransactionID]) {
@@ -26,5 +26,12 @@ class Tag: Saveable {
         self.text = text
         self.color = color
         self.transactionIDs = transactionIDs
+    }
+    
+    init(text: String, color: Color) {
+        self.id = TagID(text)
+        self.text = text
+        self.color = color
+        self.transactionIDs = []
     }
 }

@@ -10,9 +10,15 @@ import Foundation
 
 class Budget: Saveable {
     
-    private var budgetDate: BudgetDate
+    var budgetDate: BudgetDate
     var transactions: [TransactionID]
     var items: [BudgetItemCategory:[BudgetItemID]]
+    
+    init(date: BudgetDate, transactions: [TransactionID], items: [BudgetItemCategory:[BudgetItemID]]) {
+        self.budgetDate = date
+        self.transactions = transactions
+        self.items = items
+    }
     
     init(date: String) {
         self.budgetDate = BudgetDate(date)

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CloudKit
 
 class Transaction: Saveable {
     
@@ -25,7 +26,7 @@ class Transaction: Saveable {
     var items: [BudgetItemID : [Item]]
     
     init(id: TransactionID, name: String, transactionType: TransactionType, vendor: VendorID, amount: Float,
-         date: TransactionDate, location: String, image: Bool, notes: String, budgetDate: BudgetDate, items: [BudgetItemID : [Item]]) {
+         date: TransactionDate, location: String, image: Bool, tags: [String], notes: String, budgetDate: BudgetDate, items: [BudgetItemID : [Item]]) {
         self.id = id
         self.name = name
         self.transactionType = transactionType
@@ -35,7 +36,7 @@ class Transaction: Saveable {
         self.date = date
         self.location = location
         self.hasImage = image
-        self.tags = []
+        self.tags = tags
         self.notes = notes
         self.budgetDate = budgetDate
         self.items = items
