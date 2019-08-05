@@ -1149,6 +1149,7 @@
 				76D4744A22F6B5810053A095 /* TransactionCloudStore.swift */,
 				76D4744E22F6BA830053A095 /* CloudAccess.swift */,
 				76D4745022F6BFF80053A095 /* BudgetCloudStore.swift */,
+				76D4745422F82EDE0053A095 /* VendorCloudStore.swift */,
 				76D4745222F6CFD10053A095 /* TagCloudStore.swift */,
 			);
 			path = ICloudAccess;
@@ -1158,7 +1159,6 @@
 			isa = PBXGroup;
 			children = (
 				76D4743922F5E30C0053A095 /* CloudKitService.swift */,
-				76D4745422F82EDE0053A095 /* VendorCloudStore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";

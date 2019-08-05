@@ -16,6 +16,10 @@ struct BudgetItemID: BaseID {
         self.id = id
     }
     
+    init(_ id: String) {
+        self.id = id
+    }
+    
     static func == (lhs: BudgetItemID, rhs: BudgetItemID) -> Bool {
         return lhs.id == rhs.id
     }

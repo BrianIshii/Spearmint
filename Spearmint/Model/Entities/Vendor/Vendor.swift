@@ -16,10 +16,12 @@ class Vendor: Saveable {
     var budgetItemID: BudgetItemID?
     var transactionIDs: [TransactionID]
     
-    init(name: String) {
-        self.id = VendorID()
+    init(id: VendorID, name: String, budgetCategory: BudgetItemCategory?, budgetItemID: BudgetItemID?, transactionIDs: [TransactionID]) {
+        self.id = id
         self.name = name
-        self.transactionIDs = []
+        self.budgetCategory = budgetCategory
+        self.budgetItemID = budgetItemID
+        self.transactionIDs = transactionIDs
     }
     
     init(name: String, budgetCategory: BudgetItemCategory, budgetItemID: BudgetItemID) {
@@ -27,6 +29,12 @@ class Vendor: Saveable {
         self.name = name
         self.budgetCategory = budgetCategory
         self.budgetItemID = budgetItemID
+        self.transactionIDs = []
+    }
+    
+    init(name: String) {
+        self.id = VendorID()
+        self.name = name
         self.transactionIDs = []
     }
     
