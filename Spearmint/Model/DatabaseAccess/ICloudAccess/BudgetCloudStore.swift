@@ -50,9 +50,9 @@ class BudgetCloudStore: CloudStore {
     }
     
     func createRecords(_ item: Budget) -> [CKRecord] {
-        let recordID = CKRecord.ID(recordName: item.budgetDate.dateString)
+        let recordID = CKRecord.ID(recordName: item.budgetDate.month + item.budgetDate.year)
         let budgetRecord = CKRecord(recordType: "Budget", recordID: recordID)
-        let budgetItemID = CKRecord.ID(recordName: "\(item.budgetDate.dateString)items")
+        let budgetItemID = CKRecord.ID(recordName: "\(item.budgetDate.month)\(item.budgetDate.year)items")
         let budgetItemsRecord = CKRecord(recordType: "Budgetitems", recordID: budgetItemID)
         
         var transactionStrings: [NSString] = []

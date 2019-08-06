@@ -283,6 +283,21 @@ class AccountViewController: UIViewController {
             }
         }
         
+        let budgetItemPredicate = NSPredicate(value: true)
+        let budgetItemQuery = CKQuery(recordType: "BudgetItem", predicate: budgetItemPredicate)
+        
+        privateDatabase.perform(budgetItemQuery, inZoneWith: nil) { (records, error) in
+            
+            if let records = records {
+                for record: CKRecord in records {
+                    
+                    let budgetItem = BudgetItemCloudStore().createItem(from: record)
+                    LocalAccess.BudgetItems.append(budgetItem)
+                    print("BudgetItem fetched")
+                }
+            }
+        }
+        
     }
     
     func saveTransaction(_ transaction: Transaction) {

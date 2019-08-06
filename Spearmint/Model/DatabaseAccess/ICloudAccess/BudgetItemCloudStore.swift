@@ -13,7 +13,17 @@ class BudgetItemCloudStore: CloudStore {
     typealias Item = BudgetItem
 
     func createItem(from record: CKRecord) -> BudgetItem {
-        return BudgetItem(name: "", category: BudgetItemCategory.debt, planned: 0)
+        let id = record.recordID.recordName as String ?? ""
+        
+        let name = record.value(forKeyPath: "name") as? String ?? ""
+        let category = record.value(forKeyPath: "category") as? BudgetItemCategory ?? BudgetItemCategory.other
+        let planned = record.value(forKeyPath: "planned") as? Float ?? 0.0
+        let actual = record.value(forKeyPath: "actual") as? Float ?? 0.0
+        let isActiveValue = record.value(forKeyPath: "isActive") as? Int ?? 0
+        let isActive = isActiveValue == 1
+
+        
+        return BudgetItem(id: BudgetItemID(id), name: name, category: category, planned: planned, actual: actual, isActive: isActive, transactions: [:])
     }
     
     func createRecord(_ item: BudgetItem) -> CKRecord {
@@ -32,7 +42,7 @@ class BudgetItemCloudStore: CloudStore {
                 transactionIDs.append(transactionID.id as NSString)
             }
             
-            record[k.dateString] = transactionIDs
+            record["\(BudgetItem.self)\(k.month)\(k.year)"] = transactionIDs
         }
         
         return record

@@ -59,6 +59,14 @@ class TransactionCloudStore: CloudStore {
             budgetDate = BudgetDate(Date())
         }
         
+        
+        let budgetItemIDsStrings = record.value(forKey: "budgetItemIDs") as? [NSString] ?? []
+        var budgetItems: [BudgetItemID: [Spearmint.Item]] = [:]
+        for budgetItemIDsString in budgetItemIDsStrings {
+            budgetItems[BudgetItemID(budgetItemIDsString as String)] = []
+        }
+        
+        
         let tagStrings = record.value(forKey: "tags") as? [NSString] ?? []
         
         var tags: [String] = []
@@ -67,7 +75,7 @@ class TransactionCloudStore: CloudStore {
             tags.append(tagString as String)
         }
         
-        return Transaction(id: TransactionID(id), name: name, transactionType: transactionType, vendor: vendorID, amount: amount, date: transactionDate, location: "", image: false, tags: tags, notes: "", budgetDate: budgetDate, items: [:])
+        return Transaction(id: TransactionID(id), name: name, transactionType: transactionType, vendor: vendorID, amount: amount, date: transactionDate, location: "", image: false, tags: tags, notes: "", budgetDate: budgetDate, items: budgetItems)
     }
     
     func createRecord(_ item: Transaction) -> CKRecord {

@@ -21,7 +21,7 @@ class BudgetDataSource: NSObject {
         tableView.register(UINib.init(nibName: SelectBudgetItemTableViewCell.xib, bundle: nil), forCellReuseIdentifier: SelectBudgetItemTableViewCell.reuseIdentifier)
         tableView.dataSource = self
 
-        let budget = LocalAccess().getCurrentBudget()
+        currentBudget = LocalAccess().getCurrentBudget()
         
         tableView.reloadData()
     }
