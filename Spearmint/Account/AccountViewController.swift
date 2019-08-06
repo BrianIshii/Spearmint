@@ -77,7 +77,20 @@ class AccountViewController: UIViewController {
             }
         }
         
-        
+        for vendor in LocalAccess.Vendors.getAll() {
+            let record = VendorCloudStore().createRecord(vendor)
+            
+            privateDatabase.save(record) {
+                (record, error) in
+                if let error = error {
+                    // Insert error handling
+                    print("failed to save vendor: \(error)")
+                    return
+                }
+                print("success saved vendor")
+                // Insert successfully saved record code
+            }
+        }
     }
     
     @IBAction func getTransactions(_ sender: Any) {
@@ -108,6 +121,63 @@ class AccountViewController: UIViewController {
                 for record: CKRecord in records {
                     let tag = TagCloudStore().createItem(from: record)
                     LocalAccess.Tags.append(tag)
+                }
+            }
+        }
+        
+        let vendorPredicate = NSPredicate(value: true)
+        let vendorQuery = CKQuery(recordType: "Vendor", predicate: vendorPredicate)
+        
+        privateDatabase.perform(vendorQuery, inZoneWith: nil) { (records, error) in
+            
+            if let records = records {
+                for record: CKRecord in records {
+                    let vendor = VendorCloudStore().createItem(from: record)
+                    LocalAccess.Vendors.append(vendor)
+                    print("vendor fetched")
+                }
+            }
+        }
+        
+        let budgetPredicate = NSPredicate(value: true)
+        let budgetQuery = CKQuery(recordType: "Budget", predicate: budgetPredicate)
+        
+        privateDatabase.perform(budgetQuery, inZoneWith: nil) { (records, error) in
+            
+            if let records = records {
+                for record: CKRecord in records {
+                    let budget = BudgetCloudStore().createItem(from: record)
+                    LocalAccess.Budgets.append(budget)
+                    print("budget fetched")
+                }
+            }
+        }
+        
+        let budgetitemsPredicate = NSPredicate(value: true)
+        let budgetitemsQuery = CKQuery(recordType: "Budgetitems", predicate: budgetitemsPredicate)
+        
+        privateDatabase.perform(budgetitemsQuery, inZoneWith: nil) { (records, error) in
+            
+            if let records = records {
+                for record: CKRecord in records {
+                    var items: [BudgetItemCategory: [BudgetItemID]] = [:]
+
+                    for section in BudgetItemSectionStore.budgetItemSections {
+
+                        let temp = record.value(forKey: section.category.rawValue.replacingOccurrences(of: " ", with: "0")) as? [NSString] ?? []
+                        var budgetItemIDs: [BudgetItemID] = []
+                        for item in temp {
+                            budgetItemIDs.append(BudgetItemID(item as String))
+                        }
+                        
+                        items[section.category] = budgetItemIDs
+                    }
+                    
+                    if let budget = LocalAccess.Budgets.get(BudgetDate(record.recordID.recordName.dropLast().dropLast().dropLast().dropLast().dropLast().description)) {
+                        budget.items = items
+                    }
+                    
+                    print("budgetitems fetched")
                 }
             }
         }

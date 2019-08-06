@@ -10,6 +10,8 @@ import Foundation
 import CloudKit
 
 class BudgetCloudStore: CloudStore {
+    typealias Item = Budget
+
     func createRecord(_ item: Budget) -> CKRecord {
         let recordID = CKRecord.ID(recordName: item.budgetDate.month + item.budgetDate.year)
         let budgetRecord = CKRecord(recordType: "Budget", recordID: recordID)
@@ -35,21 +37,23 @@ class BudgetCloudStore: CloudStore {
         return budgetRecord
     }
     
-    typealias Item = Budget
-
     func createItem(from record: CKRecord) -> Budget {
+        let date = record.recordID.recordName
+        let transactionIDStrings = record.value(forKey: "transactionIDs") as? [NSString] ?? []
+        var transactionIDs: [TransactionID] = []
         
-        var transactions: [TransactionID] = []
-        if let temp = record.value(forKeyPath: "transactionIDs") as? NSArray {
+        for transactionID in transactionIDStrings {
+            transactionIDs.append(TransactionID(transactionID as String))
         }
             
-        return Budget(date: BudgetDate(), transactions: transactions, items: [:])
+        return Budget(date: BudgetDate(date), transactions: transactionIDs, items: [:])
     }
     
     func createRecords(_ item: Budget) -> [CKRecord] {
-        let recordID = CKRecord.ID(recordName: item.budgetDate.month + item.budgetDate.year)
+        let recordID = CKRecord.ID(recordName: item.budgetDate.dateString)
         let budgetRecord = CKRecord(recordType: "Budget", recordID: recordID)
-        let budgetItemsRecord = CKRecord(recordType: "Budgetitems", recordID: recordID)
+        let budgetItemID = CKRecord.ID(recordName: "\(item.budgetDate.dateString)items")
+        let budgetItemsRecord = CKRecord(recordType: "Budgetitems", recordID: budgetItemID)
         
         var transactionStrings: [NSString] = []
         for transactionID in item.transactions {
@@ -65,11 +69,11 @@ class BudgetCloudStore: CloudStore {
                 ids.append(id.id as NSString)
             }
             if ids.count > 0 {
-                budgetItemsRecord[k.rawValue.replacingOccurrences(of: " ", with: "")] = ids as NSArray
+                budgetItemsRecord[k.rawValue.replacingOccurrences(of: " ", with: "0")] = ids as NSArray
             }
         }
         
-        budgetRecord["items"] = budgetItemsRecord.share
+        budgetRecord["items"] = CKRecord.Reference(record: budgetItemsRecord, action: CKRecord_Reference_Action.deleteSelf)
         
         return [budgetItemsRecord, budgetRecord]
     }

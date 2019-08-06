@@ -15,7 +15,7 @@ class LocalAccess {
     private static let cloudKitService = CloudKitService()
     private static let localPersistanceService = LocalPersistanceService()
 
-    private static let vendors: VendorStore = VendorStore()
+    public static let Vendors: VendorStore = VendorStore(localPersistanceService: localPersistanceService)
     public static let Tags: TagStore = TagStore(localPersistanceService: localPersistanceService)
     public static let budgetItemStore: BudgetItemStore = BudgetItemStore()
     public static let Transactions: TransactionStore = TransactionStore(localPersistanceService: localPersistanceService)
@@ -52,7 +52,7 @@ class LocalAccess {
             }
         }
         
-        if let vendor = vendors.getVendor(transaction.vendor) {
+        if let vendor = Vendors.get(transaction.vendor) {
             vendor.addTransaction(transaction)
         }
 
@@ -62,22 +62,22 @@ class LocalAccess {
     }
     
     public static func addVendor(_ vendor: Vendor) {
-        vendors.addVendor(vendor: vendor)
+        Vendors.append(vendor)
     }
     public static func hasVendor(_ name: String) -> Bool {
-        return vendors.hasVendor(name)
+        return Vendors.get(name) != nil
     }
     
     public static func getVendor(_ name: String) -> Vendor? {
-        return vendors.getVendor(name)
+        return Vendors.get(name)
     }
     
     public static func getVendor(_ vendorID: VendorID) -> Vendor? {
-        return vendors.getVendor(vendorID)
+        return Vendors.get(vendorID)
     }
     
     public static func queryVendors(_ substring: String) -> [(String, VendorID)] {
-        return vendors.query(substring)
+        return Vendors.query(substring)
     }
     
     public static func queryTags(_ substring: String) -> [Tag] {
