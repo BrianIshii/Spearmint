@@ -2,71 +2,24 @@
 //  BudgetItemStore.swift
 //  Spearmint
 //
-//  Created by Brian Ishii on 6/23/19.
+//  Created by Brian Ishii on 8/5/19.
 //  Copyright © 2019 Brian Ishii. All rights reserved.
 //
 
 import Foundation
 
-class BudgetItemStore {
-    fileprivate var budgetItemDictionary: [String: BudgetItem] = [:]
-    fileprivate var activeBudgetItems: [BudgetItemCategory : [BudgetItemID]] = [:]
+class BudgetItemStore: BaseStore<BudgetItem> {
+    var activeBudgetItems: [BudgetItemCategory : [BudgetItemID]] = [:]
     
-    init() {
-        let dictionary = getBudgetItemDictionary()
-        
-        if dictionary.count == 0 {
-
-            var dictionary: [String: BudgetItem] = [:]
-            for budgetItem in defaultBudgetItems() {
-                dictionary[budgetItem.id.id] = budgetItem
-            }
-            budgetItemDictionary = dictionary
-        } else {
-            budgetItemDictionary = dictionary
-        }
+    override init(localPersistanceService: LocalPersistanceService) {
+        super.init(localPersistanceService: localPersistanceService)
         activeBudgetItems = getActiveBudgetItems()
-        updateBudgetItemDictionary()
-    }
-
-    public func getBudgetItems() -> [BudgetItemCategory : [BudgetItemID]] {
-        return activeBudgetItems
-    }
-    
-    public func getBudgetItem(_ budgetItemID: BudgetItemID) -> BudgetItem? {
-        return budgetItemDictionary[budgetItemID.id] ?? nil
-    }
-    
-    public func setActive(_ budgetItem: BudgetItem) {
-        if let item = budgetItemDictionary[budgetItem.id.id] {
-            item.isActive = true
-        } else {
-            budgetItemDictionary[budgetItem.id.id] = budgetItem
-        }
-    }
-    
-    public func addTransaction(_ transaction: Transaction) {
-        for key in transaction.items.keys {
-            if let budgetItem = getBudgetItem(key) {
-                budgetItem.addTransaction(transaction)
-            }
-        }
-        updateBudgetItemDictionary()
-    }
-    
-    public func setInactive(_ budgetItemID: BudgetItemID) {
-        guard let item = budgetItemDictionary[budgetItemID.id] else { return }
-        item.isActive = false
-    }
-    
-    fileprivate func getBudgetItemDictionary() -> [String: BudgetItem] {
-        return LocalAccess.getDictionary(key: String.self, object: BudgetItem.self)
     }
     
     fileprivate func getActiveBudgetItems() -> [BudgetItemCategory : [BudgetItemID]] {
         var active = createEmptyBudgetItemDictionary()
         
-        for (_, budgetItem) in budgetItemDictionary {
+        for (_, budgetItem) in items {
             if budgetItem.isActive {
                 if active[budgetItem.category] != nil {
                     active[budgetItem.category]!.append(budgetItem.id)
@@ -75,11 +28,9 @@ class BudgetItemStore {
         }
         return active
     }
-    
-    func updateBudgetItemDictionary() {
-        LocalAccess.updateDictionary(data: budgetItemDictionary)
-    }
-    
+}
+
+extension BudgetItemStore {
     fileprivate func defaultBudgetItemDictionary() -> [BudgetItemCategory:[BudgetItem]] {
         return [BudgetItemCategory.income : [
             BudgetItem(name: "Paycheck 1", category: BudgetItemCategory.income, planned: 6000)],

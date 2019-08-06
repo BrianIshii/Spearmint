@@ -17,7 +17,7 @@ class LocalAccess {
 
     public static let Vendors: VendorStore = VendorStore(localPersistanceService: localPersistanceService)
     public static let Tags: TagStore = TagStore(localPersistanceService: localPersistanceService)
-    public static let budgetItemStore: BudgetItemStore = BudgetItemStore()
+    public static let BudgetItems: BudgetItemStore = BudgetItemStore(localPersistanceService: localPersistanceService)
     public static let Transactions: TransactionStore = TransactionStore(localPersistanceService: localPersistanceService)
     public static let Budgets: BudgetStore = BudgetStore(localPersistanceService: localPersistanceService)
     
@@ -37,9 +37,9 @@ class LocalAccess {
         }
         
         for (budgetItemID, v) in transaction.items {
-            if let budgetItem = budgetItemStore.getBudgetItem(budgetItemID) {
+            if let budgetItem = BudgetItems.get(budgetItemID) {
                 budgetItem.addTransaction(transaction)
-                budgetItemStore.updateBudgetItemDictionary()
+                BudgetItems.update()
             }
         }
         

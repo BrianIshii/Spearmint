@@ -24,7 +24,7 @@ class BudgetDataSource: NSObject {
         let budget = LocalAccess.Budgets.get(BudgetDate())
         
         if budget == nil {
-            let b = Budget(BudgetDate(), items: LocalAccess.budgetItemStore.getBudgetItems())
+            let b = Budget(BudgetDate(), items: LocalAccess.BudgetItems.activeBudgetItems)
             LocalAccess.Budgets.append(b)
             currentBudget = b
         } else {
@@ -80,7 +80,7 @@ extension BudgetDataSource: UITableViewDataSource {
     public func getBudgetItem(indexPath: IndexPath) -> BudgetItem? {
         guard let budget = currentBudget else { return nil }
         guard let budgetItemIDs = budget.items[sections[indexPath.section].category] else { return nil }
-        guard let budgetItem = LocalAccess.budgetItemStore.getBudgetItem(budgetItemIDs[indexPath.row]) else { return nil }
+        guard let budgetItem = LocalAccess.BudgetItems.get(budgetItemIDs[indexPath.row]) else { return nil }
         
         return budgetItem
     }
