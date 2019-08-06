@@ -170,6 +170,7 @@
 		76D4745722F8327A0053A095 /* VendorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4745622F8327A0053A095 /* VendorStore.swift */; };
 		76D4745922F8FC2E0053A095 /* BudgetItemCloudStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4745822F8FC2E0053A095 /* BudgetItemCloudStore.swift */; };
 		76D4745B22F8FF780053A095 /* BudgetItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4745A22F8FF780053A095 /* BudgetItemStore.swift */; };
+		76D4745D22F93C670053A095 /* BudgetAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4745C22F93C670053A095 /* BudgetAccess.swift */; };
 		76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3CBE7227FEEAC0010625A /* Currency.swift */; };
 		76EF345422963BF1005A5C35 /* BudgetItemSectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */; };
 		76EF345622986CD8005A5C35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76EF345522986CD8005A5C35 /* GoogleService-Info.plist */; };
@@ -396,6 +397,7 @@
 		76D4745622F8327A0053A095 /* VendorStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorStore.swift; sourceTree = "<group>"; };
 		76D4745822F8FC2E0053A095 /* BudgetItemCloudStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemCloudStore.swift; sourceTree = "<group>"; };
 		76D4745A22F8FF780053A095 /* BudgetItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemStore.swift; sourceTree = "<group>"; };
+		76D4745C22F93C670053A095 /* BudgetAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetAccess.swift; sourceTree = "<group>"; };
 		76E3CBE7227FEEAC0010625A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemSectionStore.swift; sourceTree = "<group>"; };
 		76EF345522986CD8005A5C35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -893,6 +895,7 @@
 				76B0638C22E51C4C007BBDD5 /* Queryable.swift */,
 				76B0639322E52A59007BBDD5 /* Observer.swift */,
 				764AEE1722E6DA3C007C817D /* Observable.swift */,
+				76D4745C22F93C670053A095 /* BudgetAccess.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1581,6 +1584,7 @@
 				76B0631C22D9B9E8007BBDD5 /* TagTextView.swift in Sources */,
 				76D4742B22E808CF0053A095 /* PieChartSegment.swift in Sources */,
 				76B548D522915D14001B2FB1 /* ImageViewTableViewCell.swift in Sources */,
+				76D4745D22F93C670053A095 /* BudgetAccess.swift in Sources */,
 				76B0631E22D9CD31007BBDD5 /* SuggestionViewDelegate.swift in Sources */,
 				764AFD8A226E7060007BFD90 /* ViewController.swift in Sources */,
 				76D4743122E829110053A095 /* CGVectorExtension.swift in Sources */,

@@ -78,12 +78,14 @@ class Budget: Saveable {
             if (key.category != BudgetItemCategory.income) {
                 var total: Float = 0.0
 
-                for id in items[key.category]! {
-                    if let item = LocalAccess.BudgetItems.get(id) {
-                        total += item.getMonthlyTotal(self.budgetDate)
+                if let items = items[key.category] {
+                    for id in items {
+                        if let item = LocalAccess.BudgetItems.get(id) {
+                            total += item.getMonthlyTotal(self.budgetDate)
+                        }
                     }
                 }
-                
+
                 expenses[key.category] = total
             }
         }

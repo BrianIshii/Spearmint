@@ -18,3 +18,7 @@ class CloudAccess {
         self.transactionCloudStore = transactionCloudStore
     }
 }
+
+extension CloudAccess {
+    // add all features for transactions
+}

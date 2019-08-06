@@ -136,3 +136,37 @@ class LocalAccess {
         }
     }
 }
+
+extension LocalAccess: BudgetAccess {
+    func getCurrentBudget() -> Budget {
+        if let budget = LocalAccess.Budgets.get(BudgetDate()) {
+            return budget
+        } else {
+            let budget = Budget(BudgetDate(), items: LocalAccess.BudgetItems.activeBudgetItems)
+            LocalAccess.Budgets.append(budget)
+            return budget
+        }
+    }
+    
+    func getAll() -> [Budget] {
+        return LocalAccess.Budgets.getAll()
+    }
+    
+    func get(_ budgetDate: BudgetDate) -> Budget? {
+        return LocalAccess.Budgets.get(budgetDate)
+    }
+    
+    func append(_ budget: Budget) {
+        LocalAccess.Budgets.append(budget)
+    }
+    
+    func update(_ budget: Budget) {
+        //LocalAccess.
+    }
+    
+    func remove(_ budget: Budget) {
+        LocalAccess.Budgets.remove(budget.id)
+    }
+    
+    
+}

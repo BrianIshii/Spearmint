@@ -13,6 +13,14 @@ class BudgetItemStore: BaseStore<BudgetItem> {
     
     override init(localPersistanceService: LocalPersistanceService) {
         super.init(localPersistanceService: localPersistanceService)
+        if items.count ==  0 {
+            var dictionary: [BudgetItemID: BudgetItem] = [:]
+            for budgetItem in defaultBudgetItems() {
+                dictionary[budgetItem.id] = budgetItem
+            }
+            
+            self.items = dictionary
+        }
         activeBudgetItems = getActiveBudgetItems()
     }
     

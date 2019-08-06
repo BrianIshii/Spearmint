@@ -19,22 +19,113 @@ class AccountViewController: UIViewController {
     
 
     @IBAction func addDemoTransactions(_ sender: Any) {
-//        let dictionary = BudgetStore.budgetDictionary
-//        
-//        let budget = dictionary[BudgetDate(Date())]!
-//        LocalAccess.addTransaction(Transaction(name: "transaction 1", transactionType: TransactionType.income, vendor: "Company 123", amount: 3000, date: "Jun 1, 2019", location: "", image: false, notes: "", budgetDate: budget.id, items: ["Paycheck 1" : [Item(name: "Paycheck", amount: 3000, budgetItem: "Paycheck 1", budgetItemCategory: BudgetItemCategory.income)]]))
-//        
-//        print("done")
+        let myContainer = CKContainer.default()
+        let privateDatabase = myContainer.privateCloudDatabase
+        
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Transaction", predicate: predicate)
+        
+        privateDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            if let records = records {
+                for record in records {
+                    CKContainer.default().privateCloudDatabase.delete(withRecordID: record.recordID) { (recordID, error) in
+                        if let error = error {
+                            print("deleting error: \(error)")
+                        } else {
+                            print("deleted success")
+                        }
+                    }
+                }
+            }
+        }
+        
+        let tagPredicate = NSPredicate(value: true)
+        let tagQuery = CKQuery(recordType: "Tag", predicate: tagPredicate)
+        
+        privateDatabase.perform(tagQuery, inZoneWith: nil) { (records, error) in
+            if let records = records {
+                for record in records {
+                    CKContainer.default().privateCloudDatabase.delete(withRecordID: record.recordID) { (recordID, error) in
+                        if let error = error {
+                            print("deleting error: \(error)")
+                        } else {
+                            print("deleted success")
+                        }
+                    }
+                }
+            }
+        }
+        
+        let vendorPredicate = NSPredicate(value: true)
+        let vendorQuery = CKQuery(recordType: "Vendor", predicate: vendorPredicate)
+        
+        privateDatabase.perform(vendorQuery, inZoneWith: nil) { (records, error) in
+            if let records = records {
+                for record in records {
+                    CKContainer.default().privateCloudDatabase.delete(withRecordID: record.recordID) { (recordID, error) in
+                        if let error = error {
+                            print("deleting error: \(error)")
+                        } else {
+                            print("deleted success")
+                        }
+                    }
+                }
+            }
+        }
+        
+        let budgetPredicate = NSPredicate(value: true)
+        let budgetQuery = CKQuery(recordType: "Budget", predicate: budgetPredicate)
+        
+        privateDatabase.perform(budgetQuery, inZoneWith: nil) { (records, error) in
+            if let records = records {
+                for record in records {
+                    CKContainer.default().privateCloudDatabase.delete(withRecordID: record.recordID) { (recordID, error) in
+                        if let error = error {
+                            print("deleting error: \(error)")
+                        } else {
+                            print("deleted success")
+                        }
+                    }
+                    
+                }
+            }
+        }
+        
+        let budgetitemsPredicate = NSPredicate(value: true)
+        let budgetitemsQuery = CKQuery(recordType: "Budgetitems", predicate: budgetitemsPredicate)
+        
+        privateDatabase.perform(budgetitemsQuery, inZoneWith: nil) { (records, error) in
+            if let records = records {
+                for record in records {
+                    CKContainer.default().privateCloudDatabase.delete(withRecordID: record.recordID) { (recordID, error) in
+                        if let error = error {
+                            print("deleting error: \(error)")
+                        } else {
+                            print("deleted success")
+                        }
+                    }
+                }
+            }
+        }
+        
+        let budgetItemPredicate = NSPredicate(value: true)
+        let budgetItemQuery = CKQuery(recordType: "BudgetItem", predicate: budgetitemsPredicate)
+        
+        privateDatabase.perform(budgetItemQuery, inZoneWith: nil) { (records, error) in
+            if let records = records {
+                for record in records {
+                    CKContainer.default().privateCloudDatabase.delete(withRecordID: record.recordID) { (recordID, error) in
+                        if let error = error {
+                            print("deleting error: \(error)")
+                        } else {
+                            print("deleted success")
+                        }
+                    }
+                }
+            }
+        }
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func addTransaction(_ sender: Any) {
         let myContainer = CKContainer.default()
         
@@ -83,21 +174,29 @@ class AccountViewController: UIViewController {
             privateDatabase.save(record) {
                 (record, error) in
                 if let error = error {
-                    // Insert error handling
                     print("failed to save vendor: \(error)")
                     return
                 }
                 print("success saved vendor")
-                // Insert successfully saved record code
             }
         }
         
-        //for budgetItem in LocalAccess.budgetItemStore.
+        for budgetItem in LocalAccess.BudgetItems.getAll() {
+            let record = BudgetItemCloudStore().createRecord(budgetItem)
+            
+            privateDatabase.save(record) {
+                (record, error) in
+                if let error = error {
+                    print("failed to save BudgetItem: \(error)")
+                    return
+                }
+                print("success saved BudgetItem")
+            }
+        }
     }
     
     @IBAction func getTransactions(_ sender: Any) {
         let myContainer = CKContainer.default()
-        
         let privateDatabase = myContainer.privateCloudDatabase
         
         let predicate = NSPredicate(value: true)
