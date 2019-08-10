@@ -95,7 +95,7 @@ class SelectBudgetItemListTableView: UITableView {
     public func getBudgetItem(indexPath: IndexPath) -> BudgetItem? {
         guard let budget = currentBudget else { return nil }
         guard let budgetItemIDs = budget.items[sections[indexPath.section].category] else { return nil }
-        guard let budgetItem = LocalAccess.BudgetItems.get(budgetItemIDs[indexPath.row]) else { return nil }
+        guard let budgetItem = LocalAccess().get(budgetItemIDs[indexPath.row]) else { return nil }
         return budgetItem
     }
 }

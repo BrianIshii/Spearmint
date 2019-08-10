@@ -22,8 +22,18 @@ class BudgetItemCloudStore: CloudStore {
         let isActiveValue = record.value(forKeyPath: "isActive") as? Int ?? 0
         let isActive = isActiveValue == 1
 
+        var transactions: [BudgetDate: [TransactionID]] = [:]
+        for budget in LocalAccess.Budgets.getAll() {
+            let transactionIDStrings = record.value(forKeyPath: "BudgetItem\(budget.month)\(budget.year)") as? [NSString] ?? []
+            var transactionIDs: [TransactionID] = []
+            for transactionIDString in transactionIDStrings {
+                transactionIDs.append(TransactionID(transactionIDString as String))
+            }
+            transactions[budget.budgetDate] = transactionIDs
+
+        }
         
-        return BudgetItem(id: BudgetItemID(id), name: name, category: category, planned: planned, actual: actual, isActive: isActive, transactions: [:])
+        return BudgetItem(id: BudgetItemID(id), name: name, category: category, planned: planned, actual: actual, isActive: isActive, transactions: transactions)
     }
     
     func createRecord(_ item: BudgetItem) -> CKRecord {

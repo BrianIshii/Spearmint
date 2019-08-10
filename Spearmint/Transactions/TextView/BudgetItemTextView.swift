@@ -45,7 +45,7 @@ class BudgetItemTextView: UITextView {
         position.y = padding
         
         for (index, budgetItemID) in budgetItems.enumerated() {
-            if let budgetItem = LocalAccess.BudgetItems.get(budgetItemID) {
+            if let budgetItem = LocalAccess().get(budgetItemID) {
                 let budgetItemView = createBudgetItemView(budgetItem.name, index)
                 self.addSubview(budgetItemView)
             }

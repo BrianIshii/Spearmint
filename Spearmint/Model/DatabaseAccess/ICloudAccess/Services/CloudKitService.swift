@@ -14,9 +14,29 @@ class CloudKitService {
     fileprivate let privateDatabase = CKContainer.default().privateCloudDatabase
     fileprivate let publicDatabase  = CKContainer.default().publicCloudDatabase
     
-    func getRecords() -> [CKRecord] {
+    func getRecords(_ recordType: String, completionHandler: @escaping (_ records: [CKRecord]) -> Void) {
+        
+        var transactionRecords: [CKRecord] = []
+        
+        let query = CKQuery(recordType: recordType, predicate: NSPredicate(value: true))
+        let queryOperation = CKQueryOperation(query: query)
+        
+        queryOperation.recordFetchedBlock = { record in
+            transactionRecords.append(record)
+        }
+        
+        queryOperation.queryCompletionBlock = { cursor, error in
+            if error != nil {
+                print(error!.localizedDescription)
+            } else {
+                completionHandler(transactionRecords)
+            }
+        }
+    }
+    
+    func getRecords(_ recordType: String) -> [CKRecord] {
         let predicate = NSPredicate(value: true)
-        let query = CKQuery(recordType: "Transaction", predicate: predicate)
+        let query = CKQuery(recordType: recordType, predicate: predicate)
         var recordArray: [CKRecord] = []
         
         privateDatabase.perform(query, inZoneWith: nil) {(records, error) in

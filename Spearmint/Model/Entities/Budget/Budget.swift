@@ -20,24 +20,6 @@ class Budget: Saveable {
         self.items = items
     }
     
-    init(date: String) {
-        self.budgetDate = BudgetDate(date)
-        self.transactions = []
-        self.items = LocalAccess.BudgetItems.activeBudgetItems
-    }
-    
-    init(date: String, items: [BudgetItemCategory:[BudgetItemID]]) {
-        self.budgetDate = BudgetDate(date)
-        self.transactions = []
-        self.items = items
-    }
-    
-    init(date: Date, items: [BudgetItemCategory:[BudgetItemID]]) {
-        self.budgetDate = BudgetDate(date)
-        self.transactions = []
-        self.items = items
-    }
-    
     init(_ date: BudgetDate, items: [BudgetItemCategory:[BudgetItemID]]) {
         self.budgetDate = date
         self.items = items
@@ -46,7 +28,7 @@ class Budget: Saveable {
     
     init(_ date: BudgetDate) {
         self.budgetDate = date
-        self.items = LocalAccess.BudgetItems.activeBudgetItems
+        self.items = [:]
         self.transactions = []
     }
     
@@ -63,7 +45,7 @@ class Budget: Saveable {
         var total: Float = 0.0
         if let budgetItems = items[BudgetItemCategory.income] {
             for id in budgetItems {
-                if let budgetItem = LocalAccess.BudgetItems.get(id) {
+                if let budgetItem = LocalAccess().get(id) {
                     total += budgetItem.actual
                 }
             }
@@ -80,7 +62,7 @@ class Budget: Saveable {
 
                 if let items = items[key.category] {
                     for id in items {
-                        if let item = LocalAccess.BudgetItems.get(id) {
+                        if let item = LocalAccess().get(id) {
                             total += item.getMonthlyTotal(self.budgetDate)
                         }
                     }

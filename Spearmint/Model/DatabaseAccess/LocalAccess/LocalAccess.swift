@@ -17,7 +17,7 @@ class LocalAccess {
 
     public static let Vendors: VendorStore = VendorStore(localPersistanceService: localPersistanceService)
     public static let Tags: TagStore = TagStore(localPersistanceService: localPersistanceService)
-    public static let BudgetItems: BudgetItemStore = BudgetItemStore(localPersistanceService: localPersistanceService)
+    private static let BudgetItems: BudgetItemStore = BudgetItemStore(localPersistanceService: localPersistanceService)
     public static let Transactions: TransactionStore = TransactionStore(localPersistanceService: localPersistanceService)
     public static let Budgets: BudgetStore = BudgetStore(localPersistanceService: localPersistanceService)
     
@@ -142,7 +142,7 @@ extension LocalAccess: BudgetAccess {
         if let budget = LocalAccess.Budgets.get(BudgetDate()) {
             return budget
         } else {
-            let budget = Budget(BudgetDate(), items: LocalAccess.BudgetItems.activeBudgetItems)
+            let budget = Budget(BudgetDate(), items: [:])
             LocalAccess.Budgets.append(budget)
             return budget
         }
@@ -167,6 +167,26 @@ extension LocalAccess: BudgetAccess {
     func remove(_ budget: Budget) {
         LocalAccess.Budgets.remove(budget.id)
     }
+}
+
+extension LocalAccess: BudgetItemAccess {
+    func getAllBudgetItems() -> [BudgetItem] {
+        return LocalAccess.BudgetItems.getAll()
+    }
     
+    func get(_ id: BudgetItemID) -> BudgetItem? {
+        return LocalAccess.BudgetItems.get(id)
+    }
     
+    func append(_ budgetItem: BudgetItem) {
+        LocalAccess.BudgetItems.append(budgetItem)
+    }
+    
+    func update(_ budgetItem: BudgetItem) {
+        //LocalAccess.BudgetItems.
+    }
+    
+    func remove(_ budgetItem: BudgetItem) {
+        LocalAccess.BudgetItems.remove(budgetItem.id)
+    }
 }

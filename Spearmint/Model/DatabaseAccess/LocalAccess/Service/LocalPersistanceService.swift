@@ -23,7 +23,7 @@ class LocalPersistanceService {
             
             return dictionary
         } catch {
-            print(error)
+            print("Unable to get dictionary for \(K.self): \(error)")
         }
         
         return [:]
@@ -36,7 +36,7 @@ class LocalPersistanceService {
             let jsonData = try encoder.encode(data)
             try jsonData.write(to: url)
         } catch {
-            print(error)
+            print("Unable to update dictionary for \(K.self): \(error)")
         }
     }
     
@@ -49,7 +49,7 @@ class LocalPersistanceService {
             
             return array
         } catch {
-            print(error)
+            print("Unable to get data for \(SaveableObject.self): \(error)")
         }
         
         return []
@@ -62,7 +62,7 @@ class LocalPersistanceService {
             let jsonData = try encoder.encode(data)
             try jsonData.write(to: url)
         } catch {
-            print(error)
+            print("Unable to update data for \(SaveableObject.self): \(error)")
         }
     }
 }

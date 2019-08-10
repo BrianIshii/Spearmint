@@ -27,10 +27,10 @@ class BudgetViewController: UIViewController {
         
         budgets = LocalAccess.Budgets.getAll()
         
-        if Date().isInSameMonth(date: budgets[budgets.count - 1].date) {
-            let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: Date())
-            LocalAccess.Budgets.append(Budget(date: Budget.dateToString(nextMonth!)))
-        }
+//        if Date().isInSameMonth(date: budgets[budgets.count - 1].date) {
+//            let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: Date())
+//            LocalAccess.Budgets.append(Budget(date: Budget.dateToString(nextMonth!)))
+//        }
         
         budgets = LocalAccess.Budgets.getAll()
         
