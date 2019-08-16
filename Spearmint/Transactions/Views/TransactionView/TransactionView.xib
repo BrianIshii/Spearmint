@@ -90,6 +90,14 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7a-Jy-EPQ">
+                            <rect key="frame" x="326" y="8" width="48" height="48"/>
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <state key="normal" image="round_cancel_white_48pt"/>
+                            <connections>
+                                <action selector="CancelButton:" destination="-1" eventType="touchUpInside" id="Sht-gP-PyB"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="tQS-DL-Mxs" firstAttribute="top" secondItem="Khv-Je-n3Z" secondAttribute="bottom" id="077-as-k1d"/>
@@ -98,10 +106,12 @@
                         <constraint firstItem="tQS-DL-Mxs" firstAttribute="centerX" secondItem="YE7-69-XKs" secondAttribute="centerX" id="8MY-Rk-Ipg"/>
                         <constraint firstItem="m9U-D0-goz" firstAttribute="centerX" secondItem="YE7-69-XKs" secondAttribute="centerX" id="AMT-Th-j0K"/>
                         <constraint firstItem="Khv-Je-n3Z" firstAttribute="top" secondItem="AvA-DS-gHj" secondAttribute="bottom" constant="8" id="Bix-zW-Gtr"/>
+                        <constraint firstItem="c7a-Jy-EPQ" firstAttribute="top" secondItem="YE7-69-XKs" secondAttribute="top" constant="8" id="C1q-xz-cBB"/>
                         <constraint firstItem="AvA-DS-gHj" firstAttribute="centerX" secondItem="YE7-69-XKs" secondAttribute="centerX" id="GYw-6j-94b"/>
                         <constraint firstItem="tQS-DL-Mxs" firstAttribute="width" secondItem="YE7-69-XKs" secondAttribute="width" id="N5d-Zg-mfz"/>
                         <constraint firstItem="YxY-VI-bpO" firstAttribute="width" secondItem="YE7-69-XKs" secondAttribute="width" id="OXa-Ob-e1u"/>
                         <constraint firstItem="AvA-DS-gHj" firstAttribute="top" secondItem="m9U-D0-goz" secondAttribute="bottom" constant="16" id="Yc0-6s-G8z"/>
+                        <constraint firstAttribute="trailing" secondItem="c7a-Jy-EPQ" secondAttribute="trailing" id="dcl-UJ-gOl"/>
                         <constraint firstItem="Khv-Je-n3Z" firstAttribute="centerX" secondItem="YE7-69-XKs" secondAttribute="centerX" id="g11-JZ-il1"/>
                         <constraint firstItem="YxY-VI-bpO" firstAttribute="centerX" secondItem="YE7-69-XKs" secondAttribute="centerX" id="hmp-pQ-Xag"/>
                         <constraint firstItem="naC-qe-yea" firstAttribute="top" secondItem="YxY-VI-bpO" secondAttribute="bottom" id="ilF-Y3-mH1"/>
@@ -142,4 +152,7 @@
             <point key="canvasLocation" x="-100.00000000000001" y="-103.125"/>
         </view>
     </objects>
+    <resources>
+        <image name="round_cancel_white_48pt" width="48" height="48"/>
+    </resources>
 </document>

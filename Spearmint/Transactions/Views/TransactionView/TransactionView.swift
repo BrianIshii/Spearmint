@@ -104,6 +104,11 @@ class TransactionView: UIView {
         categoryTextView.isEditable = true
 
     }
+    @IBAction func CancelButton(_ sender: Any) {
+        guard let delegate = delegate else { return }
+
+        delegate.dismiss()
+    }
     
     @IBAction func selectCategory(_ sender: UIButton) {
         guard let delegate = delegate else { return }

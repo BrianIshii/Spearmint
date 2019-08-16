@@ -18,7 +18,7 @@ class AccountViewController: UIViewController {
     }
     
 
-    @IBAction func addDemoTransactions(_ sender: Any) {
+    func clearCloudKitData() {
         let myContainer = CKContainer.default()
         let privateDatabase = myContainer.privateCloudDatabase
         
@@ -355,5 +355,17 @@ class AccountViewController: UIViewController {
             print(transaction.ID)
             // Insert successfully saved record code
         }
+    }
+    @IBAction func hi(_ sender: Any) {
+        let alert = UIAlertController(title: "Clear All Cloud Kit Data", message: "This is an alert.", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: {
+            _ in NSLog("cancel")}))
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
+        _ in NSLog("clearing Data")
+            self.clearCloudKitData()
+        }))
+
+        self.present(alert, animated: true, completion: nil)
     }
 }

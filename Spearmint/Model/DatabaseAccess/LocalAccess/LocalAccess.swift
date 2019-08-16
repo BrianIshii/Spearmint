@@ -142,7 +142,7 @@ extension LocalAccess: BudgetAccess {
         if let budget = LocalAccess.Budgets.get(BudgetDate()) {
             return budget
         } else {
-            let budget = Budget(BudgetDate(), items: [:])
+            let budget = Budget(BudgetDate(), items: LocalAccess.BudgetItems.activeBudgetItems)
             LocalAccess.Budgets.append(budget)
             return budget
         }
@@ -170,6 +170,7 @@ extension LocalAccess: BudgetAccess {
 }
 
 extension LocalAccess: BudgetItemAccess {
+    
     func getAllBudgetItems() -> [BudgetItem] {
         return LocalAccess.BudgetItems.getAll()
     }

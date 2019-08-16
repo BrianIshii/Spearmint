@@ -56,6 +56,7 @@
 		764AFDBC226EC377007BFD90 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764AFDBB226EC377007BFD90 /* SettingsTableViewCell.swift */; };
 		764AFDBE226EC42D007BFD90 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764AFDBD226EC42D007BFD90 /* AccountViewController.swift */; };
 		766633B022FABB1A00DC47A9 /* BudgetItemAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766633AF22FABB1A00DC47A9 /* BudgetItemAccess.swift */; };
+		766633B222FF916100DC47A9 /* VendorAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766633B122FF916100DC47A9 /* VendorAccess.swift */; };
 		7689F7112270E2FC00AD4225 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7102270E2FC00AD4225 /* Transaction.swift */; };
 		7689F7132270E31A00AD4225 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7122270E31A00AD4225 /* Budget.swift */; };
 		7689F7152270E39900AD4225 /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7142270E39900AD4225 /* TransactionType.swift */; };
@@ -283,6 +284,7 @@
 		764AFDBB226EC377007BFD90 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		764AFDBD226EC42D007BFD90 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		766633AF22FABB1A00DC47A9 /* BudgetItemAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemAccess.swift; sourceTree = "<group>"; };
+		766633B122FF916100DC47A9 /* VendorAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorAccess.swift; sourceTree = "<group>"; };
 		7689F7102270E2FC00AD4225 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		7689F7122270E31A00AD4225 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		7689F7142270E39900AD4225 /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
@@ -899,6 +901,7 @@
 				764AEE1722E6DA3C007C817D /* Observable.swift */,
 				76D4745C22F93C670053A095 /* BudgetAccess.swift */,
 				766633AF22FABB1A00DC47A9 /* BudgetItemAccess.swift */,
+				766633B122FF916100DC47A9 /* VendorAccess.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1556,6 +1559,7 @@
 				7689F71B2271874900AD4225 /* Item.swift in Sources */,
 				76B0638D22E51C4C007BBDD5 /* Queryable.swift in Sources */,
 				76F4237222C49A1500E7B868 /* BudgetDate.swift in Sources */,
+				766633B222FF916100DC47A9 /* VendorAccess.swift in Sources */,
 				76D22F82229A2A9E00C06567 /* AnalysisCollectionViewCell.swift in Sources */,
 				76B0632222DA88F4007BBDD5 /* SaveableDate.swift in Sources */,
 				76B0630922D06F79007BBDD5 /* DateTextField.swift in Sources */,

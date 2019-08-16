@@ -88,7 +88,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="voc-Te-H7N"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Budgets" id="o24-QX-onU"/>
+                    <tabBarItem key="tabBarItem" title="Budgets" image="round_calendar_today_white_36pt" id="o24-QX-onU"/>
                     <navigationItem key="navigationItem" id="NGZ-YZ-16b">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" id="cpf-0W-7Gg"/>
@@ -132,4 +132,7 @@
             <point key="canvasLocation" x="2169" y="-94"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="round_calendar_today_white_36pt" width="36" height="36"/>
+    </resources>
 </document>

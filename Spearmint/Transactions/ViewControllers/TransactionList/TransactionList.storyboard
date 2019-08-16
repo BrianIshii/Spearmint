@@ -47,7 +47,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wey-25-Rik"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Transactions" id="fq9-mt-Dpb"/>
+                    <tabBarItem key="tabBarItem" title="Transactions" image="round_receipt_white_36pt" id="fq9-mt-Dpb"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="navigationBar" destination="ych-wy-2jV" id="Vbp-Tk-Qzj"/>
@@ -76,4 +76,7 @@
             <point key="canvasLocation" x="217" y="-902"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="round_receipt_white_36pt" width="36" height="36"/>
+    </resources>
 </document>

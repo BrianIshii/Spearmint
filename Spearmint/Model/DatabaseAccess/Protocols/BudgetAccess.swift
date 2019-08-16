@@ -11,7 +11,7 @@ import Foundation
 protocol BudgetAccess {
     func getCurrentBudget() -> Budget
     func getAll() -> [Budget]
-    func get(_ budgetDate: BudgetDate) -> Budget?
+    func get(_ id: BudgetDate) -> Budget?
     func append(_ budget: Budget)
     func update(_ budget: Budget)
     func remove(_ budget: Budget)

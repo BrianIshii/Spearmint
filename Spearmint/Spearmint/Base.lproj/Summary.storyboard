@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Summary-->
+        <!--Home-->
         <scene sceneID="RsY-DU-dIN">
             <objects>
                 <viewController id="U6a-RL-4I3" customClass="MasterSummaryViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2iL-4A-lfr">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d13-Pb-p4W">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
@@ -31,7 +31,7 @@
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lit-tg-6lZ">
-                                        <rect key="frame" x="0.0" y="414" width="414" height="404"/>
+                                        <rect key="frame" x="0.0" y="414" width="414" height="355"/>
                                         <connections>
                                             <segue destination="RKn-xB-MTa" kind="embed" id="LlB-Uv-bTT"/>
                                         </connections>
@@ -51,7 +51,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GTC-kg-Wxu"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Summary" id="zMz-su-eBa"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="round_home_white_36pt" id="GrU-yh-eSY"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qi5-K6-HO5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -92,11 +93,11 @@
             <objects>
                 <viewController id="RKn-xB-MTa" customClass="SummaryPickerViewController" customModule="Spearmint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bor-O5-2C4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="404"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="355"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KNr-Qn-1NB">
-                                <rect key="frame" x="0.0" y="64" width="414" height="286"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="237"/>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -118,4 +119,7 @@
             <point key="canvasLocation" x="558" y="1017"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="round_home_white_36pt" width="36" height="36"/>
+    </resources>
 </document>

@@ -51,11 +51,11 @@
             </objects>
             <point key="canvasLocation" x="1246" y="2506"/>
         </scene>
-        <!--Account-->
+        <!--Navigation Controller-->
         <scene sceneID="WZi-9j-nNc">
             <objects>
                 <navigationController storyboardIdentifier="Account" id="kwO-p1-zQB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Account" id="OXQ-yb-dPb"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="B4P-yR-yFc">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -86,9 +86,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLQ-7k-ebq">
                                 <rect key="frame" x="131" y="392" width="152" height="30"/>
                                 <state key="normal" title="Clear all CloudKit data"/>
-                                <connections>
-                                    <action selector="addDemoTransactions:" destination="xmb-TB-H1U" eventType="touchUpInside" id="HOq-rT-HZX"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSH-ny-zU9">
                                 <rect key="frame" x="170.5" y="502" width="73" height="30"/>
@@ -104,6 +101,13 @@
                                     <action selector="getTransactions:" destination="xmb-TB-H1U" eventType="touchUpInside" id="raV-9I-E1T"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCo-zh-Ndq">
+                                <rect key="frame" x="171" y="666" width="72" height="30"/>
+                                <state key="normal" title="Clear Data"/>
+                                <connections>
+                                    <action selector="hi:" destination="xmb-TB-H1U" eventType="touchUpInside" id="bCm-hO-nbQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -111,14 +115,16 @@
                             <constraint firstItem="oSH-ny-zU9" firstAttribute="top" secondItem="VLQ-7k-ebq" secondAttribute="bottom" constant="80" id="4ee-Q5-K99"/>
                             <constraint firstItem="mxd-Zi-OKl" firstAttribute="centerX" secondItem="5Tl-Bb-lag" secondAttribute="centerX" id="C6v-nL-Fqp"/>
                             <constraint firstItem="oSH-ny-zU9" firstAttribute="centerX" secondItem="5Tl-Bb-lag" secondAttribute="centerX" id="E6W-w2-kEW"/>
+                            <constraint firstItem="aCo-zh-Ndq" firstAttribute="top" secondItem="1DK-p6-NCB" secondAttribute="bottom" constant="45" id="F8f-iH-4oa"/>
                             <constraint firstItem="1DK-p6-NCB" firstAttribute="top" secondItem="oSH-ny-zU9" secondAttribute="bottom" constant="59" id="K6P-2C-BUI"/>
                             <constraint firstItem="mxd-Zi-OKl" firstAttribute="top" secondItem="5Tl-Bb-lag" secondAttribute="top" constant="214" id="Yno-ci-nmT"/>
                             <constraint firstItem="1DK-p6-NCB" firstAttribute="centerX" secondItem="5Tl-Bb-lag" secondAttribute="centerX" id="hoj-eK-Irg"/>
+                            <constraint firstItem="aCo-zh-Ndq" firstAttribute="centerX" secondItem="5Tl-Bb-lag" secondAttribute="centerX" id="kbN-za-fpg"/>
                             <constraint firstItem="VLQ-7k-ebq" firstAttribute="top" secondItem="mxd-Zi-OKl" secondAttribute="bottom" constant="60" id="vyt-st-j2P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5Tl-Bb-lag"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Account" id="W8z-NW-q72"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="round_account_circle_white_36pt" id="W8z-NW-q72"/>
                     <navigationItem key="navigationItem" id="l7q-Rg-omo"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbM-Xf-ycF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -126,4 +132,7 @@
             <point key="canvasLocation" x="445" y="2506"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="round_account_circle_white_36pt" width="36" height="36"/>
+    </resources>
 </document>
