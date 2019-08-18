@@ -14,7 +14,7 @@ class VendorStoreOld {
 
     init() {
         let dictionary = getVendorDictionary()
-        for (k,v) in dictionary {
+        for (_,v) in dictionary {
             vendorKeys[v.name] = v.id
         }
         self.vendorDictionary = getVendorDictionary()

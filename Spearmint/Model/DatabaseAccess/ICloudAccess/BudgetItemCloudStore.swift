@@ -13,7 +13,7 @@ class BudgetItemCloudStore: CloudStore {
     typealias Item = BudgetItem
 
     func createItem(from record: CKRecord) -> BudgetItem {
-        let id = record.recordID.recordName as String ?? ""
+        let id = record.recordID.recordName as String 
         
         let name = record.value(forKeyPath: "name") as? String ?? ""
         let category = record.value(forKeyPath: "category") as? BudgetItemCategory ?? BudgetItemCategory.other

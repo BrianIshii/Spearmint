@@ -13,7 +13,7 @@ class TagCloudStore: CloudStore {
     typealias Item = Tag
 
     func createItem(from record: CKRecord) -> Tag {
-        let id = record.recordID.recordName as String ?? ""
+        let id = record.recordID.recordName as String 
         let red = record.value(forKeyPath: "red") as? Int ?? 0
         let green = record.value(forKeyPath: "green") as? Int ?? 0
         let blue = record.value(forKeyPath: "blue") as? Int ?? 0

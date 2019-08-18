@@ -54,18 +54,18 @@ class SuggestionsView: UIView {
     
     private func setConstraints() {
         self.addConstraints([
-            NSLayoutConstraint(item: leftItem, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: middleItem, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: rightItem, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: leftItem, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: middleItem, attribute: .leading, relatedBy: .equal, toItem: leftItem, attribute: .trailing, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: rightItem, attribute: .leading, relatedBy: .equal, toItem: middleItem, attribute: .trailing, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: rightItem, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: leftItem, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: middleItem, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: rightItem, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: leftItem, attribute: .width, relatedBy: .equal, toItem: middleItem, attribute: .width, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: middleItem, attribute: .width, relatedBy: .equal, toItem: rightItem, attribute: .width, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: leftItem!, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: middleItem!, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: rightItem!, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: leftItem!, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: middleItem!, attribute: .leading, relatedBy: .equal, toItem: leftItem!, attribute: .trailing, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: rightItem!, attribute: .leading, relatedBy: .equal, toItem: middleItem!, attribute: .trailing, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: rightItem!, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: leftItem!, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: middleItem!, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: rightItem!, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: leftItem!, attribute: .width, relatedBy: .equal, toItem: middleItem!, attribute: .width, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: middleItem!, attribute: .width, relatedBy: .equal, toItem: rightItem!, attribute: .width, multiplier: 1, constant: 0),
             ])
         self.updateConstraints()
     }
@@ -103,12 +103,12 @@ class SuggestionsView: UIView {
     
     func setItem(item: UIButton, suggestion: Suggestion) {
         item.setTitle(suggestion.text, for: .normal)
-        if let textColor = suggestion.textColor {
-           // item.tintColor = textColor
-        }
-        if let backgroundColor = suggestion.backgroundColor {
-            //item.backgroundColor = backgroundColor
-        }
+//        if let textColor = suggestion.textColor {
+//           // item.tintColor = textColor
+//        }
+//        if let backgroundColor = suggestion.backgroundColor {
+//            //item.backgroundColor = backgroundColor
+//        }
     }
     
     func clearSuggestions() {

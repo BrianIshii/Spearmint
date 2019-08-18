@@ -63,7 +63,7 @@ class PieChartViewDataSource: NSObject {
 
         let tick = pieChart.ticks[selectedSegment]
         let centerOfSegment = tick.start + (tick.end - tick.start) / 2
-        var tranformedAngle = pieChartView.pieChartViewAngleToPieChartAngle(centerOfSegment)
+        let tranformedAngle = pieChartView.pieChartViewAngleToPieChartAngle(centerOfSegment)
         pieChartView.angle = tranformedAngle
     }
     

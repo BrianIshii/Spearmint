@@ -13,12 +13,7 @@ class TransactionCloudStore: CloudStore {
     typealias Item = Transaction
 
     func createItem(from record: CKRecord) -> Transaction {
-        var id: String
-        if let temp = record.recordID.recordName as? String {
-            id = temp
-        } else {
-            id = ""
-        }
+        let id: String = record.recordID.recordName
         
         var name = ""
         if let temp = record.value(forKeyPath: "name") as? String {

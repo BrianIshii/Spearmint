@@ -16,7 +16,7 @@ class BudgetItemView: UIView {
     
     var budgetItem: BudgetItem? {
         didSet {
-            guard let budgetItem = budgetItem else { return }
+            guard budgetItem != nil else { return }
         }
     }
     
@@ -38,7 +38,7 @@ class BudgetItemView: UIView {
     }
     
     func addTransactions(transactions: [Transaction]) {
-        guard let dataSource = dataSource as? TransactionDataSource else { return }
+        guard let dataSource = dataSource else { return }
         
         dataSource.transactions = transactions
         transactionTableView.reloadData()

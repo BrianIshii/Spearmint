@@ -115,14 +115,6 @@
             </objects>
             <point key="canvasLocation" x="2169" y="-127"/>
         </scene>
-        <!--UITableViewController-UwO-hn-kn1-->
-        <scene sceneID="IbZ-p0-oJ4">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Budget" referencedIdentifier="UITableViewController-UwO-hn-kn1" id="8rB-7d-dIR" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vd7-Zy-QHj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1983" y="-714"/>
-        </scene>
         <!--BudgetItem-->
         <scene sceneID="2Ix-dN-ltE">
             <objects>

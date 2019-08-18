@@ -36,7 +36,7 @@ class LocalAccess {
             Budgets.update()
         }
         
-        for (budgetItemID, v) in transaction.items {
+        for (budgetItemID, _) in transaction.items {
             if let budgetItem = BudgetItems.get(budgetItemID) {
                 budgetItem.addTransaction(transaction)
                 BudgetItems.update()

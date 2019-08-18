@@ -32,7 +32,7 @@ class SelectBudgetItemListTableView: UITableView {
         delegate = self
         dataSource = self
         
-        let budget = LocalAccess().getCurrentBudget()
+        _ = LocalAccess().getCurrentBudget()
 
         reloadData()
     }

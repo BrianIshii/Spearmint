@@ -139,29 +139,5 @@
             </objects>
             <point key="canvasLocation" x="1335" y="-1366"/>
         </scene>
-        <!--Tag-->
-        <scene sceneID="tC9-eL-fj3">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Tag" id="lpS-aM-5C0" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nLd-Uv-Ccm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="701" y="-1246"/>
-        </scene>
-        <!--AddTransaction-->
-        <scene sceneID="kyC-hC-tfr">
-            <objects>
-                <viewControllerPlaceholder storyboardName="AddTransaction" id="HFl-Hy-Huk" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eDN-4P-hdu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-604.34782608695662" y="-146.65178571428569"/>
-        </scene>
-        <!--Transaction-->
-        <scene sceneID="qvf-bs-YSh">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Transaction" id="YtV-gh-2Jk" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OM2-BT-PKK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="143" y="-856"/>
-        </scene>
     </scenes>
 </document>

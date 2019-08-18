@@ -13,7 +13,7 @@ class VendorCloudStore: CloudStore {
     typealias Item = Vendor
     
     func createItem(from record: CKRecord) -> Vendor {
-        let id = record.recordID.recordName as String ?? ""
+        let id = record.recordID.recordName as String 
         let name = record.value(forKeyPath: "name") as? String ?? ""
         let budgetItemCategory = record.value(forKeyPath: "budgetCategory") as? BudgetItemCategory
         let budgetItemIDString = record.value(forKeyPath: "budgetItemID") as? String

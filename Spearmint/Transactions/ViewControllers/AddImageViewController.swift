@@ -12,7 +12,7 @@ import FirebaseMLVision
 class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var textRecognizer: VisionTextRecognizer!
-    weak var previous: AddTransactionViewControllerOld?
+    weak var previous: AddTransactionViewController?
     weak var addContentsViewController: AddContentsFromImageViewController?
     var visionTextBlocks: [VisionTextBlock]?
 
@@ -48,7 +48,7 @@ class AddImageViewController: UIViewController, UIGestureRecognizerDelegate, UII
     
     @IBAction func save(_ sender: UIBarButtonItem) {
         addContentsViewController!.saveItems()
-        previous!.unwindFromImage(self)
+        //previous!.unwindFromImage(self)
         dismiss(animated: true, completion: nil)
     }
     

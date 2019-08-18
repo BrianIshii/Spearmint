@@ -53,7 +53,7 @@ class BudgetItemTextView: UITextView {
     }
     
     func createBudgetItemView(_ text: String,_ budgetItemNumber: Int) -> UIView {
-        var backgroundColor = UIColor.black
+        let backgroundColor = UIColor.black
         
         let size = text.size(withAttributes: [NSAttributedString.Key.font: UIFont(name:"verdana", size: 13.0)!])
         let width = padding + padding + size.width + padding + padding
@@ -100,7 +100,7 @@ class BudgetItemTextView: UITextView {
     
     @objc func selectBudgetItem(_ sender: UIGestureRecognizer) {
         guard let categoryTextViewDelegate = budgetItemTextViewDelegate else { return }
-        guard let text = sender.accessibilityLabel else { return }
+        guard let _ = sender.accessibilityLabel else { return }
         
         categoryTextViewDelegate.presentBudgetItem()
     }

@@ -75,7 +75,7 @@ class BudgetViewController: UIViewController {
             destinationViewController.budgetItem = budgetItem
         }
         
-        let destination = segue.destination
+        _ = segue.destination
         
 //        if let vc = destination as? BudgetTableViewController {
 //            budgetTableViewContoller = vc

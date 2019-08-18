@@ -57,7 +57,7 @@ class VendorTextField: UITextField {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        guard let text = textField.text else { return }
+        guard textField.text != nil else { return }
         
         findSuggestions()
         //print(LocalAccess.vendorStore.query(text))
@@ -118,7 +118,7 @@ extension VendorTextField: CLLocationManagerDelegate {
             { localSearchResponse, error in
                 var temp: [Suggestion] = []
 
-                if let error = error {
+                if error != nil {
                     for item in LocalAccess.queryVendors(text) {
                         temp.append(Suggestion(text: item.0, textColor: .blue, backgroundColor: .black))
                     }

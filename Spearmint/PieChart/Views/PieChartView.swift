@@ -71,12 +71,12 @@ class PieChartView: UIView {
         centerView.addSubview(subTitle)
         
         centerView.addConstraints([
-            NSLayoutConstraint(item: title, attribute: .centerX, relatedBy: .equal, toItem: centerView, attribute: .centerX, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: title, attribute: .top, relatedBy: .equal, toItem: centerView, attribute: .top, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: subTitle, attribute: .centerX, relatedBy: .equal, toItem: centerView, attribute: .centerX, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: subTitle, attribute: .top, relatedBy: .equal, toItem: title, attribute: .bottom, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: subTitle, attribute: .bottom, relatedBy: .equal, toItem: centerView, attribute: .bottom, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: title, attribute: .height, relatedBy: .equal, toItem: subTitle, attribute: .height, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: title!, attribute: .centerX, relatedBy: .equal, toItem: centerView, attribute: .centerX, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: title!, attribute: .top, relatedBy: .equal, toItem: centerView, attribute: .top, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: subTitle!, attribute: .centerX, relatedBy: .equal, toItem: centerView, attribute: .centerX, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: subTitle!, attribute: .top, relatedBy: .equal, toItem: title!, attribute: .bottom, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: subTitle!, attribute: .bottom, relatedBy: .equal, toItem: centerView, attribute: .bottom, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: title!, attribute: .height, relatedBy: .equal, toItem: subTitle!, attribute: .height, multiplier: 1, constant: 0),
             ])
         self.addSubview(centerView)
         
@@ -123,7 +123,6 @@ class PieChartView: UIView {
                 let tranformedAngle = pieChartViewAngleToPieChartAngle(angle)
                 //print("\(tranformedAngle) \(angle)")
                 var index = 0
-                var difference = CGFloat(CGFloat.pi * 2)
                 for (i, tick) in pieChart.ticks.enumerated() {
                     if tranformedAngle.isBetween(tick.start, tick.end) {
                         index = i
@@ -160,7 +159,6 @@ class PieChartView: UIView {
             
             var index = 0
             var actualDelta = CGFloat(0)
-            var difference = CGFloat(CGFloat.pi * 2)
             for (i, tick) in pieChart.ticks.enumerated() {
                 if tranformedAngle.isBetween(tick.start, tick.end) {
                     let centerOfSegment = tick.start + (tick.end - tick.start) / 2

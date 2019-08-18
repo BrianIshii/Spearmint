@@ -108,7 +108,7 @@ class AccountViewController: UIViewController {
             }
         }
         
-        let budgetItemPredicate = NSPredicate(value: true)
+        _ = NSPredicate(value: true)
         let budgetItemQuery = CKQuery(recordType: "BudgetItem", predicate: budgetitemsPredicate)
         
         privateDatabase.perform(budgetItemQuery, inZoneWith: nil) { (records, error) in
