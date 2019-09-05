@@ -20,15 +20,15 @@ class BudgetTests: XCTestCase {
     }
     
     func testBudgetMonth() {
-        let budget = Budget(date: DateFormatterFactory.StandardDateFormatter.string(from: Date()))
+        let budget = Budget(BudgetDate(Date()))
         
         XCTAssert(budget.month == DateFormatterFactory.MonthFormatter.string(from: Date()))
     }
     
     func testBudgetYear() {
-        let budget = Budget(date: "Jun 2019")
+        let budget = Budget(BudgetDate(Date()))
         
-        XCTAssert(budget.year == "2019")
+        XCTAssert(budget.year == DateFormatterFactory.YearFormatter.string(from: Date()))
     }
     
     func testPerformanceExample() {
