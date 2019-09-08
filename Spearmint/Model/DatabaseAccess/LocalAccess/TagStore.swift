@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TagStore: BaseStore<Tag> {
+class TagStore: BaseRepo<Tag> {
     
 }
 

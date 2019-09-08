@@ -8,5 +8,5 @@
 
 import Foundation
 
-class BudgetStore: BaseStore<Budget> {
+class BudgetStore: BaseRepo<Budget> {
 }

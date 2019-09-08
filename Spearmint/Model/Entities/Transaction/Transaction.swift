@@ -10,7 +10,6 @@ import Foundation
 import CloudKit
 
 class Transaction: Saveable {
-    
     let id: TransactionID
     var name: String
     var transactionType: TransactionType

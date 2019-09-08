@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TransactionStore: BaseStore<Transaction> {
+class TransactionStore: BaseRepo<Transaction> {
     var observers: [Observer] = []
 
     override init(localPersistanceService: LocalPersistanceService) {

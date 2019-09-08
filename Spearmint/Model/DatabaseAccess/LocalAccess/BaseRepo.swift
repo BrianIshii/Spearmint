@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import CloudKit
 
-class BaseStore<V: Saveable>: Store {
+class BaseRepo<V: Saveable>: Repo {
     var items: [Key : Item] = [:]
     
     var localPersistanceService: LocalPersistanceService

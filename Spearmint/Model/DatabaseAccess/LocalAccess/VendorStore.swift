@@ -8,7 +8,7 @@
 
 import Foundation
 
-class VendorStore: BaseStore<Vendor> {
+class VendorStore: BaseRepo<Vendor> {
     fileprivate var vendorKeys: [String: VendorID] = [:]
 
     override init(localPersistanceService: LocalPersistanceService) {

@@ -8,13 +8,13 @@
 
 import Foundation
 
-protocol Saveable: class, Codable {
+public protocol Saveable: class, Codable {
     associatedtype Key: SaveableKey
     var id: Key { get }
     static var urlString: String { get }
 }
 
-extension Saveable {
+public extension Saveable {
     static var urlString: String {
         return "\(self)"
     }

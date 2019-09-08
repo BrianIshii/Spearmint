@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SaveableKey: Codable, Hashable {
+public protocol SaveableKey: Codable, Hashable {
 }
 
 extension SaveableKey {

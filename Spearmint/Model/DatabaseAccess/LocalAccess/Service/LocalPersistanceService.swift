@@ -7,10 +7,11 @@
 //
 
 import Foundation
-class LocalPersistanceService {
+
+public class LocalPersistanceService: LocalPersistance {
     private let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
 
-    init() {
+    public init() {
     }
     
     public func getDictionary

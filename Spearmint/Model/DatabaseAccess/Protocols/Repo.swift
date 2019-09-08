@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Store {
+protocol Repo {
     associatedtype Key: SaveableKey
     associatedtype Item: Saveable
     //associatedtype ItemObserver: Observer

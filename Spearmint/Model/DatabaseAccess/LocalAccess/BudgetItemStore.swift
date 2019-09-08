@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BudgetItemStore: BaseStore<BudgetItem> {
+class BudgetItemStore: BaseRepo<BudgetItem> {
     var activeBudgetItems: [BudgetItemCategory : [BudgetItemID]] = [:]
     
     override init(localPersistanceService: LocalPersistanceService) {

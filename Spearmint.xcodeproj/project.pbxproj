@@ -41,7 +41,6 @@
 		7637A64922892196007DD20B /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637A64822892196007DD20B /* ItemTableViewCell.swift */; };
 		763AE25B22E59F8C00139810 /* TagID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763AE25A22E59F8C00139810 /* TagID.swift */; };
 		763AE25D22E5A03C00139810 /* BudgetSectionID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763AE25C22E5A03C00139810 /* BudgetSectionID.swift */; };
-		763AE25F22E5A31600139810 /* LocalPersistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763AE25E22E5A31600139810 /* LocalPersistance.swift */; };
 		764AEE1622E6D982007C817D /* TransactionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764AEE1522E6D982007C817D /* TransactionStore.swift */; };
 		764AEE1822E6DA3C007C817D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764AEE1722E6DA3C007C817D /* Observable.swift */; };
 		764AEE1A22E6E5E7007C817D /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764AEE1922E6E5E7007C817D /* Suggestion.swift */; };
@@ -57,6 +56,11 @@
 		764AFDBE226EC42D007BFD90 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764AFDBD226EC42D007BFD90 /* AccountViewController.swift */; };
 		766633B022FABB1A00DC47A9 /* BudgetItemAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766633AF22FABB1A00DC47A9 /* BudgetItemAccess.swift */; };
 		766633B222FF916100DC47A9 /* VendorAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766633B122FF916100DC47A9 /* VendorAccess.swift */; };
+		766F3B6023241DAB0002DECD /* Registrar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B5F23241DAB0002DECD /* Registrar.swift */; };
+		766F3B6223241FA20002DECD /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B6123241FA20002DECD /* Resolver.swift */; };
+		766F3B64232420060002DECD /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B63232420060002DECD /* Container.swift */; };
+		766F3B692324CE060002DECD /* ContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B682324CE060002DECD /* ContainerTests.swift */; };
+		766F3B6B2324DA170002DECD /* LocalPersistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B6A2324DA170002DECD /* LocalPersistance.swift */; };
 		7689F7112270E2FC00AD4225 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7102270E2FC00AD4225 /* Transaction.swift */; };
 		7689F7132270E31A00AD4225 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7122270E31A00AD4225 /* Budget.swift */; };
 		7689F7152270E39900AD4225 /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7142270E39900AD4225 /* TransactionType.swift */; };
@@ -124,9 +128,9 @@
 		76B0638322E2B583007BBDD5 /* VendorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0638222E2B583007BBDD5 /* VendorViewController.swift */; };
 		76B0638522E2B617007BBDD5 /* VendorSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0638422E2B617007BBDD5 /* VendorSegue.swift */; };
 		76B0638722E2B647007BBDD5 /* TagSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0638622E2B647007BBDD5 /* TagSegue.swift */; };
-		76B0638B22E518E1007BBDD5 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0638A22E518E1007BBDD5 /* Store.swift */; };
+		76B0638B22E518E1007BBDD5 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0638A22E518E1007BBDD5 /* Repo.swift */; };
 		76B0638D22E51C4C007BBDD5 /* Queryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0638C22E51C4C007BBDD5 /* Queryable.swift */; };
-		76B0638F22E51CA0007BBDD5 /* BaseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0638E22E51CA0007BBDD5 /* BaseStore.swift */; };
+		76B0638F22E51CA0007BBDD5 /* BaseRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0638E22E51CA0007BBDD5 /* BaseRepo.swift */; };
 		76B0639222E52820007BBDD5 /* LocalPersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0639122E52820007BBDD5 /* LocalPersistanceService.swift */; };
 		76B0639422E52A59007BBDD5 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0639322E52A59007BBDD5 /* Observer.swift */; };
 		76B548BB22913069001B2FB1 /* CurrenyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BA22913069001B2FB1 /* CurrenyTests.swift */; };
@@ -262,7 +266,6 @@
 		7637A64822892196007DD20B /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		763AE25A22E59F8C00139810 /* TagID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagID.swift; sourceTree = "<group>"; };
 		763AE25C22E5A03C00139810 /* BudgetSectionID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetSectionID.swift; sourceTree = "<group>"; };
-		763AE25E22E5A31600139810 /* LocalPersistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPersistance.swift; sourceTree = "<group>"; };
 		764AEE1522E6D982007C817D /* TransactionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStore.swift; sourceTree = "<group>"; };
 		764AEE1722E6DA3C007C817D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		764AEE1922E6E5E7007C817D /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
@@ -284,6 +287,11 @@
 		764AFDBD226EC42D007BFD90 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		766633AF22FABB1A00DC47A9 /* BudgetItemAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemAccess.swift; sourceTree = "<group>"; };
 		766633B122FF916100DC47A9 /* VendorAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorAccess.swift; sourceTree = "<group>"; };
+		766F3B5F23241DAB0002DECD /* Registrar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registrar.swift; sourceTree = "<group>"; };
+		766F3B6123241FA20002DECD /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
+		766F3B63232420060002DECD /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		766F3B682324CE060002DECD /* ContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTests.swift; sourceTree = "<group>"; };
+		766F3B6A2324DA170002DECD /* LocalPersistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPersistance.swift; sourceTree = "<group>"; };
 		7689F7102270E2FC00AD4225 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		7689F7122270E31A00AD4225 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		7689F7142270E39900AD4225 /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
@@ -351,9 +359,9 @@
 		76B0638222E2B583007BBDD5 /* VendorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorViewController.swift; sourceTree = "<group>"; };
 		76B0638422E2B617007BBDD5 /* VendorSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorSegue.swift; sourceTree = "<group>"; };
 		76B0638622E2B647007BBDD5 /* TagSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSegue.swift; sourceTree = "<group>"; };
-		76B0638A22E518E1007BBDD5 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		76B0638A22E518E1007BBDD5 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		76B0638C22E51C4C007BBDD5 /* Queryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queryable.swift; sourceTree = "<group>"; };
-		76B0638E22E51CA0007BBDD5 /* BaseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStore.swift; sourceTree = "<group>"; };
+		76B0638E22E51CA0007BBDD5 /* BaseRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepo.swift; sourceTree = "<group>"; };
 		76B0639122E52820007BBDD5 /* LocalPersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPersistanceService.swift; sourceTree = "<group>"; };
 		76B0639322E52A59007BBDD5 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		76B548BA22913069001B2FB1 /* CurrenyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenyTests.swift; sourceTree = "<group>"; };
@@ -566,6 +574,7 @@
 		764AFD86226E7060007BFD90 /* Spearmint */ = {
 			isa = PBXGroup;
 			children = (
+				766F3B5E23241CB80002DECD /* Infastructure */,
 				76D4743622F2875C0053A095 /* Spearmint.entitlements */,
 				76D4742922E808B00053A095 /* PieChart */,
 				76A2FA7522851E650066D594 /* Extensions */,
@@ -600,6 +609,7 @@
 		764AFD9B226E7061007BFD90 /* SpearmintTests */ = {
 			isa = PBXGroup;
 			children = (
+				766F3B652324CD250002DECD /* InfastructureTests */,
 				76B0633922DACEAC007BBDD5 /* Model */,
 				764AFD9C226E7061007BFD90 /* SpearmintTests.swift */,
 				764AFD9E226E7061007BFD90 /* Info.plist */,
@@ -654,6 +664,24 @@
 				764AFDBD226EC42D007BFD90 /* AccountViewController.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		766F3B5E23241CB80002DECD /* Infastructure */ = {
+			isa = PBXGroup;
+			children = (
+				766F3B5F23241DAB0002DECD /* Registrar.swift */,
+				766F3B6123241FA20002DECD /* Resolver.swift */,
+				766F3B63232420060002DECD /* Container.swift */,
+			);
+			path = Infastructure;
+			sourceTree = "<group>";
+		};
+		766F3B652324CD250002DECD /* InfastructureTests */ = {
+			isa = PBXGroup;
+			children = (
+				766F3B682324CE060002DECD /* ContainerTests.swift */,
+			);
+			path = InfastructureTests;
 			sourceTree = "<group>";
 		};
 		76A2FA652282465B0066D594 /* DatabaseAccess */ = {
@@ -893,7 +921,7 @@
 				76F4236B22C06CF100E7B868 /* Saveable.swift */,
 				76F4237322C4A22D00E7B868 /* SaveableKey.swift */,
 				76B0631F22DA7EDC007BBDD5 /* TransactionObserver.swift */,
-				76B0638A22E518E1007BBDD5 /* Store.swift */,
+				76B0638A22E518E1007BBDD5 /* Repo.swift */,
 				76B0638C22E51C4C007BBDD5 /* Queryable.swift */,
 				76B0639322E52A59007BBDD5 /* Observer.swift */,
 				764AEE1722E6DA3C007C817D /* Observable.swift */,
@@ -908,6 +936,7 @@
 			isa = PBXGroup;
 			children = (
 				76B0639122E52820007BBDD5 /* LocalPersistanceService.swift */,
+				766F3B6A2324DA170002DECD /* LocalPersistance.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1178,7 +1207,7 @@
 			isa = PBXGroup;
 			children = (
 				76B548BC229135DE001B2FB1 /* LocalAccess.swift */,
-				76B0638E22E51CA0007BBDD5 /* BaseStore.swift */,
+				76B0638E22E51CA0007BBDD5 /* BaseRepo.swift */,
 				764AEE1522E6D982007C817D /* TransactionStore.swift */,
 				76B548DB2294ECA9001B2FB1 /* ImageStore.swift */,
 				76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */,
@@ -1186,7 +1215,6 @@
 				76F4236322C05BFD00E7B868 /* VendorStoreOld.swift */,
 				76D4745A22F8FF780053A095 /* BudgetItemStore.swift */,
 				76B0634A22DAE8CC007BBDD5 /* TagStoreOld.swift */,
-				763AE25E22E5A31600139810 /* LocalPersistance.swift */,
 				76D4743D22F623CD0053A095 /* TagStore.swift */,
 				76D4744122F62F390053A095 /* BudgetStore.swift */,
 				76B0639022E52810007BBDD5 /* Service */,
@@ -1550,7 +1578,7 @@
 				76B548C222913E8E001B2FB1 /* ReusableIdentifier.swift in Sources */,
 				7637A6402288FB5F007DD20B /* SelectBudgetItemListTableView.swift in Sources */,
 				76B0632922DA8E12007BBDD5 /* TransactionDate.swift in Sources */,
-				76B0638B22E518E1007BBDD5 /* Store.swift in Sources */,
+				76B0638B22E518E1007BBDD5 /* Repo.swift in Sources */,
 				76B548EA22953426001B2FB1 /* ViewBudgetItemSegue.swift in Sources */,
 				76EF345E2298E049005A5C35 /* UIImageExtension.swift in Sources */,
 				7689F71B2271874900AD4225 /* Item.swift in Sources */,
@@ -1575,7 +1603,7 @@
 				76B0632022DA7EDC007BBDD5 /* TransactionObserver.swift in Sources */,
 				763275C722A836FB0099532A /* AddItemTableViewCell.swift in Sources */,
 				763275BF22A59FF20099532A /* ImageFrameView.swift in Sources */,
-				76B0638F22E51CA0007BBDD5 /* BaseStore.swift in Sources */,
+				76B0638F22E51CA0007BBDD5 /* BaseRepo.swift in Sources */,
 				76B0635D22DBCDA6007BBDD5 /* BudgetDataSource.swift in Sources */,
 				76EF34602298F8AF005A5C35 /* AddBudgetItemViewController.swift in Sources */,
 				76B548C022913DB4001B2FB1 /* ConfigurableCell.swift in Sources */,
@@ -1586,6 +1614,7 @@
 				76B0633822DACC0F007BBDD5 /* Color.swift in Sources */,
 				76D4742F22E81E790053A095 /* PieChartView.swift in Sources */,
 				76B0631C22D9B9E8007BBDD5 /* TagTextView.swift in Sources */,
+				766F3B6B2324DA170002DECD /* LocalPersistance.swift in Sources */,
 				76D4742B22E808CF0053A095 /* PieChartSegment.swift in Sources */,
 				76B548D522915D14001B2FB1 /* ImageViewTableViewCell.swift in Sources */,
 				76D4745D22F93C670053A095 /* BudgetAccess.swift in Sources */,
@@ -1612,6 +1641,7 @@
 				7689F7112270E2FC00AD4225 /* Transaction.swift in Sources */,
 				76B548EF22953685001B2FB1 /* BudgetDataSourceOld.swift in Sources */,
 				76D4743E22F623CD0053A095 /* TagStore.swift in Sources */,
+				766F3B6023241DAB0002DECD /* Registrar.swift in Sources */,
 				76A2FA6E228375970066D594 /* TransactionID.swift in Sources */,
 				76330A1222AD8E6100F68952 /* SummaryPickerViewController.swift in Sources */,
 				7632756D229F08930099532A /* VendorTextField.swift in Sources */,
@@ -1621,7 +1651,6 @@
 				76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */,
 				76B0635922DB24AA007BBDD5 /* BudgetItemAndTagTextView.swift in Sources */,
 				76D4745722F8327A0053A095 /* VendorStore.swift in Sources */,
-				763AE25F22E5A31600139810 /* LocalPersistance.swift in Sources */,
 				76B0639222E52820007BBDD5 /* LocalPersistanceService.swift in Sources */,
 				76A2FA622281FBE60066D594 /* VendorTableViewCell.swift in Sources */,
 				76D4744F22F6BA830053A095 /* CloudAccess.swift in Sources */,
@@ -1661,6 +1690,7 @@
 				76D4745322F6CFD10053A095 /* TagCloudStore.swift in Sources */,
 				76B0639422E52A59007BBDD5 /* Observer.swift in Sources */,
 				764AEE1822E6DA3C007C817D /* Observable.swift in Sources */,
+				766F3B6223241FA20002DECD /* Resolver.swift in Sources */,
 				76F4236922C05EFC00E7B868 /* VendorID.swift in Sources */,
 				76F4237E22C99B9000E7B868 /* AddTransactionDataSource.swift in Sources */,
 				7689F7132270E31A00AD4225 /* Budget.swift in Sources */,
@@ -1671,6 +1701,7 @@
 				76EF34652299E029005A5C35 /* AddBudgetItemSectionViewController.swift in Sources */,
 				76B0633522DACB8D007BBDD5 /* Tag.swift in Sources */,
 				76B548DC2294ECA9001B2FB1 /* ImageStore.swift in Sources */,
+				766F3B64232420060002DECD /* Container.swift in Sources */,
 				76D4744422F690240053A095 /* BudgetExtension.swift in Sources */,
 				763AE25D22E5A03C00139810 /* BudgetSectionID.swift in Sources */,
 				76B0634722DAE247007BBDD5 /* BaseID.swift in Sources */,
@@ -1686,6 +1717,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76F4235F22BB4AF500E7B868 /* BudgetTests.swift in Sources */,
+				766F3B692324CE060002DECD /* ContainerTests.swift in Sources */,
 				76B0633C22DACECC007BBDD5 /* ColorTests.swift in Sources */,
 				764AFD9D226E7061007BFD90 /* SpearmintTests.swift in Sources */,
 				76B548BB22913069001B2FB1 /* CurrenyTests.swift in Sources */,
