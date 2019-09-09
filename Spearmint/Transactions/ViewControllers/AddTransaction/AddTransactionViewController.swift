@@ -15,6 +15,7 @@ class AddTransactionViewController: UIViewController {
     
     var transaction: Transaction?
     var budgetItems: [BudgetItem]?
+    var localAccess: LocalAccess?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,14 @@ class AddTransactionViewController: UIViewController {
         transactionView.dateTextField.text = DateFormatterFactory.MediumFormatter.string(from: Date())
         
         navigationBar.isHidden = true
-        // Do any additional setup after loading the view.
+        
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return
+        }
+        self.localAccess = localAccess
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,6 +76,11 @@ class AddTransactionViewController: UIViewController {
     }
     
     fileprivate func addTransaction() {
+        guard let localAccess = self.localAccess else {
+            print("no local access to add transaction")
+            return
+            
+        }
         let name = ""
         let dateString = transactionView.dateTextField.text!
         let date = DateFormatterFactory.MediumFormatter.date(from: dateString) ?? Date()
@@ -88,15 +101,15 @@ class AddTransactionViewController: UIViewController {
         
         let vendor: Vendor
         
-        if LocalAccess.hasVendor(vendorString) {
-            vendor = LocalAccess.getVendor(vendorString)!
+        if localAccess.hasVendor(vendorString) {
+            vendor = localAccess.getVendor(vendorString)!
         } else {
             if let budgetItems = budgetItems, let budgetItem = budgetItems.first {
                 vendor = Vendor(name: vendorString, budgetCategory: budgetItem.category, budgetItemID: budgetItem.id)
             } else {
                 vendor = Vendor(name: vendorString)
             }
-            LocalAccess.addVendor(vendor)
+            localAccess.addVendor(vendor)
         }
         
         let tags = transactionView.tagTextView.tags

@@ -28,7 +28,11 @@ class TransactionView: UIView {
             
             self.transactionTypeSegementedControl.selectedSegmentIndex = transaction.transactionType.rawValue
             self.moneyTextField.text = Currency.currencyFormatter(transaction.amount)
-            self.vendorTextField.text = LocalAccess.getVendor(transaction.vendor)?.name ?? "hi"
+            guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else { //TODO: remove
+                print("failed to resolve \(LocalAccess.self)")
+                return
+            }
+            self.vendorTextField.text = localAccess.getVendor(transaction.vendor)?.name ?? "hi"
             self.dateTextField.text = transaction.date.medium
             self.categoryButton.setTitle("Category", for: UIControl.State.normal)
             self.tagTextView.tags = transaction.tags
@@ -120,7 +124,11 @@ class TransactionView: UIView {
         guard let delegate = delegate else { return }
         
         if let transaction = transaction {
-            LocalAccess.deleteTransaction(transaction)
+            guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+                print("failed to resolve \(LocalAccess.self)")
+                return
+            }
+            localAccess.deleteTransaction(transaction)
         }
         
         delegate.dismiss()
@@ -141,7 +149,11 @@ extension TransactionView: SuggestionViewDelegate {
         vendorTextField.text = suggestion
         vendorTextField.resignFirstResponder()
         
-        guard let vendor = LocalAccess.getVendor(suggestion) else { return }
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return
+        }
+        guard let vendor = localAccess.getVendor(suggestion) else { return }
         guard let budgetItemID = vendor.budgetItemID else { return }
         categoryTextView.budgetItems.append(budgetItemID)
         categoryTextView.createCategoryViews()

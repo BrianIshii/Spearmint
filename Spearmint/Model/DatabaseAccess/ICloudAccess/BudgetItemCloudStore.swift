@@ -23,7 +23,12 @@ class BudgetItemCloudStore: CloudStore {
         let isActive = isActiveValue == 1
 
         var transactions: [BudgetDate: [TransactionID]] = [:]
-        for budget in LocalAccess.Budgets.getAll() {
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return BudgetItem(name: "bad", category: BudgetItemCategory.other)
+        }
+        
+        for budget in localAccess.Budgets.getAll() {
             let transactionIDStrings = record.value(forKeyPath: "BudgetItem\(budget.month)\(budget.year)") as? [NSString] ?? []
             var transactionIDs: [TransactionID] = []
             for transactionIDString in transactionIDStrings {

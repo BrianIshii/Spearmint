@@ -11,9 +11,16 @@ import CloudKit
 
 class AccountViewController: UIViewController {
 
+    var localAccess: LocalAccess?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return
+        }
+        self.localAccess = localAccess
         // Do any additional setup after loading the view.
     }
     
@@ -127,15 +134,16 @@ class AccountViewController: UIViewController {
     }
 
     @IBAction func addTransaction(_ sender: Any) {
+        guard let localAccess = localAccess else { return }
         let myContainer = CKContainer.default()
         
         let privateDatabase = myContainer.privateCloudDatabase
         
-        let transactions = LocalAccess.Transactions.getAll()
+        let transactions = localAccess.Transactions.getAll()
         for transaction in transactions {
             saveTransaction(transaction)
         }
-        if let budget = LocalAccess.Budgets.get(BudgetDate()) {
+        if let budget = localAccess.Budgets.get(BudgetDate()) {
 
             let records = BudgetCloudStore().createRecords(budget)
             
@@ -153,7 +161,7 @@ class AccountViewController: UIViewController {
             }
         }
         
-        for tag in LocalAccess.Tags.getAll() {
+        for tag in localAccess.Tags.getAll() {
             let record = TagCloudStore().createRecord(tag)
             
             privateDatabase.save(record) {
@@ -168,7 +176,7 @@ class AccountViewController: UIViewController {
             }
         }
         
-        for vendor in LocalAccess.Vendors.getAll() {
+        for vendor in localAccess.Vendors.getAll() {
             let record = VendorCloudStore().createRecord(vendor)
             
             privateDatabase.save(record) {
@@ -181,7 +189,7 @@ class AccountViewController: UIViewController {
             }
         }
         
-        for budgetItem in LocalAccess().getAllBudgetItems() {
+        for budgetItem in localAccess.getAllBudgetItems() {
             let record = BudgetItemCloudStore().createRecord(budgetItem)
             
             privateDatabase.save(record) {
@@ -196,6 +204,8 @@ class AccountViewController: UIViewController {
     }
     
     @IBAction func getTransactions(_ sender: Any) {
+        guard let localAccess = localAccess else { return }
+
 //        let cloudService = CloudKitService()
 //        
 //        cloudService.getRecords("Budget") { (records) in
@@ -220,7 +230,7 @@ class AccountViewController: UIViewController {
             if let records = records {
                 for record: CKRecord in records {
                     let budget = BudgetCloudStore().createItem(from: record)
-                    LocalAccess.Budgets.append(budget)
+                    localAccess.Budgets.append(budget)
                     print("budget fetched")
                 }
             }
@@ -253,9 +263,9 @@ class AccountViewController: UIViewController {
                         items[section.category] = budgetItemIDs
                     }
                     
-                    if let budget = LocalAccess.Budgets.get(BudgetDate(record.recordID.recordName.dropLast().dropLast().dropLast().dropLast().dropLast().description)) {
+                    if let budget = localAccess.Budgets.get(BudgetDate(record.recordID.recordName.dropLast().dropLast().dropLast().dropLast().dropLast().description)) {
                         budget.items = items
-                        LocalAccess.Budgets.update()
+                        localAccess.Budgets.update()
                     }
                     
                     print("budgetitems fetched")
@@ -272,11 +282,15 @@ class AccountViewController: UIViewController {
         
         privateDatabase.perform(budgetItemQuery, inZoneWith: nil) { (records, error) in
             
+            guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+                print("failed to resolve \(LocalAccess.self)")
+                return
+            }
             if let records = records {
                 for record: CKRecord in records {
                     
                     let budgetItem = BudgetItemCloudStore().createItem(from: record)
-                    LocalAccess().append(budgetItem)
+                    localAccess.append(budgetItem)
                     print("BudgetItem fetched")
                 }
             }
@@ -293,10 +307,15 @@ class AccountViewController: UIViewController {
         
         privateDatabase.perform(query, inZoneWith: nil) { (records, error) in
             
+            guard let cloudAccess = AppDelegate.container.resolve(CloudAccess.self) else {
+                print("failed to resolve cloud access")
+                return
+            }
+            
             if let records = records {
                 for record: CKRecord in records {
-                    let transaction = CloudAccess.instance.transactionCloudStore.createItem(from: record)
-                    LocalAccess.Transactions.append(transaction)
+                    let transaction = cloudAccess.transactionCloudStore.createItem(from: record)
+                    localAccess.Transactions.append(transaction)
                 }
             }
             hi += 1
@@ -314,7 +333,7 @@ class AccountViewController: UIViewController {
             if let records = records {
                 for record: CKRecord in records {
                     let tag = TagCloudStore().createItem(from: record)
-                    LocalAccess.Tags.append(tag)
+                    localAccess.Tags.append(tag)
                 }
             }
             hi += 1
@@ -330,7 +349,7 @@ class AccountViewController: UIViewController {
             if let records = records {
                 for record: CKRecord in records {
                     let vendor = VendorCloudStore().createItem(from: record)
-                    LocalAccess.Vendors.append(vendor)
+                    localAccess.Vendors.append(vendor)
                     print("vendor fetched")
                 }
             }
@@ -342,7 +361,12 @@ class AccountViewController: UIViewController {
         
         let privateDatabase = myContainer.privateCloudDatabase
         
-        let transactionRecord = CloudAccess.instance.transactionCloudStore.createRecord(transaction)
+        guard let cloudAccess = AppDelegate.container.resolve(CloudAccess.self) else {
+            print("failed to resolve cloud access")
+            return
+        }
+        
+        let transactionRecord = cloudAccess.transactionCloudStore.createRecord(transaction)
         
         privateDatabase.save(transactionRecord) {
             (record, error) in

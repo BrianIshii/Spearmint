@@ -10,6 +10,7 @@ import Foundation
 import CloudKit
 
 class TransactionCloudStore: CloudStore {
+    
     typealias Item = Transaction
 
     func createItem(from record: CKRecord) -> Transaction {

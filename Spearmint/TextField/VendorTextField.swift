@@ -118,8 +118,13 @@ extension VendorTextField: CLLocationManagerDelegate {
             { localSearchResponse, error in
                 var temp: [Suggestion] = []
 
+                guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+                    print("failed to resolve \(LocalAccess.self)")
+                    return
+                }
+                
                 if error != nil {
-                    for item in LocalAccess.queryVendors(text) {
+                    for item in localAccess.queryVendors(text) {
                         temp.append(Suggestion(text: item.0, textColor: .blue, backgroundColor: .black))
                     }
                 } else {
@@ -127,7 +132,7 @@ extension VendorTextField: CLLocationManagerDelegate {
                         return
                     }
                     
-                    for item in LocalAccess.queryVendors(text) {
+                    for item in localAccess.queryVendors(text) {
                         temp.append(Suggestion(text: item.0, textColor: .blue, backgroundColor: .black))
                     }
 

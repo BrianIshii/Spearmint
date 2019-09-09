@@ -44,8 +44,12 @@ class BudgetItemTextView: UITextView {
         position.x = padding
         position.y = padding
         
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return
+        }
         for (index, budgetItemID) in budgetItems.enumerated() {
-            if let budgetItem = LocalAccess().get(budgetItemID) {
+            if let budgetItem = localAccess.get(budgetItemID) {
                 let budgetItemView = createBudgetItemView(budgetItem.name, index)
                 self.addSubview(budgetItemView)
             }

@@ -1,5 +1,5 @@
 //
-//  LocalAccess.swift
+//  swift
 //  Spearmint
 //
 //  Created by Brian Ishii on 5/18/19.
@@ -9,19 +9,27 @@
 import Foundation
 
 class LocalAccess {
-    public static let reset: Bool = false
-    public static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    public let reset: Bool = false
+    public let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     
-    private static let cloudKitService = CloudKitService()
-    private static let localPersistanceService = LocalPersistanceService()
+    private let localPersistanceService: LocalPersistanceService
 
-    public static let Vendors: VendorStore = VendorStore(localPersistanceService: localPersistanceService)
-    public static let Tags: TagStore = TagStore(localPersistanceService: localPersistanceService)
-    private static let BudgetItems: BudgetItemStore = BudgetItemStore(localPersistanceService: localPersistanceService)
-    public static let Transactions: TransactionStore = TransactionStore(localPersistanceService: localPersistanceService)
-    public static let Budgets: BudgetStore = BudgetStore(localPersistanceService: localPersistanceService)
+    public let Vendors: VendorStore
+    public let Tags: TagStore
+    private let BudgetItems: BudgetItemStore
+    public let Transactions: TransactionStore
+    public let Budgets: BudgetStore
     
-    public static func deleteTransaction(_ transaction: Transaction) {
+    public init(localPersistanceService: LocalPersistanceService) {
+        self.localPersistanceService = localPersistanceService
+        self.Vendors = VendorStore(localPersistanceService: localPersistanceService)
+        self.Tags = TagStore(localPersistanceService: localPersistanceService)
+        self.BudgetItems = BudgetItemStore(localPersistanceService: localPersistanceService)
+        self.Transactions = TransactionStore(localPersistanceService: localPersistanceService)
+        self.Budgets = BudgetStore(localPersistanceService: localPersistanceService)
+    }
+
+    public func deleteTransaction(_ transaction: Transaction) {
         Transactions.remove(transaction.id)
         if let budget = Budgets.get(transaction.budgetDate) {
             budget.transactions.removeAll(where: {transaction.id == $0})
@@ -30,7 +38,7 @@ class LocalAccess {
         ImageStore.deleteImage(transaction.id)
     }
     
-    public static func addTransaction(_ transaction: Transaction) {
+    public func addTransaction(_ transaction: Transaction) {
         if let budget = Budgets.get(transaction.budgetDate) {
             budget.transactions.append(transaction.id)
             Budgets.update()
@@ -61,30 +69,30 @@ class LocalAccess {
         print("added transaction")
     }
     
-    public static func addVendor(_ vendor: Vendor) {
+    public func addVendor(_ vendor: Vendor) {
         Vendors.append(vendor)
     }
-    public static func hasVendor(_ name: String) -> Bool {
+    public func hasVendor(_ name: String) -> Bool {
         return Vendors.get(name) != nil
     }
     
-    public static func getVendor(_ name: String) -> Vendor? {
+    public func getVendor(_ name: String) -> Vendor? {
         return Vendors.get(name)
     }
     
-    public static func getVendor(_ vendorID: VendorID) -> Vendor? {
+    public func getVendor(_ vendorID: VendorID) -> Vendor? {
         return Vendors.get(vendorID)
     }
     
-    public static func queryVendors(_ substring: String) -> [(String, VendorID)] {
+    public func queryVendors(_ substring: String) -> [(String, VendorID)] {
         return Vendors.query(substring)
     }
     
-    public static func queryTags(_ substring: String) -> [Tag] {
+    public func queryTags(_ substring: String) -> [Tag] {
         return Tags.query(substring)
     }
     
-    public static func getDictionary
+    public func getDictionary
         <K: SaveableKey, V: Saveable>(key: K.Type, object: V.Type) -> [K: V] {
         do {
             let url = documentsDirectory.appendingPathComponent(V.urlString)
@@ -100,7 +108,7 @@ class LocalAccess {
         return [:]
     }
     
-    public static func updateDictionary<K: SaveableKey, V: Saveable>(data: [K: V]) {
+    public func updateDictionary<K: SaveableKey, V: Saveable>(data: [K: V]) {
         let encoder = JSONEncoder()
         do {
             let url = documentsDirectory.appendingPathComponent(V.urlString)
@@ -111,7 +119,7 @@ class LocalAccess {
         }
     }
     
-    public static func getData<SaveableObject: Saveable>(saveable: SaveableObject.Type) -> [SaveableObject] {
+    public func getData<SaveableObject: Saveable>(saveable: SaveableObject.Type) -> [SaveableObject] {
         do {
             let url = documentsDirectory.appendingPathComponent(SaveableObject.urlString)
             let data = try Data(contentsOf: url)
@@ -125,7 +133,7 @@ class LocalAccess {
         
         return []
     }
-    public static func updateData<SaveableObject: Saveable>(data: [SaveableObject]) {
+    public func updateData<SaveableObject: Saveable>(data: [SaveableObject]) {
         let encoder = JSONEncoder()
         do {
             let url = documentsDirectory.appendingPathComponent(SaveableObject.urlString)
@@ -137,57 +145,57 @@ class LocalAccess {
     }
 }
 
-extension LocalAccess: BudgetAccess {
+extension LocalAccess: BudgetRepository {
     func getCurrentBudget() -> Budget {
-        if let budget = LocalAccess.Budgets.get(BudgetDate()) {
+        if let budget = Budgets.get(BudgetDate()) {
             return budget
         } else {
-            let budget = Budget(BudgetDate(), items: LocalAccess.BudgetItems.activeBudgetItems)
-            LocalAccess.Budgets.append(budget)
+            let budget = Budget(BudgetDate(), items: BudgetItems.activeBudgetItems)
+            Budgets.append(budget)
             return budget
         }
     }
     
     func getAll() -> [Budget] {
-        return LocalAccess.Budgets.getAll()
+        return Budgets.getAll()
     }
     
     func get(_ budgetDate: BudgetDate) -> Budget? {
-        return LocalAccess.Budgets.get(budgetDate)
+        return Budgets.get(budgetDate)
     }
     
     func append(_ budget: Budget) {
-        LocalAccess.Budgets.append(budget)
+        Budgets.append(budget)
     }
     
     func update(_ budget: Budget) {
-        //LocalAccess.
+        //
     }
     
     func remove(_ budget: Budget) {
-        LocalAccess.Budgets.remove(budget.id)
+        Budgets.remove(budget.id)
     }
 }
 
 extension LocalAccess: BudgetItemAccess {
     
     func getAllBudgetItems() -> [BudgetItem] {
-        return LocalAccess.BudgetItems.getAll()
+        return BudgetItems.getAll()
     }
     
     func get(_ id: BudgetItemID) -> BudgetItem? {
-        return LocalAccess.BudgetItems.get(id)
+        return BudgetItems.get(id)
     }
     
     func append(_ budgetItem: BudgetItem) {
-        LocalAccess.BudgetItems.append(budgetItem)
+        BudgetItems.append(budgetItem)
     }
     
     func update(_ budgetItem: BudgetItem) {
-        //LocalAccess.BudgetItems.
+        //BudgetItems.
     }
     
     func remove(_ budgetItem: BudgetItem) {
-        LocalAccess.BudgetItems.remove(budgetItem.id)
+        BudgetItems.remove(budgetItem.id)
     }
 }

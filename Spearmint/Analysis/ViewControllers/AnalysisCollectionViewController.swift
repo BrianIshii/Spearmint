@@ -17,7 +17,12 @@ class AnalysisCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let budget = LocalAccess.Budgets.get(BudgetDate(Date()))
+        
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return
+        }
+        let budget = localAccess.Budgets.get(BudgetDate(Date()))
         
         let mostExpensiveItems = budget!.mostExpensiveItemPerCategory
         

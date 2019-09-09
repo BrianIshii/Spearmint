@@ -61,6 +61,7 @@
 		766F3B64232420060002DECD /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B63232420060002DECD /* Container.swift */; };
 		766F3B692324CE060002DECD /* ContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B682324CE060002DECD /* ContainerTests.swift */; };
 		766F3B6B2324DA170002DECD /* LocalPersistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B6A2324DA170002DECD /* LocalPersistance.swift */; };
+		766F3B742326B2B70002DECD /* RepositoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B732326B2B70002DECD /* RepositoryFactory.swift */; };
 		7689F7112270E2FC00AD4225 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7102270E2FC00AD4225 /* Transaction.swift */; };
 		7689F7132270E31A00AD4225 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7122270E31A00AD4225 /* Budget.swift */; };
 		7689F7152270E39900AD4225 /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7142270E39900AD4225 /* TransactionType.swift */; };
@@ -175,7 +176,7 @@
 		76D4745722F8327A0053A095 /* VendorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4745622F8327A0053A095 /* VendorStore.swift */; };
 		76D4745922F8FC2E0053A095 /* BudgetItemCloudStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4745822F8FC2E0053A095 /* BudgetItemCloudStore.swift */; };
 		76D4745B22F8FF780053A095 /* BudgetItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4745A22F8FF780053A095 /* BudgetItemStore.swift */; };
-		76D4745D22F93C670053A095 /* BudgetAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4745C22F93C670053A095 /* BudgetAccess.swift */; };
+		76D4745D22F93C670053A095 /* BudgetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4745C22F93C670053A095 /* BudgetRepository.swift */; };
 		76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3CBE7227FEEAC0010625A /* Currency.swift */; };
 		76EF345422963BF1005A5C35 /* BudgetItemSectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */; };
 		76EF345622986CD8005A5C35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76EF345522986CD8005A5C35 /* GoogleService-Info.plist */; };
@@ -292,6 +293,7 @@
 		766F3B63232420060002DECD /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		766F3B682324CE060002DECD /* ContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTests.swift; sourceTree = "<group>"; };
 		766F3B6A2324DA170002DECD /* LocalPersistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPersistance.swift; sourceTree = "<group>"; };
+		766F3B732326B2B70002DECD /* RepositoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryFactory.swift; sourceTree = "<group>"; };
 		7689F7102270E2FC00AD4225 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		7689F7122270E31A00AD4225 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		7689F7142270E39900AD4225 /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
@@ -407,7 +409,7 @@
 		76D4745622F8327A0053A095 /* VendorStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorStore.swift; sourceTree = "<group>"; };
 		76D4745822F8FC2E0053A095 /* BudgetItemCloudStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemCloudStore.swift; sourceTree = "<group>"; };
 		76D4745A22F8FF780053A095 /* BudgetItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemStore.swift; sourceTree = "<group>"; };
-		76D4745C22F93C670053A095 /* BudgetAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetAccess.swift; sourceTree = "<group>"; };
+		76D4745C22F93C670053A095 /* BudgetRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetRepository.swift; sourceTree = "<group>"; };
 		76E3CBE7227FEEAC0010625A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemSectionStore.swift; sourceTree = "<group>"; };
 		76EF345522986CD8005A5C35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -684,9 +686,18 @@
 			path = InfastructureTests;
 			sourceTree = "<group>";
 		};
+		766F3B722326B2A10002DECD /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				766F3B732326B2B70002DECD /* RepositoryFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 		76A2FA652282465B0066D594 /* DatabaseAccess */ = {
 			isa = PBXGroup;
 			children = (
+				766F3B722326B2A10002DECD /* Factory */,
 				76B0638922E2CB38007BBDD5 /* Protocols */,
 				76D4744922F6B3840053A095 /* LocalAccess */,
 				76D4744722F6B2C80053A095 /* ICloudAccess */,
@@ -925,7 +936,7 @@
 				76B0638C22E51C4C007BBDD5 /* Queryable.swift */,
 				76B0639322E52A59007BBDD5 /* Observer.swift */,
 				764AEE1722E6DA3C007C817D /* Observable.swift */,
-				76D4745C22F93C670053A095 /* BudgetAccess.swift */,
+				76D4745C22F93C670053A095 /* BudgetRepository.swift */,
 				766633AF22FABB1A00DC47A9 /* BudgetItemAccess.swift */,
 				766633B122FF916100DC47A9 /* VendorAccess.swift */,
 			);
@@ -1617,7 +1628,7 @@
 				766F3B6B2324DA170002DECD /* LocalPersistance.swift in Sources */,
 				76D4742B22E808CF0053A095 /* PieChartSegment.swift in Sources */,
 				76B548D522915D14001B2FB1 /* ImageViewTableViewCell.swift in Sources */,
-				76D4745D22F93C670053A095 /* BudgetAccess.swift in Sources */,
+				76D4745D22F93C670053A095 /* BudgetRepository.swift in Sources */,
 				76B0631E22D9CD31007BBDD5 /* SuggestionViewDelegate.swift in Sources */,
 				764AFD8A226E7060007BFD90 /* ViewController.swift in Sources */,
 				76D4743122E829110053A095 /* CGVectorExtension.swift in Sources */,
@@ -1675,6 +1686,7 @@
 				76D22F7E229A281B00C06567 /* AnalysisViewController.swift in Sources */,
 				7637A61622864FC5007DD20B /* BudgetItemTableViewCell.swift in Sources */,
 				76B0635F22DBD5CC007BBDD5 /* BudgetItemView.swift in Sources */,
+				766F3B742326B2B70002DECD /* RepositoryFactory.swift in Sources */,
 				7637A6252287AE00007DD20B /* AddTransactionBudgetItemTableViewCell.swift in Sources */,
 				76F4235C22BA02CE00E7B868 /* TransactionDataSource.swift in Sources */,
 				763275C322A5B9EE0099532A /* AddContentsFromImageViewController.swift in Sources */,

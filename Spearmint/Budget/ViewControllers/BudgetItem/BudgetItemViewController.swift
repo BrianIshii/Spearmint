@@ -21,8 +21,12 @@ class BudgetItemViewController: UIViewController {
         if let transactionIDs = budgetItem.transactions[BudgetDate()] {
             var transactions: [Transaction] = []
             var total = Float(0)
+            guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+                print("failed to resolve \(LocalAccess.self)")
+                return
+            }
             for id in transactionIDs {
-                if let transaction = LocalAccess.Transactions.get(id) {
+                if let transaction = localAccess.Transactions.get(id) {
                     transactions.append(transaction)
                     total += transaction.amount
                 }

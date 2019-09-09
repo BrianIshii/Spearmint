@@ -12,7 +12,7 @@ class BudgetItemSectionStore {
     public static var budgetItemSections: [BudgetItemSection] = getBudgetItemSections()
     
     private static let budgetItemSectionString = "budgetItemSectionString"
-    private static let budgetItemSectionURL = LocalAccess.documentsDirectory.appendingPathComponent(budgetItemSectionString)
+    private static let budgetItemSectionURL = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent(budgetItemSectionString)
     public static let defaultSections: [BudgetItemSection] = [
         BudgetItemSection(category: .income),
         BudgetItemSection(category: .housing),
@@ -28,11 +28,15 @@ class BudgetItemSectionStore {
         BudgetItemSection(category: .other)]
     
     private static func getBudgetItemSections() -> [BudgetItemSection] {        
-        if LocalAccess.reset {
-            return resetBudgetItemSections()
-        }
+//        if LocalAccess.reset {
+//            return resetBudgetItemSections()
+//        }
         
-        let array = LocalAccess.getData(saveable: BudgetItemSection.self)
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return []
+        }
+        let array = localAccess.getData(saveable: BudgetItemSection.self)
         
         if array.count == 0 {
             return resetBudgetItemSections()
@@ -54,6 +58,10 @@ class BudgetItemSectionStore {
     }
     
     fileprivate static func update(_ data: [BudgetItemSection]) {
-        LocalAccess.updateData(data: data)
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return
+        }
+        localAccess.updateData(data: data)
     }
 }

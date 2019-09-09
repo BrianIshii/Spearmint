@@ -32,9 +32,12 @@ class BudgetTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         dataSource = BudgetDataSourceOld(tableView: tableView)
-        
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return
+        }
         if let ds = dataSource {
-            ds.currentBudget = LocalAccess.Budgets.get(BudgetDate(Date()))
+            ds.currentBudget = localAccess.Budgets.get(BudgetDate(Date()))
         }
     }
     

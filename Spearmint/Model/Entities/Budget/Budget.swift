@@ -33,8 +33,13 @@ class Budget: Saveable {
     }
     
     func addBudgetItem(budgetItem: BudgetItem) {
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return
+        }
+        
         items[budgetItem.category]!.append(budgetItem.id)
-        LocalAccess.Budgets.update()
+        localAccess.Budgets.update()
     }
     
     static func dateToString(_ date: Date) -> String {
@@ -43,9 +48,13 @@ class Budget: Saveable {
     
     var totalIncome: Float {
         var total: Float = 0.0
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return 0.0
+        }
         if let budgetItems = items[BudgetItemCategory.income] {
             for id in budgetItems {
-                if let budgetItem = LocalAccess().get(id) {
+                if let budgetItem = localAccess.get(id) {
                     total += budgetItem.actual
                 }
             }
@@ -60,9 +69,13 @@ class Budget: Saveable {
             if (key.category != BudgetItemCategory.income) {
                 var total: Float = 0.0
 
+                guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+                    print("failed to resolve \(LocalAccess.self)")
+                    return [:]
+                }
                 if let items = items[key.category] {
                     for id in items {
-                        if let item = LocalAccess().get(id) {
+                        if let item = localAccess.get(id) {
                             total += item.getMonthlyTotal(self.budgetDate)
                         }
                     }

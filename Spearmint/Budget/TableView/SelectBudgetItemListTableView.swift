@@ -32,8 +32,6 @@ class SelectBudgetItemListTableView: UITableView {
         delegate = self
         dataSource = self
         
-        _ = LocalAccess().getCurrentBudget()
-
         reloadData()
     }
     
@@ -95,7 +93,11 @@ class SelectBudgetItemListTableView: UITableView {
     public func getBudgetItem(indexPath: IndexPath) -> BudgetItem? {
         guard let budget = currentBudget else { return nil }
         guard let budgetItemIDs = budget.items[sections[indexPath.section].category] else { return nil }
-        guard let budgetItem = LocalAccess().get(budgetItemIDs[indexPath.row]) else { return nil }
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return nil
+        }
+        guard let budgetItem = localAccess.get(budgetItemIDs[indexPath.row]) else { return nil }
         return budgetItem
     }
 }

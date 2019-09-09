@@ -18,10 +18,15 @@ class AddBudgetItemsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return
+        }
 
         // Do any additional setup after loading the view.
         if let bd = budgetDate {
-            tableView.currentBudget = LocalAccess.Budgets.get(bd)
+            tableView.currentBudget = localAccess.Budgets.get(bd)
         }
         
         tableView.reloadData()

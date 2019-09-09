@@ -14,11 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     //var localPersistance: LocalPersistance = LocalPersistance.getInstance()
-    let container: Container = Container()
+    static public var container: Container = Container()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        AppDelegate.container.registerSingleton(CloudAccess(cloudKitService: CloudKitService(), transactionCloudStore: TransactionCloudStore()))
+        AppDelegate.container.registerSingleton(LocalAccess(localPersistanceService: LocalPersistanceService()))
         FirebaseApp.configure()
         return true
     }

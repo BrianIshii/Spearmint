@@ -9,11 +9,10 @@
 import Foundation
 
 class CloudAccess {
-    public static var instance: CloudAccess = CloudAccess(cloudKitService: CloudKitService(), transactionCloudStore: TransactionCloudStore())
     var cloudKitService: CloudKitService
     var transactionCloudStore: TransactionCloudStore
     
-    private init(cloudKitService: CloudKitService, transactionCloudStore: TransactionCloudStore) {
+    public init(cloudKitService: CloudKitService, transactionCloudStore: TransactionCloudStore) {
         self.cloudKitService = cloudKitService
         self.transactionCloudStore = transactionCloudStore
     }

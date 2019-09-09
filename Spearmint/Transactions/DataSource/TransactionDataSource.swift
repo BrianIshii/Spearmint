@@ -11,13 +11,20 @@ import UIKit
 class TransactionDataSource: NSObject {
     fileprivate let tableView: UITableView
     var transactions: [Transaction] = []
+    var localAccess: LocalAccess?
     
     init(tableView: UITableView) {
         self.tableView = tableView
         super.init()
         
         tableView.dataSource = self
-        LocalAccess.Transactions.observers.append(self)
+        
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return
+        }
+        self.localAccess = localAccess
+        localAccess.Transactions.observers.append(self)
     }
 }
 
@@ -45,7 +52,8 @@ extension TransactionDataSource: UITableViewDataSource {
 
 extension TransactionDataSource: TransactionObserver {
     func update() {
-        transactions = Array(LocalAccess.Transactions.getAll()).sorted(by: >)
+        guard let localAccess = localAccess else { return }
+        transactions = Array(localAccess.Transactions.getAll()).sorted(by: >)
         
         DispatchQueue.main.async {
             self.tableView.reloadData()

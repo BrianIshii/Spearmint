@@ -51,7 +51,11 @@ class BudgetItemViewControllerOld: UIViewController {
     
     @IBAction func back(_ sender: UIBarButtonItem) {
         if let destination = tableView {
-            LocalAccess.Budgets.update()
+            guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+                print("failed to resolve \(LocalAccess.self)")
+                return
+            }
+            localAccess.Budgets.update()
             destination.tableView.reloadData()
         }
         dismiss(animated: true, completion: nil)

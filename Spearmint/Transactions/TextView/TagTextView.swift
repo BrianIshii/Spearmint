@@ -61,8 +61,12 @@ class TagTextView: UITextView {
     }
     
     func createTagView(_ text: String,_ tagNumber: Int) -> UIView {
-        var backgroundColor = UIColor.black        
-        if let tag = LocalAccess.Tags.get(TagID(text)) {
+        var backgroundColor = UIColor.black
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return UIView()
+        }
+        if let tag = localAccess.Tags.get(TagID(text)) {
             backgroundColor = tag.color.uiColor
         }
         
@@ -141,7 +145,10 @@ extension TagTextView: UITextViewDelegate {
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return false
+        }
         if tagCount < 1 {
             tagCount = 1
         }
@@ -174,7 +181,7 @@ extension TagTextView: UITextViewDelegate {
         }
         
         if self.tags.count > 0 {
-            let suggestions = LocalAccess.queryTags(self.tags[self.tags.count - 1])
+            let suggestions = localAccess.queryTags(self.tags[self.tags.count - 1])
             view.addSuggestions(suggestions.map({ Suggestion(text: $0.text) }))
         }
         

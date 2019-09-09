@@ -23,8 +23,13 @@ class BudgetItemAndTagTextView: UITextView {
         position.x = padding
         position.y = padding
         
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return
+        }
+        
         for (index, budgetItemID) in budgetItems.enumerated() {
-            if let budgetItem = LocalAccess().get(budgetItemID) {
+            if let budgetItem = localAccess.get(budgetItemID) {
                 let budgetItemView = createBudgetItemView(budgetItem.name, index)
                 self.addSubview(budgetItemView)
             }
@@ -38,7 +43,11 @@ class BudgetItemAndTagTextView: UITextView {
     
     func createTagView(_ text: String,_ tagNumber: Int) -> UIView {
         var backgroundColor = UIColor.black
-        if let tag = LocalAccess.Tags.get(TagID(text)) {
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return UIView()
+        }
+        if let tag = localAccess.Tags.get(TagID(text)) {
             backgroundColor = tag.color.uiColor
         }
         

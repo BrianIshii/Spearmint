@@ -33,7 +33,11 @@ class MasterSummaryViewController: UIViewController {
         let destination = segue.destination
         
         if let vc = destination as? SummaryPieChartViewController {
-            vc.budget = LocalAccess.Budgets.get(BudgetDate(Date()))
+            guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+                print("failed to resolve \(LocalAccess.self)")
+                return
+            }
+            vc.budget = localAccess.Budgets.get(BudgetDate(Date()))
             summaryPieChartViewController = vc
         }
         

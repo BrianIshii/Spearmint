@@ -31,7 +31,11 @@ class TransactionListViewController: UIViewController {
         
         guard let dataSource = dataSource else { return }
         
-        dataSource.transactions = Array(LocalAccess.Transactions.getAll()).sorted(by: >)
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return
+        }
+        dataSource.transactions = Array(localAccess.Transactions.getAll()).sorted(by: >)
         transactionTableView.reloadData()
     }
     
@@ -39,13 +43,17 @@ class TransactionListViewController: UIViewController {
 
     }
     
-    @IBAction func unwind(sender: UIStoryboardSegue) {        
+    @IBAction func unwind(sender: UIStoryboardSegue) {
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return
+        }
         if let sourceViewController = sender.source as? AddTransactionViewController, let transaction = sourceViewController.transaction {
-            LocalAccess.addTransaction(transaction)
+            localAccess.addTransaction(transaction)
         }
         
         if let sourceViewController = sender.source as? AddTransactionViewController, let transaction = sourceViewController.transaction {
-            LocalAccess.addTransaction(transaction)
+            localAccess.addTransaction(transaction)
         }
         if let selectedIndexPath = transactionTableView.indexPathForSelectedRow {
             transactionTableView.deselectRow(at: selectedIndexPath, animated: true)
@@ -81,7 +89,11 @@ extension TransactionListViewController: UITableViewDelegate {
         guard let dataSource = dataSource else { return }
         
         if editingStyle == .delete {
-            LocalAccess.deleteTransaction(dataSource.transactions[indexPath.row])
+            guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+                print("failed to resolve \(LocalAccess.self)")
+                return
+            }
+            localAccess.deleteTransaction(dataSource.transactions[indexPath.row])
             dataSource.transactions.remove(at: indexPath.row)
         }
     }

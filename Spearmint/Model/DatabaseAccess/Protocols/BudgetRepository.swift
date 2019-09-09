@@ -1,5 +1,5 @@
 //
-//  BudgetAccess.swift
+//  BudgetRepository.swift
 //  Spearmint
 //
 //  Created by Brian Ishii on 8/5/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol BudgetAccess {
+protocol BudgetRepository {
     func getCurrentBudget() -> Budget
     func getAll() -> [Budget]
     func get(_ id: BudgetDate) -> Budget?

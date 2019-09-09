@@ -26,7 +26,13 @@ class SummaryPieChartViewController: UIViewController {
         pieChartDataSource = PieChartViewDataSource(pieChartView)
         update()
         
-        LocalAccess.Transactions.observers.append(self)
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return
+        }
+        
+        
+        localAccess.Transactions.observers.append(self)
         //pieChartView.setNeedsDisplay()
     }
     
@@ -84,7 +90,11 @@ class SummaryPieChartViewController: UIViewController {
 extension SummaryPieChartViewController: TransactionObserver {
     func update() {
         guard let pieChartDataSource = pieChartDataSource else { return }
-        let currentBudget = LocalAccess().getCurrentBudget()
+        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
+            print("failed to resolve \(LocalAccess.self)")
+            return
+        }
+        let currentBudget = localAccess.getCurrentBudget()
         let totalExpenses = currentBudget.totalExpenses
         
         var segments: [PieChartSegment] = []
