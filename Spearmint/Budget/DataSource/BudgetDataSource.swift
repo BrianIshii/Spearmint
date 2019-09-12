@@ -21,11 +21,11 @@ class BudgetDataSource: NSObject {
         tableView.register(UINib.init(nibName: SelectBudgetItemTableViewCell.xib, bundle: nil), forCellReuseIdentifier: SelectBudgetItemTableViewCell.reuseIdentifier)
         tableView.dataSource = self
 
-        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-            print("failed to resolve \(LocalAccess.self)")
+        guard let budgetRepository = AppDelegate.container.resolve(BudgetRepository.self) else {
+            print("failed to resolve \(BudgetRepository.self)")
             return
         }
-        currentBudget = localAccess.getCurrentBudget()
+        currentBudget = budgetRepository.getCurrentBudget()
         
         tableView.reloadData()
     }

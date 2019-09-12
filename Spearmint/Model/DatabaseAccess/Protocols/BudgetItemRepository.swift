@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol BudgetItemAccess {
+protocol BudgetItemRepository {
     func getAllBudgetItems() -> [BudgetItem]
     func get(_ id: BudgetItemID) -> BudgetItem?
     func append(_ budgetItem: BudgetItem)

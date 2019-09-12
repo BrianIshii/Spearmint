@@ -50,11 +50,11 @@ extension TransactionTableViewCell: ConfigurableCell {
         case.income:
             transactionAmountLabel.textColor = UIColor.green
         }
-        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-            print("failed to resolve \(LocalAccess.self)")
+        guard let vendorRepository = AppDelegate.container.resolve(VendorRepository.self) else {
+            print("failed to resolve \(VendorRepository.self)")
             return
         }
-        transactionVendorLabel.text = localAccess.getVendor(object.vendor)?.name ?? "bad"
+        transactionVendorLabel.text = vendorRepository.get(object.vendor)?.name ?? "bad"
         transactionDateLabel.text = "\(object.date.threeCharacterMonth) \(object.date.day)"
         
         textView.tags = object.tags

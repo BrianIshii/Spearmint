@@ -31,11 +31,11 @@ class TransactionListViewController: UIViewController {
         
         guard let dataSource = dataSource else { return }
         
-        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-            print("failed to resolve \(LocalAccess.self)")
+        guard let transactionRepository = AppDelegate.container.resolve(TransactionRepository.self) else {
+            print("failed to resolve \(TransactionRepository.self)")
             return
         }
-        dataSource.transactions = Array(localAccess.Transactions.getAll()).sorted(by: >)
+        dataSource.transactions = Array(transactionRepository.getAllTransactions()).sorted(by: >)
         transactionTableView.reloadData()
     }
     

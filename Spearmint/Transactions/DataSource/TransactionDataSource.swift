@@ -24,7 +24,7 @@ class TransactionDataSource: NSObject {
             return
         }
         self.localAccess = localAccess
-        localAccess.Transactions.observers.append(self)
+        localAccess.addTransactionObserver(self)
     }
 }
 
@@ -53,7 +53,7 @@ extension TransactionDataSource: UITableViewDataSource {
 extension TransactionDataSource: TransactionObserver {
     func update() {
         guard let localAccess = localAccess else { return }
-        transactions = Array(localAccess.Transactions.getAll()).sorted(by: >)
+        transactions = Array(localAccess.getAllTransactions()).sorted(by: >)
         
         DispatchQueue.main.async {
             self.tableView.reloadData()

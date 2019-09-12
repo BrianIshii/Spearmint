@@ -76,11 +76,11 @@ class AddTransactionViewController: UIViewController {
     }
     
     fileprivate func addTransaction() {
-        guard let localAccess = self.localAccess else {
-            print("no local access to add transaction")
+        guard let vendorAccess = AppDelegate.container.resolve(VendorRepository.self) else {
+            print("failed to resolve \(VendorRepository.self)")
             return
-            
         }
+        
         let name = ""
         let dateString = transactionView.dateTextField.text!
         let date = DateFormatterFactory.MediumFormatter.date(from: dateString) ?? Date()
@@ -101,15 +101,15 @@ class AddTransactionViewController: UIViewController {
         
         let vendor: Vendor
         
-        if localAccess.hasVendor(vendorString) {
-            vendor = localAccess.getVendor(vendorString)!
+        if vendorAccess.hasVendor(vendorString) {
+            vendor = vendorAccess.get(vendorString)!
         } else {
             if let budgetItems = budgetItems, let budgetItem = budgetItems.first {
                 vendor = Vendor(name: vendorString, budgetCategory: budgetItem.category, budgetItemID: budgetItem.id)
             } else {
                 vendor = Vendor(name: vendorString)
             }
-            localAccess.addVendor(vendor)
+            vendorAccess.append(vendor)
         }
         
         let tags = transactionView.tagTextView.tags

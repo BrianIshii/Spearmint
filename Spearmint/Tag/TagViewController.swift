@@ -19,11 +19,11 @@ class TagViewController: UIViewController {
 
         guard let tag = tag else { return }
         
-        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-            print("failed to resolve \(LocalAccess.self)")
+        guard let transactionRepository = AppDelegate.container.resolve(TransactionRepository.self) else {
+            print("failed to resolve \(TransactionRepository.self)")
             return
         }
-        let transactions = tag.transactionIDs.map({ localAccess.Transactions.get($0)! })
+        let transactions = tag.transactionIDs.map({ transactionRepository.get($0)! })
         dataSource = TransactionDataSource(tableView: transactionTableView)
         
         guard let dataSource = dataSource else { return }

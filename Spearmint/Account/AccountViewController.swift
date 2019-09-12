@@ -12,6 +12,8 @@ import CloudKit
 class AccountViewController: UIViewController {
 
     var localAccess: LocalAccess?
+    var transactionRepository: TransactionRepository?
+    var vendorRepository: VendorRepository?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,18 @@ class AccountViewController: UIViewController {
             return
         }
         self.localAccess = localAccess
+        
+        guard let transactionRepository = AppDelegate.container.resolve(TransactionRepository.self) else {
+            print("failed to resolve \(TransactionRepository.self)")
+            return
+        }
+        self.transactionRepository = transactionRepository
+        
+        guard let vendorRepository = AppDelegate.container.resolve(VendorRepository.self) else {
+            print("failed to resolve \(VendorRepository.self)")
+            return
+        }
+        self.vendorRepository = vendorRepository
         // Do any additional setup after loading the view.
     }
     
@@ -135,11 +149,14 @@ class AccountViewController: UIViewController {
 
     @IBAction func addTransaction(_ sender: Any) {
         guard let localAccess = localAccess else { return }
+        guard let transactionRepository = transactionRepository else { return }
+        guard let vendorRepository = vendorRepository else { return }
+
         let myContainer = CKContainer.default()
         
         let privateDatabase = myContainer.privateCloudDatabase
         
-        let transactions = localAccess.Transactions.getAll()
+        let transactions = transactionRepository.getAllTransactions()
         for transaction in transactions {
             saveTransaction(transaction)
         }
@@ -176,7 +193,7 @@ class AccountViewController: UIViewController {
             }
         }
         
-        for vendor in localAccess.Vendors.getAll() {
+        for vendor in vendorRepository.getAllVendors() {
             let record = VendorCloudStore().createRecord(vendor)
             
             privateDatabase.save(record) {
@@ -205,19 +222,9 @@ class AccountViewController: UIViewController {
     
     @IBAction func getTransactions(_ sender: Any) {
         guard let localAccess = localAccess else { return }
+        guard let transactionRepository = transactionRepository else { return }
+        guard let vendorRepository = vendorRepository else { return }
 
-//        let cloudService = CloudKitService()
-//        
-//        cloudService.getRecords("Budget") { (records) in
-//            if let records = records {
-//                for record: CKRecord in records {
-//                    let budget = BudgetCloudStore().createItem(from: record)
-//                    LocalAccess.Budgets.append(budget)
-//                    print("budget fetched")
-//                }
-//            }
-//        }
-        
         let myContainer = CKContainer.default()
         let privateDatabase = myContainer.privateCloudDatabase
         
@@ -315,7 +322,7 @@ class AccountViewController: UIViewController {
             if let records = records {
                 for record: CKRecord in records {
                     let transaction = cloudAccess.transactionCloudStore.createItem(from: record)
-                    localAccess.Transactions.append(transaction)
+                    transactionRepository.append(transaction)
                 }
             }
             hi += 1
@@ -349,7 +356,7 @@ class AccountViewController: UIViewController {
             if let records = records {
                 for record: CKRecord in records {
                     let vendor = VendorCloudStore().createItem(from: record)
-                    localAccess.Vendors.append(vendor)
+                    vendorRepository.append(vendor)
                     print("vendor fetched")
                 }
             }

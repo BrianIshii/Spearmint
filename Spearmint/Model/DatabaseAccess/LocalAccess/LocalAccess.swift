@@ -14,10 +14,10 @@ class LocalAccess {
     
     private let localPersistanceService: LocalPersistanceService
 
-    public let Vendors: VendorStore
+    private let Vendors: VendorStore
     public let Tags: TagStore
     private let BudgetItems: BudgetItemStore
-    public let Transactions: TransactionStore
+    private let Transactions: TransactionStore
     public let Budgets: BudgetStore
     
     public init(localPersistanceService: LocalPersistanceService) {
@@ -67,25 +67,6 @@ class LocalAccess {
         Transactions.append(transaction)
         //cloudKitService.saveRecord(CloudAccess.instance.transactionCloudStore.createRecord(transaction))
         print("added transaction")
-    }
-    
-    public func addVendor(_ vendor: Vendor) {
-        Vendors.append(vendor)
-    }
-    public func hasVendor(_ name: String) -> Bool {
-        return Vendors.get(name) != nil
-    }
-    
-    public func getVendor(_ name: String) -> Vendor? {
-        return Vendors.get(name)
-    }
-    
-    public func getVendor(_ vendorID: VendorID) -> Vendor? {
-        return Vendors.get(vendorID)
-    }
-    
-    public func queryVendors(_ substring: String) -> [(String, VendorID)] {
-        return Vendors.query(substring)
     }
     
     public func queryTags(_ substring: String) -> [Tag] {
@@ -177,7 +158,7 @@ extension LocalAccess: BudgetRepository {
     }
 }
 
-extension LocalAccess: BudgetItemAccess {
+extension LocalAccess: BudgetItemRepository {
     
     func getAllBudgetItems() -> [BudgetItem] {
         return BudgetItems.getAll()
@@ -197,5 +178,62 @@ extension LocalAccess: BudgetItemAccess {
     
     func remove(_ budgetItem: BudgetItem) {
         BudgetItems.remove(budgetItem.id)
+    }
+}
+
+extension LocalAccess: VendorRepository {
+    public func append(_ vendor: Vendor) {
+        Vendors.append(vendor)
+    }
+    
+    public func hasVendor(_ name: String) -> Bool {
+        return Vendors.get(name) != nil
+    }
+    
+    public func get(_ name: String) -> Vendor? {
+        return Vendors.get(name)
+    }
+    
+    public func get(_ vendorID: VendorID) -> Vendor? {
+        return Vendors.get(vendorID)
+    }
+    
+    public func update(_ vendor: Vendor) {
+    }
+    
+    public func remove(_ vendor: Vendor) {
+    }
+    
+    public func queryVendors(_ substring: String) -> [(String, VendorID)] {
+        return Vendors.query(substring)
+    }
+    
+    public func getAllVendors() -> [Vendor] {
+        return Vendors.getAll()
+    }
+}
+
+extension LocalAccess: TransactionRepository {
+    public func getAllTransactions() -> [Transaction] {
+        return Transactions.getAll()
+    }
+    
+    public func get(_ id: TransactionID) -> Transaction? {
+        return Transactions.get(id)
+    }
+    
+    public func append(_ transaction: Transaction) {
+        Transactions.append(transaction)
+    }
+    
+    public func update(_ transaction: Transaction) {
+    }
+    
+    public func remove(_ transaction: Transaction) {
+        Transactions.remove(transaction.id)
+    }
+    
+    public func addTransactionObserver(_ observer: TransactionObserver) {
+        Transactions.observers.append(observer)
     }
 }

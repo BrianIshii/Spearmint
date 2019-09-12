@@ -28,11 +28,11 @@ class TransactionView: UIView {
             
             self.transactionTypeSegementedControl.selectedSegmentIndex = transaction.transactionType.rawValue
             self.moneyTextField.text = Currency.currencyFormatter(transaction.amount)
-            guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else { //TODO: remove
-                print("failed to resolve \(LocalAccess.self)")
+            guard let vendorAccess = AppDelegate.container.resolve(VendorRepository.self) else { //TODO: remove
+                print("failed to resolve \(VendorRepository.self)")
                 return
             }
-            self.vendorTextField.text = localAccess.getVendor(transaction.vendor)?.name ?? "hi"
+            self.vendorTextField.text = vendorAccess.get(transaction.vendor)?.name ?? "hi"
             self.dateTextField.text = transaction.date.medium
             self.categoryButton.setTitle("Category", for: UIControl.State.normal)
             self.tagTextView.tags = transaction.tags
@@ -149,11 +149,11 @@ extension TransactionView: SuggestionViewDelegate {
         vendorTextField.text = suggestion
         vendorTextField.resignFirstResponder()
         
-        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-            print("failed to resolve \(LocalAccess.self)")
+        guard let vendorRepository = AppDelegate.container.resolve(VendorRepository.self) else {
+            print("failed to resolve \(VendorRepository.self)")
             return
         }
-        guard let vendor = localAccess.getVendor(suggestion) else { return }
+        guard let vendor = vendorRepository.get(suggestion) else { return }
         guard let budgetItemID = vendor.budgetItemID else { return }
         categoryTextView.budgetItems.append(budgetItemID)
         categoryTextView.createCategoryViews()

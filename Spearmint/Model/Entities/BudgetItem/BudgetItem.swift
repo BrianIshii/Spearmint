@@ -72,13 +72,13 @@ class BudgetItem: Saveable, Hashable {
     func getMonthlyTotal(_ budgetDate: BudgetDate) -> Float {
         var total = Float(0)
 
-        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-            print("failed to resolve \(LocalAccess.self)")
+        guard let transactionRepository = AppDelegate.container.resolve(TransactionRepository.self) else {
+            print("failed to resolve \(TransactionRepository.self)")
             return 0.0
         }
         if let transactionIDs = transactions[budgetDate] {
             for id in transactionIDs {
-                if let transaction = localAccess.Transactions.get(id) {
+                if let transaction = transactionRepository.get(id) {
                     total += transaction.amount
                 }
             }
