@@ -15,4 +15,5 @@ protocol BudgetRepository {
     func append(_ budget: Budget)
     func update(_ budget: Budget)
     func remove(_ budget: Budget)
+    func update()
 }

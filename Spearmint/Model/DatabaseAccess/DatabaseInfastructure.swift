@@ -14,6 +14,9 @@ class DatabaseInfastructure {
         let localAccess = LocalAccess(localPersistanceService: localPersistanceService)
         registrar.registerSingleton(localPersistanceService)
         registrar.registerSingleton(localAccess as BudgetRepository)
+        registrar.registerSingleton(localAccess as BudgetItemRepository)
         registrar.registerSingleton(localAccess as VendorRepository)
+        registrar.registerSingleton(localAccess as TransactionRepository)
+        registrar.registerSingleton(localAccess as TagRepository)
     }
 }

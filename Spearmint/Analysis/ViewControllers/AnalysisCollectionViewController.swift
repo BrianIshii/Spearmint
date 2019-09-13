@@ -18,11 +18,11 @@ class AnalysisCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         
-        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-            print("failed to resolve \(LocalAccess.self)")
+        guard let budgetRepository = AppDelegate.container.resolve(BudgetRepository.self) else {
+            print("failed to resolve \(BudgetRepository.self)")
             return
         }
-        let budget = localAccess.Budgets.get(BudgetDate(Date()))
+        let budget = budgetRepository.get(BudgetDate(Date()))
         
         let mostExpensiveItems = budget!.mostExpensiveItemPerCategory
         

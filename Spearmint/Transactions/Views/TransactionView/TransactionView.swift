@@ -18,8 +18,11 @@ class TransactionView: UIView {
     @IBOutlet weak var tagTextView: TagTextView!
     @IBOutlet weak var deleteTransactionButton: UIButton!
     @IBOutlet weak var tagTextViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var editButton: UIButton!
     
     var delegate: TransactionViewDelegate?
+    var transactionRepository: TransactionRepository?
+    var isEditing: Bool = false
     
     var transaction: Transaction? {
         didSet {
@@ -41,6 +44,15 @@ class TransactionView: UIView {
             self.categoryTextView.budgetItems = Array(transaction.items.keys)
             self.categoryTextView.createCategoryViews()
             self.deleteTransactionButton.isHidden = false
+            self.editButton.isHidden = false
+            
+            
+            guard let transactionRepository = AppDelegate.container.resolve(TransactionRepository.self) else { //TODO: remove
+                print("failed to resolve \(TransactionRepository.self)")
+                return
+            }
+            
+            self.transactionRepository = transactionRepository
         }
     }
     
@@ -75,7 +87,8 @@ class TransactionView: UIView {
             " ".size(withAttributes: [NSAttributedString.Key.font: UIFont(name:"verdana", size: 13.0)!]).height +
                                         TagTextView.padding +
                                         TagTextView.padding)
-        
+        self.editButton.setTitle("Edit", for: .normal)
+        self.editButton.isHidden = self.transaction == nil
     }
     
     override func awakeFromNib() {
@@ -132,6 +145,53 @@ class TransactionView: UIView {
         }
         
         delegate.dismiss()
+    }
+    
+    @IBAction func DidPressEdit(_ sender: UIButton) {
+        if isEditing {
+            guard let transactionRepository = transactionRepository else { return }
+            guard let transaction = transaction else { return }
+            disableUserInteraction()
+            editButton.setTitle("Edit", for: .normal)
+            updateTransaction()
+            transactionRepository.update(transaction)
+        } else {
+            enableUserInteraction()
+            editButton.setTitle("Done", for: .normal)
+        }
+        
+        isEditing = !isEditing
+    }
+    
+    func updateTransaction() {
+        guard let transaction = transaction else { return }
+        guard let vendorAccess = AppDelegate.container.resolve(VendorRepository.self) else {
+            print("failed to resolve \(VendorRepository.self)")
+            return
+        }
+        
+        transaction.name = ""
+        let dateString = self.dateTextField.text!
+        transaction.date = TransactionDate(DateFormatterFactory.MediumFormatter.date(from: dateString) ?? Date())
+        let vendorString = self.vendorTextField.text!
+        transaction.transactionType = self.transactionTypeSegementedControl.selectedSegmentIndex == TransactionType.expense.rawValue ? TransactionType.expense : TransactionType.income
+        transaction.amount = Currency.currencyToFloat(self.moneyTextField.text!)
+        transaction.budgetDate = BudgetDate()
+        //_ = LocalAccess.Budgets.budgetDictionary[budgetKey]
+        transaction.hasImage = false
+        
+        let vendor: Vendor
+        
+        if vendorAccess.hasVendor(vendorString) {
+            vendor = vendorAccess.get(vendorString)!
+        } else {
+            vendor = Vendor(name: vendorString)
+            vendorAccess.append(vendor)
+        }
+        transaction.vendor = vendor.id
+
+        
+        transaction.tags = self.tagTextView.tags
     }
 }
 

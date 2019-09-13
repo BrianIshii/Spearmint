@@ -11,18 +11,14 @@ import CloudKit
 
 class AccountViewController: UIViewController {
 
-    var localAccess: LocalAccess?
     var transactionRepository: TransactionRepository?
     var vendorRepository: VendorRepository?
+    var tagRepository: TagRepository?
+    var budgetRepository: BudgetRepository?
+    var budgetItemRepository: BudgetItemRepository?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-            print("failed to resolve \(LocalAccess.self)")
-            return
-        }
-        self.localAccess = localAccess
         
         guard let transactionRepository = AppDelegate.container.resolve(TransactionRepository.self) else {
             print("failed to resolve \(TransactionRepository.self)")
@@ -35,7 +31,24 @@ class AccountViewController: UIViewController {
             return
         }
         self.vendorRepository = vendorRepository
-        // Do any additional setup after loading the view.
+        
+        guard let tagRepository = AppDelegate.container.resolve(TagRepository.self) else {
+            print("failed to resolve \(TagRepository.self)")
+            return
+        }
+        self.tagRepository = tagRepository
+        
+        guard let budgetRepository = AppDelegate.container.resolve(BudgetRepository.self) else {
+            print("failed to resolve \(BudgetRepository.self)")
+            return
+        }
+        self.budgetRepository = budgetRepository
+        
+        guard let budgetItemRepository = AppDelegate.container.resolve(BudgetItemRepository.self) else {
+            print("failed to resolve \(BudgetItemRepository.self)")
+            return
+        }
+        self.budgetItemRepository = budgetItemRepository
     }
     
 
@@ -148,9 +161,11 @@ class AccountViewController: UIViewController {
     }
 
     @IBAction func addTransaction(_ sender: Any) {
-        guard let localAccess = localAccess else { return }
         guard let transactionRepository = transactionRepository else { return }
         guard let vendorRepository = vendorRepository else { return }
+        guard let tagRepository = tagRepository else { return }
+        guard let budgetRepository = budgetRepository else { return }
+        guard let budgetItemRepository = budgetItemRepository else { return }
 
         let myContainer = CKContainer.default()
         
@@ -160,7 +175,7 @@ class AccountViewController: UIViewController {
         for transaction in transactions {
             saveTransaction(transaction)
         }
-        if let budget = localAccess.Budgets.get(BudgetDate()) {
+        if let budget = budgetRepository.get(BudgetDate()) {
 
             let records = BudgetCloudStore().createRecords(budget)
             
@@ -178,7 +193,7 @@ class AccountViewController: UIViewController {
             }
         }
         
-        for tag in localAccess.Tags.getAll() {
+        for tag in tagRepository.getAllTags() {
             let record = TagCloudStore().createRecord(tag)
             
             privateDatabase.save(record) {
@@ -206,7 +221,7 @@ class AccountViewController: UIViewController {
             }
         }
         
-        for budgetItem in localAccess.getAllBudgetItems() {
+        for budgetItem in budgetItemRepository.getAllBudgetItems() {
             let record = BudgetItemCloudStore().createRecord(budgetItem)
             
             privateDatabase.save(record) {
@@ -221,9 +236,10 @@ class AccountViewController: UIViewController {
     }
     
     @IBAction func getTransactions(_ sender: Any) {
-        guard let localAccess = localAccess else { return }
         guard let transactionRepository = transactionRepository else { return }
         guard let vendorRepository = vendorRepository else { return }
+        guard let tagRepository = tagRepository else { return }
+        guard let budgetRepository = budgetRepository else { return }
 
         let myContainer = CKContainer.default()
         let privateDatabase = myContainer.privateCloudDatabase
@@ -237,7 +253,7 @@ class AccountViewController: UIViewController {
             if let records = records {
                 for record: CKRecord in records {
                     let budget = BudgetCloudStore().createItem(from: record)
-                    localAccess.Budgets.append(budget)
+                    budgetRepository.append(budget)
                     print("budget fetched")
                 }
             }
@@ -270,9 +286,9 @@ class AccountViewController: UIViewController {
                         items[section.category] = budgetItemIDs
                     }
                     
-                    if let budget = localAccess.Budgets.get(BudgetDate(record.recordID.recordName.dropLast().dropLast().dropLast().dropLast().dropLast().description)) {
+                    if let budget = budgetRepository.get(BudgetDate(record.recordID.recordName.dropLast().dropLast().dropLast().dropLast().dropLast().description)) {
                         budget.items = items
-                        localAccess.Budgets.update()
+                        budgetRepository.update()
                     }
                     
                     print("budgetitems fetched")
@@ -340,7 +356,7 @@ class AccountViewController: UIViewController {
             if let records = records {
                 for record: CKRecord in records {
                     let tag = TagCloudStore().createItem(from: record)
-                    localAccess.Tags.append(tag)
+                    tagRepository.append(tag)
                 }
             }
             hi += 1

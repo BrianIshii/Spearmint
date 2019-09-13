@@ -16,6 +16,7 @@
                 <outlet property="categoryTextView" destination="naC-qe-yea" id="hHs-xZ-oSk"/>
                 <outlet property="dateTextField" destination="tQS-DL-Mxs" id="XhR-iK-TGO"/>
                 <outlet property="deleteTransactionButton" destination="8y8-oh-aiJ" id="R8u-AG-E2d"/>
+                <outlet property="editButton" destination="OLA-eZ-jRD" id="TSd-Ay-SoO"/>
                 <outlet property="moneyTextField" destination="AvA-DS-gHj" id="Kze-EL-nUC"/>
                 <outlet property="tagTextView" destination="TK5-bQ-d7m" id="pTz-V9-7F2"/>
                 <outlet property="tagTextViewHeight" destination="RqX-0N-bwR" id="YaW-82-A78"/>
@@ -98,6 +99,16 @@
                                 <action selector="CancelButton:" destination="-1" eventType="touchUpInside" id="Sht-gP-PyB"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLA-eZ-jRD">
+                            <rect key="frame" x="8" y="8" width="30" height="30"/>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                            <state key="normal" title="Edit">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="DidPressEdit:" destination="-1" eventType="touchUpInside" id="0LW-eX-fT4"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="tQS-DL-Mxs" firstAttribute="top" secondItem="Khv-Je-n3Z" secondAttribute="bottom" id="077-as-k1d"/>
@@ -110,7 +121,9 @@
                         <constraint firstItem="AvA-DS-gHj" firstAttribute="centerX" secondItem="YE7-69-XKs" secondAttribute="centerX" id="GYw-6j-94b"/>
                         <constraint firstItem="tQS-DL-Mxs" firstAttribute="width" secondItem="YE7-69-XKs" secondAttribute="width" id="N5d-Zg-mfz"/>
                         <constraint firstItem="YxY-VI-bpO" firstAttribute="width" secondItem="YE7-69-XKs" secondAttribute="width" id="OXa-Ob-e1u"/>
+                        <constraint firstItem="OLA-eZ-jRD" firstAttribute="top" secondItem="YE7-69-XKs" secondAttribute="top" constant="8" id="Qdc-Da-YDN"/>
                         <constraint firstItem="AvA-DS-gHj" firstAttribute="top" secondItem="m9U-D0-goz" secondAttribute="bottom" constant="16" id="Yc0-6s-G8z"/>
+                        <constraint firstItem="OLA-eZ-jRD" firstAttribute="leading" secondItem="YE7-69-XKs" secondAttribute="leading" constant="8" id="aQg-L6-yDY"/>
                         <constraint firstAttribute="trailing" secondItem="c7a-Jy-EPQ" secondAttribute="trailing" id="dcl-UJ-gOl"/>
                         <constraint firstItem="Khv-Je-n3Z" firstAttribute="centerX" secondItem="YE7-69-XKs" secondAttribute="centerX" id="g11-JZ-il1"/>
                         <constraint firstItem="YxY-VI-bpO" firstAttribute="centerX" secondItem="YE7-69-XKs" secondAttribute="centerX" id="hmp-pQ-Xag"/>

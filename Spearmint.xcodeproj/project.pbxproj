@@ -63,7 +63,7 @@
 		766F3B6B2324DA170002DECD /* LocalPersistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B6A2324DA170002DECD /* LocalPersistance.swift */; };
 		766F3B762326B2DD0002DECD /* DatabaseInfastructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B752326B2DD0002DECD /* DatabaseInfastructure.swift */; };
 		766F3B78232778970002DECD /* TransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B77232778970002DECD /* TransactionRepository.swift */; };
-		766F3B7A2329ECF80002DECD /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B792329ECF80002DECD /* Repository.swift */; };
+		766F3B7C232B1EDE0002DECD /* TagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B7B232B1EDE0002DECD /* TagRepository.swift */; };
 		7689F7112270E2FC00AD4225 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7102270E2FC00AD4225 /* Transaction.swift */; };
 		7689F7132270E31A00AD4225 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7122270E31A00AD4225 /* Budget.swift */; };
 		7689F7152270E39900AD4225 /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7142270E39900AD4225 /* TransactionType.swift */; };
@@ -297,7 +297,7 @@
 		766F3B6A2324DA170002DECD /* LocalPersistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPersistance.swift; sourceTree = "<group>"; };
 		766F3B752326B2DD0002DECD /* DatabaseInfastructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInfastructure.swift; sourceTree = "<group>"; };
 		766F3B77232778970002DECD /* TransactionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRepository.swift; sourceTree = "<group>"; };
-		766F3B792329ECF80002DECD /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		766F3B7B232B1EDE0002DECD /* TagRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRepository.swift; sourceTree = "<group>"; };
 		7689F7102270E2FC00AD4225 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		7689F7122270E31A00AD4225 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		7689F7142270E39900AD4225 /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
@@ -936,7 +936,7 @@
 				766633AF22FABB1A00DC47A9 /* BudgetItemRepository.swift */,
 				766633B122FF916100DC47A9 /* VendorRepository.swift */,
 				766F3B77232778970002DECD /* TransactionRepository.swift */,
-				766F3B792329ECF80002DECD /* Repository.swift */,
+				766F3B7B232B1EDE0002DECD /* TagRepository.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1628,6 +1628,7 @@
 				76D4742B22E808CF0053A095 /* PieChartSegment.swift in Sources */,
 				76B548D522915D14001B2FB1 /* ImageViewTableViewCell.swift in Sources */,
 				76D4745D22F93C670053A095 /* BudgetRepository.swift in Sources */,
+				766F3B7C232B1EDE0002DECD /* TagRepository.swift in Sources */,
 				76B0631E22D9CD31007BBDD5 /* SuggestionViewDelegate.swift in Sources */,
 				764AFD8A226E7060007BFD90 /* ViewController.swift in Sources */,
 				76D4743122E829110053A095 /* CGVectorExtension.swift in Sources */,
@@ -1648,7 +1649,6 @@
 				76A2FA67228248220066D594 /* PaymentType.swift in Sources */,
 				76A2FA7422851B7D0066D594 /* DateFormatterFactory.swift in Sources */,
 				764AFDBE226EC42D007BFD90 /* AccountViewController.swift in Sources */,
-				766F3B7A2329ECF80002DECD /* Repository.swift in Sources */,
 				76B548BD229135DE001B2FB1 /* LocalAccess.swift in Sources */,
 				7689F7112270E2FC00AD4225 /* Transaction.swift in Sources */,
 				76B548EF22953685001B2FB1 /* BudgetDataSourceOld.swift in Sources */,

@@ -43,11 +43,11 @@ class BudgetItemAndTagTextView: UITextView {
     
     func createTagView(_ text: String,_ tagNumber: Int) -> UIView {
         var backgroundColor = UIColor.black
-        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-            print("failed to resolve \(LocalAccess.self)")
+        guard let tagRepository = AppDelegate.container.resolve(TagRepository.self) else {
+            print("failed to resolve \(TagRepository.self)")
             return UIView()
         }
-        if let tag = localAccess.Tags.get(TagID(text)) {
+        if let tag = tagRepository.get(TagID(text)) {
             backgroundColor = tag.color.uiColor
         }
         

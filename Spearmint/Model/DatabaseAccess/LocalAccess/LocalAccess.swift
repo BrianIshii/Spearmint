@@ -15,7 +15,7 @@ class LocalAccess {
     private let localPersistanceService: LocalPersistanceService
 
     private let Vendors: VendorStore
-    public let Tags: TagStore
+    private let Tags: TagStore
     private let BudgetItems: BudgetItemStore
     private let Transactions: TransactionStore
     public let Budgets: BudgetStore
@@ -176,6 +176,10 @@ extension LocalAccess: BudgetItemRepository {
         //BudgetItems.
     }
     
+    func update() {
+        Budgets.update()
+    }
+    
     func remove(_ budgetItem: BudgetItem) {
         BudgetItems.remove(budgetItem.id)
     }
@@ -227,6 +231,8 @@ extension LocalAccess: TransactionRepository {
     }
     
     public func update(_ transaction: Transaction) {
+        Transactions.update()
+        Transactions.updateObservers()
     }
     
     public func remove(_ transaction: Transaction) {
@@ -235,5 +241,17 @@ extension LocalAccess: TransactionRepository {
     
     public func addTransactionObserver(_ observer: TransactionObserver) {
         Transactions.observers.append(observer)
+    }
+}
+
+extension LocalAccess: TagRepository {
+    public func append(_ tag: Tag) {
+        Tags.append(tag)
+    }
+    public func get(_ tagID: TagID) -> Tag? {
+        return Tags.get(tagID)
+    }
+    public func getAllTags() -> [Tag] {
+        return Tags.getAll()
     }
 }

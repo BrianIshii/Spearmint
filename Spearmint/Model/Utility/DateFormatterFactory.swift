@@ -36,7 +36,7 @@ class DateFormatterFactory {
         let dateFormatter = DateFormatter()
         
         dateFormatter.dateStyle = .medium
-        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.locale = locale
         
         return dateFormatter
     }

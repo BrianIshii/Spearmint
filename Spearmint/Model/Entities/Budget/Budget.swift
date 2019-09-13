@@ -33,13 +33,13 @@ class Budget: Saveable {
     }
     
     func addBudgetItem(budgetItem: BudgetItem) {
-        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-            print("failed to resolve \(LocalAccess.self)")
+        guard let budgetRepository = AppDelegate.container.resolve(BudgetRepository.self) else {
+            print("failed to resolve \(BudgetRepository.self)")
             return
         }
         
         items[budgetItem.category]!.append(budgetItem.id)
-        localAccess.Budgets.update()
+        budgetRepository.update()
     }
     
     static func dateToString(_ date: Date) -> String {

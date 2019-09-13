@@ -56,11 +56,11 @@ extension TransactionViewController: TransactionViewDelegate {
     }
     
     func didSelectTag(text: String) {
-        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-            print("failed to resolve \(LocalAccess.self)")
+        guard let tagRepository = AppDelegate.container.resolve(TagRepository.self) else {
+            print("failed to resolve \(TagRepository.self)")
             return
         }
-        selectedTag = localAccess.Tags.get(TagID(text))
+        selectedTag = tagRepository.get(TagID(text))
         performSegue(withIdentifier: TagSegue.SegueIdentifier, sender: self)
     }
     
