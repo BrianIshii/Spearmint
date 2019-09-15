@@ -40,7 +40,7 @@ class BudgetItemViewControllerOld: UIViewController {
                 let index = vc.budgetCategoryPicker.selectedRow(inComponent: 0)
                 let category: BudgetItemCategory = BudgetItemSectionStore.budgetItemSections[index].category
                 let name = vc.nameTextField.text!
-                let plannedAmount = Currency.currencyToFloat(vc.plannedAmountTextField.text!)
+                let plannedAmount = CurrencyOld.currencyToFloat(vc.plannedAmountTextField.text!)
                 budgetItem?.planned = plannedAmount
                 budgetItem?.category = category
                 budgetItem?.name = name

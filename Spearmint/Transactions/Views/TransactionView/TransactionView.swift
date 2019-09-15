@@ -30,7 +30,7 @@ class TransactionView: UIView {
             guard let transaction = transaction else { return }
             
             self.transactionTypeSegementedControl.selectedSegmentIndex = transaction.transactionType.rawValue
-            self.moneyTextField.text = Currency.currencyFormatter(transaction.amount)
+            self.moneyTextField.text = CurrencyOld.currencyFormatter(transaction.amount)
             guard let vendorAccess = AppDelegate.container.resolve(VendorRepository.self) else { //TODO: remove
                 print("failed to resolve \(VendorRepository.self)")
                 return
@@ -175,7 +175,7 @@ class TransactionView: UIView {
         transaction.date = TransactionDate(DateFormatterFactory.MediumFormatter.date(from: dateString) ?? Date())
         let vendorString = self.vendorTextField.text!
         transaction.transactionType = self.transactionTypeSegementedControl.selectedSegmentIndex == TransactionType.expense.rawValue ? TransactionType.expense : TransactionType.income
-        transaction.amount = Currency.currencyToFloat(self.moneyTextField.text!)
+        transaction.amount = CurrencyOld.currencyToFloat(self.moneyTextField.text!)
         transaction.budgetDate = BudgetDate()
         //_ = LocalAccess.Budgets.budgetDictionary[budgetKey]
         transaction.hasImage = false

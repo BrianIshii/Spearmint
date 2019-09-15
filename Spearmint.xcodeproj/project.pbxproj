@@ -65,6 +65,9 @@
 		766F3B78232778970002DECD /* TransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B77232778970002DECD /* TransactionRepository.swift */; };
 		766F3B7C232B1EDE0002DECD /* TagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B7B232B1EDE0002DECD /* TagRepository.swift */; };
 		766F3B80232EBA8E0002DECD /* TagQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B7F232EBA8E0002DECD /* TagQuery.swift */; };
+		766F3B84232EC6480002DECD /* BudgetInfastructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B83232EC6480002DECD /* BudgetInfastructure.swift */; };
+		766F3B88232ECF4C0002DECD /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B87232ECF4C0002DECD /* Currency.swift */; };
+		766F3B8A232ECFA00002DECD /* USDollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B89232ECFA00002DECD /* USDollar.swift */; };
 		7689F7112270E2FC00AD4225 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7102270E2FC00AD4225 /* Transaction.swift */; };
 		7689F7132270E31A00AD4225 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7122270E31A00AD4225 /* Budget.swift */; };
 		7689F7152270E39900AD4225 /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7142270E39900AD4225 /* TransactionType.swift */; };
@@ -178,7 +181,7 @@
 		76D4745922F8FC2E0053A095 /* BudgetItemCloudStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4745822F8FC2E0053A095 /* BudgetItemCloudStore.swift */; };
 		76D4745B22F8FF780053A095 /* BudgetItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4745A22F8FF780053A095 /* BudgetItemStore.swift */; };
 		76D4745D22F93C670053A095 /* BudgetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4745C22F93C670053A095 /* BudgetRepository.swift */; };
-		76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3CBE7227FEEAC0010625A /* Currency.swift */; };
+		76E3CBE8227FEEAC0010625A /* CurrencyOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3CBE7227FEEAC0010625A /* CurrencyOld.swift */; };
 		76EF345422963BF1005A5C35 /* BudgetItemSectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */; };
 		76EF345622986CD8005A5C35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76EF345522986CD8005A5C35 /* GoogleService-Info.plist */; };
 		76EF345A2298D254005A5C35 /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF34592298D254005A5C35 /* AddImageViewController.swift */; };
@@ -298,6 +301,9 @@
 		766F3B77232778970002DECD /* TransactionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRepository.swift; sourceTree = "<group>"; };
 		766F3B7B232B1EDE0002DECD /* TagRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRepository.swift; sourceTree = "<group>"; };
 		766F3B7F232EBA8E0002DECD /* TagQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagQuery.swift; sourceTree = "<group>"; };
+		766F3B83232EC6480002DECD /* BudgetInfastructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetInfastructure.swift; sourceTree = "<group>"; };
+		766F3B87232ECF4C0002DECD /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		766F3B89232ECFA00002DECD /* USDollar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDollar.swift; sourceTree = "<group>"; };
 		7689F7102270E2FC00AD4225 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		7689F7122270E31A00AD4225 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		7689F7142270E39900AD4225 /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
@@ -412,7 +418,7 @@
 		76D4745822F8FC2E0053A095 /* BudgetItemCloudStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemCloudStore.swift; sourceTree = "<group>"; };
 		76D4745A22F8FF780053A095 /* BudgetItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemStore.swift; sourceTree = "<group>"; };
 		76D4745C22F93C670053A095 /* BudgetRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetRepository.swift; sourceTree = "<group>"; };
-		76E3CBE7227FEEAC0010625A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		76E3CBE7227FEEAC0010625A /* CurrencyOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyOld.swift; sourceTree = "<group>"; };
 		76EF345322963BF1005A5C35 /* BudgetItemSectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemSectionStore.swift; sourceTree = "<group>"; };
 		76EF345522986CD8005A5C35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76EF34592298D254005A5C35 /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
@@ -578,6 +584,7 @@
 		764AFD86226E7060007BFD90 /* Spearmint */ = {
 			isa = PBXGroup;
 			children = (
+				766F3B85232EC9420002DECD /* UI */,
 				766F3B5E23241CB80002DECD /* Infastructure */,
 				76D4743622F2875C0053A095 /* Spearmint.entitlements */,
 				76D4742922E808B00053A095 /* PieChart */,
@@ -585,7 +592,6 @@
 				76B0637E22E2B515007BBDD5 /* Vendor */,
 				76B0632E22DAC9F0007BBDD5 /* Tag */,
 				76B0631122D18CEA007BBDD5 /* Segemented Control */,
-				76F4235D22BA03E100E7B868 /* DataSource */,
 				76D22F7B229A27FE00C06567 /* Analysis */,
 				76B548E122952D95001B2FB1 /* Summary */,
 				764AFDB7226EB27C007BFD90 /* Account */,
@@ -652,6 +658,7 @@
 		764AFDB6226EB269007BFD90 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				766F3B86232ECEA90002DECD /* Currency */,
 				76F4236A22C05FA900E7B868 /* Protocols */,
 				76B0638822E2CAAB007BBDD5 /* Entities */,
 				76B0633622DACBF9007BBDD5 /* Utility */,
@@ -686,6 +693,22 @@
 				766F3B682324CE060002DECD /* ContainerTests.swift */,
 			);
 			path = InfastructureTests;
+			sourceTree = "<group>";
+		};
+		766F3B85232EC9420002DECD /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		766F3B86232ECEA90002DECD /* Currency */ = {
+			isa = PBXGroup;
+			children = (
+				766F3B87232ECF4C0002DECD /* Currency.swift */,
+				766F3B89232ECFA00002DECD /* USDollar.swift */,
+			);
+			path = Currency;
 			sourceTree = "<group>";
 		};
 		76A2FA652282465B0066D594 /* DatabaseAccess */ = {
@@ -789,11 +812,11 @@
 		76B0633622DACBF9007BBDD5 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				76E3CBE7227FEEAC0010625A /* Currency.swift */,
+				76E3CBE7227FEEAC0010625A /* CurrencyOld.swift */,
 				76A2FA7322851B7D0066D594 /* DateFormatterFactory.swift */,
 				76B0632622DA8B29007BBDD5 /* BaseDate.swift */,
-				76B0633722DACC0F007BBDD5 /* Color.swift */,
 				76B0634622DAE247007BBDD5 /* BaseID.swift */,
+				76B0633722DACC0F007BBDD5 /* Color.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1246,13 +1269,6 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
-		76F4235D22BA03E100E7B868 /* DataSource */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DataSource;
-			sourceTree = "<group>";
-		};
 		76F4236222C03FFE00E7B868 /* TableViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -1274,6 +1290,7 @@
 			isa = PBXGroup;
 			children = (
 				76B0632122DA88F4007BBDD5 /* SaveableDate.swift */,
+				766F3B83232EC6480002DECD /* BudgetInfastructure.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1626,6 +1643,7 @@
 				76D4742B22E808CF0053A095 /* PieChartSegment.swift in Sources */,
 				76B548D522915D14001B2FB1 /* ImageViewTableViewCell.swift in Sources */,
 				76D4745D22F93C670053A095 /* BudgetRepository.swift in Sources */,
+				766F3B84232EC6480002DECD /* BudgetInfastructure.swift in Sources */,
 				766F3B7C232B1EDE0002DECD /* TagRepository.swift in Sources */,
 				76B0631E22D9CD31007BBDD5 /* SuggestionViewDelegate.swift in Sources */,
 				764AFD8A226E7060007BFD90 /* ViewController.swift in Sources */,
@@ -1657,7 +1675,7 @@
 				764AFD88226E7060007BFD90 /* AppDelegate.swift in Sources */,
 				76A2FA4C2280B4300066D594 /* TransactionTableViewCell.swift in Sources */,
 				76B0637022DC5B76007BBDD5 /* BudgetItemTableViewDelegate.swift in Sources */,
-				76E3CBE8227FEEAC0010625A /* Currency.swift in Sources */,
+				76E3CBE8227FEEAC0010625A /* CurrencyOld.swift in Sources */,
 				76B0635922DB24AA007BBDD5 /* BudgetItemAndTagTextView.swift in Sources */,
 				76D4745722F8327A0053A095 /* VendorStore.swift in Sources */,
 				76B0639222E52820007BBDD5 /* LocalPersistanceService.swift in Sources */,
@@ -1679,6 +1697,7 @@
 				76B0630C22D17194007BBDD5 /* TransactionView.swift in Sources */,
 				76B0638722E2B647007BBDD5 /* TagSegue.swift in Sources */,
 				76B0638322E2B583007BBDD5 /* VendorViewController.swift in Sources */,
+				766F3B8A232ECFA00002DECD /* USDollar.swift in Sources */,
 				76B0631022D17776007BBDD5 /* TransactionViewController.swift in Sources */,
 				76D22F7E229A281B00C06567 /* AnalysisViewController.swift in Sources */,
 				7637A61622864FC5007DD20B /* BudgetItemTableViewCell.swift in Sources */,
@@ -1702,6 +1721,7 @@
 				76F4236922C05EFC00E7B868 /* VendorID.swift in Sources */,
 				76F4237E22C99B9000E7B868 /* AddTransactionDataSource.swift in Sources */,
 				7689F7132270E31A00AD4225 /* Budget.swift in Sources */,
+				766F3B88232ECF4C0002DECD /* Currency.swift in Sources */,
 				7637A6382288AF75007DD20B /* BudgetItemListTableView.swift in Sources */,
 				76F4237922C998FD00E7B868 /* AddTransactionTableViewCell.swift in Sources */,
 				76327575229F13FC0099532A /* SuggestionsView.swift in Sources */,

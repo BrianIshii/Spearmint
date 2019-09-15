@@ -35,12 +35,12 @@ extension BudgetItemTableViewCell: ConfigurableCell {
         if object.actual > object.planned {
             progressBar.progress = 1
             progressBar.progressTintColor = .red
-            textField.text = "-" + Currency.currencyFormatter(object.planned - object.actual) + " left"
+            textField.text = "-" + CurrencyOld.currencyFormatter(object.planned - object.actual) + " left"
             textField.textColor = .red
         } else {
             progressBar.progress = object.actual / object.planned
             progressBar.progressTintColor = .blue
-            textField.text = Currency.currencyFormatter(object.planned - object.actual) + " left"
+            textField.text = CurrencyOld.currencyFormatter(object.planned - object.actual) + " left"
             textField.textColor = .black
 
         }

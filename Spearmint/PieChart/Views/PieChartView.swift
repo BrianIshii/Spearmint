@@ -136,7 +136,7 @@ class PieChartView: UIView {
                         
                         if index < dataSource.segments.count {
                             title.text = dataSource.segments[index].text
-                            subTitle.text = Currency.currencyFormatter(Float(dataSource.segments[index].value))
+                            subTitle.text = CurrencyOld.currencyFormatter(Float(dataSource.segments[index].value))
 
                         }
                     }
@@ -176,7 +176,7 @@ class PieChartView: UIView {
                 
                 if index < dataSource.segments.count {
                     title.text = dataSource.segments[index].text
-                    subTitle.text = Currency.currencyFormatter(Float(dataSource.segments[index].value))
+                    subTitle.text = CurrencyOld.currencyFormatter(Float(dataSource.segments[index].value))
                 }
             }
 

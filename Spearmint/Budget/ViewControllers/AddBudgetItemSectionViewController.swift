@@ -27,7 +27,7 @@ class AddBudgetItemSectionViewController: UIViewController, UIPickerViewDataSour
         
         if let item = budgetItem {
             nameTextField.text = item.name
-            plannedAmountTextField.text = Currency.currencyFormatter(item.planned)
+            plannedAmountTextField.text = CurrencyOld.currencyFormatter(item.planned)
             for (index, section) in BudgetItemSectionStore.budgetItemSections.enumerated() {
                 if section.category == item.category {
                     budgetCategoryPicker.selectRow(index, inComponent: 0, animated: true)

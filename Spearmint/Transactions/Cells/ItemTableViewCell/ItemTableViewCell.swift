@@ -29,7 +29,7 @@ class ItemTableViewCell: UITableViewCell, ReusableIdentifier {
 extension ItemTableViewCell: ConfigurableCell {
     func configure(object: Item) {
         if object.amount > 0 {
-            textField.text = Currency.currencyFormatter(object.amount)
+            textField.text = CurrencyOld.currencyFormatter(object.amount)
         }
         
         if object.name != "" {

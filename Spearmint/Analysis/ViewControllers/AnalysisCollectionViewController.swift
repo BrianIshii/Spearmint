@@ -89,7 +89,7 @@ class AnalysisCollectionViewController: UICollectionViewController {
         // Configure the cell
         cell.category.text = "Most Expensive Item for: \(item.budgetItemCategory.rawValue)"
         cell.name.text = item.name
-        cell.price.text = "Current Price: \(Currency.currencyFormatter(item.amount))"
+        cell.price.text = "Current Price: \(CurrencyOld.currencyFormatter(item.amount))"
         cell.backgroundColor = .lightGray
         return cell
     }

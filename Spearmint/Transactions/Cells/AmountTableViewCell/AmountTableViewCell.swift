@@ -26,7 +26,7 @@ class AmountTableViewCell: UITableViewCell, ReusableIdentifier {
 
 extension AmountTableViewCell: ConfigurableCell {
     func configure(object: Transaction) {
-        textField.text = Currency.currencyFormatter(object.amount)
+        textField.text = CurrencyOld.currencyFormatter(object.amount)
     }
     
     func configure() {

@@ -42,7 +42,7 @@ class TransactionTableViewCell: UITableViewCell {
 extension TransactionTableViewCell: ConfigurableCell {
     func configure(object: Transaction) {
         
-        transactionAmountLabel.text = Currency.currencyFormatter(String(format: "%.2f", object.amount))
+        transactionAmountLabel.text = CurrencyOld.currencyFormatter(String(format: "%.2f", object.amount))
         
         switch object.transactionType {
         case .expense:

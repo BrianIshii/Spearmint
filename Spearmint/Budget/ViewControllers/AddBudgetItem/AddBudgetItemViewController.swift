@@ -48,7 +48,7 @@ class AddBudgetItemViewController: UIViewController {
             let index = controller.budgetCategoryPicker.selectedRow(inComponent: 0)
             let category: BudgetItemCategory = BudgetItemSectionStore.budgetItemSections[index].category
             let name = controller.nameTextField.text!
-            let plannedAmount = Currency.currencyToFloat(controller.plannedAmountTextField.text!)
+            let plannedAmount = CurrencyOld.currencyToFloat(controller.plannedAmountTextField.text!)
             
             budgetItem = BudgetItem(name: name, category: category, planned: plannedAmount)
         }

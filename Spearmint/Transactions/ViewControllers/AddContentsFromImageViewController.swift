@@ -196,7 +196,7 @@ extension AddContentsFromImageViewController: UITableViewDelegate, UITableViewDa
                 let item = itemsDictionary[indexPath.section - 1][indexPath.row]
                 
                 if item.amount > 0 {
-                    cell.textField.text = Currency.currencyFormatter(item.amount)
+                    cell.textField.text = CurrencyOld.currencyFormatter(item.amount)
                 }
                 cell.textField.clearButtonMode = UITextField.ViewMode.always
                 cell.textField.inputView = UIView()

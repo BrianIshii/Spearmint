@@ -1,5 +1,5 @@
 //
-//  Currency.swift
+//  CurrencyOld.swift
 //  Spearmint
 //
 //  Created by Brian Ishii on 5/5/19.
@@ -8,10 +8,10 @@
 
 import Foundation
 
-public class Currency {
+public class CurrencyOld {
     
     static public func currencyFormatter(_ total: Float) -> String {
-        return Currency.currencyFormatter(String(format: "%0.2f", total))
+        return CurrencyOld.currencyFormatter(String(format: "%0.2f", total))
     }
     
     static public func currencyFormatter(_ total: String) -> String {
