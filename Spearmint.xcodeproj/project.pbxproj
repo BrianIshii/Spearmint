@@ -68,6 +68,7 @@
 		766F3B84232EC6480002DECD /* BudgetInfastructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B83232EC6480002DECD /* BudgetInfastructure.swift */; };
 		766F3B88232ECF4C0002DECD /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B87232ECF4C0002DECD /* Currency.swift */; };
 		766F3B8A232ECFA00002DECD /* USDollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B89232ECFA00002DECD /* USDollar.swift */; };
+		766F3B8C232ED5400002DECD /* HomeTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B8B232ED5400002DECD /* HomeTabBarViewController.swift */; };
 		7689F7112270E2FC00AD4225 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7102270E2FC00AD4225 /* Transaction.swift */; };
 		7689F7132270E31A00AD4225 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7122270E31A00AD4225 /* Budget.swift */; };
 		7689F7152270E39900AD4225 /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7142270E39900AD4225 /* TransactionType.swift */; };
@@ -304,6 +305,7 @@
 		766F3B83232EC6480002DECD /* BudgetInfastructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetInfastructure.swift; sourceTree = "<group>"; };
 		766F3B87232ECF4C0002DECD /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		766F3B89232ECFA00002DECD /* USDollar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDollar.swift; sourceTree = "<group>"; };
+		766F3B8B232ED5400002DECD /* HomeTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarViewController.swift; sourceTree = "<group>"; };
 		7689F7102270E2FC00AD4225 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		7689F7122270E31A00AD4225 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		7689F7142270E39900AD4225 /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
@@ -584,6 +586,7 @@
 		764AFD86226E7060007BFD90 /* Spearmint */ = {
 			isa = PBXGroup;
 			children = (
+				766F3B8B232ED5400002DECD /* HomeTabBarViewController.swift */,
 				766F3B85232EC9420002DECD /* UI */,
 				766F3B5E23241CB80002DECD /* Infastructure */,
 				76D4743622F2875C0053A095 /* Spearmint.entitlements */,
@@ -1735,6 +1738,7 @@
 				76B0634722DAE247007BBDD5 /* BaseID.swift in Sources */,
 				76B0636522DBE45C007BBDD5 /* TransactionTableView.swift in Sources */,
 				764AFDBA226EC283007BFD90 /* SettingsTableViewController.swift in Sources */,
+				766F3B8C232ED5400002DECD /* HomeTabBarViewController.swift in Sources */,
 				7637A61A22868C32007DD20B /* BudgetCollectionViewCell.swift in Sources */,
 				764AEE1622E6D982007C817D /* TransactionStore.swift in Sources */,
 			);
