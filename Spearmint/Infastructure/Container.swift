@@ -20,6 +20,9 @@ public class Container : Registrar, Resolver {
     }
     
     public func registerSingleton<T>(_ singleton: T) {
+        if items["\(T.self)"] != nil {
+            fatalError("Cannot Register Singleton: \(T.self) singleton already registered.")
+        }
         items["\(T.self)"] = singleton
     }
     

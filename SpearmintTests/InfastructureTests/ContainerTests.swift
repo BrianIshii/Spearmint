@@ -35,6 +35,14 @@ class ContainerTests: XCTestCase {
     func testContainerReturnsNilWithNonRegisteredService() {
         XCTAssertNil(sut.resolve(LocalPersistanceService.self))
     }
+    
+    func testFatalErrorWhenRegisteringSingletonTwoTimes() {
+        let service = LocalPersistanceService()
+
+        sut.registerSingleton(service as LocalPersistance)
+
+        //TODO: Fatal error tests
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
