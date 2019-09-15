@@ -11,12 +11,18 @@ import Foundation
 class DatabaseInfastructure {
     public static func initialize(_ registrar: Registrar,_ resolver: Resolver) {
         let localPersistanceService = LocalPersistanceService()
-        let localAccess = LocalAccess(localPersistanceService: localPersistanceService)
+        let budgetRepository = BudgetStore(localPersistanceService: localPersistanceService)
+        let budgetItemRepository = BudgetItemStore(localPersistanceService: localPersistanceService)
+        let vendorRepository = VendorStore(localPersistanceService: localPersistanceService)
+        let tagRepository = TagRepo(localPersistanceService: localPersistanceService)
+        let transactionStore = TransactionStore(localPersistanceService: localPersistanceService)
+        
         registrar.registerSingleton(localPersistanceService)
-        registrar.registerSingleton(localAccess as BudgetRepository)
-        registrar.registerSingleton(localAccess as BudgetItemRepository)
-        registrar.registerSingleton(localAccess as VendorRepository)
-        registrar.registerSingleton(localAccess as TransactionRepository)
-        registrar.registerSingleton(localAccess as TagRepository)
+        registrar.registerSingleton(budgetRepository as BudgetRepository)
+        registrar.registerSingleton(budgetItemRepository as BudgetItemRepository)
+        registrar.registerSingleton(vendorRepository as VendorRepository)
+        registrar.registerSingleton(transactionStore as TransactionRepository)
+        registrar.registerSingleton(tagRepository as TagRepository)
+        registrar.registerSingleton(tagRepository as TagQuery)
     }
 }

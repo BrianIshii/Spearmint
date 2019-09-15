@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         AppDelegate.container.registerSingleton(CloudAccess(cloudKitService: CloudKitService(), transactionCloudStore: TransactionCloudStore()))
-        AppDelegate.container.registerSingleton(LocalAccess(localPersistanceService: LocalPersistanceService()))
         
         DatabaseInfastructure.initialize(AppDelegate.container, AppDelegate.container)
         

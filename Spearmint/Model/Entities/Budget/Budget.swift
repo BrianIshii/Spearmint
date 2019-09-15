@@ -48,13 +48,13 @@ class Budget: Saveable {
     
     var totalIncome: Float {
         var total: Float = 0.0
-        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-            print("failed to resolve \(LocalAccess.self)")
+        guard let budgetItemRepository = AppDelegate.container.resolve(BudgetItemRepository.self) else {
+            print("failed to resolve \(BudgetItemRepository.self)")
             return 0.0
         }
         if let budgetItems = items[BudgetItemCategory.income] {
             for id in budgetItems {
-                if let budgetItem = localAccess.get(id) {
+                if let budgetItem = budgetItemRepository.get(id) {
                     total += budgetItem.actual
                 }
             }
@@ -69,13 +69,14 @@ class Budget: Saveable {
             if (key.category != BudgetItemCategory.income) {
                 var total: Float = 0.0
 
-                guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-                    print("failed to resolve \(LocalAccess.self)")
+                guard let budgetItemRepository = AppDelegate.container.resolve(BudgetItemRepository.self) else {
+                    print("failed to resolve \(BudgetItemRepository.self)")
                     return [:]
                 }
+                
                 if let items = items[key.category] {
                     for id in items {
-                        if let item = localAccess.get(id) {
+                        if let item = budgetItemRepository.get(id) {
                             total += item.getMonthlyTotal(self.budgetDate)
                         }
                     }

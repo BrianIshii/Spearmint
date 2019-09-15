@@ -36,3 +36,24 @@ extension TransactionStore: Observable {
         }
     }
 }
+
+extension TransactionStore: TransactionRepository {
+    func getAllTransactions() -> [Transaction] {
+        return getAll()
+    }
+    
+    func update(_ transaction: Transaction) {
+        self.update()
+        self.updateObservers()
+    }
+    
+    func remove(_ transaction: Transaction) {
+        //
+    }
+    
+    func addTransactionObserver(_ observer: TransactionObserver) {
+        addObserver(observer)
+    }
+    
+    
+}

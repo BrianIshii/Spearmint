@@ -108,11 +108,11 @@ extension BudgetDataSourceOld: UITableViewDataSource {
     public func getBudgetItem(indexPath: IndexPath) -> BudgetItem? {
         guard let budget = currentBudget else { return nil }
         guard let budgetItemIDs = budget.items[sections[indexPath.section].category] else { return nil }
-        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-            print("failed to resolve \(LocalAccess.self)")
+        guard let budgetItemRepository = AppDelegate.container.resolve(BudgetItemRepository.self) else {
+            print("failed to resolve \(BudgetItemRepository.self)")
             return nil
         }
-        guard let budgetItem = localAccess.get(budgetItemIDs[indexPath.row]) else { return nil }
+        guard let budgetItem = budgetItemRepository.get(budgetItemIDs[indexPath.row]) else { return nil }
         return budgetItem
     }
     

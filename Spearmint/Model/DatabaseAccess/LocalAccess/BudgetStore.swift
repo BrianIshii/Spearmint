@@ -8,5 +8,23 @@
 
 import Foundation
 
-class BudgetStore: BaseRepo<Budget> {
+class BudgetStore: BaseRepo<Budget>, BudgetRepository {
+    func getCurrentBudget() -> Budget {
+        if let budget = get(BudgetDate()) {
+            return budget
+        } else {
+            let budget = Budget(BudgetDate())
+            append(budget)
+            return budget
+        }
+    }
+    
+    func update(_ budget: Budget) {
+        //
+    }
+    
+    func remove(_ budget: Budget) {
+        //
+    }
+    
 }

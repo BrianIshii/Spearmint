@@ -15,7 +15,6 @@ class AddTransactionViewController: UIViewController {
     
     var transaction: Transaction?
     var budgetItems: [BudgetItem]?
-    var localAccess: LocalAccess?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +26,6 @@ class AddTransactionViewController: UIViewController {
         transactionView.dateTextField.text = DateFormatterFactory.MediumFormatter.string(from: Date())
         
         navigationBar.isHidden = true
-        
-        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-            print("failed to resolve \(LocalAccess.self)")
-            return
-        }
-        self.localAccess = localAccess
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {

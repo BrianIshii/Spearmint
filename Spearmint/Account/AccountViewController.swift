@@ -305,15 +305,15 @@ class AccountViewController: UIViewController {
         
         privateDatabase.perform(budgetItemQuery, inZoneWith: nil) { (records, error) in
             
-            guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-                print("failed to resolve \(LocalAccess.self)")
+            guard let budgetItemRepository = AppDelegate.container.resolve(BudgetItemRepository.self) else {
+                print("failed to resolve \(BudgetItemRepository.self)")
                 return
             }
             if let records = records {
                 for record: CKRecord in records {
                     
                     let budgetItem = BudgetItemCloudStore().createItem(from: record)
-                    localAccess.append(budgetItem)
+                    budgetItemRepository.append(budgetItem)
                     print("BudgetItem fetched")
                 }
             }

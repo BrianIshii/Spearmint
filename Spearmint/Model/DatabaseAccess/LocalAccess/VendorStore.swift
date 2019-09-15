@@ -17,18 +17,38 @@ class VendorStore: BaseRepo<Vendor> {
             vendorKeys[v.name] = v.id
         }
     }
+}
+
+extension VendorStore {
+    public func query(_ substring: String) -> [(String, VendorID)] {
+        return vendorKeys.filter {$0.key.contains(substring)}
+    }
+}
+
+extension VendorStore: VendorRepository {
+    func getAllVendors() -> [Vendor] {
+        return getAll()
+    }
     
-    public func get(_ name: String) -> Vendor? {
+    func hasVendor(_ name: String) -> Bool {
+        return self.get(name) != nil
+    }
+    
+    func get(_ name: String) -> Vendor? {
         if let vendorID = vendorKeys[name] {
             return items[vendorID]
         } else {
             return nil
         }
     }
-}
-
-extension VendorStore {
-    public func query(_ substring: String) -> [(String, VendorID)] {
-        return vendorKeys.filter {$0.key.contains(substring)}
+    
+    func update(_ vendor: Vendor) {
+    }
+    
+    func remove(_ vendor: Vendor) {
+    }
+    
+    func queryVendors(_ substring: String) -> [(String, VendorID)] {
+        return query(substring)
     }
 }

@@ -145,8 +145,8 @@ extension TagTextView: UITextViewDelegate {
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-            print("failed to resolve \(LocalAccess.self)")
+        guard let tagQuery = AppDelegate.container.resolve(TagQuery.self) else {
+            print("failed to resolve \(TagQuery.self)")
             return false
         }
         if tagCount < 1 {
@@ -181,7 +181,7 @@ extension TagTextView: UITextViewDelegate {
         }
         
         if self.tags.count > 0 {
-            let suggestions = localAccess.queryTags(self.tags[self.tags.count - 1])
+            let suggestions = tagQuery.query(self.tags[self.tags.count - 1])
             view.addSuggestions(suggestions.map({ Suggestion(text: $0.text) }))
         }
         

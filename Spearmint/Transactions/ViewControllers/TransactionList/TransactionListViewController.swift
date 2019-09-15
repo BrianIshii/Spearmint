@@ -44,16 +44,16 @@ class TransactionListViewController: UIViewController {
     }
     
     @IBAction func unwind(sender: UIStoryboardSegue) {
-        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-            print("failed to resolve \(LocalAccess.self)")
+        guard let transactionRepository = AppDelegate.container.resolve(TransactionRepository.self) else {
+            print("failed to resolve \(TransactionRepository.self)")
             return
         }
         if let sourceViewController = sender.source as? AddTransactionViewController, let transaction = sourceViewController.transaction {
-            localAccess.addTransaction(transaction)
+            transactionRepository.append(transaction)
         }
         
         if let sourceViewController = sender.source as? AddTransactionViewController, let transaction = sourceViewController.transaction {
-            localAccess.addTransaction(transaction)
+            transactionRepository.append(transaction)
         }
         if let selectedIndexPath = transactionTableView.indexPathForSelectedRow {
             transactionTableView.deselectRow(at: selectedIndexPath, animated: true)
@@ -89,11 +89,11 @@ extension TransactionListViewController: UITableViewDelegate {
         guard let dataSource = dataSource else { return }
         
         if editingStyle == .delete {
-            guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-                print("failed to resolve \(LocalAccess.self)")
+            guard let transactionRepository = AppDelegate.container.resolve(TransactionRepository.self) else {
+                print("failed to resolve \(TransactionRepository.self)")
                 return
             }
-            localAccess.deleteTransaction(dataSource.transactions[indexPath.row])
+            transactionRepository.remove(dataSource.transactions[indexPath.row])
             dataSource.transactions.remove(at: indexPath.row)
         }
     }

@@ -32,12 +32,12 @@ class BudgetItemSectionStore {
 //            return resetBudgetItemSections()
 //        }
         
-        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-            print("failed to resolve \(LocalAccess.self)")
-            return []
-        }
-        let array = localAccess.getData(saveable: BudgetItemSection.self)
-        
+//        guard let budgetItemRepository = AppDelegate.container.resolve(BudgetItemRepository.self) else {
+//            print("failed to resolve \(BudgetItemRepository.self)")
+//            return []
+//        }
+//        let array = budgetItemRepository.getData(saveable: BudgetItemSection.self) removed WIP
+        let array: [BudgetItemSection] = []
         if array.count == 0 {
             return resetBudgetItemSections()
         } else {
@@ -58,10 +58,10 @@ class BudgetItemSectionStore {
     }
     
     fileprivate static func update(_ data: [BudgetItemSection]) {
-        guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-            print("failed to resolve \(LocalAccess.self)")
-            return
-        }
-        localAccess.updateData(data: data)
+//        guard let budgetItemRepository = AppDelegate.container.resolve(BudgetItemRepository.self) else {
+//            print("failed to resolve \(BudgetItemRepository.self)")
+//            return
+//        }
+//        budgetItemRepository.updateData(data: data) removed
     }
 }

@@ -137,11 +137,11 @@ class TransactionView: UIView {
         guard let delegate = delegate else { return }
         
         if let transaction = transaction {
-            guard let localAccess = AppDelegate.container.resolve(LocalAccess.self) else {
-                print("failed to resolve \(LocalAccess.self)")
+            guard let transactionRepository = AppDelegate.container.resolve(TransactionRepository.self) else {
+                print("failed to resolve \(TransactionRepository.self)")
                 return
             }
-            localAccess.deleteTransaction(transaction)
+            transactionRepository.remove(transaction)
         }
         
         delegate.dismiss()

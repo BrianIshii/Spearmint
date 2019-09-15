@@ -132,3 +132,19 @@ extension BudgetItemStore {
                 BudgetItemCategory.other : []]
     }
 }
+
+extension BudgetItemStore: BudgetItemRepository {
+    func getAllBudgetItems() -> [BudgetItem] {
+        return getAll()
+    }
+    
+    func update(_ budgetItem: BudgetItem) {
+        //
+    }
+    
+    func remove(_ budgetItem: BudgetItem) {
+        //
+    }
+    
+    
+}

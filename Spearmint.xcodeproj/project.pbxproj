@@ -64,6 +64,7 @@
 		766F3B762326B2DD0002DECD /* DatabaseInfastructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B752326B2DD0002DECD /* DatabaseInfastructure.swift */; };
 		766F3B78232778970002DECD /* TransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B77232778970002DECD /* TransactionRepository.swift */; };
 		766F3B7C232B1EDE0002DECD /* TagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B7B232B1EDE0002DECD /* TagRepository.swift */; };
+		766F3B80232EBA8E0002DECD /* TagQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766F3B7F232EBA8E0002DECD /* TagQuery.swift */; };
 		7689F7112270E2FC00AD4225 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7102270E2FC00AD4225 /* Transaction.swift */; };
 		7689F7132270E31A00AD4225 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7122270E31A00AD4225 /* Budget.swift */; };
 		7689F7152270E39900AD4225 /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689F7142270E39900AD4225 /* TransactionType.swift */; };
@@ -108,7 +109,6 @@
 		76B0634222DADD85007BBDD5 /* Transaction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76B0634122DADD85007BBDD5 /* Transaction.storyboard */; };
 		76B0634522DADDC3007BBDD5 /* TransactionList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76B0634422DADDC3007BBDD5 /* TransactionList.storyboard */; };
 		76B0634722DAE247007BBDD5 /* BaseID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0634622DAE247007BBDD5 /* BaseID.swift */; };
-		76B0634B22DAE8CC007BBDD5 /* TagStoreOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0634A22DAE8CC007BBDD5 /* TagStoreOld.swift */; };
 		76B0635222DB13F4007BBDD5 /* BudgetItemTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0635122DB13F4007BBDD5 /* BudgetItemTextView.swift */; };
 		76B0635422DB142F007BBDD5 /* BudgetItemTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0635322DB142F007BBDD5 /* BudgetItemTextViewDelegate.swift */; };
 		76B0635922DB24AA007BBDD5 /* BudgetItemAndTagTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0635822DB24AA007BBDD5 /* BudgetItemAndTagTextView.swift */; };
@@ -137,7 +137,6 @@
 		76B0639222E52820007BBDD5 /* LocalPersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0639122E52820007BBDD5 /* LocalPersistanceService.swift */; };
 		76B0639422E52A59007BBDD5 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0639322E52A59007BBDD5 /* Observer.swift */; };
 		76B548BB22913069001B2FB1 /* CurrenyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BA22913069001B2FB1 /* CurrenyTests.swift */; };
-		76B548BD229135DE001B2FB1 /* LocalAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BC229135DE001B2FB1 /* LocalAccess.swift */; };
 		76B548C022913DB4001B2FB1 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */; };
 		76B548C222913E8E001B2FB1 /* ReusableIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B548C122913E8E001B2FB1 /* ReusableIdentifier.swift */; };
 		76B548D322915C7D001B2FB1 /* ImageViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76B548D222915C7D001B2FB1 /* ImageViewTableViewCell.xib */; };
@@ -166,7 +165,7 @@
 		76D4743822F28E880053A095 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D4743722F28E880053A095 /* CloudKit.framework */; };
 		76D4743A22F5E30C0053A095 /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4743922F5E30C0053A095 /* CloudKitService.swift */; };
 		76D4743C22F615540053A095 /* TransactionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4743B22F615540053A095 /* TransactionExtensions.swift */; };
-		76D4743E22F623CD0053A095 /* TagStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4743D22F623CD0053A095 /* TagStore.swift */; };
+		76D4743E22F623CD0053A095 /* TagRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4743D22F623CD0053A095 /* TagRepo.swift */; };
 		76D4744222F62F390053A095 /* BudgetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4744122F62F390053A095 /* BudgetStore.swift */; };
 		76D4744422F690240053A095 /* BudgetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4744322F690240053A095 /* BudgetExtension.swift */; };
 		76D4744622F692490053A095 /* CloudStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4744522F692490053A095 /* CloudStore.swift */; };
@@ -298,6 +297,7 @@
 		766F3B752326B2DD0002DECD /* DatabaseInfastructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInfastructure.swift; sourceTree = "<group>"; };
 		766F3B77232778970002DECD /* TransactionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRepository.swift; sourceTree = "<group>"; };
 		766F3B7B232B1EDE0002DECD /* TagRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRepository.swift; sourceTree = "<group>"; };
+		766F3B7F232EBA8E0002DECD /* TagQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagQuery.swift; sourceTree = "<group>"; };
 		7689F7102270E2FC00AD4225 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		7689F7122270E31A00AD4225 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		7689F7142270E39900AD4225 /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
@@ -342,7 +342,6 @@
 		76B0634122DADD85007BBDD5 /* Transaction.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Transaction.storyboard; sourceTree = "<group>"; };
 		76B0634422DADDC3007BBDD5 /* TransactionList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TransactionList.storyboard; sourceTree = "<group>"; };
 		76B0634622DAE247007BBDD5 /* BaseID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseID.swift; sourceTree = "<group>"; };
-		76B0634A22DAE8CC007BBDD5 /* TagStoreOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagStoreOld.swift; sourceTree = "<group>"; };
 		76B0635122DB13F4007BBDD5 /* BudgetItemTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetItemTextView.swift; sourceTree = "<group>"; };
 		76B0635322DB142F007BBDD5 /* BudgetItemTextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetItemTextViewDelegate.swift; sourceTree = "<group>"; };
 		76B0635822DB24AA007BBDD5 /* BudgetItemAndTagTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItemAndTagTextView.swift; sourceTree = "<group>"; };
@@ -371,7 +370,6 @@
 		76B0639122E52820007BBDD5 /* LocalPersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPersistanceService.swift; sourceTree = "<group>"; };
 		76B0639322E52A59007BBDD5 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		76B548BA22913069001B2FB1 /* CurrenyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenyTests.swift; sourceTree = "<group>"; };
-		76B548BC229135DE001B2FB1 /* LocalAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAccess.swift; sourceTree = "<group>"; };
 		76B548BF22913DB4001B2FB1 /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
 		76B548C122913E8E001B2FB1 /* ReusableIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableIdentifier.swift; sourceTree = "<group>"; };
 		76B548D222915C7D001B2FB1 /* ImageViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewTableViewCell.xib; sourceTree = "<group>"; };
@@ -401,7 +399,7 @@
 		76D4743722F28E880053A095 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		76D4743922F5E30C0053A095 /* CloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitService.swift; sourceTree = "<group>"; };
 		76D4743B22F615540053A095 /* TransactionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionExtensions.swift; sourceTree = "<group>"; };
-		76D4743D22F623CD0053A095 /* TagStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagStore.swift; sourceTree = "<group>"; };
+		76D4743D22F623CD0053A095 /* TagRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRepo.swift; sourceTree = "<group>"; };
 		76D4744122F62F390053A095 /* BudgetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetStore.swift; sourceTree = "<group>"; };
 		76D4744322F690240053A095 /* BudgetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetExtension.swift; sourceTree = "<group>"; };
 		76D4744522F692490053A095 /* CloudStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStore.swift; sourceTree = "<group>"; };
@@ -937,6 +935,7 @@
 				766633B122FF916100DC47A9 /* VendorRepository.swift */,
 				766F3B77232778970002DECD /* TransactionRepository.swift */,
 				766F3B7B232B1EDE0002DECD /* TagRepository.swift */,
+				766F3B7F232EBA8E0002DECD /* TagQuery.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1215,7 +1214,6 @@
 		76D4744922F6B3840053A095 /* LocalAccess */ = {
 			isa = PBXGroup;
 			children = (
-				76B548BC229135DE001B2FB1 /* LocalAccess.swift */,
 				76B0638E22E51CA0007BBDD5 /* BaseRepo.swift */,
 				764AEE1522E6D982007C817D /* TransactionStore.swift */,
 				76B548DB2294ECA9001B2FB1 /* ImageStore.swift */,
@@ -1223,8 +1221,7 @@
 				76D4745622F8327A0053A095 /* VendorStore.swift */,
 				76F4236322C05BFD00E7B868 /* VendorStoreOld.swift */,
 				76D4745A22F8FF780053A095 /* BudgetItemStore.swift */,
-				76B0634A22DAE8CC007BBDD5 /* TagStoreOld.swift */,
-				76D4743D22F623CD0053A095 /* TagStore.swift */,
+				76D4743D22F623CD0053A095 /* TagRepo.swift */,
 				76D4744122F62F390053A095 /* BudgetStore.swift */,
 				76B0639022E52810007BBDD5 /* Service */,
 			);
@@ -1571,6 +1568,7 @@
 				76EF345A2298D254005A5C35 /* AddImageViewController.swift in Sources */,
 				76D4745B22F8FF780053A095 /* BudgetItemStore.swift in Sources */,
 				76B548EC229535F0001B2FB1 /* BudgetTableViewController.swift in Sources */,
+				766F3B80232EBA8E0002DECD /* TagQuery.swift in Sources */,
 				76B0632722DA8B29007BBDD5 /* BaseDate.swift in Sources */,
 				76D4744222F62F390053A095 /* BudgetStore.swift in Sources */,
 				76B0633E22DAD58E007BBDD5 /* TagTextViewDelegate.swift in Sources */,
@@ -1649,10 +1647,9 @@
 				76A2FA67228248220066D594 /* PaymentType.swift in Sources */,
 				76A2FA7422851B7D0066D594 /* DateFormatterFactory.swift in Sources */,
 				764AFDBE226EC42D007BFD90 /* AccountViewController.swift in Sources */,
-				76B548BD229135DE001B2FB1 /* LocalAccess.swift in Sources */,
 				7689F7112270E2FC00AD4225 /* Transaction.swift in Sources */,
 				76B548EF22953685001B2FB1 /* BudgetDataSourceOld.swift in Sources */,
-				76D4743E22F623CD0053A095 /* TagStore.swift in Sources */,
+				76D4743E22F623CD0053A095 /* TagRepo.swift in Sources */,
 				766F3B6023241DAB0002DECD /* Registrar.swift in Sources */,
 				76A2FA6E228375970066D594 /* TransactionID.swift in Sources */,
 				76330A1222AD8E6100F68952 /* SummaryPickerViewController.swift in Sources */,
@@ -1681,7 +1678,6 @@
 				76B0635422DB142F007BBDD5 /* BudgetItemTextViewDelegate.swift in Sources */,
 				76B0630C22D17194007BBDD5 /* TransactionView.swift in Sources */,
 				76B0638722E2B647007BBDD5 /* TagSegue.swift in Sources */,
-				76B0634B22DAE8CC007BBDD5 /* TagStoreOld.swift in Sources */,
 				76B0638322E2B583007BBDD5 /* VendorViewController.swift in Sources */,
 				76B0631022D17776007BBDD5 /* TransactionViewController.swift in Sources */,
 				76D22F7E229A281B00C06567 /* AnalysisViewController.swift in Sources */,
