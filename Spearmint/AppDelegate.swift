@@ -17,13 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static public var container: Container = Container()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        AppDelegate.container.registerSingleton(CloudAccess(cloudKitService: CloudKitService(), transactionCloudStore: TransactionCloudStore()))
+        
+        DatabaseInfastructure.initialize(AppDelegate.container, AppDelegate.container)
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UINavigationController(rootViewController: HomeTabBarViewController())
         window?.makeKeyAndVisible()
         // Override point for customization after application launch.
-        AppDelegate.container.registerSingleton(CloudAccess(cloudKitService: CloudKitService(), transactionCloudStore: TransactionCloudStore()))
-        
-        DatabaseInfastructure.initialize(AppDelegate.container, AppDelegate.container)
         
         FirebaseApp.configure()
         return true

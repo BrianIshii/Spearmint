@@ -10,8 +10,8 @@ import UIKit
 
 class TransactionListViewController: UIViewController {
     
-    @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var transactionTableView: UITableView!    
+    var navigationBar: UINavigationBar!
+    var transactionTableView: UITableView!
     
     private var dataSource: TransactionDataSource?
     var currentDate: Date = Date()
@@ -19,10 +19,19 @@ class TransactionListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        transactionTableView = TransactionTableView()
+        navigationBar = UINavigationBar()
         
+        transactionTableView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(transactionTableView)
+        self.view.addConstraints([
+            NSLayoutConstraint(item: transactionTableView, attribute: .centerX, relatedBy: .equal, toItem:  self.view, attribute: .centerX, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: transactionTableView, attribute: .centerY, relatedBy: .equal, toItem:  self.view, attribute: .centerY, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: transactionTableView, attribute: .height, relatedBy: .equal, toItem:  self.view, attribute: .height, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: transactionTableView, attribute: .width, relatedBy: .equal, toItem:  self.view, attribute: .width, multiplier: 1, constant: 0),
+            ])
         transactionTableView.delegate = self
         
-        navigationBar.prefersLargeTitles = true
 //        let searchController = UISearchController(searchResultsController: nil)
 //        navigationItem.searchController = searchController
         // Do any additional setup after loading the view.
